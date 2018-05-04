@@ -1,0 +1,41 @@
+# 插件
+## REDIRECTOR
+> Automatically redirect pages based on user-defined rules.  
+> 根据用户定义的规则自动重定向页面的插件。  
+
+eg：将googleapis的cdn重定向到bootcss的cdn  
+1. 点击左上角《Redirector的图标》
+2. 点击《Edit Redirects》
+3. 点击《Create  new redirect》输入配置   
+或者点击《Import》导入如下配置文件
+
+```
+{
+    "createdBy": "Redirector v3.1.1",
+    "createdAt": "2018-02-02T06:52:41.318Z",
+    "redirects": [
+        {
+            "description": "Ajax",
+            "exampleUrl": "https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js",
+            "exampleResult": "https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js",
+            "error": null,
+            "includePattern": "*ajax.googleapis.com/ajax/libs*",
+            "excludePattern": "",
+            "redirectUrl": "$1cdn.bootcss.com$2",
+            "patternType": "W",
+            "processMatches": "noProcessing",
+            "disabled": false,
+            "appliesTo": [
+                "script"
+            ]
+        }
+    ]
+}
+```
+
+### Hoxx VPN Proxy
+> Hoxx VPN Proxy service to unblock blocked websites, hide your location and encrypt your connection. Completely free.
+
+> Hoxx VPN代理服务可以接通被屏蔽的网站<span style="background:#777">就是科学上网</span>，隐藏你的位置，并加密你的连接。完全免费的。
+
+
