@@ -1,22 +1,24 @@
 # 文章类别：
 1. 前端  
-HTML，CSS，JS，前端自动化等
+HTML、CSS、JS、前端自动化等
 1. 后端  
-PHP，Java等
+PHP、Java等
 1. 数据库  
-MySQL，Oracle，Access等
+MySQL、Oracle、Access等
 1. 运维  
-Linux，Apache，Nginx，Memcached等
+Linux、Apache、Nginx、Memcached等
 1. 实用技术  
-Adobe，Office，Sublime，IDE等
+Adobe、Office、Sublime、IDE等
 1. CS  
 Counter Strike等
 1. GIS  
-ArcGIS，Skyline等
+ArcGIS、Skyline等
 1. 常用语言  
-C，Java，英语，日语等
+C，Java、英语、日语等
 1. 不常用语言  
-Python，C#，VB等
+Python、C#、VB等
+1. 面试  
+网上收集到的面试问题、实际面试遇到的问题、面试遇到奇闻异事等
 
 # 文章命名规范：
 格式：`名称[-标题][-N子标题][^_^关键技术1,关键技术2,...]`
@@ -28,6 +30,7 @@ Python，C#，VB等
 
 # 文章规范：
 瞎鸡儿写就行了啊=_=  
+
 ## 图片：  
 - 名称：文章名-N，eg：HTML-1.jpg，HTML-2.jpg
 - 位置：该文章所属类别对应文件夹下面的img文件夹里
