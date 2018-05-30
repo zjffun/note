@@ -6,6 +6,49 @@ sudo vim /etc/apache2/port.conf
 sudo vim /etc/apache2/sites-available/000-defaul
 sudo /etc/init.d/apache2 restart
 ```
+
+php：
+```
+//安装最新版php命令
+sudo apt install php
+
+//配置apache2与php命令
+sudo apt-get install libapache2-mod-php
+
+//重启apache2命令
+sudo /etc/init.d/apache2 restart
+```
+
+https：
+```
+# 开启SSL模块
+a2enmod ssl
+# 这条命令相当于
+# sudo ln -s /etc/apache2/mods-available/ssl.load /etc/apache2/mods-enabled
+# sudo ln -s /etc/apache2/mods-available/ssl.conf /etc/apache2/mods-enabled
+# 如果没有a2enmod指令，也可直接在apache2.conf中设置SSL模块加载：
+# LoadModule ssl_module /usr/lib/apache2/modules/mod_ssl.so
+
+# 创建第三方CA机构签署证书
+# 向第三方提交一个“生成证书请求文件(CSR)”
+openssl genrsa -des3 -out server.key 1024
+# 生成请求文件CSR（Certificate Signing Request）
+openssl req -new -key server.key -out server.csr
+# 自己签发证书
+openssl x509 -req -days 3650 -in server.csr -signkey server.key -out server.crt
+
+# 修改apache配置文件
+ln -s /etc/apache2/sites-available/default-ssl.conf /etc/apache2/sites-enabled/default-ssl.conf
+vim /etc/apache2/sites-enabled/default-ssl.conf
+
+# 在DocumentRoot中加入内容：
+SSLEngine On  
+SSLOptions +StrictRequire  
+SSLCertificateFile crt文件  
+SSLCertificateKeyFile key文件  
+```
+
+
 端口：
 ```
 netstat -an
