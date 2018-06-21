@@ -1,7 +1,17 @@
+# 一 使用原生JSON.stringify实现
+```
+<textarea name="" id="myTA" cols="30" rows="10"></textarea>
+<script>
+    var myTA = document.getElementById("myTA");
+    myTA.value = JSON.stringify({"aaa":123,"bbb":456}, null, 4)
+</script>
+```
+
+# 二 自己写函数实现
+
 > https://jsfiddle.net/q2gnX/
 
-
-# [在线预览](http://jsfiddle.net/1010543618/zgsk5vu8/)
+## [在线预览](http://jsfiddle.net/1010543618/zgsk5vu8/)
 
 ```js
 // Notes:
