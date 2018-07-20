@@ -22,8 +22,9 @@ import urllib.request,os,hashlib; h = 'df21e130d211cfc94d9b0905775a7c0f' + '1e3d
 - SublimeLinter：代码检查  
 - SublimeLinter-contrib-eslint：ECMAScrip检查（要先用npm装eslint）
 - xxx-snippets：xxx的代码片段
-- Sublimerge Pro：代码对比（diff）  
+- Sublimerge Pro：代码对比（只能试用90天）  
 默认按键设置：{ "keys": ["ctrl+alt+d"], "command": "sublimerge"}
+- diffy：代码对比（免费）
 - CSScomb： CSS属性排序
 - MultiFill：多处填充（生成顺序数字，人名等）
 - Terminal：打开终端
@@ -31,6 +32,10 @@ import urllib.request,os,hashlib; h = 'df21e130d211cfc94d9b0905775a7c0f' + '1e3d
 默认按键：control+alt+j
 - SqlBeautifier：格式化sql（测试对使用access的sql语法写的sql语句进行格式化时破坏了原sql）  
 选择sql，command+K，command+F
+
+
+
+
 # 代码片段
 
 # 快捷键
