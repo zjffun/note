@@ -1,0 +1,3 @@
+babel：将ES6翻译为ES5
+
+PS：ie还不支持import和export还是用gulp打包一下吧
