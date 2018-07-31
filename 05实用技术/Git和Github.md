@@ -46,6 +46,10 @@
 cached: 本地不删除  
 （从版本控制中移除。如：将先添加到git然后写在gitignore中的文件，或写在gitignore中用git add -f强制添加到git的文件，从git中删除。）
 
+## 查看某个版本的改动[一行]
+https://git-scm.com/docs/git-show  
+`git show 版本号 [--stat]`
+
 ## 分支（branch）
 创建：`git branch dev`  
 创建并切换：`git branch -b dev`  
@@ -117,8 +121,14 @@ GitHub上为最新版本，本仓库是旧版本可以用pull将本地更新到�
 
 
 # 三：高级操作
-寻找丢失的版本：`git fsck --lost-found`  
+## 寻找丢失的版本
+`git fsck --lost-found`  
 eg：A更新到B，B回退到A，A又更新到C。丢失的B用上面的命令找回。（版本回退后在旧版本提交产生的问题）
+
+
+
+
+
 
 # 四：.gitignore
 语法：
