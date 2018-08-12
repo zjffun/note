@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+<%= require('./templates/header.ejs')() %>
+  <!-- Here is our page's main content -->
+  <main>
+    <!-- It contains an article -->
+    <article>
+      <h2>form</h2>
+    </article>
+    <%= require('./templates/left.ejs')() %>
+  </main>
+<%= require('./templates/footer.ejs')() %>
+</body>
+</html>
