@@ -59,23 +59,25 @@ https://git-scm.com/docs/git-show
 删除分支：`git branch -d dev`  
 删除远程分支：`git push --delete origin devel`
 
+### 修剪分支（变鸡）：rebase
+https://git-scm.com/docs/git-rebase
+
 ## tag
 ### 查看
 列出所有tag（按字母排序）：git tag
 列出1.几的版本tag：git tag -l v1.*
 
-## 创建
+### 创建
 不带信息的tag：git tag v1.0
 带信息的tag：git tag -a v1.0 -m 'first version'
 为以前的commit添加tag：git tag -a v1.0 版本号
 
-## 删除 
+### 删除 
 `git tag -d v1.0`
 
-## 上传到github
+### 上传到github
 push单个tag：git push origin [tagname]
 push所有tag：git push [origin] --tags
-
 
 
 
@@ -97,10 +99,11 @@ Enter file in which to save the key (/c/Users/Administrator/.ssh/id\_rsa): 指�
 2. 推送[第一次push]：`git push [-u] [origin master]`
 3. 推送到分支：`git push origin local\_branch:remote\_branch`
 
-## 5. 从GitHub pull到本地仓库
-GitHub上为最新版本，本仓库是旧版本可以用pull将本地更新到最新版本(注意：本地master会完全被origin/master覆盖)  
+## 5. GitHub pull到本地仓库
+GitHub上为最新版本，本仓库是旧版本可以用pull将本地更新到最新版本
 `git pull [origin remote\_branch:local\_branch]`  
-(merge，fetch)不知道是干什么的
+pull = fetch（下载） + merge（合并）
+
 
 
 ## 6. 从GitHub克隆到本地

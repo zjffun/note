@@ -15,6 +15,8 @@
 1. 查看文件：dir  
 1. 创建文件: >filename  
 1. 写文件: test>filename  
+2. 批量改文件名：ren  
+例将后缀全部变为ejs：`ren *.* *.ejs`
 
 ## 快速打开
 1. calc-----------启动计算器
