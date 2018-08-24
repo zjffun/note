@@ -11,9 +11,9 @@
         width: 200px;
         overflow-x: scroll;
     }
-    /*2. 次外层容器 display: inline-flex;*/
+    /*2. 次外层容器 display: flex;*/
     .container{
-        display: inline-flex;
+        display: flex;
     }
     .container > div{
         border-top: 1px solid #000;
@@ -27,9 +27,12 @@
     .container > div:nth-child(3){
         background: red;
     }
-    /*3. 外层容器和图片 width: 100px;*/
+    /*3. 外层容器 flex-shrink: 0;
+        外层容器和图片 width: 100px;
+    */
     .box{
         width: 100px;
+        flex-shrink: 0;/*默认是1 (经测试iniline-flex的flex-item应该默认是0)*/
     }
     .box > img{
         width: 100px;
