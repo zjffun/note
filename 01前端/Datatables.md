@@ -37,13 +37,20 @@ var datatables_i18n_cn = {
 
 
 window.DEP_TABLE = $('#responsived-atatable')
-.on('xhr.dt', function ( e, settings, json, xhr ) {
+.on('xhr.dt', function( e, settings, json, xhr ){
     console.log(json, xhr)
     json.draw = window.DATATABLESDROW;
     json.recordsTotal = json.total;
     json.recordsFiltered = json.total;
     //json.error = "null"
 })
+.on('init.dt' function(e)){
+    $(e.currentTarget).find("tbody").on("click", ".action-buttons", function(e){
+        var btn = e.currentTarget.dataset.turn_status,
+            rowData = table.row($(e.currentTarget).parents("tr").get()).data();
+        console.log(btn, rowData);
+    })
+}
 .DataTable({
     "ordering": false,
     "searching": false,
@@ -75,7 +82,7 @@ window.DEP_TABLE = $('#responsived-atatable')
             "data": null,
             "render": function(data) {
                 var data = encodeURI(JSON.stringify(data));
-                var editdiv = '<a class="edit green" onClick="edit_dialog(\''+data+'\')"><i class="fa fa-pencil bigger-130"></i>修改</a>';
+                var editdiv = '<a class="edit green"><i class="fa fa-pencil bigger-130"></i>修改</a>';
                 return '<div class="action-buttons">'+ editdiv +'</div>';
             }
         },
@@ -83,7 +90,7 @@ window.DEP_TABLE = $('#responsived-atatable')
         { 
             "data": "qat_id",
             "render": function(data) {
-                var deldiv = '<a class="del red" onClick="del_confirm('+data+')"><i class="fa fa-trash bigger-130"></i>删除</a>';
+                var deldiv = '<a class="del red"><i class="fa fa-trash bigger-130"></i>删除</a>';
                 return '<div class="action-buttons">'+ deldiv +'</div>';
             }
         }

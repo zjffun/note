@@ -1,5 +1,7 @@
 # cmd命令
 
+官方文档：ntcmds.chm
+
 ## windows服务相关
 ### net
 - 启动`net start ServiceName`
