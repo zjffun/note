@@ -39,6 +39,8 @@ import urllib.request,os,hashlib; h = 'df21e130d211cfc94d9b0905775a7c0f' + '1e3d
 # 代码片段
 
 # 快捷键
+> http://docs.sublimetext.info/en/latest/reference/keyboard_shortcuts_win.html
+
 1. `Ctrl+P`：去任何地方（输入文件名打开文件，:行号定位到当前文件指定行，@名字定位到当前文件指定标志）
 2. `Ctrl+G`：去指定行（`Ctrl+P`+:）
 3. `Ctrl+R`：去指定标志（`Ctrl+P`+@）
@@ -52,8 +54,8 @@ import urllib.request,os,hashlib; h = 'df21e130d211cfc94d9b0905775a7c0f' + '1e3d
 8. `Ctrl+H`: 替换
 8. `ctrl+L`: 选择整行
 9. `Ctrl+Shift+Up或Down`: 上下移动代码
-10. `Ctrl+[或]`: 左右移动代码
-11. `Ctrl+Shift+[或]`: 折叠展开代码
+10. `Ctrl+[ 或者 ]`: 左右移动代码
+11. `Ctrl+Shift+[ 或者 ]`: 折叠展开代码
 10. `Ctrl+/`: 单行注释，
 11. `Ctrl+Shift+/`: 块注释
 11. `Ctrl+Enter`: 光标后插入行
