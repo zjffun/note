@@ -85,12 +85,15 @@ gulp.task('scripts', function() {
         babel: {
             options: {
                 sourceMap: false,
-                presets: ['env']
+                presets: ['env']   
             },
             dist: {
-                files: {
-                    'build/js/script.js': [/*Your files*/]
-                }
+                files: [{
+                   expand:true,
+                   cwd:'assets/js/', 
+                   src:['*.js'],
+                   dest:'assets/js/babel/'
+                }] 
             }
         },
 
@@ -100,7 +103,7 @@ gulp.task('scripts', function() {
             },
             build: {
                 files: {
-                    'build/js/script.min.js': 'build/js/script.js'
+                    'build/js/script.min.js': [/*包括assets/js/babel/下的js和其他js*/]
                 }
             }
         },
