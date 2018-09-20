@@ -501,15 +501,15 @@ mysql中，权限是系统内定的一些名词，大约30个，每个权限表�
 create user '用户名'@'允许其登录的地址' identified by '密码';
 说明：
 1. 创建的用户需同时指定该用户可以在哪个地址进行登录。其中'%'代表任何地址。   
-（有时%不代表localhost，这时需要对localhsot单独进行创建``` GRANT ALL ON 表.* to 用户@'localhost' IDENTIFIED BY '密码';```）
+（有时%不代表localhost，这时需要对localhsot单独进行创建``` GRANT ALL ON 库.* to '用户'@'localhost' IDENTIFIED BY '密码';```）
 2. 用户创建之后，自动在mysql的user表中添加了一条记录，但该用户还没有权限。
 
 ### 删除用户
 drop user '用户名'@'允许其登录的地址';
 
 ### 修改用户密码
-修改自己密码：set password = password('新密码');
-修改他人密码（必须有修改权限）：set password for '用户名'@'允许其登录的地址' = password('新密码');
+- 修改自己密码：set password = password('新密码');
+- 修改他人密码（必须有修改权限）：set password for '用户名'@'允许其登录的地址' = password('新密码');
 
 ### 权限分配
 增加权限：  

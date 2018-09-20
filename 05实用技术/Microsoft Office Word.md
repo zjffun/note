@@ -1,3 +1,8 @@
+# VBA技巧
+
+1. 某个操作不知要调用什么方法可以先录制宏然后查看宏的代码
+
+
 # 图片
 ## 自动编号
 插入-题注
@@ -26,21 +31,6 @@ Sub ImageCenter()
     Next iShape
 End Sub
 ```
-## 批量修改图片名格式（图片名在图片下方）
-设置样式为"题注"
-```
-Sub setImageNameStyle()
-    For Each iShape In ActiveDocument.InlineShapes
-        With iShape.Range
-            .Collapse Direction:=wdCollapseStart
-            .Move Unit:=wdParagraph, Count:=1
-            .Select
-            .Style = "题注"
-        End With
-    Next iShape
-End Sub
-```
-
 
 # 表格
 ## 设置表头（第一行）和内容（其余行）样式
@@ -91,6 +81,29 @@ Sub BoldTablesFristRow()
     Next aTable
 End Sub
 ```
+
+# 段落
+## 遍历全部段落正则修改内容
+要先在vba的菜单上工具-引用-添加Microsoft VBScript Regular Express这个引用才能用
+```
+Sub add_caption()
+    Dim title As String
+    '正则
+    Dim regExp As New regExp
+    regExp.Pattern = "^图(.*)[\d ]*?(.*?)(?<!。)$"
+    
+    Application.ScreenUpdating = False
+        For Each par In ActiveDocument.Paragraphs
+            If regExp.test(par) Then
+                title = "&nbsp;&nbsp;" & regExp.Replace(par, "$1")
+                Selection.InsertCaption Label:="图", TitleAutoText:="", title:=title, _
+                Position:=wdCaptionPositionAbove, ExcludeLabel:=0
+            End If
+        Next
+    Application.ScreenUpdating = True
+End Sub
+```
+
 ## 批量修改表名格式（表名在表上方）
 设置样式为"题注"
 ```
@@ -104,9 +117,71 @@ Sub setTableNameStyle()
         End With
     Next aTable
 End Sub
-
 ```
 
+## 批量修改图片名格式（图片名在图片下方）
+设置样式为"题注"
+```
+Sub setImageNameStyle()
+    For Each iShape In ActiveDocument.InlineShapes
+        With iShape.Range
+            .Collapse Direction:=wdCollapseStart
+            .Move Unit:=wdParagraph, Count:=1
+            .Select
+            .Style = "题注"
+        End With
+    Next iShape
+End Sub
+```
+
+# 题注
+
+## 批量添加表名题注（表名在表上方）
+```
+Sub setTableName()
+    For Each aTable In ActiveDocument.Tables
+        With aTable.Range
+            .Collapse Direction:=wdCollapseStart
+            .Move Unit:=wdParagraph, Count:=-1
+            .Select
+            .Style = "正文"
+        End With
+        Selection.InsertCaption Label:="表", TitleAutoText:="", title:="  ", _
+        Position:=wdCaptionPositionBelow, ExcludeLabel:=0
+        Selection.Text = ""
+    Next aTable
+End Sub
+```
+
+# 交叉引用
+
+## 给每个表的题注添加交叉引用
+
+写文档是经常遇到表格上面一段是表名的“题注”，再上面一段的结尾是“如表x-x”，这里的“表x-x”是”表的题注的交叉引用“，下面是一个自动添加这种交叉引用的例子：
+
+```
+Sub add_cr_of_caption()
+    Dim i
+    i = 1
+
+    For Each aTable In ActiveDocument.Tables
+        With aTable.Range
+            .Collapse Direction:=wdCollapseStart
+            '假设要添加交叉引用的位置在表格的上两段
+            .Move unit:=wdParagraph, Count:=-2
+            .Select
+            .Style = "正文"
+        End With
+        Selection.EndKey unit:=wdParagraph
+        Selection.InsertCrossReference ReferenceType:="表", ReferenceKind:= _
+        wdOnlyLabelAndNumber, ReferenceItem:=i, InsertAsHyperlink:=True, _
+        IncludePosition:=False, SeparateNumbers:=False, SeparatorString:=" "
+        '结尾添加个句号
+        Selection.TypeText Text:="。"
+        i = i + 1
+    Next aTable
+End Sub
+```
 
 # 样式批量导入
 样式-样式管理-导入/导出-选择两个文件-选择样式-复制
