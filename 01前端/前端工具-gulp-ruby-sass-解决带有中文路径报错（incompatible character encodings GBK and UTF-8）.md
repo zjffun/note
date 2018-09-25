@@ -5,7 +5,7 @@
 Encoding::CompatibilityError: incompatible character encodings: GBK and UTF-8
   Use --trace for backtrace.
 ```
-结果还一直能编译出来，改了sass编译出来的东西还和原来一样，也是醉了（估计是什么时候给缓存了）。原本都写明白了使用`--trace`回溯，但我还是想着查查看看有人解决没，经过一番波折，还是用命令行加上`--trace`但用命令行根本不会报错，又经过一番波折在使用gulp-ruby-sass时2配置`--trace`找到了错误的地方改掉了。（还不知道为啥命令行为什么很ojrk）
+结果还一直能编译出来，改了sass编译出来的东西还和原来一样，也是醉了（估计是什么时候给缓存了）。原本都写明白了使用`--trace`回溯，但我还是想着查查看看有人解决没，经过一番波折，还是用命令行加上`--trace`但用命令行根本不会报错，又经过一番波折在使用gulp-ruby-sass时配置`--trace`找到了错误的地方改掉了。（还不知道为啥命令行为什么很ojrk）
 
 # 我的解决步骤如下
 

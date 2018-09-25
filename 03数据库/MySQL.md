@@ -508,8 +508,8 @@ create user '用户名'@'允许其登录的地址' identified by '密码';
 drop user '用户名'@'允许其登录的地址';
 
 ### 修改用户密码
-修改自己密码：set password = password('新密码');
-修改他人密码（必须有修改权限）：set password for '用户名'@'允许其登录的地址' = password('新密码');
+- 修改自己密码：set password = password('新密码');
+- 修改他人密码（必须有修改权限）：set password for '用户名'@'允许其登录的地址' = password('新密码');
 
 ### 权限分配
 增加权限：  

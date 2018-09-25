@@ -86,10 +86,11 @@ CURLOPT_HEADER：是否获取响应头数据
 # 操作响应
 ## 操作响应头：
 header()函数
-1. json：```header("Content-type: application/json"```);  
-（ie6：```header("Content-type: text/json");```）
+1. json：```header("Content-Type: application/json")```;  
+（ie6：```header("Content-Type: text/json");```）
 2. 图片：```header('Content-Type:image/jpeg');```，```header('Content-Type:image/png');```等;
-3. 编码：```header("Content-type:text/html;Charset=utf-8");```
+3. 编码：```header("Content-Type:text/html; Charset=utf-8");```
+4. 下载：```header("Content-Disposition:attachment; filename = \"filename.jpg\"");```
 
 ## 操作响应主体
 任何的输出，都是响应主体。（echo，print，var_dump，PHP标签之外的所有HTML代码）

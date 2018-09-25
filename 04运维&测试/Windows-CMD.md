@@ -2,6 +2,8 @@
 
 官方文档：ntcmds.chm
 
+查看命令的帮助:`命令 \?`
+
 ## windows服务相关
 ### net
 - 启动`net start ServiceName`
@@ -12,6 +14,10 @@
 - 启动`sc start ServiceName`
 - 停止`sc stop ServiceName`
 - 显示用法`sc`
+- 创建服务：`sc create MySQL binpath= "C:\Program Files (x86)\mysql-5.7.23-win32\bin\mysqld.exe"`  
+注意: 选项名称包括等号。等号和值之间需要一个空格。  
+（mysqld install也会创建mysql服务）
+
 
 ## 文件操作
 1. 查看文件：dir  
