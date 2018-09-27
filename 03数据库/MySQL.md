@@ -501,7 +501,7 @@ mysql中，权限是系统内定的一些名词，大约30个，每个权限表�
 create user '用户名'@'允许其登录的地址' identified by '密码';
 说明：
 1. 创建的用户需同时指定该用户可以在哪个地址进行登录。其中'%'代表任何地址。   
-（有时%不代表localhost，这时需要对localhsot单独进行创建``` GRANT ALL ON 表.* to 用户@'localhost' IDENTIFIED BY '密码';```）
+（有时%不代表localhost，这时需要对localhsot单独进行创建``` GRANT ALL ON 库.* to '用户'@'localhost' IDENTIFIED BY '密码';```）
 2. 用户创建之后，自动在mysql的user表中添加了一条记录，但该用户还没有权限。
 
 ### 删除用户
@@ -525,6 +525,8 @@ grant 权限名1, 权限名2,... on 数据库名.对象名 to '用户名'@'允�
 revoke 权限名1,权限名2,... on 数据库名.对象名 from '用户名'@'允许其登录的地址';  
 表示从某个用户身上“取消”某些权限（也许还保留了其他权限）。
 
+### mysql用户表
+mysql用户表位于mysql库下，eg：`select host, user from mysql.user;`
 
 
 ## 事务控制语言（DTL）
@@ -536,9 +538,9 @@ revoke 权限名1,权限名2,... on 数据库名.对象名 from '用户名'@'允
 1. 持久性：一个事务执行成功，则对数据来说应该是一个明确的硬盘数据更改（而不仅仅是内存中的变化）。
 
 ### 事务模式
-事务模式：让每条执行语句是否当作“一个事务”来看到的设定项。
-mysql默认安装好之后，其事务模式是：一条语句当作一个事务。
-set autocommit = 0;//false，关闭自动提交模式，即此时不再是一条语句一个事务了必须使用commit语句才能够生效。
+事务模式：让每条执行语句是否当作“一个事务”来看到的设定项。  
+mysql默认安装好之后，其事务模式是：一条语句当作一个事务。  
+`set autocommit = 0;//false`，关闭自动提交模式，即此时不再是一条语句一个事务了必须使用commit语句才能够生效。  
 
 ### 事务的基本实现流程
 1. 声明事务开始:START TRANSACTION;
@@ -602,14 +604,11 @@ BEGIN
 要执行的代码，但这里也不能使用SELECT语句。
 END;
 
-
-
-
 # 四：视图
-创建：create view 视图名[(列名1, 列名2,...)] as select语句;
-修改：alter view 视图名[(列名1, 列名2,...)] as select语句;
-删除：drop view [if exists] 视图名;
-使用：跟用表一样
+- 创建：create view 视图名[(列名1, 列名2,...)] as select语句;
+- 修改：alter view 视图名[(列名1, 列名2,...)] as select语句;
+- 删除：drop view [if exists] 视图名;
+- 使用：跟用表一样
 
 # 五：数据库（数据表）的设计思想
 3范式（3NF）  

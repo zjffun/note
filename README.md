@@ -5,8 +5,8 @@ HTML、CSS、JS、前端自动化等
 PHP、Java等
 1. 数据库  
 MySQL、Oracle、Access等
-1. 运维  
-Linux、Apache、Nginx、Memcached等
+1. 运维&测试  
+Linux、Apache、Nginx、Memcached、JMeter等
 1. 实用技术  
 Adobe、Office、Sublime、IDE等
 1. CS  
