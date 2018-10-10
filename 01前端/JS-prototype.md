@@ -13,7 +13,7 @@ Object.prototype 的 \_\_proto\_\_  属性是一个访问器属性（一个gette
 
 返回创建实例对象的 Object 构造函数的引用。注意，此属性的值是对函数本身的引用，而不是一个包含函数名称的字符串。对原始类型来说，如1，true和"test"，该值只可读。
 
-
+三者的关系：
 ```
 <!DOCTYPE html>
 <html lang="zh-CN">
@@ -72,6 +72,29 @@ Object.prototype 的 \_\_proto\_\_  属性是一个访问器属性（一个gette
   </script>
 </body>
 </html>
+```
+
+模拟类：
+```
+// 1. Simulation of class
+var SClass = function(){
+  var prop = {can_get_in_all_instance: 'can_get_in_all_instance'};
+  // new出来的实例为prop，这里如果不设置constructer，构造器会是Object
+  prop.constructer = SClass;
+  return prop;
+};
+
+// set prop to SClass.prototype, can get in all instance
+SClass.prototype.also_can_get_in_all_instance = 'also_can_get_in_all_instance';
+// set prop to SClass, can't get in all instance
+SClass.can_not_get_in_all_instance = 'can_not_get_in_all_instance';
+
+// 2. new some instance
+var instance_foo = new SClass();
+var instance_bar = new SClass();
+
+// like set prop to SClass.prototype, can get in other instance
+instance_foo.__proto__.can_get_in_bar = 'can_get_in_bar'
 ```
 
 

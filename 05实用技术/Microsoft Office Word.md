@@ -172,7 +172,7 @@ Sub add_cr_of_caption()
             .Select
             .Style = "正文"
         End With
-        Selection.EndKey unit:=wdParagraph
+        Selection.MoveDown unit:=wdParagraph
         Selection.InsertCrossReference ReferenceType:="表", ReferenceKind:= _
         wdOnlyLabelAndNumber, ReferenceItem:=i, InsertAsHyperlink:=True, _
         IncludePosition:=False, SeparateNumbers:=False, SeparatorString:=" "
@@ -198,6 +198,8 @@ End Sub
 # 查看全部格式标记
 设置-显示-查看全部格式标记
 
-
+# 修订
+修订的简单标记会在左边显示红线，点击红线会查看修订的详细情况  
+想要不显示左边的红线选无标记就行  
 
 　　
