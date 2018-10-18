@@ -164,19 +164,18 @@ Sub add_cr_of_caption()
     Dim i
     i = 1
 
-    For Each aTable In ActiveDocument.Tables
+    For Each aTable In ActiveDocument.InlineShapes
         With aTable.Range
             .Collapse Direction:=wdCollapseStart
-            '假设要添加交叉引用的位置在表格的上两段
-            .Move unit:=wdParagraph, Count:=-2
             .Select
-            .Style = "正文"
         End With
-        Selection.MoveDown unit:=wdParagraph
-        Selection.InsertCrossReference ReferenceType:="表", ReferenceKind:= _
+        Selection.MoveLeft Unit:=wdCharacter, Count:=1
+        '交叉引用前面的字
+        Selection.TypeText Text:="，如"
+        Selection.InsertCrossReference ReferenceType:="图", ReferenceKind:= _
         wdOnlyLabelAndNumber, ReferenceItem:=i, InsertAsHyperlink:=True, _
         IncludePosition:=False, SeparateNumbers:=False, SeparatorString:=" "
-        '结尾添加个句号
+        '交叉引用后面的字
         Selection.TypeText Text:="。"
         i = i + 1
     Next aTable
