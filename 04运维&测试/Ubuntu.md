@@ -1,3 +1,5 @@
+查看Ubuntu版本：`cat /etc/issue`
+
 Apache:
 ```
 sudo apt-get install apache2
@@ -48,25 +50,12 @@ SSLCertificateFile crt文件
 SSLCertificateKeyFile key文件  
 ```
 
-
-端口：
+MySQL：
 ```
-netstat -an
-lsof -i:80
-
-sudo ufw allow 80
-sudo ufw reload
+默认用户名密码位置：/etc/mysql/debian.cnf
 ```
 
-进程：
-```
-kill -9 PID号
-```
 
-测试：
-```
-telnet 192.168.1.103 80
-```
 
 ```
 apt-cache search # ------(package 搜索包)

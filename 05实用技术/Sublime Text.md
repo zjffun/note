@@ -15,6 +15,8 @@ import urllib.request,os,hashlib; h = 'df21e130d211cfc94d9b0905775a7c0f' + '1e3d
 
 - emmet：html代码编辑
 - ctags：代码跳转
+- DocBlockr：注释
+- xxx-beautify：代码格式化
 - BracketHighlighter ：对应括号高亮
 - sublimeLinter：代码检查
 - SideBarEnhancement：侧栏增强
@@ -34,9 +36,14 @@ import urllib.request,os,hashlib; h = 'df21e130d211cfc94d9b0905775a7c0f' + '1e3d
 选择sql，command+K，command+F
 
 
+# 代码片段（Snippet）
+## 添加
+Tools->Developer->New Snippet...
 
+*xxx-snippets*插件包含xxx语言的基本代码片段。
 
-# 代码片段
+## 使用
+输入已有代码片段的几个首字母，然后选择代码片段即可自动补全。
 
 # 快捷键
 > http://docs.sublimetext.info/en/latest/reference/keyboard_shortcuts_win.html

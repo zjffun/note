@@ -81,3 +81,5 @@
   })
 </script>
 ```
+# async function
+> https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/async_function
