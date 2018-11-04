@@ -23,7 +23,9 @@ async function fibonacci(id, n){
 fibonacci(0,30).then((d)=>console.log(d))
 // 这个算法node跑不了，但浏览器控制台就OK，难道是我的node的V8引擎版本太低。
 
-// 查了一下Node v8.9.0用的V8 5.8确实有点低：https://nodejs.org/en/blog/release/v8.0.0/#semver-major-commits
+// 查了一下Node v8.9.0用的V8 5.8（2016年的版本），而async，await是ES2017的语法。。
+
+// 然后换成Node v10.8.0就可以用了
 ```
 
 MDN演示for...of的算法：

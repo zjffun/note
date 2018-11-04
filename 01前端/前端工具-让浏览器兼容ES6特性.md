@@ -2,7 +2,7 @@ babel：将ES6翻译为ES5
 
 # 问题：
 ## 可以处理import和export么？
-不能，还是用gulp什么的打包一下吧
+不能，还是用Rollup或者webpack打包一下吧
 
 ## 可以处理Promise么？
 不能，还是使用babel-plugin-transform-runtime或者babel-polyfill吧
