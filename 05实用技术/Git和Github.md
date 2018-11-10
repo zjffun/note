@@ -35,6 +35,7 @@ Windows下配置文件位置：`C:\Users\Administrator\.gitconfig`
 - 标准：`git log`
 - 一行：`git log --pretty=oneline`
 - 包括未来版本：`git log --reflog`
+- 从首次提交排序：`git log --reverse`（git-log(1) Manual Page的Commit Ordering下面）
 
 ## 查看历史命令
 `git reflog`
@@ -127,6 +128,13 @@ pull = fetch（下载） + merge（合并）
 
 ## 6. GitHub clone到本地
 `git clone git@github.com:path/repo-name.git`
+
+- clone最近N次提交：`git clone --depth 1 git@github.com:path/repo-name.git`
+- fetch指定提交：
+```
+git fetch git@github.com:path/repo-name.git <sha1-of-commit-of-interest>
+git reset --hard FETCH_HEAD
+```
 
 ## 7. 配置远程仓库
 1. git remote 不带参数：列出已经存在的远程分支
