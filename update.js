@@ -4,7 +4,9 @@ const readline = require('readline');
 
 var root = path.join(__dirname)  
 
-var repetition = {}
+var repetition = {};
+// 1失败
+process.exitCode = 1;
 
 readDirSync(root)  
 function readDirSync(path){  
@@ -50,6 +52,8 @@ rl.question('是否更新[Y/n]? ', (answer) => {
             console.log(`change:${r}(${v}).md to ${r}.md`)
             console.log('-------------')
         }
+        // 0成功
+        process.exitCode = 0;
     }
     rl.close();
 });

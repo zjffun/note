@@ -29,7 +29,7 @@ Python、C#、VB等
 - \^\_\^关键技术1,关键技术2,...：列出文章涉及的其他关键技术，eg：\^\_\^前端,PHP，\^\_\^Access,VBS
 
 # 文章规范：
-瞎鸡儿写就行了啊=_=  
+排版规范：[chinese-copywriting-guidelines/README.zh-CN.md at master · sparanoid/chinese-copywriting-guidelines](https://github.com/sparanoid/chinese-copywriting-guidelines/blob/master/README.zh-CN.md)
 
 ## 图片：  
 - 名称：文章名-N，eg：HTML-1.jpg，HTML-2.jpg
