@@ -10,7 +10,7 @@ process.exitCode = 1;
 
 readDirSync(root)  
 function readDirSync(path){  
-    var pa = fs.readdirSync(path) 
+    var pa = fs.readDirSync(path) 
     pa.forEach(function(ele,index){  
         var info = fs.statSync(path+"/"+ele)      
         if(info.isDirectory()){  
