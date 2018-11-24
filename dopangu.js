@@ -35,7 +35,7 @@ rl.question('是否修改排版[Y/n]? ', (answer) => {
     if ('Y' == answer) {
         do_pangu_list.forEach(d => {
             let fpath = path.resolve(root, d),
-                fname = path.basename(fpath),
+                fname = path.basename(fpath, ".md"),
                 fdir = path.dirname(fpath),
                 data = fs.readFileSync(fpath);
             remark()
@@ -51,7 +51,7 @@ rl.question('是否修改排版[Y/n]? ', (answer) => {
                     remark().use(pangu).process(fname, function (err, file_name /*vfile*/ ) {
                         if (err) throw err;
                         fs.writeFileSync(fpath, String(file_content));
-                        fs.renameSync(fpath, path.resolve(fdir, String(file_name).trim()));
+                        fs.renameSync(fpath, path.resolve(fdir, String(file_name).trim() + ".md"));
                     })
                 });
         })

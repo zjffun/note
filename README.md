@@ -34,7 +34,7 @@
 
 # 文章规范
 
-排版规范：[chinese-copywriting-guidelines/README.zh-CN.md at master · sparanoid/chinese-copywriting-guidelines](https://github.com/sparanoid/chinese-copywriting-guidelines/blob/master/README.zh-CN.md)
+排版规范：[chinese-copywriting-guidelines](https://github.com/sparanoid/chinese-copywriting-guidelines/blob/master/README.zh-CN.md)
 
 ## 图片
 
