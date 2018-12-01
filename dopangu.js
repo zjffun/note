@@ -11,17 +11,18 @@ process.exitCode = 1;
 var root = path.join(__dirname),
     do_pangu_list = [];
 
-execSync('git status -s', {
+execSync('git status -sz', {
         encoding: "utf8"
     })
-    .split("\n")
+    // When the -z option is given, pathnames are printed as is and without any quoting and lines are terminated with a NUL (ASCII 0x00) byte.
+    .split(String.fromCharCode(0))
     .forEach(d => {
-        let status = d.split(" ");
+        let fpath = d.substring(3);
         // 1.暂存区的文件，2.修改或增加的文件，3.md文件
-        ['M', 'A'].find(d => d == status[0]) 
-            && /\.md$/.test(status[status.length - 1]) 
-            && do_pangu_list.push(status[2])
-            && console.log(status[2] + '\n');
+        ['M', 'A'].find(s => s === d[0]) 
+            && /\.md$/.test(path.extname(fpath))
+            && do_pangu_list.push(fpath)
+            && console.log(fpath + '\n');
     });
 
 // 是否修改排版？
@@ -38,6 +39,7 @@ rl.question('是否修改排版[Y/n]? ', (answer) => {
                 fname = path.basename(fpath, ".md"),
                 fdir = path.dirname(fpath),
                 data = fs.readFileSync(fpath);
+                
             remark()
                 .use(pangu)
                 .use({
