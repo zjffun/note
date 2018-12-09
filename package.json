@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/1010543618/note#readme",
   "devDependencies": {
+    "do-pangu": "^1.0.3",
     "remark": "^10.0.1",
     "remark-pangu": "^1.0.1"
   }
