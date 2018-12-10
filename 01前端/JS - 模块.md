@@ -52,7 +52,7 @@
 
 # ES6 Modules
 
-> 现在浏览器们才刚刚开始去实现这个功能。但它在许多转换器中已经实现，例如 Traceur Compiler ， Babel ， Rollup 或 webpack。
+> 现在浏览器们才刚刚开始去实现这个功能。但它在许多转换器中已经实现，例如 Traceur Compiler ， Babel ， Rollup 或 Webpack。
 
 这个在浏览器上用还是要转换一下的。
 
