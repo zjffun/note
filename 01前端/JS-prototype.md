@@ -1,100 +1,118 @@
-# prototype
-> https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/prototype
+感觉原型真是 JS 中非常复杂的一环。看 MDN 的文档某些地方也不是写的很清楚，下面写一些我对于原型的理解，如有错误望大家指出。
 
-Object.prototype 属性表示 Object 的原型对象。
+感觉`prototype`和`[[Prototype]]`挺容易混的，看 ES 的文档时也是在看到`prototype.constructor`时很蒙。
 
-# prototype.\_\_proto\_\_
-> https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/proto
+根据我的经验`prototype`一般只有构造函数（函数）有，毕竟她可以创建对象（实例），其他对象，数组，字符串什么的没有必要有她。
 
-Object.prototype 的 \_\_proto\_\_  属性是一个访问器属性（一个getter函数和一个setter函数）, 暴露了通过它访问的对象的内部[[Prototype]] (一个对象或 null)。
+所有的的对象都有自己的原型链（`[[Prototype]]`），
 
-# prototype.constructor
-> https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/constructor
+她会继承（指向）其构造函数的`prototype`，
 
-返回创建实例对象的 Object 构造函数的引用。注意，此属性的值是对函数本身的引用，而不是一个包含函数名称的字符串。对原始类型来说，如1，true和"test"，该值只可读。
+她的构造函数的`[[Prototype]]`会继承（指向）其其构造函数的`prototype`，
 
-三者的关系：
-```
-<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-  <meta charset="UTF-8">
-  <title>Document</title>
-</head>
-<body>
-  <script>
-    // Person
-    var Person = function(name) {
-      this.name = name;
-      this.canTalk = true;
-    };
+她的构造函数的`[[Prototype]]`会继承（指向）其其构造函数的`prototype`，
 
-    Person.prototype.greet = function() {
-      if (this.canTalk) {
-        console.log('Hi, I am ' + this.name);
-      }
-    };
+她的构造函数的`[[Prototype]]`会继承（指向）其其构造函数的`prototype`,
 
-    // Employee
-    var Employee = function(name, title) {
-      Person.call(this, name);
-      this.title = title;
-    };
+她的构造函数的`[[Prototype]]`会继承（指向）其其构造函数的`prototype`，
 
-    Employee.prototype = Object.create(Person.prototype);
-    Employee.prototype.constructor = Employee;
+。。。
 
-    Employee.prototype.greet = function() {
-      if (this.canTalk) {
-        console.log('Hi, I am ' + this.name + ', the ' + this.title);
-      }
-    };
+这样就和类一样了。
 
-    // instantiation
-    var joe = new Person('Joe');
-    var bob = new Employee('Bob', 'Builder');
-    // call function
-    joe.greet();
-    bob.greet();
+# `prototype`
 
-    // 直接打印
-    console.log(Person, Employee, joe , bob)
-    // prototype：当前对象的原型对象
-    console.log(Person.prototype, Employee.prototype, joe.prototype, bob.prototype)
-    // constructor：返回当前对象构造函数的引用
-    console.log(Person.constructor, Employee.constructor, joe.constructor , bob.constructor)
-    // __proto__：返回当前对象构造函数的原型
-    console.log(Person.__proto__, Employee.__proto__, joe.__proto__, bob.__proto__)
-    console.log(Person.constructor.prototype, Employee.constructor.prototype, joe.constructor.prototype, bob.constructor.prototype)
-  </script>
-  <script>
-    
-  </script>
-</body>
-</html>
+对象的`prototype` 属性表示她的原型，该属性里面包含着可以被 “继承” 的属性。（一般只有函数自带个属性）
+
+```javascript
+var foo = function(){}
+foo.prototype.bar = 666;
+
+// foo对象
+// {
+//     ...
+//     prototype: {
+//         ...
+//         bar: 666
+//     }
+// }
 ```
 
-模拟类：
+## `prototype.constructor`
+
+对象的`prototype` 属性里面有个特殊的属性`constructor` ，她是指向该对象的指针（这里可能有误 T_T ）。（一般只有函数自带个属性）
+
+```javascript
+var foo = function(){}
+foo.prototype.bar = 666;
+
+// foo对象
+// {
+//     ...
+//     prototype: {
+//         ...
+//         constructor: foo,
+//         bar: 666
+//     }
+// }
 ```
-// 1. Simulation of class
-var SClass = function(){
-  var prop = {can_get_in_all_instance: 'can_get_in_all_instance'};
-  // new出来的实例为prop，这里如果不设置constructer，构造器会是Object
-  prop.constructer = SClass;
-  return prop;
+
+## `prototype.[[Prototype]]`
+
+对象的`prototype` 属性里面还有个特殊的 "属性"`[[Prototype]]` ，可以用来模拟继承，她指向该对象的`prototype` 属性的继承下来的原型（指向该对象继承的原型的`prototype`属性的指针）。
+
+# `[[Prototype]]`
+
+对象的构造函数的原型（指向创建该对象的函数的`prototype`属性的指针）。（一切对象都有这个虚拟指针）
+
+## `[[Prototype]].constructor`
+
+对象的构造函数的原型的构造器（指向创建该对象的函数的`prototype`属性中的`constructor`属性的指针）。（一切对象都有这个虚拟指针）
+
+# 关系对比
+
+```javascript
+// Person
+var Person = function (name) {
+    this.name = name;
+    this.canTalk = true;
 };
 
-// set prop to SClass.prototype, can get in all instance
-SClass.prototype.also_can_get_in_all_instance = 'also_can_get_in_all_instance';
-// set prop to SClass, can't get in all instance
-SClass.can_not_get_in_all_instance = 'can_not_get_in_all_instance';
+Person.prototype.greet = function () {
+    if (this.canTalk) {
+        console.log('Hi, I am ' + this.name);
+    }
+};
 
-// 2. new some instance
-var instance_foo = new SClass();
-var instance_bar = new SClass();
+// Employee
+var Employee = function (name, title) {
+    Person.call(this, name);
+    this.title = title;
+};
 
-// like set prop to SClass.prototype, can get in other instance
-instance_foo.__proto__.can_get_in_bar = 'can_get_in_bar'
+// subclass extends superclass
+Employee.prototype = Object.create(Person.prototype);
+Employee.prototype.constructor = Employee;
+
+Employee.prototype.greet = function () {
+    if (this.canTalk) {
+        console.log('Hi, I am ' + this.name + ', the ' + this.title);
+    }
+};
+
+// instantiation
+var joe = new Person('Joe');
+var bob = new Employee('Bob', 'Builder');
+// call function
+joe.greet();
+bob.greet();
+
+// 直接打印
+console.log(Person, Employee, joe, bob)
+// prototype：当前对象的原型对象（实例 joe 和 bob 没有prototype）
+console.log(Person.prototype, Employee.prototype, joe.prototype, bob.prototype)
+// __proto__：返回当前对象构造函数的原型（代表的是 Obj.[[Prototype]]）
+console.log(Person.__proto__, Employee.__proto__, joe.__proto__, bob.__proto__)
+// constructor：返回当前对象构造函数的引用（代表的是 Obj.[[Prototype]].constructor）
+console.log(Person.constructor, Employee.constructor, joe.constructor, bob.constructor)
 ```
-
-
