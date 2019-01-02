@@ -20,11 +20,11 @@ nrm can help you easy and fast switch between different npm registries, now incl
 
 -   Example
 
-<!---->
-
-    $ nrm use cnpm  //switch registry to cnpm
-     
-        Registry has been set to: http://r.cnpmjs.org/
+```bash
+$ nrm use cnpm  //switch registry to cnpm
+ 
+    Registry has been set to: http://r.cnpmjs.org/
+```
 
 # 操作模块
 
@@ -44,11 +44,46 @@ PS：升级 npm 到最新版本`npm install npm@latest -g`
 
 # 发布到 npm 社区
 
+## 基本步骤
+
 1.  在 npm 社区注册
 2.  `npm adduser`：输入用户名密码和邮箱登陆\
     `npm whoami`：查看登陆的用户
-3.  `npm version 版本号`：确定版本号（格式：主版本号. 次版本号. 修订号）（可以为 major | minor | patch 等）
-4.  `npm publish`：发布
+3.  配置`package.json`
+4.  配置`.npmignore`（未配置则使用`.gitignore`）
+5.  ！！！发布前确保您的包可以安装和使用（下面细说一下如何在本地测试待发布的 npm 包）
+6.  `npm publish`：发布
+
+## 测试待发布的 npm 包
+
+其实 npm 包就是一个带有`package.json`的文件夹。。
+
+-   全局安装测试
+
+```bash
+cd %my-package%
+npm install . -g # 当前包安装到全局
+```
+
+或者
+
+```bash
+cd %my-package%
+npm link # 当前包连接到全局（当前包状态改变，全局会跟着改变）
+```
+
+-   本地安装测试
+
+```bash
+cd %some-other-folder%
+npm install %my-package%
+```
+
+## 修改版本
+
+`npm version 版本号`：确定版本号（格式：主版本号. 次版本号. 修订号）（可以为 major | minor | patch 等）
+
+参见：[docs.npmjs.com/misc/developers.html](https://docs.npmjs.com/misc/developers.html)
 
 # 检查和解决隐患（vulnerabilities）
 
