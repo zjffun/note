@@ -49,6 +49,8 @@
     --default-character-set=utf8：设置默认字符集为 utf8  
 -   登录后执行`source 存有 sql 语句的文件路径;`  （window 直接将文件托过去路径是反斜杠分隔，比较深的路径会解释成转义导致无法导入数据库。这时将反斜杠换成正斜杠，或将 sql 文件移动到前路径就行。）
 
+注：MyISAM 存储引擎的库可以直接复制`.MYD`和`.MYI`文件，InnoDB 存储引擎的库不仅要复制`.ibd`还要复制`ibdata`等文件（最好还是用：[4.2.1 Backing Up an Entire MySQL Instance](https://dev.mysql.com/doc/mysql-enterprise-backup/8.0/en/mysqlbackup.backup.html)和[4.2.3 Restoring a Database](https://dev.mysql.com/doc/mysql-enterprise-backup/8.0/en/mysqlbackup.restore.html)）。
+
 ## 注释
 
 单行注释： `#注释内容`或`-- 注释内容`（注意，两个 “--” 之后有一个空格）
@@ -264,8 +266,8 @@ alter table 表名 修改语句 1, 修改语句 2,...
 
 增加：ALTER TABLE 表名 ADD 字段名 字段类型 字段属性\
 修改：ALTER TABLE 表名 CHANGE 原字段名 新字段名 新字段类型 新字段属性\
-      ALTER TABLE 表名 ALTER 字段名 SET DEFAULT 默认值\
-      ALTER TABLE 表名 ALTER 字段名 DROP DEFAULT\
+​      ALTER TABLE 表名 ALTER 字段名 SET DEFAULT 默认值\
+​      ALTER TABLE 表名 ALTER 字段名 DROP DEFAULT\
 删除：ALTER TABLE 表名 DROP 字段名  
 
     CREATE TABLE IF NOT EXISTS test(
@@ -767,7 +769,28 @@ while 循环语句
 
 # 七：乱码处理
 
-## 查看是否执行：`mysqli_query($link, 'SET NAMES utf8');`
+## 检查
+
+1.  table 编码
+2.  database 编码
+3.  client 编码
+4.  server 编码
+5.  connection 编码
+
+    mysql> show variables like '%character%';
+
+    character_set_client\
+    character_set_connection
+    character_set_database
+    character_set_filesystem
+    character_set_results
+    character_set_server
+    character_set_system
+    character_sets_dir
+
+## PHP
+
+查看是否执行：`mysqli_query($link, 'SET NAMES utf8');`
 
 执行`SET NAMES utf8`的效果等同于同时设定如下：
 
@@ -776,24 +799,3 @@ while 循环语句
     SET character_set_results='utf8';
 
 php 执行`mysqli_query($link, 'CHARSET utf8');`还是会乱码（dos 下执行 CHARSET 不会乱码，并且和 SET NAMES utf8 一样改变了 client,connection,results）。
-
-## 检查：
-
-1.  table 编码
-2.  database 编码
-3.  client 编码
-4.  server 编码
-5.  connection 编码
-
-<!---->
-
-    mysql> show variables like '%character%';
-
-    character_set_client     
-    character_set_connection
-    character_set_database
-    character_set_filesystem
-    character_set_results
-    character_set_server
-    character_set_system
-    character_sets_dir

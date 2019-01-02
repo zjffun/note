@@ -1,5 +1,3 @@
-使用 Promise 使异步操作同步执行非常方便，我在遇到了使不确定个数个异步操作同步执行时学习了很久这个 Promise 的使用（当时因为没有理解透彻也纠结了好久），并进行总结，希望可以帮到大家（reject 和 catch 没写在这里）
-
 # 单个异步操作同步
 
     <div id="box"></div>
@@ -76,7 +74,13 @@
       })
     </script>
 
-# async function
+# 处理异常
+
+-   使用`obj.catch(onRejected)`或`obj.then(undefined, onRejected)`处理。
+
+-   Promise 内的异常无法抛出到`Promise`外部，只能在上述的回调函数中处理（和`setTimeout()` `process.nextTick()`类似，`Promise`也会生成新的调用栈）。
+
+# `async function`
 
 > <https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/async_function>
 
@@ -84,3 +88,4 @@
 
 > [Promise - JavaScript | MDN](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise)\
 > [Promise - 廖雪峰的官方网站](https://www.liaoxuefeng.com/wiki/001434446689867b27157e896e74d51a89c25cc8b43bdb3000/0014345008539155e93fc16046d4bb7854943814c4f9dc2000)
+> [Promise.prototype.catch() | MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/catch)
