@@ -4,7 +4,6 @@
   "description": "null",
   "private": true,
   "scripts": {
-    "test": "node update",
     "publish": "git push"
   },
   "repository": {
