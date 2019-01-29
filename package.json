@@ -20,5 +20,6 @@
     "do-pangu": "^1.0.7",
     "remark": "^10.0.1",
     "remark-pangu": "^1.0.1"
-  }
+  },
+  "dependencies": {}
 }
