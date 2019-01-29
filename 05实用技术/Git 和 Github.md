@@ -2,7 +2,7 @@
 >
 > Github 是一个面向开源及私有软件项目的托管平台，因为只支持 git 作为唯一的版本库格式进行托管，故名 gitHub。
 
-# 一：git 基本操作
+# 一：Git 基本操作
 
 ## 配置（配置文件位置）
 
@@ -123,10 +123,14 @@ cached: 本地不删除\
 
 `git tag -d v1.0`
 
-### 上传到 github
+### 上传到 GitHub
 
 -   push 单个 tag：`git push origin [tagname]`
 -   push 所有 tag：`git push [origin] --tags`
+
+### 删除 GitHub 上的 tag
+
+`git push origin :refs/tags/tagname` 或 `git push origin :tagname`
 
 # 二：git 远程仓库
 
