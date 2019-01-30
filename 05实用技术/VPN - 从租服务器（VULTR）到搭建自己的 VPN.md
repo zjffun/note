@@ -76,3 +76,13 @@
 
 [setup-ipsec-vpn/clients-zh.md at master · hwdsl2/setup-ipsec-vpn](https://github.com/hwdsl2/setup-ipsec-vpn/blob/master/docs/clients-zh.md)
 这篇文章已经写得很好了，我这里就不再复读了，window 下注意修改注册表就好了。
+
+# 其他问题
+
+## 使用 VPN 会消耗更多流量么？
+
+会的，因为有加密开销，数据使用量增加约 10%。越强的加密加密开销越大。
+
+# 参考
+
+> -   [Does VPN Use More Data than Conventional Usage? - The VPN Guru](https://thevpn.guru/does-vpn-use-more-data-than-normal/)
