@@ -756,7 +756,8 @@ while(child != document.body.lastChild){
 #### 11.3.4 HTMLDocument 的变化
 
 1.  readyState 属性：判断页面加载情况（旧方法是在触发 onload 事件时记录页面加载完成）。
-2.  compatMode 属性：判断页面是标准（Standards）模式还是混杂（Quirks）模式。
+2.  compatMode 属性：判断页面是标准（Standards）模式还是混杂（Quirks）模式（
+    混杂模式下浏览器会尝试模拟**非常旧**的浏览器的行为）。
 3.  head 属性：引用文档的 head 元素。
 4.  charset 属性：获取和设置字符集。（MDN 中是`Document.characterSet`）
 
