@@ -196,7 +196,7 @@ eg：这里的 obj 形参是创建了一个指针让他与 person 指针指向�
         this.name = name;
         this.age = age;
         // 第一次执行时初始化
-        if (typeof this, print !== "function") {
+        if (typeof this.print !== "function") {
             Persion.prototype.print = function () {
                 console.log(this.name);
             }
