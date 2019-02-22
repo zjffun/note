@@ -132,6 +132,18 @@ cached: 本地不删除\
 
 `git push origin :refs/tags/tagname` 或 `git push origin :tagname`
 
+## eol
+
+`core.autocrlf`：配置 eol 自动转换
+
+-   true（默认）：提交时将 CRLF 变为 LF，window 下迁出时将 LF 变为 CRLF
+-   input：提交时将 CRLF 变为 LF
+-   false：不变
+
+`core.eol`：配置 eol，当`core.autocrlf`为`true` 或 `input`时该配置失效
+
+-   *lf*, *crlf* 或*native*
+
 # 二：git 远程仓库
 
 ## 1. 创建 SSH Key
