@@ -1,4 +1,5 @@
-关闭全部tab
+关闭全部 tab
+
 ```js
 function euCloseAllTabs(tabs_dom){
     console.log(tabs_dom,tabs);
@@ -15,6 +16,7 @@ function euCloseAllTabs(tabs_dom){
 ```
 
 本地分页
+
 ```html
 <!DOCTYPE html> 
 <html> 

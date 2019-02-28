@@ -1,4 +1,4 @@
-全部配置：http://www.datatables.club/reference/option/
+全部配置：<http://www.datatables.club/reference/option/>
 
 ```js
 var datatables_i18n_cn = {
@@ -110,4 +110,3 @@ window.DEP_TABLE = $('#responsived-atatable')
 // 刷新表格数据，分页信息不会重置
 DEP_TABLE.ajax.reload( null, false );
 ```
-

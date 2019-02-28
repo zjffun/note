@@ -58,24 +58,29 @@ Windows 下配置文件位置：`C:\Users\Administrator\.gitconfig`
 
 ## 版本前进
 
-1.  通过查看历史命令查看未来版本号（git log 获取不到未来版本号）：`git reflog`\
+1.  通过查看历史命令查看未来版本号（git log 获取不到未来版本号）：`git reflog`
+
     或通过以下命令查看未来版本号（貌似所有提交过的版本全部列出了）：`git log --reflog`
 2.  跳转到指定版本：`git reset --hard 版本号`
 
 ## 撤销修改
 
-暂存区 -> 工作区：`git checkout -- filename`\
+暂存区 -> 工作区：`git checkout -- filename`
+
 版本库 -> 暂存区：`git reset HEAD filename`
 
 ## 删除文件
 
-`git rm filename [--cached]`\
-cached: 本地不删除\
+`git rm filename [--cached]`
+
+cached: 本地不删除 
+
 （从版本控制中移除。如：将先添加到 git 然后写在 gitignore 中的文件，或写在 gitignore 中用 git add -f 强制添加到 git 的文件，从 git 中删除。）
 
-## 查看某个版本的改动[一行]
+## 查看某个版本的改动\[一行]
 
-<https://git-scm.com/docs/git-show>\
+[Git - git-show Documentation](https://git-scm.com/docs/git-show)
+
 `git show 版本号 [--stat]`
 
 ## 分支（branch）
@@ -142,14 +147,15 @@ cached: 本地不删除\
 
 `core.eol`：配置 eol，当`core.autocrlf`为`true` 或 `input`时该配置失效
 
--   *lf*, *crlf* 或*native*
+-   _lf_, _crlf_ 或_native_
 
 # 二：git 远程仓库
 
 ## 1. 创建 SSH Key
 
-`ssh-keygen -t rsa -C "youremail@example.com"`\
-Enter file in which to save the key (/c/Users/Administrator/.ssh/id_rsa): 指定 rsa 的位置和名字（默认是当前目录）
+```bash
+$ ssh-keygen -t rsa -C "youremail@example.com"
+```
 
 ## 2. GitHub 配置 SSH Key
 
@@ -164,13 +170,14 @@ Enter file in which to save the key (/c/Users/Administrator/.ssh/id_rsa): 指定
 ## 4. 本地仓库 push 到 GitHub
 
 1.  关联远程库：`git remote add origin git@github.com:path/repo-name.git`
-2.  推送[第一次 push]：`git push [-u] [origin master]`
+2.  推送\[第一次 push]：`git push [-u] [origin master]`
 3.  推送到分支：`git push origin local\_branch:remote\_branch`
 
 ## 5. GitHub pull 到本地仓库
 
 GitHub 上为最新版本，本仓库是旧版本可以用 pull 将本地更新到最新版本
-`git pull [origin remote\_branch:local\_branch]`\
+`git pull [origin remote\_branch:local\_branch]`
+
 pull = fetch（下载） + merge（合并）
 
 ## 6. GitHub clone 到本地
@@ -187,10 +194,10 @@ pull = fetch（下载） + merge（合并）
 
 ## 7. 配置远程仓库
 
-1.  git remote 不带参数：列出已经存在的远程分支
-2.  git remote -v | --verbose：列出详细信息，在每一个名字后面列出其远程 url
-3.  git remote add [shortname] [url]：添加一个新的远程仓库, 可以指定一个简单的名字, 以便将来引用
-4.  git remote remove name：删除远程仓库
+1.  `git remote 不带参数`：列出已经存在的远程分支
+2.  `git remote -v | --verbose`：列出详细信息，在每一个名字后面列出其远程 url
+3.  `git remote add [shortname] [url]`：添加一个新的远程仓库, 可以指定一个简单的名字, 以便将来引用
+4.  `git remote remove name`：删除远程仓库
 
 ## 8. 版本回退（不推荐）
 
@@ -214,7 +221,8 @@ pull = fetch（下载） + merge（合并）
 
 ## 寻找丢失的版本
 
-`git fsck --lost-found`\
+`git fsck --lost-found`
+
 eg：A 更新到 B，B 回退到 A，A 又更新到 C。丢失的 B 用上面的命令找回。（版本回退后在旧版本提交产生的问题）
 
 # 四：.gitignore
@@ -248,14 +256,17 @@ eg：忽略 / web/upload / 下的所有文件和文件夹，除了 / web/upload/
 ## user 和 email
 
 -   全局配置（~/.gitconfig）
-    姓名：`git config --global user.name "Your Name"`\
+    姓名：`git config --global user.name "Your Name"`
+
     邮箱：`git config --global user.email"email@example.com"`
-    `ssh-keygen -t rsa -C "youremail@example.com"`\
+    `ssh-keygen -t rsa -C "youremail@example.com"`
+
     Enter file in which to save the key (/c/Users/Administrator/.ssh/id_rsa): /c/Users/Administrator/.ssh/name_rsa  
 
 -   单个仓库配置（仓库 /.git/config）
     进入某仓库
-    姓名：`git config user.name "Your Name"`\
+    姓名：`git config user.name "Your Name"`
+
     邮箱：`git config user.email"email@example.com"`
     `ssh-keygen -t rsa -C "youremail@example.com"`
     Enter file in which to save the key (/c/Users/Administrator/.ssh/id_rsa): /c/Users/Administrator/.ssh/name_rsa  
@@ -293,9 +304,11 @@ eg：忽略 / web/upload / 下的所有文件和文件夹，除了 / web/upload/
 # 六：在 U 盘中建立 git 仓库
 
 -   建立：
-    在 U 盘作为仓库的目录（eg：I:\\repo\\test_project）执行`git --bare init --shared`\
+    在 U 盘作为仓库的目录（eg：I:\\repo\\test_project）执行`git --bare init --shared`
+
     bare：只有. git 中的文件，且. git 中的文件都放在当前目录下（git 服务器）
 
 -   使用：
-    直接使用建立时的路径访问就行\
+    直接使用建立时的路径访问就行 
+
     eg：`git clone I:\repo\test_project`

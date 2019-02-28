@@ -1,6 +1,6 @@
-> https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/for...of
+> <https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/for...of>
 
-刚刚上网上看到[《V8 JavaScript 引擎 6.6 发布，异步性能大幅提升》](https://www.oschina.net/news/94658/v8-66-released)，里面有个测试用的算法，觉得似曾相识就复习了一遍for..of果然找到了。
+刚刚上网上看到[《V8 JavaScript 引擎 6.6 发布，异步性能大幅提升》](https://www.oschina.net/news/94658/v8-66-released)，里面有个测试用的算法，觉得似曾相识就复习了一遍 for..of 果然找到了。
 
 测试用的算法：
 
@@ -28,7 +28,8 @@ fibonacci(0,30).then((d)=>console.log(d))
 // 然后换成Node v10.8.0就可以用了
 ```
 
-MDN演示for...of的算法：
+MDN 演示 for...of 的算法：
+
 ```JS
 function* fibonacci() { // 一个生成器函数
     let [prev, curr] = [0, 1];

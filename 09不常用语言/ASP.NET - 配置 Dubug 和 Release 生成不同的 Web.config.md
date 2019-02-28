@@ -35,8 +35,10 @@ eg:
     <configuration xmlns:xdt="http://schemas.microsoft.com/XML-Document-Transform">
     </configuration>
 
--   Web.Release.config：\
-    修改 AttachmentPath 和 SiteURL\
+-   Web.Release.config：
+
+    修改 AttachmentPath 和 SiteURL
+
     删除 system.webServer
 
 <!---->

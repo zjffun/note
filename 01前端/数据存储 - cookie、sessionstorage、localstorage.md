@@ -19,23 +19,28 @@ Web Storage 带来的好处：
 ## 区别
 
 -   是否在 http 请求携带
-    cookie：数据始终在同源的 http 请求中携带（即使不需要），即 cookie 在浏览器和服务器间来回传递。\
+    cookie：数据始终在同源的 http 请求中携带（即使不需要），即 cookie 在浏览器和服务器间来回传递。
+
     Web Storage：不会自动把数据发给服务器，仅在本地保存。  
 
 -   访问限制
     cookie：数据还有路径（path）的概念，可以限制 cookie 只属于某个路径下。  
 
 -   存储大小
-    cookie：数据不能超过 4k，同时因为每次 http 请求都会携带 cookie，所以 cookie 只适合保存很小的数据，如会话标识。\
+    cookie：数据不能超过 4k，同时因为每次 http 请求都会携带 cookie，所以 cookie 只适合保存很小的数据，如会话标识。
+
     Web Storage：虽然也有存储大小的限制，但比 cookie 大得多，可以达到 5M 或更大。  
 
 -   数据有效期
-    cookie：只在设置的 cookie 过期时间之前一直有效，即使窗口或浏览器关闭。\
-    sessionStorage：仅在当前浏览器窗口关闭前有效，自然也就不可能持久保持。\
+    cookie：只在设置的 cookie 过期时间之前一直有效，即使窗口或浏览器关闭。
+
+    sessionStorage：仅在当前浏览器窗口关闭前有效，自然也就不可能持久保持。
+
     localStorage：始终有效，窗口或浏览器关闭也一直保存，因此用作持久数据。   
 
 -   作用域
-    cookie，localStorage：在所有同源窗口中都是共享的。\
+    cookie，localStorage：在所有同源窗口中都是共享的。
+
     sessionStorage：不在不同的浏览器窗口中共享，即使是同一个页面。  
 
 -   对事件通知机制的支持
@@ -44,13 +49,15 @@ Web Storage 带来的好处：
 -   方便程度
     Web Storage：的 api 接口使用更方便。  
 
--   [注]：sessionStorage 与页面 js 数据对象的区别\
-    页面中一般的 js 对象或数据的生存期是仅在当前页面有效，因此刷新页面或转到另一页面这样的重新加载页面的情况，数据就不存在了。\
+-   \[注]：sessionStorage 与页面 js 数据对象的区别 
+
+    页面中一般的 js 对象或数据的生存期是仅在当前页面有效，因此刷新页面或转到另一页面这样的重新加载页面的情况，数据就不存在了。
+
     而 sessionStorage 只要同源的同窗口（或 tab）中，刷新页面或进入同源的不同页面，数据始终存在。也就是说只要这个浏览器窗口没有关闭，加载新页面或重新加载，数据仍然存在。   
 
 # 数据应该存储在 Cookies 还是 HTML5 Web Storage？
 
-重要的数据还是应该存在*Cookies*中并设置`HttpOnly` （使用 HTTPS 还可以设置上`Secure`）。
+重要的数据还是应该存在_Cookies_中并设置`HttpOnly` （使用 HTTPS 还可以设置上`Secure`）。
 因为 HTML5 Web Storage 易受 XSS 攻击，且 XSS 攻击具有较大的攻击途径，能一次成功的攻击就够影响到所有正在使用的用户。
 
 # 参考

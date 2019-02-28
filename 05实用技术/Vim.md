@@ -36,12 +36,12 @@
 
 # Searching and Replacing
 
--   /*text* search for *text* in the document, going forward.
+-   /_text_ search for _text_ in the document, going forward.
 -   n move the cursor to the next instance of the text from the last search. This will wrap to the beginning of the document.
 -   N move the cursor to the previous instance of the text from the last search.
--   ?*text* search for *text* in the document, going backwards.
--   :%s/*text*/*replacement text*/g search through the entire document for *text* and replace it with *replacement text*.
--   :%s/*text*/*replacement text*/gc search through the entire document and *confirm* before replacing text.
+-   ?_text_ search for _text_ in the document, going backwards.
+-   :%s/_text_/_replacement text_/g search through the entire document for _text_ and replace it with _replacement text_.
+-   :%s/_text_/_replacement text_/gc search through the entire document and _confirm_ before replacing text.
 
 # Saving and Quitting
 

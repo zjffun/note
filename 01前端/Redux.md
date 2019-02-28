@@ -1,15 +1,19 @@
 > [Redux 中文文档](https://www.redux.org.cn/)
 
 # 基本使用
+
 ## 步骤
-1. 创建action
-2. 创建执行action的reducer
-3. 根据reducer创建store
+
+1.  创建 action
+2.  创建执行 action 的 reducer
+3.  根据 reducer 创建 store
 
 ## 流程
-actions（一个oject） `---通过调用dispatch传给--->` reducers（接收state和action，返回新的state） `---使用其返回值--->` 改变store中的state
+
+actions（一个 oject） `--- 通过调用 dispatch 传给 --->` reducers（接收 state 和 action，返回新的 state） `--- 使用其返回值 --->` 改变 store 中的 state
 
 ## 代码
+
 ```html
 <!DOCTYPE html>
 <html lang="zh-CN">

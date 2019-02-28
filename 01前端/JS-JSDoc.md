@@ -1,6 +1,6 @@
-> http://usejsdoc.org/
+> <http://usejsdoc.org/>
 
-生成JSDoc格式的注释：
+生成 JSDoc 格式的注释：
 
-- sublime：安装DocBlockr
-- VSCode：自带JSDoc插件
+-   sublime：安装 DocBlockr
+-   VSCode：自带 JSDoc 插件

@@ -1,9 +1,0 @@
-# PHP 5.3以下版本 无法用下标直接取得函数返回的数组
-eg：  
-```
-$val_0 = explode(',', $val)[0]//报错
-
-#要改成：
-$exploded_val = explode(',', $val);
-$val_0 = $exploded_val[0];
-```

@@ -1,14 +1,16 @@
 # 安装
-参考：http://scrapy-chs.readthedocs.io/zh_CN/0.24/intro/install.html#scrapy 
 
-用到的文件：https://share.weiyun.com/c7813d7e8d08e9216938ed100dd57b01
+参考：<http://scrapy-chs.readthedocs.io/zh_CN/0.24/intro/install.html#scrapy> 
 
-1. 安装python-2.7.14.msi
-2. 打开命令行，并且运行以下命令来修改 PATH:
+用到的文件：<https://share.weiyun.com/c7813d7e8d08e9216938ed100dd57b01>
+
+1.  安装 python-2.7.14.msi
+
+2.  打开命令行，并且运行以下命令来修改 PATH:
 
         c:\python27\python.exe c:\python27\tools\scripts\win_add2path.py
 
-3. 创建register.py文件，内容为
+3.  创建 register.py 文件，内容为
 
         #   
         # script to register Python 2.0 or later for use with win32all   
@@ -62,7 +64,9 @@
         if __name__ == "__main__":  
             RegisterPy()  
 
-2. 双击执行 register.py
-3. 安装 pywin32-220.win-amd64-py2.7.exe
-4. 双击执行 get-pip.py  
-打开命令行窗口，确认 pip 被正确安装:```pip --version```
+4.  双击执行 register.py
+
+5.  安装 pywin32-220.win-amd64-py2.7.exe
+
+6.  双击执行 get-pip.py  
+    打开命令行窗口，确认 pip 被正确安装:`pip --version`

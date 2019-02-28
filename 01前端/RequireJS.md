@@ -94,13 +94,10 @@ function () {
 });
 ```
 
-```
-define([/*引用的模块*/], function(){
-  var test_model = new Object;
-  test_model.test_func = function() {
-    
-  }
-  return (window.test_model = test_model);
-});
-```
-
+    define([/*引用的模块*/], function(){
+      var test_model = new Object;
+      test_model.test_func = function() {
+        
+      }
+      return (window.test_model = test_model);
+    });

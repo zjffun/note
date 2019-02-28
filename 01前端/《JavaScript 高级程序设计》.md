@@ -881,12 +881,14 @@ iOS 和 Android 设备的实现非常特别，因为这些设备没有鼠标。�
 
 ### 13.4.7 HTML5 事件
 
--   DOMContentLoaded 事件\
+-   DOMContentLoaded 事件 
+
     window 的 load 事件会在页面中的一切都加载完毕时触发，但这个过程可能会因为要加载的外部资源过多而颇费周折。而 DOMContentLoaded 事件则在形成完整的 DOM 树之后就会触发，不理会图像、 JavaScript 文件、 CSS 文件或其他资源是否已经下载完毕。与 load 事件不同，DOMContentLoaded 支持在页面下载的早期添加事件处理程序，这也就意味着用户能够尽早地与页面进行交互。
 
 ### 13.5 内存和性能
 
--   事件委托\
+-   事件委托 
+
     对 “事件处理程序过多” 问题的解决方案就是事件委托。事件委托利用了事件冒泡，只指定一个事件处理程序，就可以管理某一类型的所有事件。例如， click 事件会一直冒泡到 document 层次。也就是说，我们可以为整个页面指定一个 onclick 事件处理程序，而不必给每个可单击的元素分别添加事件处理程序。
 
 ## 第 14 章 表单脚本
@@ -1101,13 +1103,16 @@ JSON 的语法可以表示以下三种类型的值。
     script.src = "http://freegeoip.net/json/?callback=handleResponse";
     document.body.insertBefore(script, document.body.firstChild);
 
--   Comet\
+-   Comet
+
     Ajax 是一种从页面向服务器请求数据的技术，而 Comet 则是一种服务器向页面推送数据的技术。 Comet 能够让信息近乎实时地被推送到页面上，非常适合处理体育比赛的分数和股票报价。
 
--   SSE\
+-   SSE
+
     服务器发送事件（Server-Sent Events），是围绕只读 Comet 交互推出的 API 或者模式。 SSE API 用于创建到服务器的单向连接，服务器通过这个连接可以发送任意数量的数据。
 
--   Web Sockets\
+-   Web Sockets
+
     Web Sockets 的目标是在一个单独的持久连接上提供全双工、双向通信。
 
 ### SSE 与 Web Sockets
@@ -1205,7 +1210,8 @@ JSON 的语法可以表示以下三种类型的值。
 
 ### 23.3.3 Web 存储机制
 
-1.  Storage 类型\
+1.  Storage 类型 
+
     Storage 类型提供最大的存储空间（因浏览器而异）来存储名值对儿。 Storage 的实例与其他对象类似，有如下方法。
 
 -   clear()： 删除所有值； Firefox 中没有实现 。
@@ -1214,16 +1220,20 @@ JSON 的语法可以表示以下三种类型的值。
 -   removeItem(name)：删除由 name 指定的名值对儿。
 -   setItem(name, value)：为指定的 name 设置一个对应的值。
 
-2.  sessionStorage 对象\
+2.  sessionStorage 对象 
+
     sessionStorage 对象存储特定于某个会话的数据，也就是该数据只保持到浏览器关闭。这个对象就像会话 cookie，也会在浏览器关闭后消失。存储在 sessionStorage 中的数据可以跨越页面刷新而存在，同时如果浏览器支持，浏览器崩溃并重启之后依然可用（Firefox 和 WebKit 都支持， IE 则不行）。因为 seesionStorage 对象绑定于某个服务器会话，所以当文件在本地运行的时候是不可用的。存储在 sessionStorage 中的数据只能由最初给对象存储数据的页面访问到，所以对多页面应用有限制。由于 sessionStorage 对象其实是 Storage 的一个实例，所以可以使用 setItem() 或者直接设置新的属性来存储数据。下面是这两种方法的例子。
 
-3.  globalStorage 对象\
+3.  globalStorage 对象 
+
     Firefox 2 中实现了 globalStorage 对象。作为最初的 Web Storage 规范的一部分，这个对象的目的是跨越会话存储数据，但有特定的访问限制。要使用 globalStorage，首先要指定哪些域可以访问该数据。可以通过方括号标记使用属性来实现，如以下例子所示。
 
-4.  localStorage 对象\
-    localStorage 对象在修订过的 HTML 5 规范中作为持久保存客户端数据的方案取代了 globalStorage。与 globalStorage 不同，不能给 localStorage 指定任何访问规则；规则事先就设定好了。要访问同一个 localStorage 对象，页面必须来自同一个域名（子域名无效），使用同一种协议，在同一个端口上。这相当于 globalStorage[location.host]。
+4.  localStorage 对象 
 
-5.  storage 事件\
+    localStorage 对象在修订过的 HTML 5 规范中作为持久保存客户端数据的方案取代了 globalStorage。与 globalStorage 不同，不能给 localStorage 指定任何访问规则；规则事先就设定好了。要访问同一个 localStorage 对象，页面必须来自同一个域名（子域名无效），使用同一种协议，在同一个端口上。这相当于 `globalStorage[location.host]`。
+
+5.  storage 事件 
+
     对 Storage 对象进行任何修改，都会在文档上触发 storage 事件。当通过属性或 setItem() 方法保存数据，使用 delete 操作符或 removeItem() 删除数据，或者调用 clear() 方法时，都会发生该事件。这个事件的 event 对象有以下属性。
 
 -   domain：发生变化的存储空间的域名。
@@ -1239,7 +1249,7 @@ JSON 的语法可以表示以下三种类型的值。
 
 > 一种最常见的耦合类型是 HTML/JavaScript 耦合。在 Web 上， HTML 和 JavaScript 各自代表了解决方案中的不同层次： HTML 是数据， JavaScript 是行为。因为它们天生就需要交互，所以有多种不同的方法将这两个技术关联起来。但是，有一些方法会将 HTML 和 JavaScript 过于紧密地耦合在一起。
 >
-> 直接写在 HTML 中的 JavaScript，使用包含内联代码的\<script > 元素或者是使用 HTML 属性来分配事件处理程序，都是过于紧密的耦合。请看以下代码。
+> 直接写在 HTML 中的 JavaScript，使用包含内联代码的 \\<script > 元素或者是使用 HTML 属性来分配事件处理程序，都是过于紧密的耦合。请看以下代码。
 
     <!-- 使用了 <script> 的紧密耦合的 HTML/JavaScript -->
     <script type="text/javascript">
@@ -1361,7 +1371,8 @@ JSLint 可以查找 JavaScript 代码中的语法错误以及常见的编码错�
 
 ## 第 6 章 案例研究：图片库改进版
 
-1.  键盘访问（提高可访问性）\
+1.  键盘访问（提高可访问性）
+
     onclick 已经帮我们处理了，eg：下面这个绑定了 onclick 的按钮鼠标左键点击和 tab 然后回车一样弹出 "clicked"
 
 <!---->
@@ -1377,9 +1388,12 @@ JSLint 可以查找 JavaScript 代码中的语法错误以及常见的编码错�
     </body>
     </html>
 
-2.  DOM core 和 HTML-DOM\
-    由于 HTML 与 XML 的相似性及差异，JavaScript 不仅实现了标准的 DOM 方法和属性（即由 W3C 制定的），而且还实现了 HTML 特有的 DOM 方法和属性。\
-    DOM Core：标准的 DOM 方法和属性\
+2.  DOM core 和 HTML-DOM
+
+    由于 HTML 与 XML 的相似性及差异，JavaScript 不仅实现了标准的 DOM 方法和属性（即由 W3C 制定的），而且还实现了 HTML 特有的 DOM 方法和属性。
+
+    DOM Core：标准的 DOM 方法和属性 
+
     HTML-DOM：HTML 特有的 DOM 方法和属性  
 
 ## 第 7 章 动态创建标记
@@ -1415,7 +1429,8 @@ JSLint 可以查找 JavaScript 代码中的语法错误以及常见的编码错�
 ### 文件名和文件夹名
 
 文件名全部使用小写字母，用短横线分隔单词，用 .html 作为扩展名。混合使用大小写字
-母会增加访问者输入正确地址以及找到页面的难度\
+母会增加访问者输入正确地址以及找到页面的难度 
+
 文件夹的名称也应全部用小写字母。关键是保持一致。如果使用小写字母，访问者和创建者就
 不必在大写字母和小写字母之间转换浪费时间了
 
@@ -1433,12 +1448,13 @@ JSLint 可以查找 JavaScript 代码中的语法错误以及常见的编码错�
 
 ### small
 
-small 元素表示的含义是法律声明等条文细则。默认情况下，它比其他的文字显示得小一些，但是 == 显示小字号并不是使用这个元素的理由 ==\
+small 元素表示的含义是法律声明等条文细则。默认情况下，它比其他的文字显示得小一些，但是 == 显示小字号并不是使用这个元素的理由 ==
+
 （以前一直当 small 是小号字体 =\_=）
 
 ## 第 3 章　基本 HTML 结构
 
-### \<html lang="language-code">
+### \\<html lang="language-code">
 
 曾经使用 Bootstrap4 的时候没找到中文翻译，准备自己翻译一下翻译了两页有点感觉有点多，就往下翻了翻看看到底有多少工作量，然后看见有 Translations，点进去一看发现大家基本都知道但很容易忘的一项翻译的人给强调出来了：
 
@@ -1446,7 +1462,8 @@ small 元素表示的含义是法律声明等条文细则。默认情况下，�
 
 注：以前搜过 lang 相关的里面的规则很复杂的（[网页头部的声明应该是用 lang="zh" 还是 lang="zh-cn"？ - 知乎](https://www.zhihu.com/question/20797118)），但一般国内的页面现在一般还都是 zh-CN。
 
-Emmet 设置默认生成的 lang 为 zh-CN：\
+Emmet 设置默认生成的 lang 为 zh-CN：
+
 下面代码添加到 Emmet 的 Settings-User
 
     {
@@ -1537,8 +1554,10 @@ HTML5 并没有提供任何保护媒体内容的方法。因此，如果你很�
 
 1.  基本选择器：所有浏览器都可用
 2.  层次选择器：基本所有浏览器都可用（部分 IE7+）
-3.  伪类选择器：大部分 IE8+9 + 可用\
-    E:target：匹配 id 为 hash 的元素\
+3.  伪类选择器：大部分 IE8+9 + 可用 
+
+    E:target：匹配 id 为 hash 的元素 
+
     E:lang(language)：匹配 lang 属性的值为 language 的元素  
 4.  伪元素：IE6~8 仅支持单冒号，IE9 + 支持伪元素  
 
@@ -1553,17 +1572,20 @@ HTML5 并没有提供任何保护媒体内容的方法。因此，如果你很�
 目前：
 
 -   border-color：浏览器支持的不是很好，尽量别用
--   border-image：IE11 才支持，谨慎使用\
+-   border-image：IE11 才支持，谨慎使用 
+
     使用一张图片切成九宫格（切的顺序：TRBL），用 8 个边上个格为图片生成边框背景
--   border-radius：浏览器支持的不错，IE9 + 可用\
-    参数：none | 水平参数 {1,4} / [垂直参数 {1,4}]?
+-   border-radius：浏览器支持的不错，IE9 + 可用 
+
+    参数：`none | 水平参数 {1,4} / [垂直参数 {1,4}]`?
 -   box-shadow：和 border 不同，box-shadow 不是盒模型的中的属性，不会计算到宽度
 
 PS：图片圆角我测试可以直接使用，但图片内阴影直接设置无效需要将图片设置为背景，或外面套个 div 实现
 
 ## 第四章 CSS3 背景
 
--   多背景：IE8 + 支持\
+-   多背景：IE8 + 支持 
+
     多个背景用逗号隔开
 
 # 单页 Web 应用  JavaScript 从前端到后端

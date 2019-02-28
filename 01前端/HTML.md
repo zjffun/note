@@ -1,11 +1,9 @@
+# link 标签
 
-
-
-# link标签
-css的link必须加上rel="stylesheet"  
-link的rel属性的不同用法
+css 的 link 必须加上 rel="stylesheet"  
+link 的 rel 属性的不同用法
 | 值 | 描述 |
-| --- | --- |
+\| --- \| --- \|
 | alternate | 文档的替代版本（比如打印页、翻译或镜像）。 |
 | stylesheet | 文档的外部样式表。 |
 | start | 集合中的第一个文档。 |
@@ -22,49 +20,52 @@ link的rel属性的不同用法
 | help | 帮助文档。 |
 | bookmark | 相关文档。 |
 
+# form 表单提交
 
-# form表单提交
 ## 数据发送
-- disabled：不发送  
-- display\_none：发送  
-- type\_hidden：发送  
-- readonly：发送  
 
-测试html：
+-   disabled：不发送  
+-   display_none：发送  
+-   type_hidden：发送  
+-   readonly：发送  
 
-```
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>test</title>
-</head>
-<body>
-<form action="http://127.0.0.1" method="get">
-	<p>disabled: <input name="disabled" disabled="disabled" value="disabled" type="text"></p>
-	<p>display_none: <input name="display_none" style="display:none" value="display_none" type="text"></p>
-	<p>type_hidden: <input name="type_hidden" type="hidden" value="type_hidden" type="text"></p>
-	<p>readonly: <input name="readonly" readonly="readonly" value="readonly" type="text"></p>
-	<p><button>submit</button></p>
-</form>
-</body>
-</html>
-```
+测试 html：
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+    	<meta charset="UTF-8">
+    	<title>test</title>
+    </head>
+    <body>
+    <form action="http://127.0.0.1" method="get">
+    	<p>disabled: <input name="disabled" disabled="disabled" value="disabled" type="text"></p>
+    	<p>display_none: <input name="display_none" style="display:none" value="display_none" type="text"></p>
+    	<p>type_hidden: <input name="type_hidden" type="hidden" value="type_hidden" type="text"></p>
+    	<p>readonly: <input name="readonly" readonly="readonly" value="readonly" type="text"></p>
+    	<p><button>submit</button></p>
+    </form>
+    </body>
+    </html>
+
 结果：  
-http://127.0.0.1/  
-?display\_none=display_none  
-&type\_hidden=type_hidden  
+<http://127.0.0.1/>  
+?display_none=display_none  
+&type_hidden=type_hidden  
 &readonly=readonly  
 
 ## 文件发送
-1. 设置form发送文件：```<form action="" method="post" enctype="multipart/form-data">```
-2. form不是post发送文件不会发送（php的$_FILES为empty）：```<form action="" method="post" enctype="multipart/form-data">```
-3. file没有name属性文件不会发送（php的$_FILES为empty）：```<input type="file" name="file[]">```
+
+1.  设置 form 发送文件：`<form action=""method="post"enctype="multipart/form-data">`
+2.  form 不是 post 发送文件不会发送（php 的 $\_FILES 为 empty）：`<form action=""method="post"enctype="multipart/form-data">`
+3.  file 没有 name 属性文件不会发送（php 的 $\_FILES 为 empty）：`<input type="file" name="file[]">`
 
 # iframe
-iframe要设置width和height属性，不设置在iframe加载的子页面中获取和操作父页面的width，和height会出错
+
+iframe 要设置 width 和 height 属性，不设置在 iframe 加载的子页面中获取和操作父页面的 width，和 height 会出错
 
 # 其他
+
 ## Empty string passed to getElementById().
 
-看看label的for标签
+看看 label 的 for 标签

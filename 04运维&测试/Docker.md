@@ -12,4 +12,4 @@ $ docker rmi $(docker images | grep "none" | awk '{print $3}')  //删除镜像
 
 # 参考
 
-> -   [docker 如何删除 none 镜像*docker*脚本之家](https://www.jb51.net/article/116096.htm)
+> -   [docker 如何删除 none 镜像_docker_脚本之家](https://www.jb51.net/article/116096.htm)
