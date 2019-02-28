@@ -814,61 +814,118 @@ NodeIterator 和 TreeWalker。IE 不支持！
 
 ## 第 13 章 事件
 
+## 13.1 事件流
+
+由于老版本浏览器不支持，因此很少有人使用事件捕获。建议放心使用事件冒泡，特殊需要时使用事件捕获。
+
+### 13.1.1 事件冒泡
+
+IE 提出的事件流叫事件冒泡（event bubling），事件由最具体（深）的节点向不具体（文档）节点传播。
+
+### 13.1.2 事件捕获
+
+Netscape 提出的事件流叫事件捕获（event capturing），思想是不太具体的节点应先接收到事件，具体的节点后接收到事件。
+
 ### 13.1.3 DOM 事件流
 
 > “DOM2 级事件” 规定的事件流包括三个阶段：事件捕获阶段、处于目标阶段和事件冒泡阶段。
 
+-   事件捕获：为截获事件提供机会（实际目标在捕获阶段不会接收到事件）
+-   目标阶段：事件目标接收到事件
+-   冒泡极端：对事件作出响应
+
+PS：多数浏览器都实现了在捕获阶段触发事件对象上的事件这种特定行为。即使 “DOM2 级事件” 规范明确要求捕获阶段不会涉及事件目标。
+
+## 13.2 事件处理程序
+
+诸如 click、load 和 mouseover 叫事件的名字。响应某个事件的函数叫做事件处理程序，事件处理程序的名字以‘’on“开头。
+
+### 13.2.1 HTML 事件处理程序
+
+> 某个元素支持的每种事件，都可以用一个与之相应事件处理程序同名的 HTML 特性来指定。
+
+这样指定事件处理程序：首先会创建一个封装着元素属性值的函数，其次这种方式动态创建的函数会拓展作用域，例如：
+
+```html
+<!-- 1. 查看属相和参数 -->
+<input type="button" value="click" onclick="console.log(arguments, event, this, value)">
+
+<!-- 2. 拓展作用域 -->
+<form>
+    <input type="text" name="uname" value="zzz">
+    <input type="button" value="click" onclick="console.log(uname.value)">
+</form>
+<!--
+这个动态创建的函数像这样拓展作用域：
+function(){
+    with(document){
+        with(this,form){
+            with(this){
+				console.log(uname.value)
+            }
+        }
+    }
+}
+-->
+```
+
 ### 13.2.2 DOM0 级事件处理程序
 
-使用 DOM0 级方法指定的事件处理程序被认为是元素的方法。因此，这时候的事件处理程序是在
-元素的作用域中运行；换句话说，程序中的 this 引用当前元素。来看一个例子。
+> 使用 DOM0 级方法指定的事件处理程序被认为是元素的方法。因此，这时候的事件处理程序是在
+> 元素的作用域中运行；换句话说，程序中的 this 引用当前元素。来看一个例子。
 
-    <button id="myBtn">myBtn</button>
-    <script>
-    var btn = document.getElementById("myBtn");
-    btn.onclick = function(){
-        alert(this.id); //"myBtn"
-    };
-    </script>
+```html
+<button id="myBtn">myBtn</button>
+<script>
+var btn = document.getElementById("myBtn");
+btn.onclick = function(){
+    alert(this.id); //"myBtn"
+};
+</script>
+```
 
 将事件处理程序属性的值设置为 null 可以删除通过 DOM0 级方法指定的事件处理程序：
 `btn.onclick = null;`
 
 ### 13.2.3 DOM2 级事件处理程序
 
-> “DOM2 级事件” 定义了两个方法，用于处理指定和删除事件处理程序的操作： addEventListener() 和 removeEventListener()。所有 DOM 节点中都包含这两个方法，并且它们都接受 3 个参数：要处理的事件名、作为事件处理程序的函数和一个布尔值。最后这个布尔值参数如果是 true，表示在捕获阶段调用事件处理程序；如果是 false，表示在冒泡阶段调用事件处理程序。
+> “DOM2 级事件” 定义了两个方法，用于处理指定和删除事件处理程序的操作：`addEventListener()` 和 `removeEventListener()`。所有 DOM 节点中都包含这两个方法，并且它们都接受 3 个参数：要处理的事件名、作为事件处理程序的函数和一个布尔值。最后这个布尔值参数如果是 true，表示在捕获阶段调用事件处理程序；如果是 false，表示在冒泡阶段调用事件处理程序。
 
-    <button id="myBtn">myBtn</button>
-    <script>
-    var btn = document.getElementById("myBtn");
-    btn.addEventListener("click", function(){
-        alert(this.id);
-    }, false);
-    btn.addEventListener("click", function(){
-        alert("Hello world!");
-    }, false);
-    </script>
+```html
+<button id="myBtn">myBtn</button>
+<script>
+var btn = document.getElementById("myBtn");
+btn.addEventListener("click", function(){
+    alert(this.id);
+}, false);
+btn.addEventListener("click", function(){
+    alert("Hello world!");
+}, false);
+</script>
+```
 
-eg：删除事件时必须传入绑定的事件的 “指针”
+删除事件时必须传入绑定的事件的 “指针”
 
 ### 13.2.4 IE 事件处理程序
 
-> IE 实现了与 DOM 中类似的两个方法： attachEvent() 和 detachEvent()。这两个方法接受相同的两个参数：事件处理程序名称与事件处理程序函数。由于 IE8 及更早版本只支持事件冒泡，所以通过 attachEvent() 添加的事件处理程序都会被添加到冒泡阶段。
+> IE 实现了与 DOM 中类似的两个方法：`attachEvent()` 和 `detachEvent()`。这两个方法接受相同的两个参数：事件处理程序名称与事件处理程序函数。由于 IE8 及更早版本只支持事件冒泡，所以通过 `attachEvent()`添加的事件处理程序都会被添加到冒泡阶段。
 
 ### 13.3 事件对象
 
 > 兼容 DOM 的浏览器会将一个 event 对象传入到事件处理程序中。无论指定事件处理程序时使用什么方法（DOM0 级或 DOM2 级），都会传入 event 对象。
 
-    <button id="myBtn">myBtn</button>
-    <script>
-    var btn = document.getElementById("myBtn");
-    btn.onclick = function(event){
-      alert(event.type); //"click"
-    };
-    btn.addEventListener("click", function(event){
-      alert(event.type); //"click"
-    }, false);
-    </script>
+```html
+<button id="myBtn">myBtn</button>
+<script>
+var btn = document.getElementById("myBtn");
+btn.onclick = function(event){
+  alert(event.type); //"click"
+};
+btn.addEventListener("click", function(event){
+  alert(event.type); //"click"
+}, false);
+</script>
+```
 
 ### 13.4.3　鼠标与滚轮事件
 
