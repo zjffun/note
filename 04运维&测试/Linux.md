@@ -59,15 +59,16 @@
 
 ## 执行 sql 语句（MySQL）
 
-1.  单行：`mysql -u 用户名 -p 密码 -e"sql 语句"`
+1.  单行：`mysql -u 用户名 -p 密码 -e "sql 语句"`
 
 2.  多行：
     ​
 
-    ​     mysql -u 用户名 -p 密码 \\&lt;\\&lt;EOF
-
-    ​       sql 语句
-    ​     EOF
+```bash
+​mysql -u 用户名 -p 密码 <<EOF
+sql 语句
+EOF
+```
 
 3.  文件：`mysql -u 用户名 -p 密码 < 存有 sql 语句的文件`  
 
