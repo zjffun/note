@@ -941,23 +941,68 @@ DOM3 级事件类型：[DOM-Level-3-Events](https://www.w3.org/TR/DOM-Level-3-Ev
 -   Wheel Events 
 -   Input Events 
 -   Keyboard Events 
--   Composition Events
--   变动（mutation）事件：底层 DOM 结构发生变化时触发
+-   Composition Events：用于处理 IME 输入序列。IME（Input Method Editor）可以让用户输入在物理键盘上找不到的字符。例如，使用拉丁文键盘的用户通过 IME 可以输入日文字符。
+-   变动（mutation）事件：底层 DOM 结构发生变化时触发。变动事件是为 XML 或 HTML DOM 设计的，并不特定于某种语言。
+
+### 13.4.1 UI 事件
+
+HTML 中无法访问 widow 元素，所以一般在 window 上面发生的任何事件都可以在`<body>`元素中通过相应特性指定。
 
 ### 13.4.3 鼠标与滚轮事件
 
-iOS 和 Android 设备的实现非常特别，因为这些设备没有鼠标。在面向 iPhone 和 iPod 中的 Safari 开发时，要记住以下几点。
+mousedown、mouseup、click 和 dbclick 顺序：
 
--   不支持 dblclick 事件。双击浏览器窗口会放大画面，而且没有办法改变该行为。
--   轻击可单击元素会触发 mousemove 事件。如果此操作会导致内容变化，将不再有其他事件发生；如果屏幕没有因此变化，那么会依次发生 mousedown、 mouseup 和 click 事件。轻击不可单击的元素不会触发任何事件。可单击的元素是指那些单击可产生默认操作的元素（如链接），或者那些已经被指定了 onclick 事件处理程序的元素。
--   mousemove 事件也会触发 mouseover 和 mouseout 事件。
--   两个手指放在屏幕上且页面随手指移动而滚动时会触发 mousewheel 和 scroll 事件。
+1.  mousedown
+2.  mouseup
+3.  click
+4.  mousedown
+5.  mouseup
+6.  dbclick
+
+如果 mousedown 或 mouseup 中的一个被取消，click 事件就不会触发。
+
+1.  客户区坐标位置：clientX|Y，鼠标指针在浏览器视口的水平和垂直位置
+2.  页面坐标位置：pageX|Y，鼠标在页面中的位置
+3.  屏幕坐标位置：screenX|Y，鼠标在电脑屏幕的位置
+4.  相关元素：在执行 mouseover 和 mouseout 时 relatedTarget 提供了涉及到的（移入、移出的）元素的信息。
+5.  触摸设备：
+    iOS 和 Android 设备的实现非常特别，因为这些设备没有鼠标。在面向 iPhone 和 iPod 中的 Safari 开发时，要记住以下几点。
+    -   不支持 dblclick 事件。双击浏览器窗口会放大画面，而且没有办法改变该行为。
+    -   轻击可单击元素会触发 mousemove 事件。如果此操作会导致内容变化，将不再有其他事件发生；如果屏幕没有因此变化，那么会依次发生 mousedown、 mouseup 和 click 事件。轻击不可单击的元素不会触发任何事件。可单击的元素是指那些单击可产生默认操作的元素（如链接），或者那些已经被指定了 onclick 事件处理程序的元素。
+    -   mousemove 事件也会触发 mouseover 和 mouseout 事件。
+    -   两个手指放在屏幕上且页面随手指移动而滚动时会触发 mousewheel 和 scroll 事件。
+
+### 13.4.4 键盘与文本事件
+
+-   键盘事件：keydown、keypress、keyup
+
+    按下字符键时：会先触发 keydown 然后触发 keypress 最后触发 keyup，按住不放时 keydown、keypress 会重复触发。
+
+    按下非字符键时：会触发 keydown 最后触发 keyup，按住不放时 keydown 会重复触发。
+
+-   文本事件：textInput
 
 ### 13.4.7 HTML5 事件
 
--   DOMContentLoaded 事件 
+1.  contextmenu 事件：用户打开上下文菜单时触发（Windows 下是鼠标右键单击，Mac 下时 Ctrl + 单击），可以阻止默认的上下文菜单。
 
-    window 的 load 事件会在页面中的一切都加载完毕时触发，但这个过程可能会因为要加载的外部资源过多而颇费周折。而 DOMContentLoaded 事件则在形成完整的 DOM 树之后就会触发，不理会图像、 JavaScript 文件、 CSS 文件或其他资源是否已经下载完毕。与 load 事件不同，DOMContentLoaded 支持在页面下载的早期添加事件处理程序，这也就意味着用户能够尽早地与页面进行交互。
+2.  beforeunload 事件：在页面卸载前触发，并弹出确认框让用户确认是否离开页面。这个事件不能彻底取消，因为那样就相当于让用户就无法离开当前页面了。。
+
+3.  DOMContentLoaded 事件 ：
+
+    > window 的 load 事件会在页面中的一切都加载完毕时触发，但这个过程可能会因为要加载的外部资源过多而颇费周折。而 DOMContentLoaded 事件则在形成完整的 DOM 树之后就会触发，不理会图像、 JavaScript 文件、 CSS 文件或其他资源是否已经下载完毕。与 load 事件不同，DOMContentLoaded 支持在页面下载的早期添加事件处理程序，这也就意味着用户能够尽早地与页面进行交互。
+
+4.  readystatechange 事件：提供与文档或元素加载状态有关的信息。
+
+5.  pageshow 和 pagehide 事件：浏览器会缓存前进和后退的页面（bfcache, before-forward chache），页面位于 bfcache 中，load 事件不会触发，pageshow 事件会触发。
+
+6.  hashchange 事件：页面 URL 中 "#" 后面的字符串发生变化时触发。
+
+### 13.4.8 设备事件
+
+智能手机和平板相关的事件，可以监测横竖屏切换、方向改变、移动
+
+### 13.4.9 触摸与手势事件
 
 ## 13.5 内存和性能
 
