@@ -1000,15 +1000,64 @@ mousedown、mouseup、click 和 dbclick 顺序：
 
 ### 13.4.8 设备事件
 
-智能手机和平板相关的事件，可以监测横竖屏切换、方向改变、移动
+智能手机和平板相关的事件，可以监测横竖屏切换、方向改变、移动。
 
 ### 13.4.9 触摸与手势事件
 
+1.  触摸事件
+
+    事件发生顺序入下
+
+    1.  touchstart
+    2.  mouseover
+    3.  mousemove（一次）
+    4.  mousedown
+    5.  mouseup
+    6.  click
+    7.  touchend
+
+2.  手势事件
+
 ## 13.5 内存和性能
 
--   事件委托 
+### 13.5.1 事件委托
 
-    对 “事件处理程序过多” 问题的解决方案就是事件委托。事件委托利用了事件冒泡，只指定一个事件处理程序，就可以管理某一类型的所有事件。例如， click 事件会一直冒泡到 document 层次。也就是说，我们可以为整个页面指定一个 onclick 事件处理程序，而不必给每个可单击的元素分别添加事件处理程序。
+> 对 “事件处理程序过多” 问题的解决方案就是事件委托。事件委托利用了事件冒泡，只指定一个事件处理程序，就可以管理某一类型的所有事件。例如， click 事件会一直冒泡到 document 层次。也就是说，我们可以为整个页面指定一个 onclick 事件处理程序，而不必给每个可单击的元素分别添加事件处理程序。
+
+### 13.5.2 移除事件处理程序
+
+通过手动去除事件处理程序的引用防止内存泄露。
+
+## 13.6 模拟事件
+
+### 13.6.1 DOM 中的事件模拟
+
+步骤（1，2 步的方法已经过时，推荐直接用 new 创建 event 对象）：
+
+1.  创建事件对象：在 documnet 对象上使用`createEvent()`方法创建 event 对象。
+2.  初始化事件对象：调用 event 对象的`initXXXEvent()`方法。
+3.  触发事件：目标元素调用`dispatchEvent()`方法。
+
+例，模拟鼠标事件：
+
+```html
+<!-- 新 -->
+<button id="btn" onclick="alert('clicked')">click me</button>
+<script>
+    var btn = document.querySelector("#btn");
+    var event = new  MouseEvent("click", {button: 0});
+    btn.dispatchEvent(event);
+</script>
+
+<!-- 过时 -->
+<button id="btn2" onclick="alert('clicked Deprecated')">click me</button>
+<script>
+    var btn = document.querySelector("#btn2");
+    var event = document.createEvent("MouseEvents");
+    event.initMouseEvent("click", true, true, document.defaultView);
+    btn.dispatchEvent(event);
+</script>
+```
 
 # 第 14 章 表单脚本
 
