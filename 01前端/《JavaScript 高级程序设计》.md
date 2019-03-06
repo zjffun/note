@@ -1061,18 +1061,50 @@ mousedown、mouseup、click 和 dbclick 顺序：
 
 # 第 14 章 表单脚本
 
-> 在 HTML 中，表单是由<form>元素来表示的，而在 JavaScript 中，表单对应的则是 HTMLFormElement 类型。 HTMLFormElement 继承了 HTMLElement，因而与其他 HTML 元素具有相同的默认属性。不过， HTMLFormElement 也有它自己下列独有的属性和方法。
+## 14.1 表单基础知识
 
--   acceptCharset：服务器能够处理的字符集；等价于 HTML 中的 accept-charset 特性。
--   action：接受请求的 URL；等价于 HTML 中的 action 特性。
--   elements：表单中所有控件的集合（HTMLCollection）。
--   enctype：请求的编码类型；等价于 HTML 中的 enctype 特性。
--   length：表单中控件的数量。
--   method：要发送的 HTTP 请求类型，通常是 "get" 或 "post"；等价于 HTML 的 method 特性。
--   name：表单的名称；等价于 HTML 的 name 特性。
--   reset()：将所有表单域重置为默认值。
--   submit()：提交表单。
--   target：用于发送请求和接收响应的窗口名称；等价于 HTML 的 target 特性。
+```html
+<form>
+	input1: <input type="text" name="i1">
+	input2: <input type="text" name="i2" autofocus>
+	<select name="s">
+		<option>zzz</option>
+		<option>jjj</option>
+		<option>fff</option>
+	</select>
+</form>
+<script>
+	// 通过document.forms可以取得所有表单
+	var forms = document.forms;
+
+	// form 的 submit() 方法*不会*触发 submit 事件
+	forms[0].addEventListener("submit", () => alert('submit'));
+	// 取消下面这个注释会非常鬼畜
+	// forms[0].submit();
+
+	// form 的 reset() 方法*会*触发 reset 事件
+	forms[0].addEventListener("reset", () => alert('reset'));
+	forms[0].reset();
+
+	// form 的 elements 属性是表单中元素的集合
+	var filed = forms[0].elements[1];
+	// 自动将焦点移动到输入框
+	window.addEventListener("load", () => {
+		// autofocus 属性在支持她的浏览器中应该为 true，不支持的为空字符串
+		if(filed.autofocus !== true){
+			filed.focus();
+		}
+	});
+
+	// change 事件对于输入元素失去焦点(blur)触发，对于选择元素修改选项后触发
+	forms[0].elements["i2"].addEventListener("change", () => {
+		console.log("input change");
+	});
+	forms[0].elements["s"].addEventListener("change", () => {
+		console.log("select change");
+	});
+</script>
+```
 
 ## 14.5.4 表单与富文本
 
