@@ -1,83 +1,54 @@
 > Git 是一款免费、开源的分布式版本控制系统，用于敏捷高效地处理任何或小或大的项目。Git 的读音为 / gɪt/。
 >
-> Github 是一个面向开源及私有软件项目的托管平台，因为只支持 git 作为唯一的版本库格式进行托管，故名 gitHub。
+> Github 是一个面向开源及私有软件项目的托管平台，因为只支持 git 作为唯一的版本库格式进行托管，故名 Github。
 
 # 一：Git 基本操作
 
-## 配置（配置文件位置）
+## 配置
 
 Windows 下配置文件位置：`C:\Users\Administrator\.gitconfig`
 
 -   姓名：`git config --global user.name "Your Name"`  
+
 -   邮箱：`git config --global user.email "email@example.com"`  
--   支持 UTF-8 编码（解决不支持中文）：`git config --global core.quotepath false`，（Git Bash 可能要：`Git Bash 窗口右键 ->Options->Text->Locale 设置 zh_CN，Character set 设置 UTF-8`）
+
+-   支持 UTF-8 编码（中文字符由显示转义字符调整为显示正常字符）：`git config --global core.quotepath false`
+
+    Git Bash 可能还需要：`Git Bash 窗口右键 ->Options->Text->Locale 设置 zh_CN，Character set 设置 UTF-8`
+
 -   Git GUI 支持 UTF-8 编码：`git config --global gui.encoding utf-8`
--   入忽略文件权限的配置，具体如下：`git config core.filemode false`  
--   让文件名大小写敏感：`git config core.ignorecase false`  
+
+-   忽略文件权限：`git config core.filemode false`  
+
+-   检查文件名大小写：`git config core.ignorecase false`  
+
 -   查看配置：`cat .git/config`
 
-## 创建版本库
+## 版本（commit）
 
-`git init`
-
-## 添加
-
-`git add filename`
-
-## 提交
-
-`git commit -m "describe"`
-
-## 查看仓库状态
-
-`git status`
-
-## 查看文件修改内容
-
-暂存区和工作区：`git diff filename`
-版本库和暂存区：`git diff --cached filename`
-版本库和版本库：`git diff HEAD^ HEAD filename`
-
-## 查看历史记录
+### 查看历史记录
 
 -   标准：`git log`
 -   一行：`git log --pretty=oneline`
 -   包括未来版本：`git log --reflog`
--   从首次提交排序：`git log --reverse`（git-log(1) Manual Page 的 Commit Ordering 下面）
+-   按提交顺序逆序：`git log --reverse`（[--reverse : Git - git-log Documentation](https://git-scm.com/docs/git-log#Documentation/git-log.txt---reverse)）
 
-## 查看历史命令
+### 版本回退
 
-`git reflog`
+-   回退一个版本：`git reset HEAD^`  
+-   回退两个版本：`git reset HEAD^^`  
+-   回退 N 个版本：`git reset HEAD~N`  
+-   回退到指定版本：`git reset 版本号`
 
-## 版本回退（现有的版本文件会消失）
+### 版本前进
 
--   回退一个版本：`git reset --hard HEAD^`  
--   回退两个版本：`git reset --hard HEAD^^`  
--   回退 N 个版本：`git reset --hard HEAD~N`  
--   回退到指定版本：`git reset --hard 版本号`
+1.  通过查看历史命令查看未来版本号（`git log` 命令获取不到未来版本号）：`git reflog`
 
-## 版本前进
+    或通过以下命令查看未来版本号：`git log --reflog`
 
-1.  通过查看历史命令查看未来版本号（git log 获取不到未来版本号）：`git reflog`
+2.  跳转到指定版本：`git reset 版本号`
 
-    或通过以下命令查看未来版本号（貌似所有提交过的版本全部列出了）：`git log --reflog`
-2.  跳转到指定版本：`git reset --hard 版本号`
-
-## 撤销修改
-
-暂存区 -> 工作区：`git checkout -- filename`
-
-版本库 -> 暂存区：`git reset HEAD filename`
-
-## 删除文件
-
-`git rm filename [--cached]`
-
-cached: 本地不删除 
-
-（从版本控制中移除。如：将先添加到 git 然后写在 gitignore 中的文件，或写在 gitignore 中用 git add -f 强制添加到 git 的文件，从 git 中删除。）
-
-## 查看某个版本的改动\[一行]
+### 查看某个版本的改动\[一行]
 
 [Git - git-show Documentation](https://git-scm.com/docs/git-show)
 
@@ -92,26 +63,29 @@ cached: 本地不删除
 
 ### 切换
 
-`git checkout dev`  
+-   `git checkout dev`  
 
 ### 查看
 
-`git branch`  
+-   `git branch`  
 
-### 合并指定分支到当前分支
+### 合并
 
-`git merge dev` 
+-   合并指定分支到当前分支：`git merge dev` 
 
 ### 删除
 
--   删除本地分支：`git branch -d dev`  
--   删除远程分支：`git push --delete origin devel`
+-   删除本地分支：`git branch -d dev`
+
+### 从远程库删除
+
+-   `git push --delete origin devel`
 
 ### 修剪分支（变鸡）：rebase
 
 <https://git-scm.com/docs/git-rebase>
 
-## tag
+## 标签（tag）
 
 ### 查看
 
@@ -126,18 +100,28 @@ cached: 本地不删除
 
 ### 删除
 
-`git tag -d v1.0`
+-   `git tag -d v1.0`
 
-### 上传到 GitHub
+### 上传到远程库
 
 -   push 单个 tag：`git push origin [tagname]`
 -   push 所有 tag：`git push [origin] --tags`
 
-### 删除 GitHub 上的 tag
+### 从远程库删除
 
-`git push origin :refs/tags/tagname` 或 `git push origin :tagname`
+-   `git push origin :refs/tags/tagname` 或 `git push origin :tagname`
 
-## eol
+## 撤销修改
+
+暂存区 -> 工作区：`git checkout filename`
+
+版本库 -> 暂存区：`git reset HEAD filename`
+
+## 查看历史命令
+
+`git reflog`
+
+## 换行（eol）
 
 `core.autocrlf`：配置 eol 自动转换
 
@@ -149,7 +133,7 @@ cached: 本地不删除
 
 -   _lf_, _crlf_ 或_native_
 
-# 二：git 远程仓库
+# 二：Git 远程仓库
 
 ## 1. 创建 SSH Key
 
@@ -171,12 +155,12 @@ $ ssh-keygen -t rsa -C "youremail@example.com"
 
 1.  关联远程库：`git remote add origin git@github.com:path/repo-name.git`
 2.  推送\[第一次 push]：`git push [-u] [origin master]`
-3.  推送到分支：`git push origin local\_branch:remote\_branch`
+3.  推送到分支：`git push origin local_branch:remote_branch`
 
 ## 5. GitHub pull 到本地仓库
 
 GitHub 上为最新版本，本仓库是旧版本可以用 pull 将本地更新到最新版本
-`git pull [origin remote\_branch:local\_branch]`
+`git pull [origin remote_branch:local_branch]`
 
 pull = fetch（下载） + merge（合并）
 
@@ -194,14 +178,14 @@ pull = fetch（下载） + merge（合并）
 
 ## 7. 配置远程仓库
 
-1.  `git remote 不带参数`：列出已经存在的远程分支
-2.  `git remote -v | --verbose`：列出详细信息，在每一个名字后面列出其远程 url
-3.  `git remote add [shortname] [url]`：添加一个新的远程仓库, 可以指定一个简单的名字, 以便将来引用
-4.  `git remote remove name`：删除远程仓库
+-   `git remote 不带参数`：列出已经存在的远程分支
+-   `git remote -v | --verbose`：列出详细信息，在每一个名字后面列出其远程 url
+-   `git remote add [shortname] [url]`：添加一个新的远程仓库, 可以指定一个简单的名字, 以便将来引用
+-   `git remote remove name`：删除远程仓库
 
-## 8. 版本回退（不推荐）
+## 8. 版本回退（极其不推荐）
 
-1.  本地回滚
+1.  本地版本回退
 2.  删除远程分支
 3.  本地 push 到远程
 
@@ -253,7 +237,7 @@ eg：忽略 / web/upload / 下的所有文件和文件夹，除了 / web/upload/
 
 # 五：多账户配置
 
-## user 和 email
+## 配置 user 和 email
 
 -   全局配置（~/.gitconfig）
     姓名：`git config --global user.name "Your Name"`
@@ -279,27 +263,29 @@ eg：忽略 / web/upload / 下的所有文件和文件夹，除了 / web/upload/
 2.  创建 config 文件
 3.  配置每一个 key
 
-<!---->
-
-    #global_key
+    \#global_key
     Host github.com 
         HostName github.com
         IdentityFile ~/.ssh/name_rsa1
         PreferredAuthentications publickey
         User your_name1
 
-    #xxx_key
-    Host github.com                 
+    \#xxx_key
+    Host github.com  
         HostName github.com
         IdentityFile ~/.ssh/name_rsa2
         PreferredAuthentications publickey
         User your_name2
 
     # 配置文件参数
-    # Host : Host可以看作是一个你要识别的模式，对识别的模式，进行配置对应的的主机名和ssh文件
+
+    # Host : Host 可以看作是一个你要识别的模式，对识别的模式，进行配置对应的的主机名和 ssh 文件
+
     # HostName : 要登录主机的主机名
+
     # User : 登录名
-    # IdentityFile : 指明上面User对应的identityFile路径
+
+    # IdentityFile : 指明上面 User 对应的 identityFile 路径
 
 # 六：在 U 盘中建立 git 仓库
 
