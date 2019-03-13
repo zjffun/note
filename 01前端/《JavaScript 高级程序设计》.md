@@ -1215,7 +1215,15 @@ mousedown、mouseup、click 和 dbclick 顺序：
 
 # 第 15 章 使用 Canvas 绘图
 
-## 15.2.5 变换
+## 15.1 基本用法
+
+在使用`<canvas>`前首先要检测`getContext()`方法是否存在。
+
+使用`toDataURL()`方法可以导出在`<canvas>`上绘制的图形。
+
+## 15.2 2D 上下文
+
+### 15.2.5 变换
 
 > 如果你知道将来还要返回某组属性与变换的组合，可以调用 save() 方法。调用这个方法后，当时的所有设置都会进入一个栈结构，得以妥善保管。然后可以对上下文进行其他修改。等想要回到之前保存的设置时，可以调用 restore() 方法，在保存设置的栈结构中向前返回一级，恢复之前的状态。连续调用 save() 可以把更多设置保存到栈结构中，之后再连续调用 restore() 则可以一级一级返回。
 
@@ -1239,11 +1247,23 @@ mousedown、mouseup、click 和 dbclick 顺序：
     }
     </script>
 
+### 15.2.10 使用图像数据
+
+使用`getImageData`可以获取`<canvas>`的[ImageData](https://developer.mozilla.org/en-US/docs/Web/API/ImageData)实例（包括图像的宽高和每个像素的信息）。
+使用`putImageData()`可以将[ImageData](https://developer.mozilla.org/en-US/docs/Web/API/ImageData)实例设置到`<canvas>`。
+
 ## 15.3 WebGL
 
-书上的太难理解了！
+### 15.3.1 类型化数组
 
-> <https://developer.mozilla.org/zh-CN/docs/Web/API/WebGL_API>
+WebGL 涉及的复杂计算需要提前知道数值的精度，而标准的 JS 数值无法满足。为此 WebGL 引入了类型化数组。
+
+### 15.3.2 WebGL 上下文
+
+-   视口与坐标：WebGL 中的蛇口坐标和网页坐标不一样，其左下角为原点。
+-   着色器：使用 GLSL 语言编写。以字符串的形式传给 WebGL 上下文对象`gl`的`compileShader()`方法进行编译。
+
+> [WebGL: 2D and 3D graphics for the web - Web APIs | MDN](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
 
 # 第 16 章 HTML5 脚本编程
 
