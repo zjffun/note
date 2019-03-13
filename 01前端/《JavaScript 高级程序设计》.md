@@ -1106,7 +1106,110 @@ mousedown、mouseup、click 和 dbclick 顺序：
 </script>
 ```
 
-## 14.5.4 表单与富文本
+## 14.2 文本框脚本
+
+```html
+<form>
+	<!-- size : 可以显示的字符数 -->
+	<input type="text" name="i1" value="initial value" size="4">
+	<br>
+	<!-- 第一个文本节点为初始值 -->
+	<textarea name="t">initial value</textarea>
+	<br>
+	<!-- 绑定限制输入类型的事件 -->
+	<input type="text" name="onlyNum">
+	<br>
+	<!-- 正则验证 -->
+	<input type="text" pattern="\w+">
+</form>
+<script>
+	var forms = document.forms;
+	var input = forms[0].elements[0];
+	var textarea = forms[0].elements[1];
+	var onlyNumInput = forms[0].elements[2];
+
+	// 不建议用 DOM 方法修改文本框的值（例如：修改 <textarea> 的第一个子节点，或使用 setAttribute() 来设置 value 属性）。
+	// 因为这些修改不一定会反映在DOM中。
+	// 建议像下面这样使用 value 属性读取和设置文本框的值。
+	textarea.value = "new initial value";
+	console.log(input.value);
+
+
+	// 选择文本
+	input.addEventListener("focus", (e) => {
+		e.target.select();
+	});
+
+	// 取得选择文本
+	console.log(input.value.substring(input.selectionStart, input.selectionEnd));
+	
+	// 选择部分文本
+	textarea.setSelectionRange(3, 9);
+	textarea.focus();
+
+	// keydown 屏蔽字符（keypress 已经弃用了）
+	onlyNumInput.addEventListener("keydown", (e) => {
+		if(!/\d/.test(e.key) && !e.ctrlKey){
+			e.preventDefault();
+		}
+	});
+
+	// 屏蔽粘贴的字符
+	onlyNumInput.addEventListener("paste", (e) => {
+		if(!/\d/.test(e.clipboardData.getData("text"))){
+			e.preventDefault();
+		}
+	});
+</script>
+```
+
+## 14.3 选择框脚本
+
+-   添加 / 删除选项：使用 DOM 方法（`appendChild()`、`removeChild()`）或选择框的方法（`add()`、`remove()`）
+-   移动选项：使用`appendChild()`将一个选择框中的选项移动到另一个选择框
+-   重排选项：使用`insertBefore()`移动选项的位置
+
+## 14.4 表单序列化
+
+目前还没有内置的表单序列化的方法，参见：[HTMLFormElement - Web APIs | MDN](https://developer.mozilla.org/en-US/docs/Web/API/HTMLFormElement)。造序列化的轮子要注意制定表单字段的显示隐藏、是否禁用、按钮、单选多选等情况的处理。
+
+## 14.5 富文本编辑
+
+设置 iframe 的 designMode 属性可以使这个 iframe 可编辑。
+
+### 14.5.1 使用 contenteditable 属性
+
+通过设置元素的 contenteditable 属性控制该元素是否可编辑。
+
+### 14.5.2 操作富文本
+
+使用`document.execCommand()`执行预定义的命令。
+
+### 14.5.3 富文本选区
+
+使用 Selection 和 Range 的相关的属性和方法，参见：[Selection - Web APIs | MDN](https://developer.mozilla.org/en-US/docs/Web/API/Selection)、[Range - Web APIs | MDN](https://developer.mozilla.org/en-US/docs/Web/API/Range)。
+
+设置选择的文本背景为黄色：
+
+```html
+<div id="rechedit" contenteditable="true" style="background: #ddd;">
+	Hello world!
+</div>
+<button onclick="setbg()">setbg</button>
+<script>
+	function setbg(){
+		var selection = document.getSelection(),
+			range = selection.getRangeAt(0);
+			span = document.createElement("span");
+		// 设置背景
+		span.style.backgroundColor = "yellow";
+		// 设置到选区
+		range.surroundContents(span);
+	}
+</script>
+```
+
+### 14.5.4 表单与富文本
 
 > 由于富文本编辑是使用 iframe 而非表单控件实现的，因此从技术上说，富文本编辑器并不属于表单。换句话说，富文本编辑器中的 HTML 不会被自动提交给服务器，而需要我们手工来提取并提交 HTML。为此，通常可以添加一个隐藏的表单字段，让它的值等于从 iframe 中提取出的 HTML。具体来说，就是在提交表单之前，从 iframe 中提取出 HTML，并将其插入到隐藏的字段中。
 
