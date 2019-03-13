@@ -93,7 +93,17 @@ npm install %my-package%
 
 `npm version 版本号`：确定版本号（格式：主版本号. 次版本号. 修订号）（可以为 major | minor | patch 等）
 
-参见：[docs.npmjs.com/misc/developers.html](https://docs.npmjs.com/misc/developers.html)
+| 代码状态         | 阶段            | 规则                      | 例     |
+| ------------ | ------------- | ----------------------- | ----- |
+| 首次发布         | 新作品           | 从 1.0.0 开始              | 1.0.0 |
+| 向后兼容的 Bug 修复 | Patch release | 增加最右边第一个数字              | 1.0.1 |
+| 向后兼容的新特性     | Minor release | 增加中间数字，并将最后一位数重置为零      | 1.1.0 |
+| 无法向后兼容的更改    | Major release | 增加第一个数字，并将中间和最后一个数字重置为零 | 2.0.0 |
+
+参见：
+
+-   [docs.npmjs.com/misc/developers.html](https://docs.npmjs.com/misc/developers.html)
+-   [About semantic versioning | npm Documentation](https://docs.npmjs.com/about-semantic-versioning#incrementing-semantic-versions-in-published-packages)
 
 # 检查和解决隐患（vulnerabilities）
 

@@ -183,11 +183,30 @@ pull = fetch（下载） + merge（合并）
 -   `git remote add [shortname] [url]`：添加一个新的远程仓库, 可以指定一个简单的名字, 以便将来引用
 -   `git remote remove name`：删除远程仓库
 
-## 8. 版本回退（极其不推荐）
+## 8. 版本回退
 
-1.  本地版本回退
-2.  删除远程分支
-3.  本地 push 到远程
+方案 1（推荐）：
+
+```bash
+$ git revert <commit>
+$ git push origin master
+```
+
+方案 2（不推荐！！！）：
+
+```bash
+$ git reset --hard <commit>
+$ git push origin master -f
+```
+
+方案 3（不推荐！！！）：
+
+```bash
+$ git reset --hard <commit>
+$ # 删掉远程仓库的分支
+$ git push <remote_name> :<branch_name>
+$ git push <branch_name> <branch_name>
+```
 
 ## 9. GitHub Pull Request
 
@@ -208,6 +227,17 @@ pull = fetch（下载） + merge（合并）
 `git fsck --lost-found`
 
 eg：A 更新到 B，B 回退到 A，A 又更新到 C。丢失的 B 用上面的命令找回。（版本回退后在旧版本提交产生的问题）
+
+## 清除 untracked 的文件
+
+谨慎使用可以先加上`-n`检查一下哪些文件将被删除。
+
+`git clean [-d] [-f] [-x] [-n]`
+
+-   `-d`：包括文件夹
+-   `-f`：强制执行
+-   `-x`：删除忽略的文件
+-   `-n`：不删除文件，只列出哪些文件将被删除
 
 # 四：.gitignore
 
