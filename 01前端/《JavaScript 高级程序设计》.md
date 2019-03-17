@@ -1271,7 +1271,11 @@ WebGL 涉及的复杂计算需要提前知道数值的精度，而标准的 JS �
 
 > 跨文档消息传送（cross-document messaging），有时候简称为 XDM，指的是在来自不同域的页面间传递消息。例如， www.wrox.com 域中的页面与位于一个内嵌框架中的 p2p.wrox.com 域中的页面通信。在 XDM 机制出现之前，要稳妥地实现这种通信需要花很多工夫。 XDM 把这种机制规范化，让我们能既稳妥又简单地实现跨文档通信。
 >
-> XDM 的核心是 postMessage() 方法。在 HTML5 规范中，除了 XDM 部分之外的其他部分也会提到这个方法名，但都是为了同一个目的：向另一个地方传递数据。对于 XDM 而言， “另一个地方” 指的是包含在当前页面中的<iframe>元素，或者由当前页面弹出的窗口。
+> XDM 的核心是 `postMessage()` 方法。在 HTML5 规范中，除了 XDM 部分之外的其他部分也会提到这个方法名，但都是为了同一个目的：向另一个地方传递数据。对于 XDM 而言， “另一个地方” 指的是包含在当前页面中的`<iframe>`元素，或者由当前页面弹出的窗口。
+
+发送消息：iframe 的 contentWindow 的`postMessage()` 方法
+
+处理消息：window 的`onmessage`事件
 
 ## 16.2 原生拖放
 
@@ -1286,6 +1290,38 @@ WebGL 涉及的复杂计算需要提前知道数值的精度，而标准的 JS �
 1.  dragenter
 2.  dragover
 3.  dragleave 或 drop
+
+使用`DragEvent`的`dataTransfer`属性的`setData()`和`getData()`方法可以实现拖放的数据交换。
+
+默认情况下图片、链接文本可以拖动，可以通过设置`draggable`属性为`true`使其他元素可拖动。
+
+```html
+<div 
+	id="destination" 
+	style="width: 200px; height: 200px; background: green;"
+	ondrop="alert(event.dataTransfer.getData('text'))"
+>destination</div>
+
+<div 
+	id="box" 
+	style="display: inline; background: lightyellow; cursor: all-scroll;"
+	draggable="true"
+	ondragstart="event.dataTransfer.setData('text/plain', 'test text')"
+>drag me to destination</div>
+```
+
+## 16.3 媒体元素
+
+`<video>`和`<audio>`这两个媒体元素都有一个`canPlayType()`方法检测浏览器是否支持某种格式和解码器。
+
+Audio 不用像 Image 那样必须插入到文档中，只要创建一个实例并传入音频即可使用。
+
+## 16.4 历史状态管理
+
+-   使用`history.pushState()`方法增加历史状态
+-   用户点击后退后触发`popState`事件
+
+注意：请确保每个`pushState()`创造的假的 URL，服务器上都有一个真的 URL 与之对应， 否侧用户点击刷新会导致 404 错误。
 
 # 第 17 章 错误处理与调试
 
