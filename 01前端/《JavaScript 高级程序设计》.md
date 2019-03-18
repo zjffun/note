@@ -1215,7 +1215,15 @@ mousedown、mouseup、click 和 dbclick 顺序：
 
 # 第 15 章 使用 Canvas 绘图
 
-## 15.2.5 变换
+## 15.1 基本用法
+
+在使用`<canvas>`前首先要检测`getContext()`方法是否存在。
+
+使用`toDataURL()`方法可以导出在`<canvas>`上绘制的图形。
+
+## 15.2 2D 上下文
+
+### 15.2.5 变换
 
 > 如果你知道将来还要返回某组属性与变换的组合，可以调用 save() 方法。调用这个方法后，当时的所有设置都会进入一个栈结构，得以妥善保管。然后可以对上下文进行其他修改。等想要回到之前保存的设置时，可以调用 restore() 方法，在保存设置的栈结构中向前返回一级，恢复之前的状态。连续调用 save() 可以把更多设置保存到栈结构中，之后再连续调用 restore() 则可以一级一级返回。
 
@@ -1239,11 +1247,23 @@ mousedown、mouseup、click 和 dbclick 顺序：
     }
     </script>
 
+### 15.2.10 使用图像数据
+
+使用`getImageData`可以获取`<canvas>`的[ImageData](https://developer.mozilla.org/en-US/docs/Web/API/ImageData)实例（包括图像的宽高和每个像素的信息）。
+使用`putImageData()`可以将[ImageData](https://developer.mozilla.org/en-US/docs/Web/API/ImageData)实例设置到`<canvas>`。
+
 ## 15.3 WebGL
 
-书上的太难理解了！
+### 15.3.1 类型化数组
 
-> <https://developer.mozilla.org/zh-CN/docs/Web/API/WebGL_API>
+WebGL 涉及的复杂计算需要提前知道数值的精度，而标准的 JS 数值无法满足。为此 WebGL 引入了类型化数组。
+
+### 15.3.2 WebGL 上下文
+
+-   视口与坐标：WebGL 中的蛇口坐标和网页坐标不一样，其左下角为原点。
+-   着色器：使用 GLSL 语言编写。以字符串的形式传给 WebGL 上下文对象`gl`的`compileShader()`方法进行编译。
+
+> [WebGL: 2D and 3D graphics for the web - Web APIs | MDN](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
 
 # 第 16 章 HTML5 脚本编程
 
@@ -1251,7 +1271,11 @@ mousedown、mouseup、click 和 dbclick 顺序：
 
 > 跨文档消息传送（cross-document messaging），有时候简称为 XDM，指的是在来自不同域的页面间传递消息。例如， www.wrox.com 域中的页面与位于一个内嵌框架中的 p2p.wrox.com 域中的页面通信。在 XDM 机制出现之前，要稳妥地实现这种通信需要花很多工夫。 XDM 把这种机制规范化，让我们能既稳妥又简单地实现跨文档通信。
 >
-> XDM 的核心是 postMessage() 方法。在 HTML5 规范中，除了 XDM 部分之外的其他部分也会提到这个方法名，但都是为了同一个目的：向另一个地方传递数据。对于 XDM 而言， “另一个地方” 指的是包含在当前页面中的<iframe>元素，或者由当前页面弹出的窗口。
+> XDM 的核心是 `postMessage()` 方法。在 HTML5 规范中，除了 XDM 部分之外的其他部分也会提到这个方法名，但都是为了同一个目的：向另一个地方传递数据。对于 XDM 而言， “另一个地方” 指的是包含在当前页面中的`<iframe>`元素，或者由当前页面弹出的窗口。
+
+发送消息：iframe 的 contentWindow 的`postMessage()` 方法
+
+处理消息：window 的`onmessage`事件
 
 ## 16.2 原生拖放
 
@@ -1266,6 +1290,38 @@ mousedown、mouseup、click 和 dbclick 顺序：
 1.  dragenter
 2.  dragover
 3.  dragleave 或 drop
+
+使用`DragEvent`的`dataTransfer`属性的`setData()`和`getData()`方法可以实现拖放的数据交换。
+
+默认情况下图片、链接文本可以拖动，可以通过设置`draggable`属性为`true`使其他元素可拖动。
+
+```html
+<div 
+	id="destination" 
+	style="width: 200px; height: 200px; background: green;"
+	ondrop="alert(event.dataTransfer.getData('text'))"
+>destination</div>
+
+<div 
+	id="box" 
+	style="display: inline; background: lightyellow; cursor: all-scroll;"
+	draggable="true"
+	ondragstart="event.dataTransfer.setData('text/plain', 'test text')"
+>drag me to destination</div>
+```
+
+## 16.3 媒体元素
+
+`<video>`和`<audio>`这两个媒体元素都有一个`canPlayType()`方法检测浏览器是否支持某种格式和解码器。
+
+Audio 不用像 Image 那样必须插入到文档中，只要创建一个实例并传入音频即可使用。
+
+## 16.4 历史状态管理
+
+-   使用`history.pushState()`方法增加历史状态
+-   用户点击后退后触发`popState`事件
+
+注意：请确保每个`pushState()`创造的假的 URL，服务器上都有一个真的 URL 与之对应， 否侧用户点击刷新会导致 404 错误。
 
 # 第 17 章 错误处理与调试
 
