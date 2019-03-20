@@ -21,6 +21,5 @@
     adj. 完整的；完全的  
     v. 完成（complete 的过去分词） 
 
-例：
-1\. 合金弹头里的 Mission Complete 是 "名词 + 形容词"
+例：合金弹头里的 Mission Complete 是 "名词 + 形容词"
 （Mission Completed 这种用法也对，是 "名词 + 形容词" 或 "名词 + 过去式"）

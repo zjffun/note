@@ -24,7 +24,7 @@
     </body>
     </html>
 
-2.  DOM core 和 HTML-DOM
+1.  DOM core 和 HTML-DOM
 
     由于 HTML 与 XML 的相似性及差异，JavaScript 不仅实现了标准的 DOM 方法和属性（即由 W3C 制定的），而且还实现了 HTML 特有的 DOM 方法和属性。
 

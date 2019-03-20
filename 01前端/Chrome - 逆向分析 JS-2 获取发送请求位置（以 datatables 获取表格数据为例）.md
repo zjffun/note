@@ -13,7 +13,7 @@
 
 ![image](https://note.youdao.com/yws/api/personal/file/2D03AF11D1C2485E9CEFBC06C5D912C3?method=download&shareKey=efaebb0315fecec3c94e6a2cb3eabc80)
 
-2.  查看调用堆栈发现在 4717 行开始处理请求得到的数据
+1.  查看调用堆栈发现在 4717 行开始处理请求得到的数据
 
 ![image](https://note.youdao.com/yws/api/personal/file/9E39A9FB73F74906833BFCFC33BF448D?method=download&shareKey=938e04e947fdabf71726cfbb2ff71fac)
 

@@ -240,7 +240,9 @@ eg：这里的 obj 形参是创建了一个指针让他与 person 指针指向�
 
 OO 语言支持两种继承：接口继承和实现继承。由于函数没有签名，ES 无法实现接口继承。
 
-1.  原型链（有两个问题：属性共享和参数传递）
+1.  原型链
+
+    有两个问题：1 属性共享， 2 无法参数传递
 
     ```javascript
     function SuperType(para) {
@@ -272,7 +274,9 @@ OO 语言支持两种继承：接口继承和实现继承。由于函数没有�
     instance1.arr.push(4);
     ```
 
-2.  借用构造函数（和构造函数的问题一样：每个实例不共用属性和方法）
+2.  借用构造函数
+
+    和创建对象的构造函数模式的问题一样，每个实例不共用属性和方法。
 
     ```javascript
     function SuperType(para) {
@@ -291,7 +295,11 @@ OO 语言支持两种继承：接口继承和实现继承。由于函数没有�
     var instance2 = new SubType("instance2");
     ```
 
-3.  组合继承（JS 中最常用的继承模式）
+3.  组合继承
+
+    原型链 + 借用构造函数
+
+    JS 中最常用的继承模式。
 
     ```javascript
     function SuperType(para) {
@@ -325,7 +333,9 @@ OO 语言支持两种继承：接口继承和实现继承。由于函数没有�
     instance1.arr.push(4);
     ```
 
-4.  原型式继承（`Object.create()`）
+4.  原型式继承
+
+    有两个问题：1 属性会共享，2 每个实例无法共用方法
 
     ```javascript
     function createObj(obj) {
@@ -348,7 +358,9 @@ OO 语言支持两种继承：接口继承和实现继承。由于函数没有�
     console.log(person.age);
     ```
 
-5.  寄生式继承（和寄生构造函数类似）
+5.  寄生式继承
+
+    和创建对象的寄生构造函数模式类似，也有属性会共享的问题
 
     ```javascript
     function createObjParasitic(obj) {
@@ -373,7 +385,11 @@ OO 语言支持两种继承：接口继承和实现继承。由于函数没有�
     zi.sayHi();
     ```
 
-6.  寄生组合式继承（将`new SuperType()`改为`Object.create(SuperType.prototype)`减少一次父类的调用，还避免了在`SubType`上添加不必要的属性）
+6.  寄生组合式继承
+
+    寄生式继承 + 组合式继承
+
+    将`new SuperType()`改为`Object.create(SuperType.prototype)`减少一次父类的调用，还避免了在`SubType`上添加不必要的属性。
 
     ```javascript
     function inheritPrototype(sub, sup) {
@@ -1579,19 +1595,19 @@ JSON 的语法可以表示以下三种类型的值。
 -   removeItem(name)：删除由 name 指定的名值对儿。
 -   setItem(name, value)：为指定的 name 设置一个对应的值。
 
-2.  sessionStorage 对象 
+1.  sessionStorage 对象 
 
     sessionStorage 对象存储特定于某个会话的数据，也就是该数据只保持到浏览器关闭。这个对象就像会话 cookie，也会在浏览器关闭后消失。存储在 sessionStorage 中的数据可以跨越页面刷新而存在，同时如果浏览器支持，浏览器崩溃并重启之后依然可用（Firefox 和 WebKit 都支持， IE 则不行）。因为 seesionStorage 对象绑定于某个服务器会话，所以当文件在本地运行的时候是不可用的。存储在 sessionStorage 中的数据只能由最初给对象存储数据的页面访问到，所以对多页面应用有限制。由于 sessionStorage 对象其实是 Storage 的一个实例，所以可以使用 setItem() 或者直接设置新的属性来存储数据。下面是这两种方法的例子。
 
-3.  globalStorage 对象 
+2.  globalStorage 对象 
 
     Firefox 2 中实现了 globalStorage 对象。作为最初的 Web Storage 规范的一部分，这个对象的目的是跨越会话存储数据，但有特定的访问限制。要使用 globalStorage，首先要指定哪些域可以访问该数据。可以通过方括号标记使用属性来实现，如以下例子所示。
 
-4.  localStorage 对象 
+3.  localStorage 对象 
 
     localStorage 对象在修订过的 HTML 5 规范中作为持久保存客户端数据的方案取代了 globalStorage。与 globalStorage 不同，不能给 localStorage 指定任何访问规则；规则事先就设定好了。要访问同一个 localStorage 对象，页面必须来自同一个域名（子域名无效），使用同一种协议，在同一个端口上。这相当于 `globalStorage[location.host]`。
 
-5.  storage 事件 
+4.  storage 事件 
 
     对 Storage 对象进行任何修改，都会在文档上触发 storage 事件。当通过属性或 setItem() 方法保存数据，使用 delete 操作符或 removeItem() 删除数据，或者调用 clear() 方法时，都会发生该事件。这个事件的 event 对象有以下属性。
 
@@ -1624,11 +1640,11 @@ JSON 的语法可以表示以下三种类型的值。
 >
 > 将 HTML 和 JavaScript 解耦可以在调试过程中节省时间，更加容易确定错误的来源，也减轻维护的难度：更改行为只需要在 JavaScript 文件中进行，而更改标记则只要在渲染文件中。
 
-2.  解耦 HTML/JavaScript
+1.  解耦 HTML/JavaScript
 
 > 由于 CSS 负责页面的显示，当显示出现任何问题时都应该只是查看 CSS 文件来解决。然而，当使用了 JavaScript 来更改某些样式的时候，比如颜色，就出现了第二个可能已更改和必须检查的地方。结果是 JavaScript 也在某种程度上负责了页面的显示，并与 CSS 紧密耦合了。如果未来需要更改样式表，CSS 和 JavaScript 文件可能都需要修改。这就给开发人员造成了维护上的噩梦。所以在这两个层次之间必须有清晰的划分。
 
-3.  解耦应用逻辑／事件处理程序
+1.  解耦应用逻辑／事件处理程序
 
 应用和业务逻辑之间松散耦合的几条原则：
 
@@ -1647,15 +1663,15 @@ JSON 的语法可以表示以下三种类型的值。
 
 > 一旦你需要访问的 DOM 部分是已经显示的页面的一部分，那么你就是在进行一个现场更新。之所以叫现场更新，是因为需要立即（现场）对页面对用户的显示进行更新。每一个更改，不管是插入单个字符，还是移除整个片段，都有一个性能惩罚，因为浏览器要重新计算无数尺寸以进行更新。现场更新进行得越多，代码完成执行所花的时间就越长；完成一个操作所需的现场更新越少，代码就越快。
 
-2.  使用 innerHTML
+1.  使用 innerHTML
 
 > 有两种在页面上创建 DOM 节点的方法：使用诸如 createElement() 和 appendChild() 之类的 DOM 方法，以及使用 innerHTML。对于小的 DOM 更改而言，两种方法效率都差不多。然而，对于大的 DOM 更改，使用 innerHTML 要比使用标准 DOM 方法创建同样的 DOM 结构快得多。
 
-3.  使用事件代理
+1.  使用事件代理
 
 > 大多数 Web 应用在用户交互上大量用到事件处理程序。页面上的事件处理程序的数量和页面响应用户交互的速度之间有个负相关。为了减轻这种惩罚，最好使用事件代理。
 
-4.  注意 HTMLCollection
+1.  注意 HTMLCollection
 
 > HTMLCollection 对象的陷阱已经在本书中讨论过了，因为它们对于 Web 应用的性能而言是巨大的损害。记住，任何时候要访问 HTMLCollection，不管它是一个属性还是一个方法，都是在文档上进行一个查询，这个查询开销很昂贵。最小化访问 HTMLCollection 的次数可以极大地改进脚本的性能。
 
@@ -1693,7 +1709,7 @@ JSLint 可以查找 JavaScript 代码中的语法错误以及常见的编码错�
     #告诉 mod_deflate 要包含所有的 JavaScript 文件
     AddOutputFilterByType DEFLATE application/x-javascript
 
-2.  HTTP 压缩
+1.  HTTP 压缩
 
 > 配重指的是实际从服务器传送到浏览器的字节数。因为现在的服务器和浏览器都有压缩功能，这个字节数不一定和代码长度一样。所有的五大 Web 浏览器（IE、 Firefox、 Safari、 Chrome 和 Opera）都支持对所接收的资源进行客户端解压缩。这样服务器端就可以使用服务器端相关功能来压缩 JavaScript 文件。一个指定了文件使用了给定格式进行了压缩的 HTTP 头包含在了服务器响应中。接着浏览器会查看该 HTTP 头确定文件是否已被压缩，然后使用合适的格式进行解压缩。结果是和原来的代码量相比在网络中传递的字节数量大大减少了。
 

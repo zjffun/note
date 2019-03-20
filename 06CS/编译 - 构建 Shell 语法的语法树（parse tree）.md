@@ -54,10 +54,11 @@ cmd_word         : WORD
 ```
 
 这个文法表示：
-1\. `pipe_sequence`是一个`simple_command`后面跟着 0 个或多个`simple_command`
-1\. `cmd_suffix`是一个或多个`cmd_word`
-1\. `simple_command`是一个`cmd_name` 后面带有 0 个或一个`cmd_suffix`
-1\. `cmd_name`和`cmd_word`是`WORD`符号
+
+1.  `pipe_sequence`是一个`simple_command`后面跟着 0 个或多个`simple_command`
+2.  `cmd_suffix`是一个或多个`cmd_word`
+3.  `simple_command`是一个`cmd_name` 后面带有 0 个或一个`cmd_suffix`
+4.  `cmd_name`和`cmd_word`是`WORD`符号
 
 每一个规则都将用方法实现。
 

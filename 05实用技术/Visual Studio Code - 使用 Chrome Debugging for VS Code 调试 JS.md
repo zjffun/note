@@ -47,8 +47,9 @@
 ## 一：配置 Chrome
 
 我用的是 Windows 配置方法如下：
-1\. 找到默认打开 Chrome 的快捷方式，一般是`C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Google Chrome`
-1\. 目标后面加上`--remote-debugging-port`配置，如：`"C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" --remote-debugging-port=9222`
+
+1.  找到默认打开 Chrome 的快捷方式，一般是`C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Google Chrome`
+2.  目标后面加上`--remote-debugging-port`配置，如：`"C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" --remote-debugging-port=9222`
 
 > Windows
 >
@@ -102,26 +103,29 @@ webpack.config.js
 ## 三：配置 launch.json
 
 注意：
-1\. 配置中的端口虽然默认就是 9222，但我测试时配置中不指定端口会报`connect ECONNREFUSED 127.0.0.1:9229`这种连接不上其他的端口的错
-1\. 配置中的 url 一定是当前要调试的 tab 的 url（例如：配置 url 为[http://localhost:3000/，但浏览器打开 http://localhost:3000 / 时自动跳转到 http://localhost:3000/index.html，这时按 F5 调试就会报 \` 无法连接到运行中的进程 \` 的错误），这也是我把配置 launch.json 放到最后一步的原因。（PS：这种情况也可以通过配置 \`urlFilter\` 解决）](http://localhost:3000/，但浏览器打开http://localhost:3000/时自动跳转到http://localhost:3000/index.html，这时按F5调试就会报`无法连接到运行中的进程`的错误），这也是我把配置launch.json放到最后一步的原因。（PS：这种情况也可以通过配置`urlFilter`解决）)
 
+1.  配置中的端口虽然默认就是 9222，但我测试时配置中不指定端口会报`connect ECONNREFUSED 127.0.0.1:9229`这种连接不上其他的端口的错
+2.  配置中的 url 一定是当前要调试的 tab 的 url（例如：配置 url 为[http://localhost:3000/，但浏览器打开 http://localhost:3000 / 时自动跳转到 http://localhost:3000/index.html，这时按 F5 调试就会报 \` 无法连接到运行中的进程 \` 的错误），这也是我把配置 launch.json 放到最后一步的原因。（PS：这种情况也可以通过配置 \`urlFilter\` 解决）](http://localhost:3000/，但浏览器打开http://localhost:3000/时自动跳转到http://localhost:3000/index.html，这时按F5调试就会报`无法连接到运行中的进程`的错误），这也是我把配置launch.json放到最后一步的原因。（PS：这种情况也可以通过配置`urlFilter`解决）)
+
+```json
+{
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: <https://go.microsoft.com/fwlink/?linkid=830387>
+  "version": "0.2.0",
+  "configurations": [
     {
-      // Use IntelliSense to learn about possible attributes.
-      // Hover to view descriptions of existing attributes.
-      // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
-      "version": "0.2.0",
-      "configurations": [
-        {
-          "type": "chrome",
-          "request": "attach",
-          "name": "Attach to Chrome",
-          "url": "http://localhost:3000/",
-          "port": 9222,
-          "sourceMaps": true,
-          "webRoot": "${workspaceRoot}" 
-        }
-      ]
+      "type": "chrome",
+      "request": "attach",
+      "name": "Attach to Chrome",
+      "url": "http://localhost:3000/",
+      "port": 9222,
+      "sourceMaps": true,
+      "webRoot": "${workspaceRoot}" 
     }
+  ]
+}
+```
 
 # 参考
 

@@ -92,11 +92,11 @@ CURLOPT_HEADER：是否获取响应头数据
 ## 操作响应头：
 
 header() 函数
-1\. json：`header("Content-Type: application/json")`;  
-（ie6：`header("Content-Type: text/json");`）
-1\. 图片：`header('Content-Type:image/jpeg');`，`header('Content-Type:image/png');`等;
-1\. 编码：`header("Content-Type:text/html; Charset=utf-8");`
-1\. 下载：`header("Content-Disposition:attachment; filename = \"filename.jpg\"");`
+
+1.  json：`header("Content-Type: application/json");`（ie6：`header("Content-Type: text/json");`）
+2.  图片：`header('Content-Type:image/jpeg');`，`header('Content-Type:image/png');`等
+3.  编码：`header("Content-Type:text/html; Charset=utf-8");`
+4.  下载：`header("Content-Disposition:attachment; filename = \"filename.jpg\"");`
 
 ## 操作响应主体
 
@@ -146,8 +146,9 @@ gmdate() 将时间戳格式化为格林威治平时
 
 Header("Location: URL 地址");  
 注意：
-1\. Header() 函数前不能存在任何的输出内容
-1\. Header() 函数后边的代码也会照常执行
+
+1.  Header() 函数前不能存在任何的输出内容
+2.  Header() 函数后边的代码也会照常执行
 
 ### 提示跳转
 

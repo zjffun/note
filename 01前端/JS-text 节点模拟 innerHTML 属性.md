@@ -1,30 +1,34 @@
 # [在线预览](https://jsfiddle.net/1010543618/mz7ybu8g/2/)
 
 text 节点无 innerHTML 这个属性！！！  
-如果直接修改 text 节点的属性（data,nodeValue,textContent），或者使用 js 原生的修改 text 节点的内容的方法都会将 HTML 的预留字符变成转义字符直接显示成文本了，解决方法有：  
-1. 使用正则表达式找出 pre 的 innerHTML 字符串中的全部 text 节点的字符串进行修改
-1\. 给 text 外面包裹一个标签，改包裹标签的 innerHTML，把包裹标签的内容移动到外面，删除包裹标签
-1\. 使用 jquery 的 replaceWith 方法，这个就非常严谨了
+如果直接修改 text 节点的属性（data,nodeValue,textContent），或者使用 js 原生的修改 text 节点的内容的方法都会将 HTML 的预留字符变成转义字符直接显示成文本了，解决方法有： 
 
-    replaceWith: function( value ) {
-      var isFunc = jQuery.isFunction( value );
+1.  使用正则表达式找出 pre 的 innerHTML 字符串中的全部 text 节点的字符串进行修改
+2.  给 text 外面包裹一个标签，改包裹标签的 innerHTML，把包裹标签的内容移动到外面，删除包裹标签
+3.  使用 jquery 的 replaceWith 方法，这个就非常严谨了
 
-      // Make sure that the elements are removed from the DOM before they are inserted
-      // this can help fix replacing a parent with child elements
-      if ( !isFunc && typeof value !== "string" ) {
-        value = jQuery( value ).not( this ).detach();
-      }
+```js
+replaceWith: function(value) {
+  var isFunc = jQuery.isFunction( value );
 
-      return this.domManip( [ value ], true, function( elem ) {
-        var next = this.nextSibling,
-          parent = this.parentNode;
+  // Make sure that the elements are removed from the DOM before they are inserted
+  // this can help fix replacing a parent with child elements
+  if (!isFunc && typeof value !== "string") {
+    value = jQuery( value ).not( this ).detach();
+  }
 
-        if ( parent ) {
-          jQuery( this ).remove();
-          parent.insertBefore( elem, next );
-        }
-      });
-    },
+  return this.domManip( [ value ], true, function(elem) {
+    var next = this.nextSibling,
+      parent = this.parentNode;
+
+    if ( parent ) {
+      jQuery( this ).remove();
+      parent.insertBefore( elem, next );
+    }
+
+  });
+},
+```
 
 例：将 pre 标签中的回车替换为 `<br>`，空格替换为 `&ebsp`;，制表符替换成双 `&ebsp`;
 

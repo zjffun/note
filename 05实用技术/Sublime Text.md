@@ -26,7 +26,7 @@
 -   SublimeLinter-contrib-eslint：ECMAScrip 检查（要先用 npm 装 eslint）
 -   xxx-snippets：xxx 的代码片段
 -   Sublimerge Pro：代码对比（只能试用 90 天）  
-    默认按键设置：`{ "keys": ["ctrl+alt+d"], "command": "sublimerge"}`
+    默认按键设置：`{"keys": ["ctrl+alt+d"], "command": "sublimerge"}`
 -   diffy：代码对比（免费）
 -   CSScomb： CSS 属性排序
 -   MultiFill：多处填充（生成顺序数字，人名等）

@@ -88,9 +88,10 @@
 # ORA-12560:TNS: 协议适配器错误。
 
 造成 ORA-12560: TNS: 协议适配器错误的问题的原因有三个：
-1. 监听服务没有起起来。windows 平台个一如下操作：开始 --- 程序 --- 管理工具 --- 服务，打开服务面板，启动 oraclehome92TNSlistener 服务。
-1. database instance 没有起起来。windows 平台如下操作：开始 --- 程序 --- 管理工具 --- 服务，打开服务面板，启动 oracleserviceXXXX,XXXX 就是你的 database SID.
-1. 注册表问题。regedit，然后进入 HKEY_LOCAL_MACHINE\\SOFTWARE\\ORACLE\\HOME0 将该环境变量 ORACLE_SID 设置为 XXXX,XXXX 就是你的 database SID. 或者右几我的电脑，属性 -- 高级 -- 环境变量 --- 系统变量 -- 新建，变量名 = oracle_sid, 变量值 = XXXX,XXXX 就是你的 database SID. 或者进入 sqlplus 前，在 command line 下输 set oracle_sid=XXXX,XXXX 就是你的 database SID.
+
+1.  监听服务没有起起来。windows 平台个一如下操作：开始 --- 程序 --- 管理工具 --- 服务，打开服务面板，启动 oraclehome92TNSlistener 服务。
+2.  database instance 没有起起来。windows 平台如下操作：开始 --- 程序 --- 管理工具 --- 服务，打开服务面板，启动 oracleserviceXXXX,XXXX 就是你的 database SID.
+3.  注册表问题。regedit，然后进入 HKEY_LOCAL_MACHINE\\SOFTWARE\\ORACLE\\HOME0 将该环境变量 ORACLE_SID 设置为 XXXX,XXXX 就是你的 database SID. 或者右几我的电脑，属性 -- 高级 -- 环境变量 --- 系统变量 -- 新建，变量名 = oracle_sid, 变量值 = XXXX,XXXX 就是你的 database SID. 或者进入 sqlplus 前，在 command line 下输 set oracle_sid=XXXX,XXXX 就是你的 database SID.
 
 # ORA-12154: TNS: 无法解析指定的连接标识符
 

@@ -187,13 +187,13 @@ set：专门用于方便存储类似表单中的多选项的值。
     show charset;#显示可用字符集  
     show collation;#显示可用排序规则  
 
-2.  修改数据库
+1.  修改数据库
     ALTER DATABASE 数据库名 CHARSET = 新字符集 COLLATE = 新校对集;
 
         ALTER DATABASE mytest CHARSET=utf8 COLLATE=utf8_bin;
         show create database mytest;#查看创建数据的语句
 
-3.  删除数据库
+2.  删除数据库
     DROP DATABASE 数据库名
 
         DROP DATABASE mytest;

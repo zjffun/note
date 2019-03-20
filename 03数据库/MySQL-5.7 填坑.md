@@ -4,13 +4,14 @@
 
 文档里的安装流程：  
 [MySQL :: MySQL 5.7 Reference Manual :: 2.3.5 Installing MySQL on Microsoft Windows Using a noinstall ZIP Archive](https://dev.mysql.com/doc/refman/5.7/en/windows-install-archive.html)
-1\. Extract the main archive to the desired install directory
-1\. Optional: also extract the debug-test archive if you plan to execute the MySQL benchmark and test suite
-1\. Create an option file
-1\. Choose a MySQL server type
-1\. Initialize MySQL
-1\. Start the MySQL server
-1\. Secure the default user accounts 
+
+1.  Extract the main archive to the desired install directory
+2.  Optional: also extract the debug-test archive if you plan to execute the MySQL benchmark and test suite
+3.  Create an option file
+4.  Choose a MySQL server type
+5.  Initialize MySQL
+6.  Start the MySQL server
+7.  Secure the default user accounts 
 
 附 wamp 的 my.ini（记得改各个文件夹）：
 

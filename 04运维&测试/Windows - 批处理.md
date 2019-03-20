@@ -14,9 +14,10 @@
 -   （以上选项可以组合起来使用，~ 表示删除参数外面的引号）
 
 eg:  
-1. `test.bat "test"`  
-%1："test"  
-%~1：test（没有了双引号）  
+
+1.  `test.bat "test"`  
+    %1："test"  
+    %~1：test（没有了双引号）  
 
 2.  bat 文件在 e:/mybat/test.bat  
     %0：e:/mybat/test.bat  
