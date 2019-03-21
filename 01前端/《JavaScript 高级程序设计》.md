@@ -1443,8 +1443,8 @@ eg：非致命错误添加 try-catch 可以使非致命错误发生后后续代�
 # 第 18 章 JavaScript 与 XML
 
 -   DOMParser 和 XMLSerializer 接口提供的 XML 和 DOM 文档的转换
--   [XPath](https://developer.mozilla.org/en-US/docs/Web/XPath)查找 XML 节点
--   [XSLT](https://developer.mozilla.org/en-US/docs/Web/XSLT)转换 XML 文档
+-   [XPath](https://developer.mozilla.org/en-US/docs/Web/XPath) 查找 XML 节点
+-   [XSLT](https://developer.mozilla.org/en-US/docs/Web/XSLT) 转换 XML 文档
 
 # 第 19 章 E4X
 
