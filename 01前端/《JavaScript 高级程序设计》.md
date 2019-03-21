@@ -1440,7 +1440,13 @@ eg：非致命错误添加 try-catch 可以使非致命错误发生后后续代�
 -   可以避免跨域限制。通常都是一台服务器要负责处理多台服务器的错误，而这种情况下使用 XMLHttpRequest 是不行的。
 -   在记录错误的过程中出问题的概率比较低。大多数 Ajax 通信都是由 JavaScript 库提供的包装函数来处理的，如果库代码本身有问题，而你还在依赖该库记录错误，可想而知，错误消息是不可能得到记录的。
 
-# 第 18 章 JavaScript 与 XML，第 19 章 E4X
+# 第 18 章 JavaScript 与 XML
+
+-   DOMParser 和 XMLSerializer 接口提供的 XML 和 DOM 文档的转换
+-   [XPath](https://developer.mozilla.org/en-US/docs/Web/XPath)查找 XML 节点
+-   [XSLT](https://developer.mozilla.org/en-US/docs/Web/XSLT)转换 XML 文档
+
+# 第 19 章 E4X
 
 XML 相关
 
