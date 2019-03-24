@@ -72,12 +72,12 @@ eg：这里的 obj 形参是创建了一个指针让他与 person 指针指向�
         var color = "blue";
     }
     alert(color); //"blue"
-    
+
     // 2.for
     for (var i=0; i < 10; i++){
     }
     alert(i); //10
-    
+
     // 3.function
     function add(num1, num2) {
         var sum = num1 + num2;
@@ -1448,7 +1448,7 @@ eg：非致命错误添加 try-catch 可以使非致命错误发生后后续代�
 
 # 第 19 章 E4X
 
-E4X 已经废弃了（[E4X - Archive of obsolete content | MDN](https://developer.mozilla.org/en-US/docs/Archive/Web/E4X)），大概看了一下感觉JSX和XML字面量有点像啊（PS：确实只是有点像，[JSX | XML-like syntax extension to ECMAScript](https://facebook.github.io/jsx/#prior-art)）。
+E4X 已经废弃了（[E4X - Archive of obsolete content | MDN](https://developer.mozilla.org/en-US/docs/Archive/Web/E4X)），大概看了一下感觉 JSX 和 XML 字面量有点像啊（PS：确实只是有点像，[JSX | XML-like syntax extension to ECMAScript](https://facebook.github.io/jsx/#prior-art)）。
 
 # 第 20 章 JSON
 
@@ -1462,19 +1462,19 @@ JSON 的语法可以表示以下三种类型的值。
 
 ## 20.2 序列化和解析
 
-与XML数据结构解析成DOM文档提取数据很麻烦，而JSON解析为JS对象提取数据非常简单。
+与 XML 数据结构解析成 DOM 文档提取数据很麻烦，而 JSON 解析为 JS 对象提取数据非常简单。
 
-### 20.2.1 JSON对象
+### 20.2.1 JSON 对象
 
-早期JSON解析器基本上就是使用JS的`eavl()`函数，由于JSON是JS语法的子集，因此`eavl()`函数可以解析并返回数据。ES5对即系解析JSON的行为进行规范，定义了全局对象JSON。
+早期 JSON 解析器基本上就是使用 JS 的`eavl()`函数，由于 JSON 是 JS 语法的子集，因此`eavl()`函数可以解析并返回数据。ES5 对即系解析 JSON 的行为进行规范，定义了全局对象 JSON。
 
-JSON对象有两个方法：`stringify()`和`parse()`。
+JSON 对象有两个方法：`stringify()`和`parse()`。
 
 ### 20.2.2 序列化选项
 
 > `JSON.stringify()` 除了要序列化的 JavaScript 对象外，还可以接收另外两个参数，这两个参数用于指定以不同的方式序列化 JavaScript 对象。第一个参数是个过滤器，可以是一个数组，也可以是一个函数；第二个参数是一个选项，表示是否在 JSON 字符串中保留缩进。
 
-可以为对象添加`toJSON()`方法，这个方法会返回自身的JSON数据格式。
+可以为对象添加`toJSON()`方法，这个方法会返回自身的 JSON 数据格式。
 
 例如：
 
@@ -1512,27 +1512,79 @@ console.log(obj.birthday.getFullYear());// 1970
 
 # 第 21 章 Ajax 与 Comet
 
-## 21.1.1 XHR 的用法
+## 21.1 XMLHttpRequest 对象
 
--   open()：接受 3 个参数：要发送的请求的类型（"get"、 "post" 等）、请求的 URL 和表示是否异步发送请求的布尔值。
--   send()：接收一个参数，即要作为请求主体发送的数据。如果不需要通过请求主体发送数据，则必须传入 null，因为这个参数对有些浏览器来说是必需的。
--   readyState：表示请求 / 响应过程的当前活动阶段。
--   onreadystatechange：readyState 属性的值由一个值变成另一个值，都会触发一次 readystatechange 事件。可以利用这个事件来检测每次状态变化后 readyState 的值。
+[XMLHttpRequest - Web APIs | MDN](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest)
 
 ```javascript
-var xhr = createXHR();
+var xhr = new XMLHttpRequest();
 xhr.onreadystatechange = function(){
-if (xhr.readyState == 4){
-if ((xhr.status >= 200 && xhr.status < 300) || xhr.status == 304){
-alert(xhr.responseText);
-} else {
-alert("Request was unsuccessful: " + xhr.status);
-}
-}
+	if (xhr.readyState == 4){
+        if ((xhr.status >= 200 && xhr.status < 300) || xhr.status == 304){
+            alert(xhr.responseText);
+        } else {
+            alert("Request was unsuccessful: " + xhr.status);
+        }
+    }
 };
-xhr.open("get", "example.txt", true);
+xhr.open("GET", "example.txt", true);
 xhr.send(null);
 ```
+
+### 21.1.3 GET 请求
+
+> 查询字符串中每个参数的名称和值必须使用`encodeURIComponent()`进行编码然后放到 URL 的末尾。
+
+1.  使用`open()`方法时第一个参数为 get
+2.  构建带查询字符串的 URL
+
+### 21.1.4 POST 请求
+
+> POST 请求应该把数据作为请求主体提交。
+>
+> POST 请求的主体可以包含非常多的数据，而且格式不限。
+
+1.  使用`open()`方法时第一个参数为 post
+2.  使用`send()`方法发送数据
+
+## 21.2 XMLHttpRequest 2 级
+
+### 21.2.1 FormData
+
+[FormData - Web APIs | MDN](https://developer.mozilla.org/en-US/docs/Web/API/FormData)
+
+```html
+<form>
+	<input type="text" name="inp">
+	<input type="radio" name="ra" value="male" checked>
+	<input type="radio" name="ra" value="famale">
+	<select name="sel">
+		<option>t1</option>
+		<option>t2</option>
+	</select>
+</form>
+
+<script>
+	var xhr = new XMLHttpRequest();
+	xhr.onreadystatechange = function(){
+		if (xhr.readyState == 4){
+	        if ((xhr.status >= 200 && xhr.status < 300) || xhr.status == 304){
+	            alert(xhr.responseText);
+	        } else {
+	            alert("Request was unsuccessful: " + xhr.status);
+	        }
+	    }
+	};
+	xhr.open("POST", "example.php");
+	xhr.send(new FormData(document.forms[0]));
+</script>
+```
+
+## 21.3 进度事件
+
+[XMLHttpRequest: progress event - Web APIs | MDN](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/progress_event)
+
+当请求接收到数据这个事件会定期触发。
 
 ## 21.4 跨源资源共享
 
@@ -1548,11 +1600,50 @@ xhr.send(null);
 
 > 如果没有这个头部，或者有这个头部但源信息不匹配，浏览器就会驳回请求。正常情况下，浏览器会处理请求。注意，请求和响应都不包含 cookie 信息。
 
+浏览器对 CORS 的实现：
+
+> 要请求位于另一个域中的资源，使用标准的 XHR 对象并在`open()`方法中传入绝对 URL 即可：
+
+```js
+var xhr = new XMLHttpRequest();
+xhr.onload = function(){
+    if ((xhr.status >= 200 && xhr.status < 300) || xhr.status == 304){
+        alert(xhr.responseText);
+    } else {
+        alert("Request was unsuccessful: " + xhr.status);
+    }
+};
+xhr.open("GET", "http://www.somewhere-else.com");
+xhr.send(null);
+```
+
+跨越 XHR 的限制：
+
+1.  不能使用[`setRequestHeader()`](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/setRequestHeader)设置自定义请求头
+2.  不能发送和接收 cookie
+3.  调用[`getAllResponseHeaders()`](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/getAllResponseHeaders)总会返回空字符串
+
+### 21.4.3 Preflighted Request
+
+[Preflight request - MDN Web Docs Glossary: Definitions of Web-related terms | MDN](https://developer.mozilla.org/en-US/docs/Glossary/Preflight_request)
+
+> 一个 CORS 预检请求是用于检查服务器是否支持 [CORS](https://developer.mozilla.org/en-US/docs/Glossary/CORS) 即跨域资源共享。
+>
+> 它一般是用了以下几个 HTTP 请求首部的 [`OPTIONS`](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Methods/OPTIONS) 请求：[`Access-Control-Request-Method`](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Access-Control-Request-Method) 和 [`Access-Control-Request-Headers`](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Access-Control-Request-Headers)，以及一个 [`Origin`](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Origin) 首部。
+>
+> 当有必要的时候，浏览器会自动发出一个预检请求；所以在正常情况下，前端开发者不需要自己去发这样的请求。
+
+### 21.4.4 带凭据请求
+
+> 默认情况下，跨域请求不提供凭据（cookie，HTTP 认证，及客户端 SSL 证明等）。通过将 withCredentials 设置为 true，可以指定某个请求应该发送凭据。
+>
+> IE10 及更早版本都不支持！
+
 ## 21.5 其他跨域技术
 
--   图像 Ping
+### 21.5.1 图像 Ping
 
-<!---->
+无法处理相应的信息，只能使用 onload 和 onerror 确定是否接收到相应，因此只能用于浏览器与服务器单向通信。
 
     var img = new Image();
     img.onload = img.onerror = function(){
@@ -1560,9 +1651,9 @@ xhr.send(null);
     };
     img.src = "http://www.example.com/test?name=Nicholas";
 
--   JSONP
+### 21.5.2 JSONP
 
-<!---->
+例：通过查询地理定位服务来显示你的 IP 地址和位置信息。（接口已经废弃：[apilayer/freegeoip: IP geolocation web server](https://github.com/apilayer/freegeoip#readme)）
 
     function handleResponse(response){
         alert("You’ re at IP address " + response.ip + ", which is in " + response.city + ", " + response.region_name);
@@ -1571,25 +1662,39 @@ xhr.send(null);
     script.src = "http://freegeoip.net/json/?callback=handleResponse";
     document.body.insertBefore(script, document.body.firstChild);
 
--   Comet
+问题：
 
-    Ajax 是一种从页面向服务器请求数据的技术，而 Comet 则是一种服务器向页面推送数据的技术。 Comet 能够让信息近乎实时地被推送到页面上，非常适合处理体育比赛的分数和股票报价。
+1.  执行其他域的代码不安全
+2.  确定 JSONP 请求是否失败不容易（目前除了 FireFox 和 Chrome，其他浏览器的对 onerror 事件的支持都是未知。[GlobalEventHandlers.onerror - Web APIs | MDN](https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onerror)）
 
--   SSE
+## Comet
 
-    服务器发送事件（Server-Sent Events），是围绕只读 Comet 交互推出的 API 或者模式。 SSE API 用于创建到服务器的单向连接，服务器通过这个连接可以发送任意数量的数据。
+> Ajax 是一种从页面向服务器请求数据的技术，而 Comet 则是一种服务器向页面推送数据的技术。 Comet 能够让信息近乎实时地被推送到页面上，非常适合处理体育比赛的分数和股票报价。
 
--   Web Sockets
+实现方式：
 
-    Web Sockets 的目标是在一个单独的持久连接上提供全双工、双向通信。
+1.  使用长轮询：页面发起请求等待服务器回复，服务器回复后开启发起新请求
+2.  使用 HTTP 流：浏览器发送一个请求，服务器保持连接打开，然后周期性地像浏览器发送数据，浏览器通过 readystatechange 事件检测 readyState 是否为 3 就可以利用 HTTP 流。
 
 ## SSE 与 Web Sockets
+
+-   [EventSource - Web APIs | MDN](https://developer.mozilla.org/en-US/docs/Web/API/EventSource)
+-   [WebSocket - Web APIs | MDN](https://developer.mozilla.org/en-US/docs/Web/API/WebSocket)
 
 > 面对某个具体的用例，在考虑是使用 SSE 还是使用 Web Sockets 时，可以考虑如下几个因素。
 >
 > 首先，你是否有自由度建立和维护 Web Sockets 服务器？因为 Web Socket 协议不同于 HTTP，所以现有服务器不能用于 Web Socket 通信。 SSE 倒是通过常规 HTTP 通信，因此现有服务器就可以满足需求。
 >
 > 第二个要考虑的问题是到底需不需要双向通信。如果用例只需读取服务器数据（如比赛成绩），那么 SSE 比较容易实现。如果用例必须双向通信（如聊天室），那么 Web Sockets 显然更好。别忘了，在不能选择 Web Sockets 的情况下，组合 XHR 和 SSE 也是能实现双向通信的。
+
+## 21.6 安全
+
+> 对于未被授权系统有权访问某个资源的情况，我们称之为 CSRF（Cross-Site Request Forgery，跨站点请求伪造）。
+
+为了确保通过 XHR 访问的 URL 安全，通行的做法就是验证发送请求者是否有权访问相应的资源。有以下方法可供选择：
+
+-   通过 SSL 连接来访问可以通过 XHR 请求的资源
+-   每次请求都携带 token
 
 # 第 22 章 高级技巧
 
@@ -1656,7 +1761,7 @@ xhr.send(null);
         }
       }
     };
-    
+
     function handleMessage(event){
       alert("Message received: " + event.message);
     }
@@ -1723,7 +1828,7 @@ xhr.send(null);
     <script type="text/javascript">
     document.write("Hello world!");
     </script>
-    
+
     <!-- 使用事件处理程序属性值的紧密耦合的 HTML/JavaScript -->
     <input type="button" value="Click Me" onclick="doSomething()" />
 
