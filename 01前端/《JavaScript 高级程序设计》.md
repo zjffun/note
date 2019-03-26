@@ -389,7 +389,7 @@ OO 语言支持两种继承：接口继承和实现继承。由于函数没有�
 
     寄生式继承 + 组合式继承
 
-    将`new SuperType()`改为`Object.create(SuperType.prototype)`减少一次父类的调用，还避免了在`SubType`上添加不必要的属性。
+    将`new SuperType()`改为`Object.create(SuperType.prototype)`减少一次父类的调用，还避免了在`SubType.prototype`上添加不必要的属性（如：下面的`property`和`arr`属性）。
 
     ```javascript
     function inheritPrototype(sub, sup) {
@@ -1535,7 +1535,7 @@ xhr.send(null);
 
 > 查询字符串中每个参数的名称和值必须使用`encodeURIComponent()`进行编码然后放到 URL 的末尾。
 
-1.  使用`open()`方法时第一个参数为 get
+1.  使用`open()`方法时第一个参数为 GET（书上是小写，应该是打错了）
 2.  构建带查询字符串的 URL
 
 ### 21.1.4 POST 请求
@@ -1544,7 +1544,7 @@ xhr.send(null);
 >
 > POST 请求的主体可以包含非常多的数据，而且格式不限。
 
-1.  使用`open()`方法时第一个参数为 post
+1.  使用`open()`方法时第一个参数为 POST（书上是小写，应该是打错了）
 2.  使用`send()`方法发送数据
 
 ## 21.2 XMLHttpRequest 2 级
@@ -1698,15 +1698,73 @@ xhr.send(null);
 
 # 第 22 章 高级技巧
 
-## 22.1.3 惰性载入函数
+## 22.1 高级函数
+
+### 22.1.1 安全类型检测
+
+```js
+Object.prototype.toString.call(JSON); // '[object JSON]'
+JSON = function(){};
+Object.prototype.toString.call(JSON); // '[object Function]'
+```
+
+### 22.1.2 作用域安全的构造函数
+
+浏览器控制台运行下面的例子，你会神奇地发现页面居然跳转了（好神奇 =\_=!!!）
+
+```js
+function Persion(loc){
+    this.location = loc;
+}
+
+var zi = Persion('zi');// 不小心忘记使用 new
+```
+
+这时您需要用作用域安全的构造函数，然后你会神奇地发现页面又跳转了（好神奇 =\_=!!!）
+
+```js
+function Persion(loc){
+    if(this instanceof Persion){
+        this.location = loc;
+    } else {
+        return new Persion(loc)
+    }
+}
+
+var zi = Persion('zi');// 又不小心忘记使用 new
+```
+
+使用作用域安全的构造函数后您就必须要用原型链了。
+
+```js
+function Persion(loc){
+    if(this instanceof Persion){
+        this.location = loc;
+    } else {
+        return new Persion(loc)
+    }
+}
+
+function ZM(loc){
+    Persion.call(this, loc);
+   	this.age = 17;
+}
+
+ZM.prototype = new Persion(); // 不将原型链连上就无法继承
+ZM.prototype.constructor = ZM;
+
+var zi = new ZM('zi');
+```
+
+### 22.1.3 惰性载入函数
 
 > 惰性载入表示函数执行的分支仅会发生一次。有两种实现惰性载入的方式
 >
 > 第一种就是在函数被调用时再处理函数。在第一次调用的过程中，该函数会被覆盖为另外一个按合适方式执行的函数，这样任何对原函数的调用都不用再经过执行的分支了。
 >
-> 第二种实现惰性载入的方式是在声明函数时就指定适当的函数。这样，第一次调用函数时就不会损失性能了，而在代码首次加载时会损失一点性能。以下就是按照这一思路重写前面例子的结果
+> 第二种实现惰性载入的方式是在声明函数时就指定适当的函数。这样，第一次调用函数时就不会损失性能了，而在代码首次加载时会损失一点性能。
 
-## 22.1.4 函数绑定
+### 22.1.4 函数绑定
 
 > 另一个日益流行的高级技巧叫做函数绑定。函数绑定要创建一个函数，可以在特定的 this 环境中以指定参数调用另一个函数。该技巧常常和回调函数与事件处理程序一起使用，以便在将函数作为变量传递的同时保留代码执行环境。
 
