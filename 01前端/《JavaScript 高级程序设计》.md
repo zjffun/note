@@ -1764,9 +1764,106 @@ var zi = new ZM('zi');
 >
 > 第二种实现惰性载入的方式是在声明函数时就指定适当的函数。这样，第一次调用函数时就不会损失性能了，而在代码首次加载时会损失一点性能。
 
+```js
+// 第一种方式
+function flatArr(arr){
+    if(typeof Array.prototype.flat === "function"){
+        flatArr = arr => arr.flat();
+    }else{
+        flatArr = arr => {
+            // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/flat
+            const stack = [...arr];
+            const res = [];
+            while (stack.length) {
+                // pop value from stack
+                const next = stack.pop();
+                if (Array.isArray(next)) {
+                    // push back array items, won't modify the original input
+                    stack.push(...next);
+                } else {
+                    res.push(next);
+                }
+            }
+            //reverse to restore input order
+            return res.reverse();
+        }
+    }
+    return flatArr(arr);
+}
+
+flatArr([1, 2, 3, [4, 5, 6]]);
+```
+
+```js
+// 第二种方式
+var flatArr = (function(){
+    if(typeof Array.prototype.flat === "function"){
+        return arr => arr.flat();
+    }else{
+        return arr => {
+            // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/flat
+            const stack = [...arr];
+            const res = [];
+            while (stack.length) {
+                // pop value from stack
+                const next = stack.pop();
+                if (Array.isArray(next)) {
+                    // push back array items, won't modify the original input
+                    stack.push(...next);
+                } else {
+                    res.push(next);
+                }
+            }
+            //reverse to restore input order
+            return res.reverse();
+        }
+    }
+})();
+
+flatArr([1, 2, 3, [4, 5, 6]]);
+```
+
 ### 22.1.4 函数绑定
 
 > 另一个日益流行的高级技巧叫做函数绑定。函数绑定要创建一个函数，可以在特定的 this 环境中以指定参数调用另一个函数。该技巧常常和回调函数与事件处理程序一起使用，以便在将函数作为变量传递的同时保留代码执行环境。
+
+使用函数的`bind()`方法。被绑定函数与普通函数相比需要更多开销，最好只在必要时使用。
+
+```js
+var handler = {
+    msg: "text",
+    handleClick: function(){
+        alert(this.msg)
+    }
+}
+
+// not bind
+document.addEventListener('click', handler.handleClick);
+
+// bind
+document.addEventListener('click', handler.handleClick.bind(handler));
+```
+
+### 22.1.5 函数柯里化
+
+函数柯里化（function currying），用于创建已经设置好一个或多个参数的函数。
+
+```js
+function curry(fn, ...args){
+    return function(...innerArgs){
+        return fn(...args, ...innerArgs);
+    }
+}
+function add(a, b){
+    return a + b;
+}
+var curriedAdd = curry(add, 3);
+console.log(curriedAdd(5)); // 8
+
+// 精简版
+var add2 = a => b => a + b;
+console.log(add2(3)(5)); // 8
+```
 
 ## 22.3.2 Yielding Processes
 
