@@ -1865,15 +1865,74 @@ var add2 = a => b => a + b;
 console.log(add2(3)(5)); // 8
 ```
 
-## 22.3.2 Yielding Processes
+## 22.2 防篡改对象
+
+注意：一旦将对象定义为防篡改就无法撤销了。
+
+### 22.2.1 不可拓展对象
+
+禁止添加属性。
+
+[Object.preventExtensions() - JavaScript | MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/preventExtensions)
+
+### 22.2.2 密封对象
+
+禁止添加属性，且已有成员的`[[Configurable]]`特性设为为`false`（不能删除和修改访问器属性）。
+
+[Object.seal() - JavaScript | MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/seal)
+
+### 22.2.3 冻结的对象
+
+禁止添加属性，且已有成员的`[[Configurable]]`特性设为为`false`（不能删除和修改访问器属性），且已有成员的`[[[Writable]]`特性设为`false`（如果定义`[[Set]]`函数，访问器依然是可写的)。
+
+[Object.freeze() - JavaScript | MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/freeze)
+
+## 22.3 高级定时器
+
+JS 是单线程的，`setTimeout()`和`setInterval()`只是在它们**开始执行后**过了设置的时间，将回调函数添加到事件队列。如果还没有到设置的事件就清除了，这个回调函数就不会添加到事件队列了。
+
+### 22.3.1 重复的定时器
+
+使用`setTimeout()`代替`setInterval()`可以解决`setInterval()`在事件队列已有该回调函数时不会重复添加的问题。
+
+### 22.3.2 Yielding Processes
 
 > 运行在浏览器中的 JavaScript 都被分配了一个确定数量的资源。不同于桌面应用往往能够随意控制他们要的内存大小和处理器时间， JavaScript 被严格限制了，以防止恶意的 Web 程序员把用户的计算机搞挂了。其中一个限制是长时间运行脚本的制约，如果代码运行超过特定的时间或者特定语句数量就不让它继续执行。如果代码达到了这个限制，会弹出一个浏览器错误的对话框，告诉用户某个脚本会用过长的时间执行，询问是允许其继续执行还是停止它。所有 JavaScript 开发人员的目标就是，确保用户永远不会在浏览器中看到这个令人费解的对话框。定时器是绕开此限制的方法之一。
 
-## 22.3.3 函数节流
+不需同步和按顺序完成的循环可以使用定时器进行分割，这时一种叫数组分块（array chunking）的技术。
+
+```js
+function chunk(arr, process, context){
+    setTimeout(function(){
+        let item = arr.shift();
+        process.call(context, item);
+        if(arr.length){
+            setTimeout(arguments.callee, 100)
+        }
+    }, 100)
+}
+chunk([1, 2, 3], d => console.log(d));
+```
+
+### 22.3.3 函数节流（throttle）和防反弹 (debounce)
 
 > 浏览器中某些计算和处理要比其他的昂贵很多。例如， DOM 操作比起非 DOM 交互需要更多的内存和 CPU 时间。连续尝试进行过多的 DOM 相关操作可能会导致浏览器挂起，有时候甚至会崩溃。尤其在 IE 中使用 onresize 事件处理程序的时候容易发生，当调整浏览器大小的时候，该事件会连续触发。在 onresize 事件处理程序内部如果尝试进行 DOM 操作，其高频率的更改可能会让浏览器崩溃。为了绕开这个问题，你可以使用定时器对该函数进行节流。
 >
 > 函数节流背后的基本思想是指，某些代码不可以在没有间断的情况连续重复执行。第一次调用函数，创建一个定时器，在指定的时间间隔之后运行代码。当第二次调用该函数时，它会清除前一次的定时器并设置另一个。如果前一个定时器已经执行过了，这个操作就没有任何意义。然而，如果前一个定时器尚未执行，其实就是将其替换为一个新的定时器。目的是只有在执行函数的请求停止了一段时间之后才执行。
+
+[Underscore.js - throttle](https://underscorejs.org/#throttle)
+
+[Underscore.js - debounce](https://underscorejs.org/#debounce)
+
+```js
+function throttle(callback){
+
+}
+
+function debounce(callback){
+
+}
+```
 
 ## 22.4 自定义事件
 
