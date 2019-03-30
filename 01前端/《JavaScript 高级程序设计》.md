@@ -1926,11 +1926,31 @@ chunk([1, 2, 3], d => console.log(d));
 
 ```js
 function throttle(callback){
-
+    let timeoutID;
+    function wrapper () {
+        clearTimeout(timeoutID);
+        timeoutID = setTimeout(callback, 1000);
+    }
+    return wrapper;
 }
 
 function debounce(callback){
+    let lastExec = 0;
+    function wrapper () {
+        if(Date.now() - lastExec > 1000){
+            lastExec = Date.now();
+            setTimeout(callback, 1000);
+        }
+    }
+    return wrapper;
+}
 
+var resizeThrottle = throttle(() => console.log('throttle'));
+var resizeDebounce = debounce(() => console.log('debounce'));
+
+window.onscroll = () => {
+    resizeThrottle();
+    resizeDebounce();
 }
 ```
 
@@ -1938,95 +1958,115 @@ function debounce(callback){
 
 > 事件是一种叫做观察者的设计模式，这是一种创建松散耦合代码的技术。对象可以发布事件，用来表示在该对象生命周期中某个有趣的时刻到了。然后其他对象可以观察该对象，等待这些有趣的时刻到来并通过运行代码来响应。
 >
-> 观察者模式由两类对象组成：   主体和观察者。主体负责发布事件，同时观察者通过订阅这些事件来观察该主体。该模式的一个关键概念是主体并不知道观察者的任何事情，也就是说它可以独自存在并正常运作即使观察者不存在。从另一方面来说，观察者知道主体并能注册事件的回调函数（事件处理程序）。涉及 DOM 上时， DOM 元素便是主体，你的事件处理代码便是观察者。
+> 观察者模式由两类对象组成：主体和观察者。主体负责发布事件，同时观察者通过订阅这些事件来观察该主体。该模式的一个关键概念是主体并不知道观察者的任何事情，也就是说它可以独自存在并正常运作即使观察者不存在。从另一方面来说，观察者知道主体并能注册事件的回调函数（事件处理程序）。涉及 DOM 上时， DOM 元素便是主体，你的事件处理代码便是观察者。
 
-    <script>
-    function EventTarget(){
-      this.handlers = {};
+[EventTarget - Web APIs | MDN](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget)
+
+```js
+function EventTarget(){
+  this.handlers = {};
+}
+EventTarget.prototype = {
+  constructor: EventTarget,
+  addHandler: function(type, handler){
+    if (typeof this.handlers[type] == "undefined"){
+      this.handlers[type] = [];
     }
-    EventTarget.prototype = {
-      constructor: EventTarget,
-      addHandler: function(type, handler){
-        if (typeof this.handlers[type] == "undefined"){
-          this.handlers[type] = [];
-        }
-        this.handlers[type].push(handler);
-      },
-      fire: function(event){
-        if (!event.target){
-          event.target = this;
-        }
-        if (this.handlers[event.type] instanceof Array){
-          var handlers = this.handlers[event.type];
-          for (var i=0, len=handlers.length; i < len; i++){
-            handlers[i](event);
-          }
-        }
-      },
-      removeHandler: function(type, handler){
-        if (this.handlers[type] instanceof Array){
-          var handlers = this.handlers[type];
-          for (var i=0, len=handlers.length; i < len; i++){
-            if (handlers[i] === handler){
-              break;
-            }
-          }
-          handlers.splice(i, 1);
+    this.handlers[type].push(handler);
+  },
+  fire: function(event){
+    if (!event.target){
+      event.target = this;
+    }
+    if (this.handlers[event.type] instanceof Array){
+      var handlers = this.handlers[event.type];
+      for (var i=0, len=handlers.length; i < len; i++){
+        handlers[i](event);
+      }
+    }
+  },
+  removeHandler: function(type, handler){
+    if (this.handlers[type] instanceof Array){
+      var handlers = this.handlers[type];
+      for (var i=0, len=handlers.length; i < len; i++){
+        if (handlers[i] === handler){
+          break;
         }
       }
-    };
-
-    function handleMessage(event){
-      alert("Message received: " + event.message);
+      handlers.splice(i, 1);
     }
-    //创建一个新对象
-    var target = new EventTarget();
-    //添加一个事件处理程序
-    target.addHandler("message", handleMessage);
-    //触发事件
-    target.fire({ type: "message", message: "Hello world!"});
-    //删除事件处理程序
-    target.removeHandler("message", handleMessage);
-    //再次，应没有处理程序
-    target.fire({ type: "message", message: "Hello world!"});
-    </script>
+  }
+};
+
+function handleMessage(event){
+  alert("Message received: " + event.message);
+}
+//创建一个新对象
+var target = new EventTarget();
+//添加一个事件处理程序
+target.addHandler("message", handleMessage);
+//触发事件
+target.fire({ type: "message", message: "Hello world!"});
+//删除事件处理程序
+target.removeHandler("message", handleMessage);
+//再次，应没有处理程序
+target.fire({ type: "message", message: "Hello world!"});
+```
+
+## 22.5 拖放
+
+使用 [DragEvent - Web APIs | MDN](https://developer.mozilla.org/en-US/docs/Web/API/DragEvent) 或者使用鼠标事件进行模拟。
 
 # 第 23 章 离线应用与客户端存储
 
-## 23.3.1 Cookie
+支持离线 Web 应用开发是 HTML5 的另一个重点。
 
-## 23.3.3 Web 存储机制
+开发离线 Web 应用：
 
-1.  Storage 类型 
+1.  检测设备是否可以上网
+2.  能访问资源（图片、CSS、JS 等）
+3.  本地空间用于保存数据
 
-    Storage 类型提供最大的存储空间（因浏览器而异）来存储名值对儿。 Storage 的实例与其他对象类似，有如下方法。
+## 23.1 离线检测
 
--   clear()： 删除所有值； Firefox 中没有实现 。
--   getItem(name)：根据指定的名字 name 获取对应的值。
--   key(index)：获得 index 位置处的值的名字。
--   removeItem(name)：删除由 name 指定的名值对儿。
--   setItem(name, value)：为指定的 name 设置一个对应的值。
+通过`navigator.onLine`属性检测是否离线。
 
-1.  sessionStorage 对象 
+在线离线状态切换时会触发 window 的 online 和 offline 事件。
 
-    sessionStorage 对象存储特定于某个会话的数据，也就是该数据只保持到浏览器关闭。这个对象就像会话 cookie，也会在浏览器关闭后消失。存储在 sessionStorage 中的数据可以跨越页面刷新而存在，同时如果浏览器支持，浏览器崩溃并重启之后依然可用（Firefox 和 WebKit 都支持， IE 则不行）。因为 seesionStorage 对象绑定于某个服务器会话，所以当文件在本地运行的时候是不可用的。存储在 sessionStorage 中的数据只能由最初给对象存储数据的页面访问到，所以对多页面应用有限制。由于 sessionStorage 对象其实是 Storage 的一个实例，所以可以使用 setItem() 或者直接设置新的属性来存储数据。下面是这两种方法的例子。
+## 23.2 应用缓存（application cache）
 
-2.  globalStorage 对象 
+使用描述文件（manifest file）例如出要下载和缓存的资源。
 
-    Firefox 2 中实现了 globalStorage 对象。作为最初的 Web Storage 规范的一部分，这个对象的目的是跨越会话存储数据，但有特定的访问限制。要使用 globalStorage，首先要指定哪些域可以访问该数据。可以通过方括号标记使用属性来实现，如以下例子所示。
+可以在`<html>`标签的 manifest 属性中指定这个文件的路径，例如`<html mainfest="/offline.manifest">`。
 
-3.  localStorage 对象 
+## 23.3 数据存储
 
-    localStorage 对象在修订过的 HTML 5 规范中作为持久保存客户端数据的方案取代了 globalStorage。与 globalStorage 不同，不能给 localStorage 指定任何访问规则；规则事先就设定好了。要访问同一个 localStorage 对象，页面必须来自同一个域名（子域名无效），使用同一种协议，在同一个端口上。这相当于 `globalStorage[location.host]`。
+### 23.3.1 Cookie
 
-4.  storage 事件 
+[cookies.Cookie - Mozilla | MDN](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/cookies/Cookie)
 
-    对 Storage 对象进行任何修改，都会在文档上触发 storage 事件。当通过属性或 setItem() 方法保存数据，使用 delete 操作符或 removeItem() 删除数据，或者调用 clear() 方法时，都会发生该事件。这个事件的 event 对象有以下属性。
+1.  限制：50 个以内，总长度 4095B 以内
+2.  构成：名称、值域、路径、失效时间、安全标志、只供 HTTP 使用等
+3.  子 cookie：使用一个 cookie 的值存过个键值对儿
 
--   domain：发生变化的存储空间的域名。
--   key：设置或者删除的键名。
--   newValue：如果是设置值，则是新值；如果是删除键，则是 null。
--   oldValue：键被更改之前的值。
+### 23.3.3 Web 存储机制
+
+[Storage - Web API 接口参考 | MDN](https://developer.mozilla.org/zh-CN/docs/Web/API/Storage)
+
+1.  sessionStorage 对象：存储页面关闭，同会话共享（新标签或窗口中打开页面会创建新的会话）
+2.  localStorage 对象：永久存储，同域共享
+
+### 23.3.4 IndexedDB
+
+IndexedDB 是一个数据库，和 MySQL 等数据库类似。
+
+IndexedDB 最大的特点是使用对象保存数据，而不是表来保存数据。（和 MongoDB 有点像）
+
+一个 IndexedDB 数据库，就是一组位于相同命名空间下的对象的集合。
+
+[IndexedDB API - Web APIs | MDN](https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API)
+
+留坑。。
 
 # 第 24 章 最佳实践
 
