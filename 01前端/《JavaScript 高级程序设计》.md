@@ -1,4 +1,4 @@
-# 第 3 章 基本概念
+第 3 章 基本概念
 
 ## 3.5.2 位操作符
 
@@ -2070,118 +2070,188 @@ IndexedDB 最大的特点是使用对象保存数据，而不是表来保存数�
 
 # 第 24 章 最佳实践
 
-## 24.1.3 松散耦合
+## 24.1 可维护性
 
-1.  解耦 HTML/JavaScript
+编写可维护的代码很重要，因为大部分开发人员都花费大量时间维护他人代码。
 
-> 一种最常见的耦合类型是 HTML/JavaScript 耦合。在 Web 上， HTML 和 JavaScript 各自代表了解决方案中的不同层次： HTML 是数据， JavaScript 是行为。因为它们天生就需要交互，所以有多种不同的方法将这两个技术关联起来。但是，有一些方法会将 HTML 和 JavaScript 过于紧密地耦合在一起。
->
-> 直接写在 HTML 中的 JavaScript，使用包含内联代码的 \\<script > 元素或者是使用 HTML 属性来分配事件处理程序，都是过于紧密的耦合。请看以下代码。
+### 24.1.1 可维护的代码的特征
 
-    <!-- 使用了 <script> 的紧密耦合的 HTML/JavaScript -->
-    <script type="text/javascript">
-    document.write("Hello world!");
-    </script>
+-   可理解性
+-   直观性
+-   可适应性
+-   可扩展性
+-   可调试性
 
-    <!-- 使用事件处理程序属性值的紧密耦合的 HTML/JavaScript -->
-    <input type="button" value="Click Me" onclick="doSomething()" />
+### 24.1.2 代码约定
 
-> 一般来说，你应该避免在 JavaScript 中创建大量 HTML。再一次重申要保持层次的分离，这样可以很容易的确定错误来源。当使用上面这个例子的时候，有一个页面布局的问题，可能和动态创建的 HTML  没有被正确格式化有关。不过，要定位这个错误可能非常困难，因为你可能一般先看页面的源代码来查找那段烦人的 HTML，但是却没能找到，因为它是动态生成的。对数据或者布局的更改也会要求更改 JavaScript，这也表明了这两个层次过于紧密地耦合了。
->
-> HTML 呈现应该尽可能与 JavaScript 保持分离。当 JavaScript 用于插入数据时，尽量不要直接插入标记。一般可以在页面中直接包含并隐藏标记，然后等到整个页面渲染好之后，就可以用 JavaScript 显示该标记，而非生成它。另一种方法是进行 Ajax 请求并获取更多要显示的 HTML，这个方法可以让同样的渲染层（PHP、 JSP、 Ruby 等等）来输出标记，而不是直接嵌在 JavaScript 中。
->
-> 将 HTML 和 JavaScript 解耦可以在调试过程中节省时间，更加容易确定错误的来源，也减轻维护的难度：更改行为只需要在 JavaScript 文件中进行，而更改标记则只要在渲染文件中。
+1.  可读性：一般要在函数和方法、大段代码、复杂的算法、Hack 这些地方加上注释
+2.  变量和函数名：变量应为名词，函数名应该以动词开头（返回布尔类型值得函数一般以 is 开头）
+3.  变量类型透明：使用[TypeScript](https://www.typescriptlang.org/)或[匈牙利标记法](https://baike.baidu.com/item/%E5%8C%88%E7%89%99%E5%88%A9%E6%A0%87%E8%AE%B0%E6%B3%95/3640316?fr=aladdin)等方法。
 
-1.  解耦 HTML/JavaScript
+### 24.1.3 松散耦合
 
-> 由于 CSS 负责页面的显示，当显示出现任何问题时都应该只是查看 CSS 文件来解决。然而，当使用了 JavaScript 来更改某些样式的时候，比如颜色，就出现了第二个可能已更改和必须检查的地方。结果是 JavaScript 也在某种程度上负责了页面的显示，并与 CSS 紧密耦合了。如果未来需要更改样式表，CSS 和 JavaScript 文件可能都需要修改。这就给开发人员造成了维护上的噩梦。所以在这两个层次之间必须有清晰的划分。
+1.  解耦 HTML/JS：不要混这写，比如：如果使用 JSX 就尽量不要直接操作 DOM，如果直接操作 DOM 就尽量不要使用 JS 生成 HTML 标签。
+2.  解耦 CSS/JS：尽量不用 JS 直接改 CSS，而是通过修改 class 间接修改样式。
+3.  解耦应用逻辑 / 事件处理程序：事件处理程序应处理事件、然后将数据转交给应用逻辑处理。
 
-1.  解耦应用逻辑／事件处理程序
+### 24.1.4 编程实践
 
-应用和业务逻辑之间松散耦合的几条原则：
+1.  尊重对象所有权：也许是企业环境中总重要的实践。
+    -   不要为实例或原型添加属性和方法。
+    -   不要重定义已经存在的方法。
+2.  避免全局量：使用命名空间，虽然使用命名空间需要多写一些代码，但命名空间有助于确保代码和页面的其他代码以无害的方式一起工作。
+3.  使用常量：以下情况可以考虑使用常量。
+    -   重复值：多处用到的值应抽取为常量，包括 CSS 类名等。
+    -   用户界面字符串：方便国际化。
+    -   URLs：Web 应用中资源位置很容易变，推荐用一个公共的地方存 URL。
+    -   任意可能会更改的值：当您用到字面量时，先考虑一下这个值在未来是不是会变化，如果会变化就应该提取出来作为常量。
 
--   勿将 event 对象传给其他方法；只传来自 event 对象中所需的数据；
--   任何可以在应用层面的动作都应该可以在不执行任何事件处理程序的情况下进行；
--   任何事件处理程序都应该处理事件，然后将处理转交给应用逻辑。
+## 24.2 性能
 
-## 24.2.1 注意作用域
+### 24.2.1 注意作用域
 
-1.  避免全局查找
-2.  避免 with 语句
+1.  避免全局查找：将在一个函数中多次用到的全局对象存储为局部变量总是没错的。
+2.  避免 with 语句：with 会创建自己的作用域链，会增加其中执行的代码的作用域链长度。
 
-## 24.2.4 优化 DOM 交互
+### 24.2.2 选择正确的方法
 
-1.  最小化现场更新  
+数据量大的循环可以考虑：[Duff's device](https://en.wikipedia.org/wiki/Duff%27s_device)
 
-> 一旦你需要访问的 DOM 部分是已经显示的页面的一部分，那么你就是在进行一个现场更新。之所以叫现场更新，是因为需要立即（现场）对页面对用户的显示进行更新。每一个更改，不管是插入单个字符，还是移除整个片段，都有一个性能惩罚，因为浏览器要重新计算无数尺寸以进行更新。现场更新进行得越多，代码完成执行所花的时间就越长；完成一个操作所需的现场更新越少，代码就越快。
+### 24.2.4 优化 DOM 交互
 
-1.  使用 innerHTML
+1.  最小化现场更新：通过文档片段（fragment）将 DOM 一起更新。
 
-> 有两种在页面上创建 DOM 节点的方法：使用诸如 createElement() 和 appendChild() 之类的 DOM 方法，以及使用 innerHTML。对于小的 DOM 更改而言，两种方法效率都差不多。然而，对于大的 DOM 更改，使用 innerHTML 要比使用标准 DOM 方法创建同样的 DOM 结构快得多。
+    > 一旦你需要访问的 DOM 部分是已经显示的页面的一部分，那么你就是在进行一个现场更新。之所以叫现场更新，是因为需要立即（现场）对页面对用户的显示进行更新。每一个更改，不管是插入单个字符，还是移除整个片段，都有一个性能惩罚，因为浏览器要重新计算无数尺寸以进行更新。现场更新进行得越多，代码完成执行所花的时间就越长；完成一个操作所需的现场更新越少，代码就越快。
 
-1.  使用事件代理
+2.  使用 innerHTML：对于大量 DOM 更改，innerHTML 比 DOM 方法快。
 
-> 大多数 Web 应用在用户交互上大量用到事件处理程序。页面上的事件处理程序的数量和页面响应用户交互的速度之间有个负相关。为了减轻这种惩罚，最好使用事件代理。
+    > 有两种在页面上创建 DOM 节点的方法：使用诸如 createElement() 和 appendChild() 之类的 DOM 方法，以及使用 innerHTML。对于小的 DOM 更改而言，两种方法效率都差不多。然而，对于大的 DOM 更改，使用 innerHTML 要比使用标准 DOM 方法创建同样的 DOM 结构快得多。
 
-1.  注意 HTMLCollection
+3.  使用事件代理：将事件处理程序附加到更高层的地方负责多个目标的事件处理。
 
-> HTMLCollection 对象的陷阱已经在本书中讨论过了，因为它们对于 Web 应用的性能而言是巨大的损害。记住，任何时候要访问 HTMLCollection，不管它是一个属性还是一个方法，都是在文档上进行一个查询，这个查询开销很昂贵。最小化访问 HTMLCollection 的次数可以极大地改进脚本的性能。
+    > 大多数 Web 应用在用户交互上大量用到事件处理程序。页面上的事件处理程序的数量和页面响应用户交互的速度之间有个负相关。为了减轻这种惩罚，最好使用事件代理。
 
-## 24.3.2 验证
+4.  注意 HTMLCollection
 
-JSLint 可以查找 JavaScript 代码中的语法错误以及常见的编码错误。
+    > HTMLCollection 对象的陷阱已经在本书中讨论过了，因为它们对于 Web 应用的性能而言是巨大的损害。记住，任何时候要访问 HTMLCollection，不管它是一个属性还是一个方法，都是在文档上进行一个查询，这个查询开销很昂贵。最小化访问 HTMLCollection 的次数可以极大地改进脚本的性能。
 
--   eval() 的使用；
--   未声明变量的使用；
--   遗漏的分号；
--   不恰当的换行；
--   错误的逗号使用；
--   语句周围遗漏的括号；
--   switch 分支语句中遗漏的 break；
--   重复声明的变量；
--   with 的使用；
--   错误使用的等号（替代了双等号或三等号）；
--   无法到达的代码。
+## 24.3 部署
 
-## 24.3.3 压缩
+### 24.3.1 构建过程
+
+软件开发典型模式：写代码 -> 编译 -> 测试
+
+JS 是非编译型语言，模式变成：写代码 -> （语法转换） -> 测试
+
+现在通常是使用 ES6 和更新的语法，一些语法测试和生产环境还不支持，需要用进行语法转换（一般使用 [Babe](https://babeljs.io/)）。
+
+### 24.3.2 验证
+
+XXLint（常见的有 JSLint、TSLint、ESLint） 可以查找代码中的语法错误以及常见的编码错误。
+
+### 24.3.3 压缩
 
 > 当谈及 JavaScript 文件压缩，其实在讨论两个东西：代码长度和配重（Wire weight）。代码长度指的是浏览器所需解析的字节数，配重指的是实际从服务器传送到浏览器的字节数。在 Web 开发的早期，这两个数字几乎是一样的，因为从服务器端到客户端原封不动地传递了源文件。而在今天的 Web 上，这两者很少相等，实际上也不应相等。
 
-1.  文件压缩
+1.  文件压缩：删除额外的空白、删除注释、缩短变量名等
+2.  HTTP 压缩
 
-> 因为 JavaScript 并非编译为字节码，而是按照源代码传送的，代码文件通常包含浏览器执行所不需要的额外的信息和格式。注释，额外的空白，以及长长的变量名和函数名虽然提高了可读性，但却是传送给浏览器时不必要的字节。不过，我们可以使用压缩工具减少文件的大小。
-
-给 httpd.conf 文件或者是. htaccess 文件添加以下代码启用对 JavaScript 的自动压缩：
-
-    #告诉 mod_zip 要包含任何以.js 结尾的文件
-    mod_gzip_item_include file \.js$
-
-或者：
-
-    #告诉 mod_deflate 要包含所有的 JavaScript 文件
-    AddOutputFilterByType DEFLATE application/x-javascript
-
-1.  HTTP 压缩
-
-> 配重指的是实际从服务器传送到浏览器的字节数。因为现在的服务器和浏览器都有压缩功能，这个字节数不一定和代码长度一样。所有的五大 Web 浏览器（IE、 Firefox、 Safari、 Chrome 和 Opera）都支持对所接收的资源进行客户端解压缩。这样服务器端就可以使用服务器端相关功能来压缩 JavaScript 文件。一个指定了文件使用了给定格式进行了压缩的 HTTP 头包含在了服务器响应中。接着浏览器会查看该 HTTP 头确定文件是否已被压缩，然后使用合适的格式进行解压缩。结果是和原来的代码量相比在网络中传递的字节数量大大减少了。
+    > 配重指的是实际从服务器传送到浏览器的字节数。因为现在的服务器和浏览器都有压缩功能，这个字节数不一定和代码长度一样。所有的五大 Web 浏览器（IE、 Firefox、 Safari、 Chrome 和 Opera）都支持对所接收的资源进行客户端解压缩。这样服务器端就可以使用服务器端相关功能来压缩 JavaScript 文件。一个指定了文件使用了给定格式进行了压缩的 HTTP 头包含在了服务器响应中。接着浏览器会查看该 HTTP 头确定文件是否已被压缩，然后使用合适的格式进行解压缩。结果是和原来的代码量相比在网络中传递的字节数量大大减少了。
 
 # 第 25 章 新兴的 API
+
+## 25.1 [requestAnimationFrame()](https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame)
+
+```html
+<style>
+  div {
+    width: 200px;
+    height: 20px;
+  }
+  #bar {
+    border: 1px solid #000;
+    position: relative;
+	background-color: #666;
+	overflow: hidden;
+  }
+  #progress {
+    position: absolute;
+    background-color: #fff;
+    top: 0;
+    left: 0;
+  }
+</style>
+
+<div id="bar">
+  <div id="progress"></div>
+</div>
+
+<script>
+  var start = null;
+  var element = document.getElementById("progress");
+  element.style.position = "absolute";
+
+  function step(timestamp) {
+    if (!start) start = timestamp;
+    var progress = timestamp - start;
+    element.style.left = Math.min(progress / 10, 200) + "px";
+    if (progress < 2000) {
+      window.requestAnimationFrame(step);
+    }
+  }
+
+  window.requestAnimationFrame(step);
+</script>
+```
 
 ## 25.2 Page Visibility API
 
 > 不知道用户是不是正在与页面交互，这是困扰广大 Web 开发人员的一个主要问题。如果页面最小化了或者隐藏在了其他标签页后面，那么有些功能是可以停下来的，比如轮询服务器或者某些动画效果。而 Page Visibility API（页面可见性 API）就是为了让开发人员知道页面是否对用户可见而推出的。
 
+-   `document.hidden`：页面是否隐藏
+-   `document.visibilityState`：表示当前页面的可视状态
+
 ## 25.3 Geolocation API
 
 > 地理定位（geolocation）是最令人兴奋，而且得到了广泛支持的一个新 API。 通过这套 API， JavaScript 代码能够访问到用户的当前位置信息。当然，访问之前必须得到用户的明确许可，即同意在页面中共享其位置信息。如果页面尝试访问地理定位信息，浏览器就会显示一个对话框，请求用户许可共享其位置信息。
 
+使用`navigator.geolocation`对象
+
 ## 25.4 File API
 
-> 不能直接访问用户计算机中的文件，一直都是 Web 应用开发中的一大障碍。 2000 年以前，处理文件的唯一方式就是在表单中加入<input type="file">字段，仅此而已。 File API（文件 API）的宗旨是为 Web 开发人员提供一种安全的方式，以便在客户端访问用户计算机中的文件，并更好地对这些文件执行操作。支持 File API 的浏览器有 IE10+、 Firefox 4+、 Safari 5.0.5+、 Opera 11.1 + 和 Chrome。
->
-> FileReader 类型实现的是一种异步文件读取机制。可以把 FileReader 想象成 XMLHttpRequest，区别只是它读取的是文件系统，而不是远程服务器。为了读取文件中的数据， FileReader 提供了如下几个方法。
->
-> 对象 URL 也被称为 blob URL，指的是引用保存在 File 或 Blob 中数据的 URL。使用对象 URL 的好处是可以不必把文件内容读取到 JavaScript 中而直接使用文件内容。为此，只要在需要文件内容的地方提供对象 URL 即可。要创建对象 URL，可以使用 window.URL.createObjectURL() 方法，并传入 File 或 Blob 对象。
+> 不能直接访问用户计算机中的文件，一直都是 Web 应用开发中的一大障碍。 2000 年以前，处理文件的唯一方式就是在表单中加入`<input type="file">`字段，仅此而已。 File API（文件 API）的宗旨是为 Web 开发人员提供一种安全的方式，以便在客户端访问用户计算机中的文件，并更好地对这些文件执行操作。支持 File API 的浏览器有 IE10+、 Firefox 4+、 Safari 5.0.5+、 Opera 11.1 + 和 Chrome。
+
+HTML5 在 DOM 中为文件输入元素添加了一个 files 集合，里面包含着一组带有文件信息的 File 对象。
+
+### 25.4.1 FileReader
+
+> FileReader 类型实现的是一种异步文件读取机制。可以把 FileReader 想象成 XMLHttpRequest，区别只是它读取的是文件系统，而不是远程服务器。
+
+### 25.4.2 读取部分内容
+
+调用 blob 的 slice() 方法返回一个 Blob 实例，然后使用 FileReader 读取这个 Blob 实例。
+
+只读文件的一部分可以节省时间，适合只关注文件特定部分的情况。
+
+### 25.4.3 对象 URL
+
+> 对象 URL 也被称为 blob URL，指的是引用保存在 File 或 Blob 中数据的 URL。使用对象 URL 的好处是可以不必把文件内容读取到 JavaScript 中而直接使用文件内容。为此，只要在需要文件内容的地方提供对象 URL 即可。要创建对象 URL，可以使用`window.URL.createObjectURL()`方法，并传入 File 或 Blob 对象。
+
+注意：要在不需要某个对象 URL 是手动释放内存。
+
+### 25.4.4 读取拖放的内容
+
+`通过 event.dataTransfer.files`获取文件信息。
+
+### 25.4.5 使用 XHR 上传文件
+
+可以使用 File API 读取文件内容然后 post 给后端（这样后端收到的是问价的内容，还要再将她们保存），但更方便的做法是以提交表单的方式上传文件（这样后端就像接收到常规表单一样处理就行）：
+
+1.  创建 21 章介绍的 FormData 的对象
+2.  调用 FormData 对象的`append()`方法添加文件
+3.  调用 XHR 对象的`send()`方法发送 FormData 对象
+
+## 25.5 Web 计时
 
 ## 25.6 Web Workers
 
