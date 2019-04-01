@@ -2253,6 +2253,16 @@ HTML5 在 DOM 中为文件输入元素添加了一个 files 集合，里面包�
 
 ## 25.5 Web 计时
 
+[Performance](https://developer.mozilla.org/en-US/docs/Web/API/Performance)：用于查看页面加载的各个阶段的时间（13 位的时间戳，精确到毫秒）
+
 ## 25.6 Web Workers
 
 > 随着 Web 应用复杂性的与日俱增，越来越复杂的计算在所难免。长时间运行的 JavaScript 进程会导致浏览器冻结用户界面，让人感觉屏幕 “冻结” 了。 Web Workers 规范通过让 JavaScript 在后台运行解决了这个问题。浏览器实现 Web Workers 规范的方式有很多种，可以使用线程、后台进程或者运行在其他处理器核心上的进程，等等。具体的实现细节其实没有那么重要，重要的是开发人员现在可以放心地运行 JavaScript，而不必担心会影响用户体验了。
+
+非常消耗时间的操作转交给 Worker 就不会阻塞用户界面了，例如：使用 Worker 排序数组 [web worker example - CodeSandbox](https://codesandbox.io/s/j7kz56w61v)。
+
+Worker 可以使用`importScripts()`方法导入其他脚本。
+
+Worker 分为专用 Worker（dedicated worker）和共享 Worker（shared worker），前者不能在页面间共享，后者可以在多个窗口，iframe 或 Worker 间共享。
+
+# 附录 A ECMAScript Harmony
