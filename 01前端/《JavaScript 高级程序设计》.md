@@ -1,4 +1,4 @@
-# 第 3 章 基本概念
+第 3 章 基本概念
 
 ## 3.5.2 位操作符
 
@@ -1926,11 +1926,31 @@ chunk([1, 2, 3], d => console.log(d));
 
 ```js
 function throttle(callback){
-
+    let timeoutID;
+    function wrapper () {
+        clearTimeout(timeoutID);
+        timeoutID = setTimeout(callback, 1000);
+    }
+    return wrapper;
 }
 
 function debounce(callback){
+    let lastExec = 0;
+    function wrapper () {
+        if(Date.now() - lastExec > 1000){
+            lastExec = Date.now();
+            setTimeout(callback, 1000);
+        }
+    }
+    return wrapper;
+}
 
+var resizeThrottle = throttle(() => console.log('throttle'));
+var resizeDebounce = debounce(() => console.log('debounce'));
+
+window.onscroll = () => {
+    resizeThrottle();
+    resizeDebounce();
 }
 ```
 
@@ -1938,211 +1958,311 @@ function debounce(callback){
 
 > 事件是一种叫做观察者的设计模式，这是一种创建松散耦合代码的技术。对象可以发布事件，用来表示在该对象生命周期中某个有趣的时刻到了。然后其他对象可以观察该对象，等待这些有趣的时刻到来并通过运行代码来响应。
 >
-> 观察者模式由两类对象组成：   主体和观察者。主体负责发布事件，同时观察者通过订阅这些事件来观察该主体。该模式的一个关键概念是主体并不知道观察者的任何事情，也就是说它可以独自存在并正常运作即使观察者不存在。从另一方面来说，观察者知道主体并能注册事件的回调函数（事件处理程序）。涉及 DOM 上时， DOM 元素便是主体，你的事件处理代码便是观察者。
+> 观察者模式由两类对象组成：主体和观察者。主体负责发布事件，同时观察者通过订阅这些事件来观察该主体。该模式的一个关键概念是主体并不知道观察者的任何事情，也就是说它可以独自存在并正常运作即使观察者不存在。从另一方面来说，观察者知道主体并能注册事件的回调函数（事件处理程序）。涉及 DOM 上时， DOM 元素便是主体，你的事件处理代码便是观察者。
 
-    <script>
-    function EventTarget(){
-      this.handlers = {};
+[EventTarget - Web APIs | MDN](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget)
+
+```js
+function EventTarget(){
+  this.handlers = {};
+}
+EventTarget.prototype = {
+  constructor: EventTarget,
+  addHandler: function(type, handler){
+    if (typeof this.handlers[type] == "undefined"){
+      this.handlers[type] = [];
     }
-    EventTarget.prototype = {
-      constructor: EventTarget,
-      addHandler: function(type, handler){
-        if (typeof this.handlers[type] == "undefined"){
-          this.handlers[type] = [];
-        }
-        this.handlers[type].push(handler);
-      },
-      fire: function(event){
-        if (!event.target){
-          event.target = this;
-        }
-        if (this.handlers[event.type] instanceof Array){
-          var handlers = this.handlers[event.type];
-          for (var i=0, len=handlers.length; i < len; i++){
-            handlers[i](event);
-          }
-        }
-      },
-      removeHandler: function(type, handler){
-        if (this.handlers[type] instanceof Array){
-          var handlers = this.handlers[type];
-          for (var i=0, len=handlers.length; i < len; i++){
-            if (handlers[i] === handler){
-              break;
-            }
-          }
-          handlers.splice(i, 1);
+    this.handlers[type].push(handler);
+  },
+  fire: function(event){
+    if (!event.target){
+      event.target = this;
+    }
+    if (this.handlers[event.type] instanceof Array){
+      var handlers = this.handlers[event.type];
+      for (var i=0, len=handlers.length; i < len; i++){
+        handlers[i](event);
+      }
+    }
+  },
+  removeHandler: function(type, handler){
+    if (this.handlers[type] instanceof Array){
+      var handlers = this.handlers[type];
+      for (var i=0, len=handlers.length; i < len; i++){
+        if (handlers[i] === handler){
+          break;
         }
       }
-    };
-
-    function handleMessage(event){
-      alert("Message received: " + event.message);
+      handlers.splice(i, 1);
     }
-    //创建一个新对象
-    var target = new EventTarget();
-    //添加一个事件处理程序
-    target.addHandler("message", handleMessage);
-    //触发事件
-    target.fire({ type: "message", message: "Hello world!"});
-    //删除事件处理程序
-    target.removeHandler("message", handleMessage);
-    //再次，应没有处理程序
-    target.fire({ type: "message", message: "Hello world!"});
-    </script>
+  }
+};
+
+function handleMessage(event){
+  alert("Message received: " + event.message);
+}
+//创建一个新对象
+var target = new EventTarget();
+//添加一个事件处理程序
+target.addHandler("message", handleMessage);
+//触发事件
+target.fire({ type: "message", message: "Hello world!"});
+//删除事件处理程序
+target.removeHandler("message", handleMessage);
+//再次，应没有处理程序
+target.fire({ type: "message", message: "Hello world!"});
+```
+
+## 22.5 拖放
+
+使用 [DragEvent - Web APIs | MDN](https://developer.mozilla.org/en-US/docs/Web/API/DragEvent) 或者使用鼠标事件进行模拟。
 
 # 第 23 章 离线应用与客户端存储
 
-## 23.3.1 Cookie
+支持离线 Web 应用开发是 HTML5 的另一个重点。
 
-## 23.3.3 Web 存储机制
+开发离线 Web 应用：
 
-1.  Storage 类型 
+1.  检测设备是否可以上网
+2.  能访问资源（图片、CSS、JS 等）
+3.  本地空间用于保存数据
 
-    Storage 类型提供最大的存储空间（因浏览器而异）来存储名值对儿。 Storage 的实例与其他对象类似，有如下方法。
+## 23.1 离线检测
 
--   clear()： 删除所有值； Firefox 中没有实现 。
--   getItem(name)：根据指定的名字 name 获取对应的值。
--   key(index)：获得 index 位置处的值的名字。
--   removeItem(name)：删除由 name 指定的名值对儿。
--   setItem(name, value)：为指定的 name 设置一个对应的值。
+通过`navigator.onLine`属性检测是否离线。
 
-1.  sessionStorage 对象 
+在线离线状态切换时会触发 window 的 online 和 offline 事件。
 
-    sessionStorage 对象存储特定于某个会话的数据，也就是该数据只保持到浏览器关闭。这个对象就像会话 cookie，也会在浏览器关闭后消失。存储在 sessionStorage 中的数据可以跨越页面刷新而存在，同时如果浏览器支持，浏览器崩溃并重启之后依然可用（Firefox 和 WebKit 都支持， IE 则不行）。因为 seesionStorage 对象绑定于某个服务器会话，所以当文件在本地运行的时候是不可用的。存储在 sessionStorage 中的数据只能由最初给对象存储数据的页面访问到，所以对多页面应用有限制。由于 sessionStorage 对象其实是 Storage 的一个实例，所以可以使用 setItem() 或者直接设置新的属性来存储数据。下面是这两种方法的例子。
+## 23.2 应用缓存（application cache）
 
-2.  globalStorage 对象 
+使用描述文件（manifest file）例如出要下载和缓存的资源。
 
-    Firefox 2 中实现了 globalStorage 对象。作为最初的 Web Storage 规范的一部分，这个对象的目的是跨越会话存储数据，但有特定的访问限制。要使用 globalStorage，首先要指定哪些域可以访问该数据。可以通过方括号标记使用属性来实现，如以下例子所示。
+可以在`<html>`标签的 manifest 属性中指定这个文件的路径，例如`<html mainfest="/offline.manifest">`。
 
-3.  localStorage 对象 
+## 23.3 数据存储
 
-    localStorage 对象在修订过的 HTML 5 规范中作为持久保存客户端数据的方案取代了 globalStorage。与 globalStorage 不同，不能给 localStorage 指定任何访问规则；规则事先就设定好了。要访问同一个 localStorage 对象，页面必须来自同一个域名（子域名无效），使用同一种协议，在同一个端口上。这相当于 `globalStorage[location.host]`。
+### 23.3.1 Cookie
 
-4.  storage 事件 
+[cookies.Cookie - Mozilla | MDN](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/cookies/Cookie)
 
-    对 Storage 对象进行任何修改，都会在文档上触发 storage 事件。当通过属性或 setItem() 方法保存数据，使用 delete 操作符或 removeItem() 删除数据，或者调用 clear() 方法时，都会发生该事件。这个事件的 event 对象有以下属性。
+1.  限制：50 个以内，总长度 4095B 以内
+2.  构成：名称、值域、路径、失效时间、安全标志、只供 HTTP 使用等
+3.  子 cookie：使用一个 cookie 的值存过个键值对儿
 
--   domain：发生变化的存储空间的域名。
--   key：设置或者删除的键名。
--   newValue：如果是设置值，则是新值；如果是删除键，则是 null。
--   oldValue：键被更改之前的值。
+### 23.3.3 Web 存储机制
+
+[Storage - Web API 接口参考 | MDN](https://developer.mozilla.org/zh-CN/docs/Web/API/Storage)
+
+1.  sessionStorage 对象：存储页面关闭，同会话共享（新标签或窗口中打开页面会创建新的会话）
+2.  localStorage 对象：永久存储，同域共享
+
+### 23.3.4 IndexedDB
+
+IndexedDB 是一个数据库，和 MySQL 等数据库类似。
+
+IndexedDB 最大的特点是使用对象保存数据，而不是表来保存数据。（和 MongoDB 有点像）
+
+一个 IndexedDB 数据库，就是一组位于相同命名空间下的对象的集合。
+
+[IndexedDB API - Web APIs | MDN](https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API)
+
+留坑。。
 
 # 第 24 章 最佳实践
 
-## 24.1.3 松散耦合
+## 24.1 可维护性
 
-1.  解耦 HTML/JavaScript
+编写可维护的代码很重要，因为大部分开发人员都花费大量时间维护他人代码。
 
-> 一种最常见的耦合类型是 HTML/JavaScript 耦合。在 Web 上， HTML 和 JavaScript 各自代表了解决方案中的不同层次： HTML 是数据， JavaScript 是行为。因为它们天生就需要交互，所以有多种不同的方法将这两个技术关联起来。但是，有一些方法会将 HTML 和 JavaScript 过于紧密地耦合在一起。
->
-> 直接写在 HTML 中的 JavaScript，使用包含内联代码的 \\<script > 元素或者是使用 HTML 属性来分配事件处理程序，都是过于紧密的耦合。请看以下代码。
+### 24.1.1 可维护的代码的特征
 
-    <!-- 使用了 <script> 的紧密耦合的 HTML/JavaScript -->
-    <script type="text/javascript">
-    document.write("Hello world!");
-    </script>
+-   可理解性
+-   直观性
+-   可适应性
+-   可扩展性
+-   可调试性
 
-    <!-- 使用事件处理程序属性值的紧密耦合的 HTML/JavaScript -->
-    <input type="button" value="Click Me" onclick="doSomething()" />
+### 24.1.2 代码约定
 
-> 一般来说，你应该避免在 JavaScript 中创建大量 HTML。再一次重申要保持层次的分离，这样可以很容易的确定错误来源。当使用上面这个例子的时候，有一个页面布局的问题，可能和动态创建的 HTML  没有被正确格式化有关。不过，要定位这个错误可能非常困难，因为你可能一般先看页面的源代码来查找那段烦人的 HTML，但是却没能找到，因为它是动态生成的。对数据或者布局的更改也会要求更改 JavaScript，这也表明了这两个层次过于紧密地耦合了。
->
-> HTML 呈现应该尽可能与 JavaScript 保持分离。当 JavaScript 用于插入数据时，尽量不要直接插入标记。一般可以在页面中直接包含并隐藏标记，然后等到整个页面渲染好之后，就可以用 JavaScript 显示该标记，而非生成它。另一种方法是进行 Ajax 请求并获取更多要显示的 HTML，这个方法可以让同样的渲染层（PHP、 JSP、 Ruby 等等）来输出标记，而不是直接嵌在 JavaScript 中。
->
-> 将 HTML 和 JavaScript 解耦可以在调试过程中节省时间，更加容易确定错误的来源，也减轻维护的难度：更改行为只需要在 JavaScript 文件中进行，而更改标记则只要在渲染文件中。
+1.  可读性：一般要在函数和方法、大段代码、复杂的算法、Hack 这些地方加上注释
+2.  变量和函数名：变量应为名词，函数名应该以动词开头（返回布尔类型值得函数一般以 is 开头）
+3.  变量类型透明：使用[TypeScript](https://www.typescriptlang.org/)或[匈牙利标记法](https://baike.baidu.com/item/%E5%8C%88%E7%89%99%E5%88%A9%E6%A0%87%E8%AE%B0%E6%B3%95/3640316?fr=aladdin)等方法。
 
-1.  解耦 HTML/JavaScript
+### 24.1.3 松散耦合
 
-> 由于 CSS 负责页面的显示，当显示出现任何问题时都应该只是查看 CSS 文件来解决。然而，当使用了 JavaScript 来更改某些样式的时候，比如颜色，就出现了第二个可能已更改和必须检查的地方。结果是 JavaScript 也在某种程度上负责了页面的显示，并与 CSS 紧密耦合了。如果未来需要更改样式表，CSS 和 JavaScript 文件可能都需要修改。这就给开发人员造成了维护上的噩梦。所以在这两个层次之间必须有清晰的划分。
+1.  解耦 HTML/JS：不要混这写，比如：如果使用 JSX 就尽量不要直接操作 DOM，如果直接操作 DOM 就尽量不要使用 JS 生成 HTML 标签。
+2.  解耦 CSS/JS：尽量不用 JS 直接改 CSS，而是通过修改 class 间接修改样式。
+3.  解耦应用逻辑 / 事件处理程序：事件处理程序应处理事件、然后将数据转交给应用逻辑处理。
 
-1.  解耦应用逻辑／事件处理程序
+### 24.1.4 编程实践
 
-应用和业务逻辑之间松散耦合的几条原则：
+1.  尊重对象所有权：也许是企业环境中总重要的实践。
+    -   不要为实例或原型添加属性和方法。
+    -   不要重定义已经存在的方法。
+2.  避免全局量：使用命名空间，虽然使用命名空间需要多写一些代码，但命名空间有助于确保代码和页面的其他代码以无害的方式一起工作。
+3.  使用常量：以下情况可以考虑使用常量。
+    -   重复值：多处用到的值应抽取为常量，包括 CSS 类名等。
+    -   用户界面字符串：方便国际化。
+    -   URLs：Web 应用中资源位置很容易变，推荐用一个公共的地方存 URL。
+    -   任意可能会更改的值：当您用到字面量时，先考虑一下这个值在未来是不是会变化，如果会变化就应该提取出来作为常量。
 
--   勿将 event 对象传给其他方法；只传来自 event 对象中所需的数据；
--   任何可以在应用层面的动作都应该可以在不执行任何事件处理程序的情况下进行；
--   任何事件处理程序都应该处理事件，然后将处理转交给应用逻辑。
+## 24.2 性能
 
-## 24.2.1 注意作用域
+### 24.2.1 注意作用域
 
-1.  避免全局查找
-2.  避免 with 语句
+1.  避免全局查找：将在一个函数中多次用到的全局对象存储为局部变量总是没错的。
+2.  避免 with 语句：with 会创建自己的作用域链，会增加其中执行的代码的作用域链长度。
 
-## 24.2.4 优化 DOM 交互
+### 24.2.2 选择正确的方法
 
-1.  最小化现场更新  
+数据量大的循环可以考虑：[Duff's device](https://en.wikipedia.org/wiki/Duff%27s_device)
 
-> 一旦你需要访问的 DOM 部分是已经显示的页面的一部分，那么你就是在进行一个现场更新。之所以叫现场更新，是因为需要立即（现场）对页面对用户的显示进行更新。每一个更改，不管是插入单个字符，还是移除整个片段，都有一个性能惩罚，因为浏览器要重新计算无数尺寸以进行更新。现场更新进行得越多，代码完成执行所花的时间就越长；完成一个操作所需的现场更新越少，代码就越快。
+### 24.2.4 优化 DOM 交互
 
-1.  使用 innerHTML
+1.  最小化现场更新：通过文档片段（fragment）将 DOM 一起更新。
 
-> 有两种在页面上创建 DOM 节点的方法：使用诸如 createElement() 和 appendChild() 之类的 DOM 方法，以及使用 innerHTML。对于小的 DOM 更改而言，两种方法效率都差不多。然而，对于大的 DOM 更改，使用 innerHTML 要比使用标准 DOM 方法创建同样的 DOM 结构快得多。
+    > 一旦你需要访问的 DOM 部分是已经显示的页面的一部分，那么你就是在进行一个现场更新。之所以叫现场更新，是因为需要立即（现场）对页面对用户的显示进行更新。每一个更改，不管是插入单个字符，还是移除整个片段，都有一个性能惩罚，因为浏览器要重新计算无数尺寸以进行更新。现场更新进行得越多，代码完成执行所花的时间就越长；完成一个操作所需的现场更新越少，代码就越快。
 
-1.  使用事件代理
+2.  使用 innerHTML：对于大量 DOM 更改，innerHTML 比 DOM 方法快。
 
-> 大多数 Web 应用在用户交互上大量用到事件处理程序。页面上的事件处理程序的数量和页面响应用户交互的速度之间有个负相关。为了减轻这种惩罚，最好使用事件代理。
+    > 有两种在页面上创建 DOM 节点的方法：使用诸如 createElement() 和 appendChild() 之类的 DOM 方法，以及使用 innerHTML。对于小的 DOM 更改而言，两种方法效率都差不多。然而，对于大的 DOM 更改，使用 innerHTML 要比使用标准 DOM 方法创建同样的 DOM 结构快得多。
 
-1.  注意 HTMLCollection
+3.  使用事件代理：将事件处理程序附加到更高层的地方负责多个目标的事件处理。
 
-> HTMLCollection 对象的陷阱已经在本书中讨论过了，因为它们对于 Web 应用的性能而言是巨大的损害。记住，任何时候要访问 HTMLCollection，不管它是一个属性还是一个方法，都是在文档上进行一个查询，这个查询开销很昂贵。最小化访问 HTMLCollection 的次数可以极大地改进脚本的性能。
+    > 大多数 Web 应用在用户交互上大量用到事件处理程序。页面上的事件处理程序的数量和页面响应用户交互的速度之间有个负相关。为了减轻这种惩罚，最好使用事件代理。
 
-## 24.3.2 验证
+4.  注意 HTMLCollection
 
-JSLint 可以查找 JavaScript 代码中的语法错误以及常见的编码错误。
+    > HTMLCollection 对象的陷阱已经在本书中讨论过了，因为它们对于 Web 应用的性能而言是巨大的损害。记住，任何时候要访问 HTMLCollection，不管它是一个属性还是一个方法，都是在文档上进行一个查询，这个查询开销很昂贵。最小化访问 HTMLCollection 的次数可以极大地改进脚本的性能。
 
--   eval() 的使用；
--   未声明变量的使用；
--   遗漏的分号；
--   不恰当的换行；
--   错误的逗号使用；
--   语句周围遗漏的括号；
--   switch 分支语句中遗漏的 break；
--   重复声明的变量；
--   with 的使用；
--   错误使用的等号（替代了双等号或三等号）；
--   无法到达的代码。
+## 24.3 部署
 
-## 24.3.3 压缩
+### 24.3.1 构建过程
+
+软件开发典型模式：写代码 -> 编译 -> 测试
+
+JS 是非编译型语言，模式变成：写代码 -> （语法转换） -> 测试
+
+现在通常是使用 ES6 和更新的语法，一些语法测试和生产环境还不支持，需要用进行语法转换（一般使用 [Babe](https://babeljs.io/)）。
+
+### 24.3.2 验证
+
+XXLint（常见的有 JSLint、TSLint、ESLint） 可以查找代码中的语法错误以及常见的编码错误。
+
+### 24.3.3 压缩
 
 > 当谈及 JavaScript 文件压缩，其实在讨论两个东西：代码长度和配重（Wire weight）。代码长度指的是浏览器所需解析的字节数，配重指的是实际从服务器传送到浏览器的字节数。在 Web 开发的早期，这两个数字几乎是一样的，因为从服务器端到客户端原封不动地传递了源文件。而在今天的 Web 上，这两者很少相等，实际上也不应相等。
 
-1.  文件压缩
+1.  文件压缩：删除额外的空白、删除注释、缩短变量名等
+2.  HTTP 压缩
 
-> 因为 JavaScript 并非编译为字节码，而是按照源代码传送的，代码文件通常包含浏览器执行所不需要的额外的信息和格式。注释，额外的空白，以及长长的变量名和函数名虽然提高了可读性，但却是传送给浏览器时不必要的字节。不过，我们可以使用压缩工具减少文件的大小。
-
-给 httpd.conf 文件或者是. htaccess 文件添加以下代码启用对 JavaScript 的自动压缩：
-
-    #告诉 mod_zip 要包含任何以.js 结尾的文件
-    mod_gzip_item_include file \.js$
-
-或者：
-
-    #告诉 mod_deflate 要包含所有的 JavaScript 文件
-    AddOutputFilterByType DEFLATE application/x-javascript
-
-1.  HTTP 压缩
-
-> 配重指的是实际从服务器传送到浏览器的字节数。因为现在的服务器和浏览器都有压缩功能，这个字节数不一定和代码长度一样。所有的五大 Web 浏览器（IE、 Firefox、 Safari、 Chrome 和 Opera）都支持对所接收的资源进行客户端解压缩。这样服务器端就可以使用服务器端相关功能来压缩 JavaScript 文件。一个指定了文件使用了给定格式进行了压缩的 HTTP 头包含在了服务器响应中。接着浏览器会查看该 HTTP 头确定文件是否已被压缩，然后使用合适的格式进行解压缩。结果是和原来的代码量相比在网络中传递的字节数量大大减少了。
+    > 配重指的是实际从服务器传送到浏览器的字节数。因为现在的服务器和浏览器都有压缩功能，这个字节数不一定和代码长度一样。所有的五大 Web 浏览器（IE、 Firefox、 Safari、 Chrome 和 Opera）都支持对所接收的资源进行客户端解压缩。这样服务器端就可以使用服务器端相关功能来压缩 JavaScript 文件。一个指定了文件使用了给定格式进行了压缩的 HTTP 头包含在了服务器响应中。接着浏览器会查看该 HTTP 头确定文件是否已被压缩，然后使用合适的格式进行解压缩。结果是和原来的代码量相比在网络中传递的字节数量大大减少了。
 
 # 第 25 章 新兴的 API
+
+## 25.1 [requestAnimationFrame()](https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame)
+
+```html
+<style>
+  div {
+    width: 200px;
+    height: 20px;
+  }
+  #bar {
+    border: 1px solid #000;
+    position: relative;
+	background-color: #666;
+	overflow: hidden;
+  }
+  #progress {
+    position: absolute;
+    background-color: #fff;
+    top: 0;
+    left: 0;
+  }
+</style>
+
+<div id="bar">
+  <div id="progress"></div>
+</div>
+
+<script>
+  var start = null;
+  var element = document.getElementById("progress");
+  element.style.position = "absolute";
+
+  function step(timestamp) {
+    if (!start) start = timestamp;
+    var progress = timestamp - start;
+    element.style.left = Math.min(progress / 10, 200) + "px";
+    if (progress < 2000) {
+      window.requestAnimationFrame(step);
+    }
+  }
+
+  window.requestAnimationFrame(step);
+</script>
+```
 
 ## 25.2 Page Visibility API
 
 > 不知道用户是不是正在与页面交互，这是困扰广大 Web 开发人员的一个主要问题。如果页面最小化了或者隐藏在了其他标签页后面，那么有些功能是可以停下来的，比如轮询服务器或者某些动画效果。而 Page Visibility API（页面可见性 API）就是为了让开发人员知道页面是否对用户可见而推出的。
 
+-   `document.hidden`：页面是否隐藏
+-   `document.visibilityState`：表示当前页面的可视状态
+
 ## 25.3 Geolocation API
 
 > 地理定位（geolocation）是最令人兴奋，而且得到了广泛支持的一个新 API。 通过这套 API， JavaScript 代码能够访问到用户的当前位置信息。当然，访问之前必须得到用户的明确许可，即同意在页面中共享其位置信息。如果页面尝试访问地理定位信息，浏览器就会显示一个对话框，请求用户许可共享其位置信息。
 
+使用`navigator.geolocation`对象
+
 ## 25.4 File API
 
-> 不能直接访问用户计算机中的文件，一直都是 Web 应用开发中的一大障碍。 2000 年以前，处理文件的唯一方式就是在表单中加入<input type="file">字段，仅此而已。 File API（文件 API）的宗旨是为 Web 开发人员提供一种安全的方式，以便在客户端访问用户计算机中的文件，并更好地对这些文件执行操作。支持 File API 的浏览器有 IE10+、 Firefox 4+、 Safari 5.0.5+、 Opera 11.1 + 和 Chrome。
->
-> FileReader 类型实现的是一种异步文件读取机制。可以把 FileReader 想象成 XMLHttpRequest，区别只是它读取的是文件系统，而不是远程服务器。为了读取文件中的数据， FileReader 提供了如下几个方法。
->
-> 对象 URL 也被称为 blob URL，指的是引用保存在 File 或 Blob 中数据的 URL。使用对象 URL 的好处是可以不必把文件内容读取到 JavaScript 中而直接使用文件内容。为此，只要在需要文件内容的地方提供对象 URL 即可。要创建对象 URL，可以使用 window.URL.createObjectURL() 方法，并传入 File 或 Blob 对象。
+> 不能直接访问用户计算机中的文件，一直都是 Web 应用开发中的一大障碍。 2000 年以前，处理文件的唯一方式就是在表单中加入`<input type="file">`字段，仅此而已。 File API（文件 API）的宗旨是为 Web 开发人员提供一种安全的方式，以便在客户端访问用户计算机中的文件，并更好地对这些文件执行操作。支持 File API 的浏览器有 IE10+、 Firefox 4+、 Safari 5.0.5+、 Opera 11.1 + 和 Chrome。
+
+HTML5 在 DOM 中为文件输入元素添加了一个 files 集合，里面包含着一组带有文件信息的 File 对象。
+
+### 25.4.1 FileReader
+
+> FileReader 类型实现的是一种异步文件读取机制。可以把 FileReader 想象成 XMLHttpRequest，区别只是它读取的是文件系统，而不是远程服务器。
+
+### 25.4.2 读取部分内容
+
+调用 blob 的 slice() 方法返回一个 Blob 实例，然后使用 FileReader 读取这个 Blob 实例。
+
+只读文件的一部分可以节省时间，适合只关注文件特定部分的情况。
+
+### 25.4.3 对象 URL
+
+> 对象 URL 也被称为 blob URL，指的是引用保存在 File 或 Blob 中数据的 URL。使用对象 URL 的好处是可以不必把文件内容读取到 JavaScript 中而直接使用文件内容。为此，只要在需要文件内容的地方提供对象 URL 即可。要创建对象 URL，可以使用`window.URL.createObjectURL()`方法，并传入 File 或 Blob 对象。
+
+注意：要在不需要某个对象 URL 是手动释放内存。
+
+### 25.4.4 读取拖放的内容
+
+`通过 event.dataTransfer.files`获取文件信息。
+
+### 25.4.5 使用 XHR 上传文件
+
+可以使用 File API 读取文件内容然后 post 给后端（这样后端收到的是问价的内容，还要再将她们保存），但更方便的做法是以提交表单的方式上传文件（这样后端就像接收到常规表单一样处理就行）：
+
+1.  创建 21 章介绍的 FormData 的对象
+2.  调用 FormData 对象的`append()`方法添加文件
+3.  调用 XHR 对象的`send()`方法发送 FormData 对象
+
+## 25.5 Web 计时
+
+[Performance](https://developer.mozilla.org/en-US/docs/Web/API/Performance)：用于查看页面加载的各个阶段的时间（13 位的时间戳，精确到毫秒）
 
 ## 25.6 Web Workers
 
 > 随着 Web 应用复杂性的与日俱增，越来越复杂的计算在所难免。长时间运行的 JavaScript 进程会导致浏览器冻结用户界面，让人感觉屏幕 “冻结” 了。 Web Workers 规范通过让 JavaScript 在后台运行解决了这个问题。浏览器实现 Web Workers 规范的方式有很多种，可以使用线程、后台进程或者运行在其他处理器核心上的进程，等等。具体的实现细节其实没有那么重要，重要的是开发人员现在可以放心地运行 JavaScript，而不必担心会影响用户体验了。
+
+非常消耗时间的操作转交给 Worker 就不会阻塞用户界面了，例如：使用 Worker 排序数组 [web worker example - CodeSandbox](https://codesandbox.io/s/j7kz56w61v)。
+
+Worker 可以使用`importScripts()`方法导入其他脚本。
+
+Worker 分为专用 Worker（dedicated worker）和共享 Worker（shared worker），前者不能在页面间共享，后者可以在多个窗口，iframe 或 Worker 间共享。
+
+# 附录 A ECMAScript Harmony
