@@ -15,6 +15,7 @@
 
 附 wamp 的 my.ini（记得改各个文件夹）：
 
+```ini
     ; Example MySQL config file for medium systems.
     ;
     ; This is for a large system with memory of 1G-2G where the system runs mainly
@@ -29,15 +30,15 @@
     ; In this file, you can use all long options that a program supports.
     ; If you want to know which options a program supports, run the program
     ; with the "--help" option.
-
+    
     ; The following options will be passed to all MySQL clients
     [client]
     ;password = your_password
     port = 3306
     socket = /tmp/mysql.sock
-
+    
     ; Here follows entries for some specific programs
-
+    
     ; The MySQL server
     [wampmysqld64]
     ;skip-grant-tables
@@ -45,10 +46,10 @@
     socket = /tmp/mysql.sock
     key_buffer_size = 64M
     max_allowed_packet = 16M
-
+    
     ;Added to reduce memory used (minimum is 400)
     table_definition_cache = 600
-
+    
     sort_buffer_size = 2M
     net_buffer_length = 8K
     read_buffer_size = 2M
@@ -61,24 +62,24 @@
     log_error_verbosity=2
     ;Path to data directory
     datadir="c:/wamp64/bin/mysql/mysql5.7.14/data"
-
+    
     ;Path to the language
     ;See Documentation:
     ; http://dev.mysql.com/doc/refman/5.7/en/error-message-language.html
     lc-messages-dir="c:/wamp64/bin/mysql/mysql5.7.14/share"
     lc-messages=en_US
-
+    
     ; The default storage engine that will be used when create new tables
     default-storage-engine=MYISAM
     ; New for MySQL 5.6 default_tmp_storage_engine if skip-innodb enable
     ; default_tmp_storage_engine=MYISAM
-
+    
     ;To avoid warning messages
     secure_file_priv="c:/wamp64/tmp"
     skip-ssl
-
+    
     explicit_defaults_for_timestamp=true
-
+    
     ; The default SQL mode in MySQL 5.7 includes these modes:
     ; ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION.
     ; no line sql-mode="" gives default SQL mode
@@ -95,27 +96,27 @@
     ; (via the "enable-named-pipe" option) will render mysqld useless!
     ;
     ;skip-networking
-
+    
     ; Disable Federated by default
     skip-federated
-
+    
     ; Replication Master Server (default)
     ; binary logging is required for replication
     ;log-bin=mysql-bin
-
+    
     ; binary logging format - mixed recommended
     ;binlog_format=mixed
-
+    
     ; required unique id between 1 and 2^32 - 1
     ; defaults to 1 if master-host is not set
     ; but will not function as a master if omitted
     server-id = 1
-
+    
     ; Replication Slave (comment out master section to use this)
-
+    
     ; New for MySQL 5.6 if no slave
     skip-slave-start
-
+    
     ;
     ; To configure this host as a replication slave, you can choose between
     ; two methods :
@@ -169,18 +170,18 @@
     ;
     ; binary logging - not required for slaves, but recommended
     ;log-bin=mysql-bin
-
+    
     ; Point the following paths to different dedicated disks
     ;tmpdir   = /tmp/
     ;log-update   = /path-to-dedicated-directory/hostname
-
+    
     ; The InnoDB tablespace encryption feature relies on the keyring_file
     ; plugin for encryption key management, and the keyring_file plugin
     ; must be loaded prior to storage engine initialization to facilitate
     ; InnoDB recovery for encrypted tables. If you do not want to load the
     ; keyring_file plugin at server startup, specify an empty string.
     early-plugin-load=""
-
+    
     ; Uncomment the following if you are using InnoDB tables
     ;innodb_data_home_dir = C:/mysql/data/
     innodb_data_file_path = ibdata1:10M:autoextend
@@ -195,30 +196,31 @@
     innodb_flush_log_at_trx_commit = 1
     innodb_lock_wait_timeout = 60
     innodb_flush_method=normal
-
+    
     [mysqldump]
     quick
     max_allowed_packet = 16M
-
+    
     [mysql]
     no-auto-rehash
     ; Remove the next comment character if you are not familiar with SQL
     ;safe-updates
-
+    
     [isamchk]
     key_buffer_size = 20M
     sort_buffer_size = 20M
     read_buffer_size = 2M
     write_buffer_size = 2M
-
+    
     [myisamchk]
     key_buffer_size = 20M
     sort_buffer_size_size = 20M
     read_buffer_size = 2M
     write_buffer_size = 2M
-
+    
     [mysqlhotcopy]
     interactive-timeout
-
+    
     [mysqld]
     port = 3306
+```
