@@ -2266,3 +2266,104 @@ Worker 可以使用`importScripts()`方法导入其他脚本。
 Worker 分为专用 Worker（dedicated worker）和共享 Worker（shared worker），前者不能在页面间共享，后者可以在多个窗口，iframe 或 Worker 间共享。
 
 # 附录 A ECMAScript Harmony
+
+书中好多特性（例如，迭代器对象、数组领悟等）都没有纳入 ES6 标准。
+
+## 代理对象
+
+**Proxy** 对象用于定义基本操作的自定义行为（如属性查找，赋值，枚举，函数调用等）。
+
+另一种描述：**Proxy** 对象可以处理（捕捉）原生功能，并用自己的函数处理。
+
+## 映射与集合
+
+用普通对象保存键值对融合与原生属性混淆，使用`Map`类型可以避免混淆。
+
+`WeakMap`是 ES 中唯一一个能够让你知道对象什么时候已经完全解除引用的类型。例：Babel 将类的私用属性转换为 WeakMap，这样私有属性就不会强引用实例化的对象（强引用实例化的对象会导致对象内存无法释放）。
+
+```javascript
+class Test {
+  #t1 = 500
+  #t2 = 600
+}
+
+// 转换后
+var Test = function Test() {
+  _classCallCheck(this, Test);
+
+  _t.set(this, {
+    writable: true,
+    value: 500
+  });
+
+  _t2.set(this, {
+    writable: true,
+    value: 600
+  });
+};
+
+var _t = new WeakMap();
+
+var _t2 = new WeakMap();
+```
+
+# 附录 B 严格模式
+
+## 变量
+
+严格模式下不允许：
+
+1.  意外创建全局变量
+2.  对变量使用`delete`操作符
+3.  不能使用保留字作为变量名
+
+## 对象
+
+严格模式下错误地操作对象更容易报错（如，为只读属性赋值等）。
+
+## 函数
+
+严格模式下不能使用`arguments.caller`和`arguments.callee`
+
+## 抑制`this`
+
+非严格模式下使用函数的`call()`和`apply()`方法时`null`和`undefined`会转为为全局对象（这非常危险）。
+
+严格模式下`this`就是制定的值
+
+```javascript
+function C1(a){
+    this.val1 = a;
+}
+C1.call(null, 123);// globalThis.val1 变为 123
+
+function C2(a){
+    "use strict"
+    this.val2 = a;
+}
+C.call(null, 456);// 报错
+```
+
+# 附录 C JavaScript 库
+
+## 通用库
+
+## 互联网应用
+
+## 动画和特效
+
+# 附录 D JavaScript 工具
+
+## 语法转换
+
+## 校验器
+
+## 压缩器
+
+## 单元测试
+
+## 文档生成器
+
+## （安全执行环境？）
+
+ADsafe 和 Caja
