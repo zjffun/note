@@ -96,3 +96,60 @@ and watch it with your favorite video player!
 ```
 
 ## video 元素 + canvas
+
+# 第四章 Geolocation API
+
+目前有两种类型的定位请求 API：单次定位请求`navigator.geolocation.getCurrentPosition(cb, ?errCb, ?option)`和重复性的位置更新请求`navigator.geolocation.watchPosition(cb, ?errCb, ?option)`。
+
+## 位置信息
+
+| 地理定位数据       | 优点            | 缺点                      |
+| ------------ | ------------- | ----------------------- |
+| IP 地址地理定位数据  | 任何地方都可以用      | 不精确（一般用户的 IP 都是 ISP 提供） |
+| GPS 地理定位数据   | 精确            | 需要额外的设备，室内定位效果不好        |
+| Wi-FI 地理定位数据 | 精确，可以在室内使用    | 无线接入点少的区域效果不好           |
+| 基站地理定位数据     | 精确，可以在室内使用    | 基站少的地方效果不好              |
+| 用户自定义的地理定位数据 | 允许用户输入详细的位置信息 | 可能很不准确，特别当用户位置变更后       |
+
+## 根据经纬度计算地球两点距离
+
+例如：
+
+```javascript
+navigator.geolocation.getCurrentPosition((pos) => {
+	let dis = haversineDistance([0, 0], [pos.coords.longitude, pos.coords.latitude])
+	console.log(`It's ${dis} km from [0, 0]`)
+})
+
+function haversineDistance(coords1, coords2, isMiles/* 英里 */) {
+  function toRad(x) {
+    return x * Math.PI / 180;
+  }
+
+  var lon1 = coords1[0];
+  var lat1 = coords1[1];
+
+  var lon2 = coords2[0];
+  var lat2 = coords2[1];
+
+  var R = 6371; // km
+
+  var x1 = lat2 - lat1;
+  var dLat = toRad(x1);
+  var x2 = lon2 - lon1;
+  var dLon = toRad(x2)
+  var a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+    Math.cos(toRad(lat1)) * Math.cos(toRad(lat2)) *
+    Math.sin(dLon / 2) * Math.sin(dLon / 2);
+  var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+  var d = R * c;
+
+  if(isMiles) d /= 1.60934;
+
+  return d;
+}
+```
+
+参见：[Haversine formula - Wikipedia](https://en.wikipedia.org/wiki/Haversine_formula)、[Using the Haversine Formula in Javascript - Stack Overflow](https://stackoverflow.com/questions/14560999/using-the-haversine-formula-in-javascript)
+
+# 第五章 Communication API
