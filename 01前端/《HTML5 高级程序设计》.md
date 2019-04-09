@@ -153,3 +153,27 @@ function haversineDistance(coords1, coords2, isMiles/* 英里 */) {
 参见：[Haversine formula - Wikipedia](https://en.wikipedia.org/wiki/Haversine_formula)、[Using the Haversine Formula in Javascript - Stack Overflow](https://stackoverflow.com/questions/14560999/using-the-haversine-formula-in-javascript)
 
 # 第五章 Communication API
+
+## 跨文档消息通信
+
+早期的 postMessage 仅支持字符串，后来支持 JS 对象、canvas imageData 和文件等其他类型的数据。
+
+## 保证内容不被加载到 iframe 中（Framebusting）
+
+```javascript
+if(window !== window.top){
+  window.top.location = location;
+}
+```
+
+# 第六章 WebSockets API
+
+使用长轮询或 HTTP 流的方式实现 Comet，或者使用[EventSource](https://developer.mozilla.org/en-US/docs/Web/API/EventSource)可以让服务端主动向客户端推数据，但这些方式都是使用 HTTP 通信消耗很大。HTTP 技术不是为了实现全双工通信设计的。
+
+## WebSocket 握手
+
+为了建立 WebSocket 通信，客户端和服务端在初始握手时将 HTTP 协议升级到 WebSocket 协议。
+
+一旦连接建立成功客户端和服务端就可以在全双工模式下传递 WebSocket 消息。消息以`0x00`开头、`0xff`结尾，中间采用 UTF-8 编码格式。
+
+# 第七章 Forms API

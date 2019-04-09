@@ -1645,22 +1645,26 @@ xhr.send(null);
 
 无法处理相应的信息，只能使用 onload 和 onerror 确定是否接收到相应，因此只能用于浏览器与服务器单向通信。
 
-    var img = new Image();
-    img.onload = img.onerror = function(){
-        alert("Done!");
-    };
-    img.src = "http://www.example.com/test?name=Nicholas";
+```javascript
+var img = new Image();
+img.onload = img.onerror = function(){
+    alert("Done!");
+};
+img.src = "http://www.example.com/test?name=Nicholas";
+```
 
 ### 21.5.2 JSONP
 
 例：通过查询地理定位服务来显示你的 IP 地址和位置信息。（接口已经废弃：[apilayer/freegeoip: IP geolocation web server](https://github.com/apilayer/freegeoip#readme)）
 
-    function handleResponse(response){
-        alert("You’ re at IP address " + response.ip + ", which is in " + response.city + ", " + response.region_name);
-    }
-    var script = document.createElement("script");
-    script.src = "http://freegeoip.net/json/?callback=handleResponse";
-    document.body.insertBefore(script, document.body.firstChild);
+```javascript
+function handleResponse(response){
+    alert("You’ re at IP address " + response.ip + ", which is in " + response.city + ", " + response.region_name);
+}
+var script = document.createElement("script");
+script.src = "http://freegeoip.net/json/?callback=handleResponse";
+document.body.insertBefore(script, document.body.firstChild);
+```
 
 问题：
 
