@@ -177,3 +177,18 @@ if(window !== window.top){
 一旦连接建立成功客户端和服务端就可以在全双工模式下传递 WebSocket 消息。消息以`0x00`开头、`0xff`结尾，中间采用 UTF-8 编码格式。
 
 # 第七章 Forms API
+
+移动端的键盘布局会根据`input`的类型而改变
+
+`autocomplete`属性可以用来保护敏感的用户数据（控制浏览器是否存储这个数据）
+
+参见：
+
+-   [`<form>` - HTML: Hypertext Markup Language | MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form)
+-   [HTMLFormElement - Web APIs | MDN](https://developer.mozilla.org/en-US/docs/Web/API/HTMLFormElement)
+
+# 第八章 Web Workers API
+
+使用 Web Workers API 执行耗时的任务可以防止页面弹出脚本运行时间过长的提示框，和防止 UI 阻塞（用户界面无法对操作做出响应）。
+
+# 第九章 Web Storage API
