@@ -60,30 +60,32 @@ r1    r2      r3    r4
 
 测试：
 
-    var array = [];
-    for(var i = 0;i< 1000000;i++){
-        array.push(i)
-    }
-    var start = new Date().getTime()
-    for(var i = 0; i< 100000; i++){
-        array.splice(1000000,0,1);
-    }
-    var end = new Date().getTime();
-    console.log(`Add 10^5 numbers to the head of array: ${end - start} ms`);
+```javascript
+var array = [];
+for(var i = 0;i< 1000000;i++){
+    array.push(i)
+}
+var start = new Date().getTime()
+for(var i = 0; i< 100000; i++){
+    array.splice(1000000,0,1);
+}
+var end = new Date().getTime();
+console.log(`Add 10^5 numbers to the head of array: ${end - start} ms`);
 
-    var array = [];
-    for(var i = 0;i< 1000000;i++){
-        array.push(i)
-    }
-    var start = new Date().getTime()
-    for(var i = 0; i< 100000; i++){
-        array.push(1000000,0,1);
-    }
-    var end = new Date().getTime();
-    console.log(`Add 10^5 numbers to the rear of array: ${end - start} ms`);
+var array = [];
+for(var i = 0;i< 1000000;i++){
+    array.push(i)
+}
+var start = new Date().getTime()
+for(var i = 0; i< 100000; i++){
+    array.push(1000000,0,1);
+}
+var end = new Date().getTime();
+console.log(`Add 10^5 numbers to the rear of array: ${end - start} ms`);
 
-    // Add 10^5 numbers to the head of array: 4555 ms
-    // Add 10^5 numbers to the rear of array: 56 ms
+// Add 10^5 numbers to the head of array: 4555 ms
+// Add 10^5 numbers to the rear of array: 56 ms
+```
 
 ## Object 数字 key 的顺序
 

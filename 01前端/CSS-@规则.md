@@ -44,6 +44,14 @@ https://github.com/ant-design/ant-design/blob/3.12.1/components/style/core/base.
 }
 ```
 
+`@support`— 被检查的 CSS 声明有效则里面的 CSS 生效（IE11 不支持这个规则）。例如：为支持 flex 的浏览器提供 flex 的样式
+
+```css
+@supports (display: flex) {
+  // code for supporting browsers
+}
+```
+
 等。。
 
 # 参考

@@ -95,7 +95,9 @@ and watch it with your favorite video player!
 </video>
 ```
 
-## video 元素 + canvas
+## video + canvas
+
+video + canvas 实现视屏截图：[video snapshot](https://codepen.io/1010543618/pen/wZJodJ)
 
 # 第四章 Geolocation API
 
