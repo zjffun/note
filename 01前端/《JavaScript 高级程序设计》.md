@@ -2057,7 +2057,7 @@ target.fire({ type: "message", message: "Hello world!"});
 
 [Storage - Web API 接口参考 | MDN](https://developer.mozilla.org/zh-CN/docs/Web/API/Storage)
 
-1.  sessionStorage 对象：存储页面关闭，同会话共享（新标签或窗口中打开页面会创建新的会话）
+1.  sessionStorage 对象：存储到页面关闭，同会话共享（新标签或窗口中打开页面会创建新的会话）
 2.  localStorage 对象：永久存储，同域共享
 
 ### 23.3.4 IndexedDB
