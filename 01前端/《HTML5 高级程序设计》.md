@@ -208,3 +208,11 @@ sessionStorage 中的数据不会存很久，所以开发人员不会把真正�
 通过监听 window 的 storage 事件就能在 Storage 变化时收到通知了（包括其他窗口对 Storage 的修改）。
 
 # 第十章 构建离线 Web 应用
+
+离线 Web 应用适用场景：阅读撰写电子邮件、编辑文档、创建待办事宜等。
+
+书中的`html`元素的`manifest`属性已经废弃了，参见：[Using the application cache - HTML: Hypertext Markup Language | MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Using_the_application_cache)。
+
+## [渐进式 Web 应用（PWA）](https://developer.mozilla.org/zh-CN/docs/Web/Progressive_web_apps)
+
+[通过 Service workers 让 PWA 离线工作 - 渐进式 Web 应用（PWA） | MDN](https://developer.mozilla.org/zh-CN/docs/Web/Progressive_web_apps/Offline_Service_workers)
