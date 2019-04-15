@@ -40,18 +40,70 @@
 
 # 第三章 CSS3 边框
 
-目前：
+层级：边框 > 内阴影 > 背景图 > 背景色 > 外阴影
 
--   border-color：浏览器支持的不是很好，尽量别用
--   border-image：IE11 才支持，谨慎使用 
+## 边框基本属性
 
-    使用一张图片切成九宫格（切的顺序：TRBL），用 8 个边上个格为图片生成边框背景
--   border-radius：浏览器支持的不错，IE9 + 可用 
+```text
+border: border-width border-style border-color
+```
 
-    参数：`none | 水平参数 {1,4} / [垂直参数 {1,4}]`?
--   box-shadow：和 border 不同，box-shadow 不是盒模型的中的属性，不会计算到宽度
+## CSS3 边框颜色属性（已经废弃）
 
-PS：图片圆角我测试可以直接使用，但图片内阴影直接设置无效需要将图片设置为背景，或外面套个 div 实现
+## CSS3 图片边框属性
+
+    border-image: 
+    <'border-image-source'> || 
+    <'border-image-slice'> 
+    [ / <'border-image-width'> | / <'border-image-width'>? / <'border-image-outset'> ]? || <'border-image-repeat'>
+
+例如
+
+```css
+border-image:
+      url("https://mdn.mozillademos.org/files/4127/border.png")  /* source */
+      27 /                    /* slice TRBL四个方向切的大小 */
+      36px 28px 18px 8px /    /* width TRBL四个方向边框大小 */
+      18px 14px 9px 4px       /* outset TRBL四个方向图像边框的距离默认边框的距离 */
+      round;                  /* repeat 水平和垂直方向的填充方式 */
+```
+
+## CSS3 圆角边框属性
+
+    border-radius: <length-percentage>{1,4} [ / <length-percentage>{1,4} ]?
+
+四角顺序：TL TR BR BL
+
+例如
+
+```css
+border-radius: 10px 100px 60px /    /* 水平四角半径 10px 100px 60px 100px*/
+	120px;                          /* 垂直四角半径 120px*/
+```
+
+平稳退化：对于不支持 CSS3 的浏览器采用另一套样式：使用 CSS2 中的图片模拟圆角（滑动门技术，原理是元素堆叠和背景图对其方向）
+
+## CSS3 盒子阴影属性
+
+```text
+box-shadow: none | <shadow>#
+<shadow> = inset? && <length>{2,4} && <color>?
+```
+
+对于`<length>`
+
+-   如果只给出两个值, 这两个值将被浏览器解释为 x 轴上的偏移量 `<offset-x>` 和 y 轴上的偏移量 `<offset-y>`。
+-   如果给出了第三个值, 这第三个值将被解释为模糊半径的大小 `<blur-radius>`。
+-   如果给出了第四个值, 这第四个值将被解释为扩展半径的大小 `<spread-radius>`。
+
+例如
+
+    box-shadow: 3px 3px red,   /* 第一个阴影 x，y 偏移 3px 的阴影 */
+    	-1em 0 .4em olive;     /* 第二个阴影 x 偏移 -1em，y 偏移 0，模糊半径 0.4em 的阴影*/
+
+box-shadow 和 border 不同，box-shadow 不是盒模型的中的属性，不会计算到宽度。
+
+border-radius 会对阴影产生影响。
 
 # 第四章 CSS3 背景
 
