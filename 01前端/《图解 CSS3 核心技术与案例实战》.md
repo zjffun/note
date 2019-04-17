@@ -64,7 +64,7 @@ border-image:
       url("https://mdn.mozillademos.org/files/4127/border.png")  /* source */
       27 /                    /* slice TRBL四个方向切的大小 */
       36px 28px 18px 8px /    /* width TRBL四个方向边框大小 */
-      18px 14px 9px 4px       /* outset TRBL四个方向图像边框的距离默认边框的距离 */
+      18px 14px 9px 4px       /* outset TRBL四个方向图像边框的距离边框边缘（border-box）的距离 */
       round;                  /* repeat 水平和垂直方向的填充方式 */
 ```
 
@@ -107,6 +107,26 @@ border-radius 会对阴影产生影响。
 
 # 第四章 CSS3 背景
 
--   多背景：IE8 + 支持 
+[background - CSS: Cascading Style Sheets | MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/background)
 
-    多个背景用逗号隔开
+## 基本属性
+
+```text
+background: background-color background-image background-repeat background-attachment background-position
+```
+
+-   颜色：决定背景的颜色，会被背景图覆盖
+-   图片：背景图片在背景颜色上方
+-   铺放：决定背景图像的重复方式。
+-   固定：决定背景图像的位置是在[视口](https://developer.mozilla.org/zh-CN/docs/Glossary/视口)内固定，还是随着包含它的区块滚动。
+-   位置：和参考原点一起决定背景图片的位置
+
+## CSS3 背景属性
+
+-   参考原点：边框边缘 border-box | 內距边缘 padding-box | 容器边缘 content-box
+-   裁切：边框边缘 border-box | 內距边缘 padding-box | 容器边缘 content-box
+-   尺寸：决定背景的尺寸，`cover` （缩放背景直到铺满容器，裁剪超出部分）和 `contain`（缩放背景直到铺满容器，可能会留有空白）都不会使背景变形
+
+## CSS3 多背景
+
+多个设置之间用逗号隔开，便于管理和维护。旧的方式是分别给元素设置背景进行拼凑。
