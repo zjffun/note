@@ -59,7 +59,7 @@ Windows 下配置文件位置：`C:\Users\Administrator\.gitconfig`
 ### 创建
 
 -   创建：`git branch dev`  
--   创建并切换：`git branch -b dev` 
+-   创建并切换：`git checkout -b dev` 
 
 ### 切换
 
@@ -170,11 +170,15 @@ pull = fetch（下载） + merge（合并）
 
 -   clone 最近 N 次提交：`git clone --depth 1 git@github.com:path/repo-name.git`
 -   fetch 指定提交：
-
-<!---->
-
+    ```bash
     git fetch git@github.com:path/repo-name.git <sha1-of-commit-of-interest>
     git reset --hard FETCH_HEAD
+    ```
+-   使用用户名和密码克隆私有仓库
+    ```bash
+    git clone https://username:password@github.com/username/repository.git
+    git clone https://username@github.com/username/repository.git
+    ```
 
 ## 7. 配置远程仓库
 
