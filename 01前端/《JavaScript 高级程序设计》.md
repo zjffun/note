@@ -1,4 +1,4 @@
-第 3 章 基本概念
+# 第 3 章 基本概念
 
 ## 3.5.2 位操作符
 
@@ -2041,9 +2041,11 @@ target.fire({ type: "message", message: "Hello world!"});
 
 ## 23.2 应用缓存（application cache）
 
-使用描述文件（manifest file）例如出要下载和缓存的资源。
+书中的方法已经废弃！！！现在应该这样实现：[通过 Service workers 让 PWA 离线工作 - 渐进式 Web 应用（PWA） | MDN](https://developer.mozilla.org/zh-CN/docs/Web/Progressive_web_apps/Offline_Service_workers)
 
-可以在`<html>`标签的 manifest 属性中指定这个文件的路径，例如`<html mainfest="/offline.manifest">`。
+~~使用描述文件（manifest file）例如出要下载和缓存的资源。~~
+
+~~可以在`<html>`标签的 manifest 属性中指定这个文件的路径，例如`<html mainfest="/offline.manifest">`。~~
 
 ## 23.3 数据存储
 
@@ -2059,7 +2061,7 @@ target.fire({ type: "message", message: "Hello world!"});
 
 [Storage - Web API 接口参考 | MDN](https://developer.mozilla.org/zh-CN/docs/Web/API/Storage)
 
-1.  sessionStorage 对象：存储页面关闭，同会话共享（新标签或窗口中打开页面会创建新的会话）
+1.  sessionStorage 对象：存储到页面关闭，同会话共享（新标签或窗口中打开页面会创建新的会话）
 2.  localStorage 对象：永久存储，同域共享
 
 ### 23.3.4 IndexedDB
