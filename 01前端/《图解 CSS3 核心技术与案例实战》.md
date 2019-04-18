@@ -130,3 +130,28 @@ background: background-color background-image background-repeat background-attac
 ## CSS3 多背景
 
 多个设置之间用逗号隔开，便于管理和维护。旧的方式是分别给元素设置背景进行拼凑。
+
+# 第五章 CSS3 文本
+
+CSS 文本功能主要分为三大类：字体（font），颜色（color）和文本（text）。
+
+## 字体
+
+`font` 属性可以用来作为 [`font-style`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/font-style), [`font-variant`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/font-variant), [`font-weight`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/font-weight), [`font-size`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/font-size), [`line-height`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/line-height) 和 [`font-family`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/font-family) 属性的简写，或将元素的字体设置为系统字体。
+
+语法：
+
+```text
+[ [ <'font-style'> || <font-variant-css21> || <'font-weight'> || <'font-stretch'> ]? <'font-size'> [ / <'line-height'> ]? <'font-family'> ] | caption | icon | menu | message-box | small-caption | status-bar
+
+where 
+<font-variant-css21> = [ normal | small-caps ]
+```
+
+-   [`font-style`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/font-style)：控制斜体
+-   [`font-variant`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/font-variant)：控制大小写等（在 CSS 2.1 中 `font-variant` 只可以是 `normal` 和 `small-caps`）
+-   [`font-weight`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/font-weight)：控制字体宽度
+-   [`font-size`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/font-size)：控制字体大小
+-   [`line-height`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/line-height) ：控制行高
+-   [`font-family`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/font-family) ：设置使用的字体，多个由逗号分隔
+-   系统字体：设置字体为系统的标题、对话框、菜单等字体
