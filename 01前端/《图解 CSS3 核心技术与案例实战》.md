@@ -155,3 +155,103 @@ where
 -   [`line-height`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/line-height) ：控制行高
 -   [`font-family`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/font-family) ：设置使用的字体，多个由逗号分隔
 -   系统字体：设置字体为系统的标题、对话框、菜单等字体
+
+## 文本
+
+CSS 文本定义了如何执行文本操作，如换行，调整间距和对齐，空白符处理和文本转换。
+
+-   `overflow-wrap`（别名是`word-wrap` ）：控制超出包裹盒的文字换行
+-   `word-break`：控制换行符是否出现在超出包裹盒的地方
+-   `white-space`：控制空白符的显示
+
+注意：对于长的英文单词的处理最好用`overflow-wrap: break-word`，而不是`word-break: break-all`，因为后者会将普通英文语句中的单词也断开影响阅读。
+
+## 文本装饰
+
+CSS 文本装饰用于定义与文本修饰相关的功能，例如下划线，文本阴影和强调标记。
+
+## 其他
+
+-   `color`：控制文本颜色
+-   `text-overflow`：控制超出包裹盒文本的处理（剪切、显示省略符号或显示自定义字符串）
+
+# 第六章 CSS3 颜色特性
+
+> 网页给人留下的第一印象不是设计和内容而是颜色。
+
+## Web 页面的安全色
+
+用 16 进制的 00、33、66、99、CC、FF 表达三原色（RGB）中的每一种。Web 设计师不需要一味局限于安全色，而是应搭配好安全色和非安全色的使用，这样才不会让用户看到的效果和设计制作的效果相差太远。
+
+## 色彩模式
+
+-   RBG 色彩模式：红绿蓝三色混合
+-   CMYK 色彩模式：颜料的青（Cyan）、洋红（Magenta）、黄（Yellow）、黑（Black）混合，用于出版印刷
+-   索引色彩模式：已经被限制在 256 种颜色的模式，主要用于 Web 页面安全色和透明 GIF 图片
+-   灰度模式：制作黑白图片时使用
+-   双色调模式：在黑白图像中加入颜色、使色调更加丰富，主要的用途是使用尽量少的颜色表现尽量多的颜色层次以减少印刷成本
+-   位图模式：只用黑白两种颜色
+
+## CSS3 透明属性
+
+使用`opacity`属性。注意
+
+-   alpha 通道是用来对文本、边框、背景色等设置透明度，而 opacity 是对整个元素设置透明度。
+-   opacity 小于 1 会创建新的堆叠上下文，同时其内部元素都会在在这个透明度的基础上渲染。
+
+## CSS3 颜色模式
+
+-   RGBA：在 RBG 基础上增加了透明度 alpha 通道
+-   HSL：基于人对颜色的心理感受的一种颜色模式，使用色泽（Hue）、饱和度（Saturation）和亮度（Brightness）表示颜色。
+-   HSLA：再 HSL 基础上
+
+使用 HSL 的优势：可以将颜色设置为一个值，当需要调整颜色亮度和浓度时直接调整 L 和 S 即可，而使用 RGB 进行这种调整很困难。
+
+# 第七章 CSS3 盒模型
+
+-   盒类型：`block`、`inline`、`inline-block`、`flex`等
+-   盒属性：宽高、内边距、边框、外边距
+
+## W3C 标准盒模型和`box-sizing`
+
+W3C 标准盒模型是这样的：
+
+-   元素空间尺寸：内容 + 内边距 + 边框 + 外边距
+-   元素大小：内容（height 和 width 属性指定的大小）+ 內边距 + 边框
+
+这种方式不将內距和边框算入元素的大小很不方便，而 IE 很早的版本（IE6 以下）有一种好的方案是将内边距和边框纳入元素的大小中，这样当修改内边距和边框大小时元素的代销就不会发生变化了。
+
+那么现代浏览器有办法使用这种计算方法么？
+
+当然可以，那就是将`box-sizing`属性设置为`border-box`。（默认是`content-box`使用 W3c 标准的计算方法）
+
+如果大家” 见 NB 之物必细察其纹理 “就能发现很多前端 UI 库直接就全局都用`border-box`了
+
+```css
+* {
+    box-sizing: border-box;
+}
+```
+
+## CSS3 内容溢出属性
+
+使用`overflow:`属性控制 x 轴和 y 轴的内容溢出
+
+## CSS3 自由缩放属性
+
+使用`resize: none | both | horizontal | vertical | block | inline`控制元素是否可在 x 轴和 y 轴自由缩放。
+
+注意 `resize` 无法设置在：
+
+-   Inline 元素
+-   [`overflow`](https://developer.mozilla.org/en-US/docs/Web/CSS/overflow) 为 `visible`的 Block 元素
+
+## CSS3 轮廓属性
+
+轮廓（outline）的呈现效果和边框（border）很像不过，轮廓和边框完全不同：
+
+1.  轮廓不属于盒模型（不会计算入元素空间尺寸占用网页布局空间）
+2.  轮廓无法单独设置各个方向
+3.  对于行内元素的行为不同，例如：[border & outline](https://codepen.io/1010543618/pen/qwKdzW)
+
+# 第八章 CSS3 伸缩布局盒模型
