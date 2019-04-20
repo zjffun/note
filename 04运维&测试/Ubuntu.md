@@ -2,6 +2,10 @@
 
 查看 Ubuntu 版本：`cat /etc/issue`
 
+Node：
+
+[Install the Latest Node.js and NPM Packages on Ubuntu 16.04 / 18.04 LTS](https://websiteforstudents.com/install-the-latest-node-js-and-nmp-packages-on-ubuntu-16-04-18-04-lts/)
+
 Apache:
 
     sudo apt-get install apache2
