@@ -7,8 +7,7 @@
 > 1.  `<`和`>`等符号已经用来表示 HTML TAG，因此不能直接当作文本中的符号来使用。但有时需求是在 HTML 页面上使用这些符号，所以需要定义它的转义字符串。
 > 2.  有些字符在 ASCII 字符集中没有定义（如版权符号 “©”）。因此需要使用转义字符（“©” 对应的转义字符是 “`&copy;`”）来表示。
 
-字符实体表：
-[Character Entity Reference Chart](https://dev.w3.org/html5/html-author/charref)
+字符实体表：[Character Entity Reference Chart](https://dev.w3.org/html5/html-author/charref)
 
 # 预留字符（Reserved characters）
 

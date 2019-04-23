@@ -1,4 +1,4 @@
-# Informational（信息） 1xx
+# 1xx Informational（信息）
 
 ## 100 Continue（继续）
 
@@ -59,7 +59,7 @@
       ...
     },
 
-# Successful（成功） 2xx
+# 2xx Successful（成功）
 
 ## 200 OK（成功）
 
@@ -75,7 +75,7 @@
 
 ## 206 Partial Content（部分内容）
 
-# Redirection（重定向） 3xx
+# 3xx Redirection（重定向）
 
 ## 300 Multiple Choices（多种选择）
 
@@ -87,7 +87,7 @@
 
 ## 304 Not Modified（未修改）
 
-当向服务器请求 “浏览器已经缓存但过期的文件” 时（参见 xxx），如果返回 304 则继续使用该文件。
+当向服务器请求 “浏览器已经缓存但过期的文件” 时，如果返回 304 则继续使用该文件。
 
 ## 305 Use Proxy（使用代理）
 
@@ -95,7 +95,7 @@
 
 ## 307 Temporary Redirect（临时重定向）
 
-# Client Error（客户端错误） 4xx
+# 4xx Client Error（客户端错误）
 
 ## 400 Bad Request（错误请求）
 
@@ -135,7 +135,7 @@
 
 ## 417 Expectation Failed（无法满足期望）
 
-# Server Error（服务器错误） 5xx
+# 5xx Server Error（服务器错误）
 
 ## 500 Internal Server Error（内部服务器错误）
 
@@ -149,5 +149,6 @@
 
 ## 505 HTTP Version Not Supported（不支持 HTTP 版本）
 
-参考：
+# 参考
+
 [HTTP/1.1: Status Code Definitions](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html)

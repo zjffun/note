@@ -6,9 +6,9 @@
 
 -   该资源是否有缓存？
     -   有缓存：
-        -   该资源 Cache-Control/Expires 是否过期？
+        -   该资源 `Cache-Control`或`Expires` 是否过期？
             -   未过期：直接使用缓存的资源。
-            -   已过期：携带该资源的 ETag/Last-Modified、If-None-Match/If-Modified-Since 请求该资源。
+            -   已过期：携带该资源的 `ETag`或`Last-Modified`、`If-None-Match`或`If-Modified-Since` 请求该资源。
     -   没有缓存：直接请求该资源。
 
 ## 响应阶段
@@ -49,6 +49,8 @@ PS：在控制台查看缓存效果时注意关闭`禁用 HTTP 缓存`选项
 > 例如，使用 Vary: User-Agent 头，缓存服务器需要通过 UA 判断是否使用缓存的页面。如果需要区分移动端和桌面端的展示内容，利用这种方式就能避免在不同的终端展示错误的布局。
 
 # 定义最佳的缓存机制
+
+可以按照下图设置`Cache-Control`
 
 ![定义最佳的缓存机制](./img/HTTP缓存.png)
 
