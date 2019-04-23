@@ -255,3 +255,24 @@ W3C 标准盒模型是这样的：
 3.  对于行内元素的行为不同，例如：[border & outline](https://codepen.io/1010543618/pen/qwKdzW)
 
 # 第八章 CSS3 伸缩布局盒模型
+
+Flexbox 的语法有旧版本、混合版本、新版本三种版本。2012 年 9 月推出了新版本。
+
+```text
+flex: none | [ <'flex-grow'> <'flex-shrink'>? || <'flex-basis'> ]
+```
+
+PS: 现在的标准是`flex-shrink`负值无效，书中的 “`flex-shrink`的负值同样生效” 不符合现在的标准。
+
+# 第九章 CSS3 多列布局
+
+用来实现类似报纸杂志这样的多列布局。
+
+    column: <'column-width'> || <'column-count'>
+
+-   `column-rule`：设置列分隔符的属性，用法类似`border`
+-   `break-after`、`break-before`和`break-inside`：设置如何在盒子之前、之后、中间设置 page、column 或 region 断开。
+
+PS: 当设置的列宽足够大，以至于无法分列显示时，就算设置了列数也按一列显示，并且自动调整列宽等于元素宽度。
+
+# 第十章 CSS3 渐变
