@@ -276,3 +276,29 @@ PS: 现在的标准是`flex-shrink`负值无效，书中的 “`flex-shrink`的�
 PS: 当设置的列宽足够大，以至于无法分列显示时，就算设置了列数也按一列显示，并且自动调整列宽等于元素宽度。
 
 # 第十章 CSS3 渐变
+
+## 色标
+
+在创建渐变的过程中可以指定多个中间颜色值，这个值称为色标。
+
+## 兼容方案
+
+对于旧的 IE 可以使用 IE 的滤镜兼容。
+
+## 线性渐变
+
+[`linear-gradient`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/linear-gradient)
+
+## 径向渐变
+
+[`radial-gradient`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/radial-gradient) 
+
+## 重复渐变
+
+[`repeating-linear-gradient`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/repeating-linear-gradient) 和 [`repeating-radial-gradient`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/repeating-radial-gradient) 
+
+## 圆锥渐变
+
+ [`conic-gradient`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/conic-gradient) ：在只有 Chrome 支持，扇形的渐变。
+
+# 第十一章 CSS3 变形
