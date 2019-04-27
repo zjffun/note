@@ -302,3 +302,19 @@ PS: 当设置的列宽足够大，以至于无法分列显示时，就算设置�
  [`conic-gradient`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/conic-gradient) ：在只有 Chrome 支持，扇形的渐变。
 
 # 第十一章 CSS3 变形
+
+## [transform](https://developer.mozilla.org/en-US/docs/Web/CSS/transform)
+
+`transfrom`属性指一组转换函数。如果这个属性的值不为`none`，则会创建一个层叠上下文。
+
+```text
+transfrom: none | <transform-list>
+```
+
+## [`transform-origin`](https://developer.mozilla.org/en-US/docs/Web/CSS/transform-origin)
+
+指定元素的变形的中心点位置，默认为 x 轴和 y 轴的 50% 处。
+
+## [`transform-style`](https://developer.mozilla.org/en-US/docs/Web/CSS/transform-style)
+
+设置元素的子元素是位于 3D 空间中还是平面中。
