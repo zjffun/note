@@ -4,7 +4,8 @@
   "description": "null",
   "private": true,
   "scripts": {
-    "lint-md": "remark . --frail"
+    "lint-md": "remark . --frail",
+    "pa": "do-pangu -y"
   },
   "repository": {
     "type": "git",
