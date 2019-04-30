@@ -332,3 +332,28 @@ transfrom: none | <transform-list>
 ## [`backface-visibility`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/backface-visibility)
 
 指定当元素背面朝向观察者时是否可见。
+
+# 第十二章 CSS3 过渡
+
+**transition** [CSS](https://developer.mozilla.org/en/CSS) 属性是 [`transition-property`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/transition-property)，[`transition-duration`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/transition-duration)，[`transition-timing-function`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/transition-timing-function) 和 [`transition-delay`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/transition-delay) 的一个[简写属性](https://developer.mozilla.org/en-US/docs/CSS/Shorthand_properties)。
+
+## 标准语法
+
+```text
+transition: <single-transition>#
+
+where 
+<single-transition> = [ none | <single-transition-property> ] || <time> || <timing-function> || <time>
+```
+
+注：书中的过渡函数`step()`现在已经改为`steps()`
+
+## 技巧
+
+-   `auto`属性的过渡非常诡异，应该避免使用
+-   需要计算的属性会触发隐式过渡
+-   在 “关闭 " 时设置较短时间的过渡比较好
+-   使用超长延时的过渡可以作出 “永久过渡”（像是用 JS 添加了 class 一样）
+-   设置`transform： translate(0)`可以开启硬件加速
+
+# 第十三章 CSS3 动画
