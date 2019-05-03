@@ -357,3 +357,13 @@ where
 -   设置`transform： translate(0)`可以开启硬件加速
 
 # 第十三章 CSS3 动画
+
+[animation - CSS（层叠样式表） | MDN](https://developer.mozilla.org/zh-CN/docs/Web/CSS/animation)
+
+动画和过渡不同的是，动画可以像 Flash 一样通过关键帧控制动画的每一步。
+
+动画播放过程中 CSS 属性完全由 animation 控制，等待和结束后的样式根据 [animation-fill-mode](https://developer.mozilla.org/zh-CN/docs/Web/CSS/animation-fill-mode) 判断。
+
+## `@keyframe`
+
+由多个百分比构成，范围是`0%~100%`（from 是 0% 的简写，to 是 100% 的简写）
