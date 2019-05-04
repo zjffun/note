@@ -367,3 +367,72 @@ where
 ## `@keyframe`
 
 由多个百分比构成，范围是`0%~100%`（from 是 0% 的简写，to 是 100% 的简写）
+
+# 第十四章 媒体特性与 Responsive 设计
+
+## 媒体查询
+
+### 使用
+
+-   HTML: link 和 source 标签中使用
+-   JS: 使用 [`Window.matchMedia()`](https://developer.mozilla.org/en-US/docs/Web/API/Window/matchMedia) 创建 mql 对象，并使用 [`MediaQueryList.addListener()`](https://developer.mozilla.org/en-US/docs/Web/API/MediaQueryList/addListener) 添加媒体查询状态改变事件
+-   CSS: 在 @import 和 @media 中使用
+
+### 语法
+
+-   设备类型（Media types）：`screen`、`print`等
+-   媒体特性（Media features）：`min-width`、`color`等
+
+## Responsive 布局
+
+### 术语
+
+1.  流体网格：使用百分比控制格子大小
+2.  弹性图片：使用百分比控制图片大小
+3.  媒体查询：根据设备尺寸进行样式适配
+4.  屏幕分辨率：用户使用设备浏览 Web 页面时的分辨率
+5.  主要断点：Web 页面宽度的临界点
+
+### meta 标签
+
+在 Responsive 布局用来定义初始的宽度和缩放，一般使用`<meta name="viewport" content="width=device-width, initial-scale=1.0">`这个设置。
+
+meta 标签还可用于设置字符集等其他元数据。
+
+# 第十五章 嵌入 Web 字体
+
+## `@font-face`
+
+指定自定义字体名称和字体资源位置等信息。
+
+```text
+@font-face {
+  [ font-family: <family-name>; ] ||
+  [ src: <src>; ] ||
+  [ unicode-range: <unicode-range>; ] ||
+  [ font-variant: <font-variant>; ] ||
+  [ font-feature-settings: <font-feature-settings>; ] ||
+  [ font-variation-settings: <font-variation-settings>; ] ||
+  [ font-stretch: <font-stretch>; ] ||
+  [ font-weight: <font-weight>; ] ||
+  [ font-style: <font-style>; ]
+}
+
+where 
+<family-name> = <string> | <custom-ident>+
+```
+
+## 优势
+
+-   适用性：比雪碧图使用起来方便
+-   可拓展性：可以通过 font-size 设置大小
+-   灵活性：文字效果可以应用到图标
+-   兼容性：支持所有现代浏览器，包括低版本 IE
+
+## 字体格式
+
+-   `.ttf` TrueType
+-   `.otf` OpenType
+-   `.woff` WebOpenFontFormal
+-   `.eot` EmbeddedOpenType（供旧版 IE 使用）
+-   `.svg` SVG
