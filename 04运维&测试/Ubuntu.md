@@ -4,6 +4,12 @@
 
 Node：
 
+```bash
+sudo apt install curl
+curl -sL https://deb.nodesource.com/setup_10.x | sudo bash -
+sudo apt install nodejs
+```
+
 [Install the Latest Node.js and NPM Packages on Ubuntu 16.04 / 18.04 LTS](https://websiteforstudents.com/install-the-latest-node-js-and-nmp-packages-on-ubuntu-16-04-18-04-lts/)
 
 Apache:
