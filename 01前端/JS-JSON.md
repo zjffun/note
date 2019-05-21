@@ -1,3 +1,14 @@
+# 回车和换行
+
+JSON 无法处理回车和换行，例如下面的语句会报错
+
+```js
+JSON.parse({a: '\r'})
+```
+
+-   `\r`: `\x0D`回车 CR (Carriage Return)
+-   `\n`: `\x0A`换行 LF (Line Feed)
+
 # JSON.stringify 出现：Converting circular structure to JSON
 
     // Note: cache should not be re-used by repeated calls to JSON.stringify.
