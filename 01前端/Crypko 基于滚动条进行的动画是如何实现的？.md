@@ -2,7 +2,7 @@
 
 为什么这么确定就是用了 ScrollMagic ？因为她代码里写的很清楚啊
 
-`待替换的图片 ![Crypko 基于滚动条进行的动画是如何实现的？]\(./img/Crypko 基于滚动条进行的动画是如何实现的？.png)`
+![Crypko 基于滚动条进行的动画是如何实现的？](./img/CrypkoScrollAnimate.png)
 
 一些其他资料：
 
