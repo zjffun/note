@@ -1,3 +1,7 @@
+已移至 [有道云笔记 zjf 的 note](https://note.youdao.com/ynoteshare1/index.html?id=2536781624d596fe9781faa22efa54dd&type=notebook)
+
+笔记和博客不是一回事呢。。
+
 # 文章类别
 
 1.  前端 
