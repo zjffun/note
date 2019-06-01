@@ -4,8 +4,8 @@
   "description": "null",
   "private": true,
   "scripts": {
-    "lint-md": "remark . --frail",
-    "fix": "remark . -o"
+    "lint-md": "remark . --quiet --frail",
+    "fix": "remark . -o --quiet --frail"
   },
   "repository": {
     "type": "git",
@@ -32,8 +32,8 @@
   },
   "remarkConfig": {
     "plugins": [
-      "remark-preset-lint-recommended",
-      "remark-pangu"
+      "preset-lint-recommended",
+      "pangu"
     ]
   }
 }
