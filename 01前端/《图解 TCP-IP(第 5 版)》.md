@@ -48,6 +48,23 @@ OSI 仅是一个模型，定义了各层的作用，并没有对接口和协议�
 
 # 第二章 TCP/IP 基础知识
 
+TCP: Transmission Control Protocol
+
+IP: Internet Protocol
+
+很多情况下 TCP/IP 指利用 IP 通信时所用到的协议族的统称
+
+TCP/IP 协议的特点是开放性和实用性
+
+TCP/IP 协议由 IETF 讨论制定，需要标准化的协议被列入 RFC（Request For Comment，官网 [» RFC Editor](https://www.rfc-editor.org/)）文档并在互联网公布
+
+## TCP/IP 协议族
+
+-   应用协议：HTTP, SMTP, FTP, TELNET, SNMP
+-   传输协议：TCP, UDP
+-   网际协议：IP, ICMP, ARP
+-   路由控制协议：RIP, OSPF, BGP
+
 # 第三章 数据链路
 
 # 第四章 IP 协议

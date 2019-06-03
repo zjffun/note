@@ -5,7 +5,7 @@
   "private": true,
   "scripts": {
     "lint-md": "remark . --quiet --frail",
-    "fix": "remark . -o --quiet --frail"
+    "fix": "remark . -o --quiet"
   },
   "repository": {
     "type": "git",
