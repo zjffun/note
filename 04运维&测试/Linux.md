@@ -87,3 +87,40 @@ EOF
 [Linux awk 命令 | 菜鸟教程](http://www.runoob.com/linux/linux-comm-awk.html)
 
 [Linux sed 命令 | 菜鸟教程](http://www.runoob.com/linux/linux-comm-sed.html)
+
+# 设置环境变量
+
+使用`export`命令，例如
+
+```bash
+export PATH=$PATH:/home/xyz/Tesseract/bintesseract可执行文件目录
+```
+
+设置在`/etc/profile`文件中对所有用户生效，设置在`~/.bashrc`文件中对当前用户生效
+
+[export - Unix, Linux Command](https://www.tutorialspoint.com/unix_commands/export.htm)
+
+# 为常用命令设置别名
+
+使用`alias`命令，例如
+
+```bash
+alias p="pwd"
+alias ls="ls -al"
+```
+
+设置在`/etc/profile`文件中对所有用户生效，设置在`~/.bashrc`文件中对当前用户生效
+
+[How to use the alias command, by The Linux Information Project (LINFO)](http://www.linfo.org/alias.html)
+
+# 将输出作为变量
+
+不能直接`tpwd=pwd`，这样会将`tpwd`作为`pwd`命令，要像下面这样
+
+```bash
+pwd=`pwd`
+echo $pwd
+# or
+pwd=$(pwd)123
+echo $pwd
+```
