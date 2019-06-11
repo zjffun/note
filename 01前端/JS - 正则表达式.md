@@ -13,7 +13,7 @@ RegExp 对象用于存储检索模式。
 
 RegExp 对象有 3 个方法：test()、exec() 以及 compile()。
 
-1.  test()：检索字符串中的指定值。返回值是被找到的值。如果没有发现匹配，则返回 null。
+1.  test()：检索字符串中的指定值。返回值是布尔值。
 
     // 在 "The best things in life are free" 中查找 e，因为这个字符串中存在 e 所以返回 e
     var patt1=new RegExp("e");
