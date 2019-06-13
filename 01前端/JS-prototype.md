@@ -61,9 +61,11 @@ foo.prototype.bar = 666;
 
 对象的`prototype` 属性里面还有个特殊的 "属性"`[[Prototype]]` ，可以用来模拟继承，她指向该对象的`prototype` 属性的继承下来的原型（指向该对象继承的原型的`prototype`属性的指针）。
 
-# `[[Prototype]]`
+# `[[Prototype]]` 也叫 `prototype.__proto__`
 
 对象的构造函数的原型（指向创建该对象的函数的`prototype`属性的指针）。（一切对象都有这个虚拟指针）
+
+[Object.prototype.**proto** - JavaScript | MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/proto)
 
 ## `[[Prototype]].constructor`
 
