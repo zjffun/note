@@ -8,15 +8,17 @@
 
 她会继承（指向）其构造函数的`prototype`，
 
-她的构造函数的`[[Prototype]]`会继承（指向）其其构造函数的`prototype`，
+她的构造函数的`[[Prototype]]`会继承（指向）其构造函数的`prototype`，
 
-她的构造函数的`[[Prototype]]`会继承（指向）其其构造函数的`prototype`，
+她的构造函数的`[[Prototype]]`会继承（指向）其构造函数的`prototype`，
 
-她的构造函数的`[[Prototype]]`会继承（指向）其其构造函数的`prototype`,
+她的构造函数的`[[Prototype]]`会继承（指向）其构造函数的`prototype`,
 
-她的构造函数的`[[Prototype]]`会继承（指向）其其构造函数的`prototype`，
+她的构造函数的`[[Prototype]]`会继承（指向）其构造函数的`prototype`，
 
 。。。
+
+最终指向 null 结束。
 
 这样就和类一样了。
 
