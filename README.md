@@ -1,39 +1,17 @@
-已移至 [有道云笔记 zjf 的 note](https://note.youdao.com/ynoteshare1/index.html?id=2536781624d596fe9781faa22efa54dd&type=notebook)
-
-笔记和博客不是一回事呢。。
+仅仅是一些学习笔记
 
 # 文章类别
 
-1.  前端 
-
-    HTML、CSS、JS、前端自动化等
-2.  服务端 
-
-    PHP、Java 等
-3.  数据库 
-
-    MySQL、Oracle、Access 等
-4.  运维 & 测试 
-
-    Linux、Apache、Nginx、Memcached、JMeter 等
-5.  实用技术 
-
-    Adobe、Office、Sublime、IDE 等
-6.  CS
-
-    Counter Strike 等
-7.  GIS
-
-    ArcGIS、Skyline 等
-8.  常用语言 
-
-    C，Java、英语、日语等
-9.  不常用语言 
-
-    Python、C#、VB 等
-10. 面试 
-
-    一些面试准备的资料、面试的趣事和总结
+1.  前端：HTML、CSS、JS、前端自动化等
+2.  服务端：PHP、Java 等
+3.  数据库：MySQL、Oracle、Access 等
+4.  运维 & 测试：Linux、Apache、Nginx、Memcached、JMeter 等
+5.  实用技术：Adobe、Office、Sublime、IDE 等
+6.  CS：Counter Strike 等
+7.  GIS：ArcGIS、Skyline 等
+8.  常用语言：C，Java、英语、日语等
+9.  不常用语言：Python、C#、VB 等
+10. 面试：面试的经验和总结
 
 # 文章命名规范
 
