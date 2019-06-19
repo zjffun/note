@@ -34,23 +34,6 @@
 9.  `/home`：用户的主目录。下面是自己定义的用户名的文件夹。每个用户的设置文件，用户的桌面文件夹，还有用户的数据都放在这里。
 10. `/mnt`：此目录主要是作为挂载点使用。通常包括系统引导后被挂载的文件系统的挂载点。如挂载 Windows 下的某个分区。
 
-# vsftp
-
-增加用户 test，并制定 test 用户的主目录为 / home/test：
-==useradd -d /home/test test==
-
-为 test 设置密码：
-==passwd test==
-
-更改用户相应的权限设置, 限定用户 test 不能 telnet，只能 ftp：
-==usermod -s /sbin/nologin test==
-
-恢复登录权限：
-==usermod -s /bin/bash==
-
-更改用户 test 的主目录为 / test：
-==usermod -d /test test==  
-
 # shell 和 bash
 
 > [shell](https://baike.baidu.com/item/shell)：在计算机科学中，Shell 俗称壳（用来区别于核），是指 “为使用者提供操作界面” 的软件（命令解析器）。
@@ -123,4 +106,14 @@ echo $pwd
 # or
 pwd=$(pwd)123
 echo $pwd
+```
+
+# 解决从 Windows 系统上传的文件名乱码
+
+```bash
+# 测试文件名转码的结果（dry run）
+convmv -f GBK -t zh_CN.UTF-8 -r your_path
+
+# 执行文件名转码
+convmv -f GBK -t zh_CN.UTF-8 -r --notest your_path
 ```

@@ -2,6 +2,10 @@
 
 查看 Ubuntu 版本：`cat /etc/issue`
 
+Nginx: [Nginx - Community Help Wiki](https://help.ubuntu.com/community/Nginx)
+
+vsftp: [vsftpd - Community Help Wiki](https://help.ubuntu.com/community/vsftpd)
+
 Node：
 
 ```bash

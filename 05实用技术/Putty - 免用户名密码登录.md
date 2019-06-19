@@ -1,1 +1,1 @@
-打开 Putty 时携带 `-pw 密码 用户名@ip 地址` 参数即可。
+打开 Putty 时携带 `-pw your_password your_username@your_host` 参数即可。
