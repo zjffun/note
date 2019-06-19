@@ -6,7 +6,7 @@
 
 ## 安装服务端
 
-[github.com/shadowsocks/shadowsocks-libev](about:blank)
+[shadowsocks/shadowsocks-libev: libev port of shadowsocks](https://github.com/shadowsocks/shadowsocks-libev#docker)
 
 我是直接用 Docker 装的，注意：加密方式没有配置默认是`ase-256-gcm`，记得改客户端的加密方式配置
 
