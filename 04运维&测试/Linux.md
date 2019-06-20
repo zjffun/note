@@ -117,3 +117,13 @@ convmv -f GBK -t zh_CN.UTF-8 -r your_path
 # 执行文件名转码
 convmv -f GBK -t zh_CN.UTF-8 -r --notest your_path
 ```
+
+# 正则修改文件名
+
+[Linux Rename Regular Expression - javatpoint](https://www.javatpoint.com/linux-rename-regular-expression)
+
+例如：
+
+```bash
+rename 's/serach_str/replace_str/' *.txt
+```
