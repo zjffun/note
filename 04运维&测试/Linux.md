@@ -127,3 +127,17 @@ convmv -f GBK -t zh_CN.UTF-8 -r --notest your_path
 ```bash
 rename 's/serach_str/replace_str/' *.txt
 ```
+
+# 去重
+
+```bash
+sort result.txt | uniq > result_uniq.txt
+```
+
+[Linux Shell - How To Remove Duplicate Text Lines - nixCraft](https://www.cyberciti.biz/faq/unix-linux-shell-removing-duplicate-lines/)
+
+# 合并
+
+```bash
+cat *.sql > all.sql
+```
