@@ -9,6 +9,15 @@
 
 字符实体表：[Character Entity Reference Chart](https://dev.w3.org/html5/html-author/charref)
 
+## 空格实体（space entity）
+
+-   `&nbsp;` ：不换行空格（No-Break Space），它是按下 space 键产生的空格，占据宽度受字体影响明显而强烈。
+-   `&emsp;` ：全角空格（Em Space），em 是字体排印学的计量单位，相当于当前指定的点数。例如，1em 在 16px 的字体中就是 16px。占据的宽度正好是_1 个中文宽度_，而且基本上不受字体影响。
+-   `&ensp;` ：半角空格（En Space），en 是字体排印学的计量单位，为 em 宽度的一半。名义上是小写字母 n 的宽度。其占据的宽度正好是 1/2 个中文宽度，而且基本上不受字体影响。
+-   `&thinsp;` ：窄空格（Thin Space），占 em 的 1/6 宽。
+-   `&zwnj;` ：零宽不连字（Zero Width Non Joiner），是一个不打印字符，放在电子文本的两个字符之间，抑制本来会发生的连字，而是以这两个字符原本的字形来绘制。
+-   `&zwj;` ：零宽连字（Zero Width Joiner），是一个不打印字符，放在某些需要复杂排版语言（如阿拉伯语、印地语）的两个字符之间，使得这两个本不会发生连字的字符产生了连字效果。
+
 # 预留字符（Reserved characters）
 
 预留字符表：
