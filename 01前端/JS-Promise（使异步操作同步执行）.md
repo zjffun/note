@@ -84,8 +84,131 @@
 
 > <https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/async_function>
 
+# 原理
+
+```js
+function Promise(fn) {
+  var state = "pending",
+    value = null,
+    callbacks = [];
+
+  /**
+   * promise 的 then 方法
+   * @returns {Promise}
+   */
+  this.then = function(onFulfilled, onRejected) {
+    return new Promise(function(resolve, reject) {
+      handle({
+        onFulfilled: onFulfilled || null,
+        onRejected: onRejected || null,
+        resolve: resolve,
+        reject: reject
+      });
+    });
+  };
+
+  /**
+   * 根据 promise 的 state 处理 callback
+   * @param {Object} callback
+   */
+  function handle(callback) {
+    if (state === "pending") {
+      callbacks.push(callback);
+      return;
+    }
+
+    var cb = state === "fulfilled" ? callback.onFulfilled : callback.onRejected,
+      ret;
+    if (cb === null) {
+      cb = state === "fulfilled" ? callback.resolve : callback.reject;
+      cb(value);
+      return;
+    }
+    try {
+      ret = cb(value);
+      callback.resolve(ret);
+    } catch (e) {
+      callback.reject(e);
+    }
+  }
+
+  /**
+   * 执行 promise 的 resolve
+   * @param {*} newValue
+   */
+  function resolve(newValue) {
+    if (
+      newValue &&
+      (typeof newValue === "object" || typeof newValue === "function")
+    ) {
+      var then = newValue.then;
+      if (typeof then === "function") {
+        then.call(newValue, resolve, reject);
+        return;
+      }
+    }
+    state = "fulfilled";
+    value = newValue;
+    execute();
+  }
+
+  /**
+   * 执行 promise 的 reject
+   * @param {*} reason
+   */
+  function reject(reason) {
+    state = "rejected";
+    value = reason;
+    execute();
+  }
+
+  /**
+   * 执行 promise 的全部回调函数
+   */
+  function execute() {
+    setTimeout(function() {
+      callbacks.forEach(function(callback) {
+        handle(callback);
+      });
+    }, 0);
+  }
+
+  // 调用 new Promise 时传入的函数
+  fn(resolve, reject);
+}
+
+/**
+ * promise -> promise2 -> promise3
+ *        \
+ *         -> promise4
+ */
+
+// new Promise 调用传入的函数，参数为 Promise 内部的的 reslove 和 reject 函数
+let promise = new Promise(res => setTimeout(() => res("t1"), 1000));
+
+promise
+  // 调用 then 方法返回一个新的 Promise（promise2），这个 Promise 的参数为 handle 函数
+  // promise2
+  .then(d => {
+    console.log(d); // t1
+    return "t2";
+  })
+  // promise3
+  .then(d => {
+    console.log(d);
+    return "t3"; // t2
+  });
+
+promise
+  // promise4
+  .then(d => {
+    console.log(d); // t1
+  });
+```
+
 # 参考
 
-> [Promise - JavaScript | MDN](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise)
-> [Promise - 廖雪峰的官方网站](https://www.liaoxuefeng.com/wiki/001434446689867b27157e896e74d51a89c25cc8b43bdb3000/0014345008539155e93fc16046d4bb7854943814c4f9dc2000)
-> [Promise.prototype.catch() | MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/catch)
+> -   [Promise - JavaScript | MDN](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise)
+> -   [Promise - 廖雪峰的官方网站](https://www.liaoxuefeng.com/wiki/001434446689867b27157e896e74d51a89c25cc8b43bdb3000/0014345008539155e93fc16046d4bb7854943814c4f9dc2000)
+> -   [Promise.prototype.catch() | MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/catch)
+> -   [Promise 原理解析 - 简书](https://www.jianshu.com/p/9637fcc2e39d)
