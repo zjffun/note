@@ -1,10 +1,10 @@
-使用命令提示符（(cmd)(批处理)(Batch)(.bat)）添加环境变量
+使用命令提示符（cmd、批处理、Batch、.bat）添加环境变量
 
 # 永久环境变量
 
 ## 命令提示符下修改
 
-== 注意：要使用管理员身份运行 cmd==
+注意：要使用管理员身份运行 cmd
 
     set PATH=%PATH%;要添加的路径
     reg add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Environment" /v "Path" /t REG_EXPAND_SZ /d "%PATH%" /f

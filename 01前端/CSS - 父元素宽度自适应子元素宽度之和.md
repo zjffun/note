@@ -2,6 +2,8 @@
 
 # flex
 
+在线演示：[Parent width adapt it's childern(flex)](https://codepen.io/1010543618/pen/GbQJgg)
+
     <style>
         /*1. 最外层容器
             width: 200px;
@@ -70,6 +72,8 @@
     </div>
 
 # table
+
+在线演示：[Parent width adapt it's childern(table)](https://codepen.io/1010543618/pen/JQpddw)
 
     <style>
         /*1. 最外层容器
