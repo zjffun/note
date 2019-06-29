@@ -1,5 +1,9 @@
 ArcGIS API for JavaScript（3.x）如何加载天地图《[ArcGIS API for Javascript 加载天地图（经纬度投影） - 张凯强 - 博客园](https://www.cnblogs.com/zhangkaiqiang/p/7358627.html)》这篇文章已经写的很好了，但放到 4.x 上没法用，这里我将他的方法升级到 4.x 版本供大家参考。（4.x 修改了挺多东西）
 
+# 在线预览：[ArcGIS TianDiTu](https://codepen.io/1010543618/pen/bPLNOE)
+
+# 代码：
+
     <!DOCTYPE html>
     <html style="height: 100%;">
     <head>
@@ -80,12 +84,12 @@ ArcGIS API for JavaScript（3.x）如何加载天地图《[ArcGIS API for Javasc
           // 经过查询资料天地图瓦片可用子域分别有 t0,t1,t2,t3,t4,t5,t6,t7 八个子域
           // 根据现有信息新建 WebTiledLayer 如下
 
-          var layer = WebTileLayer('http://{subDomain}.tianditu.com/DataServer?T=vec_c&x={col}&y={row}&l={level}',{
+          var layer = WebTileLayer('http://{subDomain}.tianditu.com/DataServer?T=vec_c&x={col}&y={row}&l={level}&tk=174705aebfe31b79b3587279e211cb9a',{
             // subDomains: ['t0','t1','t2','t3','t4','t5','t6','t7'],
             subDomains: ['t0'],
             tileInfo: tileInfo
           })
-          var layer_anno = WebTileLayer('http://{subDomain}.tianditu.com/DataServer?T=cva_c&x={col}&y={row}&l={level}',{
+          var layer_anno = WebTileLayer('http://{subDomain}.tianditu.com/DataServer?T=cva_c&x={col}&y={row}&l={level}&tk=174705aebfe31b79b3587279e211cb9a',{
             //subDomains: ['t0','t1','t2','t3','t4','t5','t6','t7'],
             subDomains: ['t0'],
             tileInfo: tileInfo
