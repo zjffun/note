@@ -3,6 +3,12 @@
 
 # 安装包管理
 
+## 方法一
+
+工具栏 -> Tools -> install Package Control
+
+## 方法二
+
 1.  打开 Sublime 按下 ctrl+\`
 2.  输入复制下面代码到输入框，然后按回车
 

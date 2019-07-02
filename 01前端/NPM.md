@@ -9,6 +9,8 @@
 -   `npm install --production`安装 package.json 里已经声明了依赖（只安装 dependencies）
 -   `npm install`安装 package.json 里已经声明了依赖（包括：devDependencies 和 dependencies）
 
+# 下载源
+
 ## nrm
 
 国内 npm 官方源慢，用 nrm 可以切换成淘宝的 npm 镜像源 
@@ -26,6 +28,33 @@ $ nrm use cnpm  //switch registry to cnpm
  
     Registry has been set to: http://r.cnpmjs.org/
 ```
+
+nrm 的原理是修改 npm 的`registr`配置，`cnpm`是 fork 一个子进程实现的（据说有问题没有用过，感觉在发布时会省点事，nrm 还得切回去）
+
+```bash
+# 建议不要用 cnpm 安装 会有各种诡异的bug 可以通过如下操作解决 npm 下载速度慢的问题
+npm install --registry=https://registry.npm.taobao.org
+```
+
+```bash
+alias cnpmi='npm install --registry=https://registry.npm.taobao.org/'
+```
+
+## 解决 puppeteer 无法下载
+
+npm
+
+```bash
+npm config set puppeteer_download_host=https://storage.googleapis.com.cnpmjs.org
+```
+
+yarn
+
+```bash
+yarn config set puppeteer_download_host https://npm.taobao.org/mirrors
+```
+
+参见：[希望添加 chromium 镜像源 · Issue #1246 · cnpm/cnpmjs.org](https://github.com/cnpm/cnpmjs.org/issues/1246)
 
 # 操作模块
 
