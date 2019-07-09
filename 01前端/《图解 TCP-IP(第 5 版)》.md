@@ -193,6 +193,31 @@ IPv4 和 IPv6 包首部：版本、源地址、目标地址、总长度、跳数
 
 # 第五章 IP 协议相关技术
 
+## DNS
+
+DNS（Domain Name System）将域名装换成 IP 地址。
+
+使用`nslookup 主机名`会返回对应的 IP 地址。
+
+域名具有分层结构，根（.）-> 一级域名（例如：com, cn 等）-> 二级域名（例如：baidu, zjffun 等）-> 三级域名（例如：www, blog 等）。。。
+
+DNS 查询：解析器先从自己的数据库中找域名对应的 IP，找不到就向上一层进行查找
+
+DNS 记录类型：
+
+| 类型    | 内容               |
+| ----- | ---------------- |
+| A     | 主机名的 IP 地址（IPv4） |
+| CNAME | 主机别名             |
+| PTR   | IP 地址反向解析        |
+| 等等。。。 |                  |
+
+## ARP
+
+ARP（Address Resolution Protocol）通过目标 IP 定位下一个接收数据分包的网络设备对应的 MAC 地址。
+
+RARP（Reverse Address Resolution Protocol）吃泡面个 MAC 地址定位 IP 的协议，用于打印机等小型嵌入式设备接入网络。
+
 # 第六章 TCP 与 UDP
 
 # 第七章 路由协议
