@@ -218,6 +218,34 @@ ARP（Address Resolution Protocol）通过目标 IP 定位下一个接收数据�
 
 RARP（Reverse Address Resolution Protocol）吃泡面个 MAC 地址定位 IP 的协议，用于打印机等小型嵌入式设备接入网络。
 
+## ICMP
+
+ICMP（Internet Control Message Protocol）用于网络诊断，包括确认 IP 包是否送达、通知 IP 包被废弃的原因、改善网络设置等。
+
+显示经过的路由器：
+
+Unix: `traceroute 目标主机地址`
+
+Windows: `tracert 目标主机地址` 
+
+数据包是否送达成功：`ping 目标主机地址`
+
+## DHCP
+
+DHCP（Dynamic Host Configuration Protocol）用于自动设置 IP 地址，自动化了对接入的物理设备分配 IP 的步骤。
+
+## NAT
+
+NAT（Network Address Transfer）用于在本地网络使用私用地址，连接互联网时使用全局 IP 地址。
+
+路由器让连接到她的设备在内网间使用私用地址互相通信，需要连接到互联网时通过一个 ip 访问外网。（这样只能设备主动去连接外网建立连接，外网无法主动访问这个 ip 对应的设备，因为这个 ip 会对应很多设备）。
+
+NAPT（Network Address Ports Transfer）技术通过转换端口可以让外网主动与多个设备通信。
+
+## IP 隧道
+
+IP 首部后面还是 IP 首部（网络层首部后面继续追加网络层首部）的情况，主要用于让不支持 IPv6 的路由器将整个 IPv6 包作为数据发送出去。
+
 # 第六章 TCP 与 UDP
 
 # 第七章 路由协议
