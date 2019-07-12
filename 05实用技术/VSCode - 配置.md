@@ -4,7 +4,7 @@
   "editor.fontSize": 15,
 
   // terminal
-  // 目前 WSL 的 git 的 hooks 还是有 bug
+  // WSL
   "terminal.integrated.shell.windows": "C:\\WINDOWS\\Sysnative\\bash.exe",
   // "terminal.integrated.shell.windows": "C:\\Program Files\\Git\\bin\\bash.exe",
  
