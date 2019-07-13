@@ -182,3 +182,155 @@ $ git archive master --prefix='project/' --format=zip > `git describe master`.zi
 ```bash
 $ git shortlog --no-merges master --not v1.0.1
 ```
+
+# 6 Git 工具
+
+## [6.1 修订版本（Revision）选择](https://gitee.com/progit/6-Git-%E5%B7%A5%E5%85%B7.html#6.1-%E4%BF%AE%E8%AE%A2%E7%89%88%E6%9C%AC%EF%BC%88Revision%EF%BC%89%E9%80%89%E6%8B%A9)
+
+### 祖先引用
+
+`^N`选择上次父提交的第几父提交（仅在合并提交时有用），`~N`选择向前第几次的父提交
+
+例如: `git show HEAD~3^2`表示查看前三次的提交的第二父提交
+
+```text
+zjf@DESKTOP-5JD9B9T MINGW64 ~/Desktop/test/git (master)
+$ git log --pretty=format:'%h %s' --graph
+* 1945ca3 c9 (git show HEAD)
+* deb9846 c8 (git show HEAD~ 或 git show HEAD^)
+* 62d2c92 c7 (git show HEAD~2 或 git show HEAD^^)
+*   cd081b7 c6 (git show HEAD~3)
+|\
+| * ee8af81 c4 (git show HEAD~3^2)
+* | dc15520 c3 (git show HEAD~3^1)
+* | f34e664 c2
+|/
+* 8919ec2 c1
+
+zjf@DESKTOP-5JD9B9T MINGW64 ~/Desktop/test/git (master)
+$ git show -q HEAD~3^2
+commit ee8af8148af521f509c08ed8899643a0b4c88e6c (t1)
+Author: zjf <zjffun@gmail.com>
+Date:   Sat Jul 13 19:09:34 2019 +0800
+
+    c4
+```
+
+### 提交范围
+
+-   双点：`git log origin/master..HEAD`显示在 HEAD 分支上，但不在 origin/master 分支上的提交
+-   多点：`git log refA refB --not refC`显示在 refA 或 refB 分支上，但不在 refC 分支上的提交
+-   三点：`git log --left-right master...experiment`，查看 master 和 experiment 分支的不同提交，并标出不同的提交属于哪个分支
+
+## [6.2 交互式暂存](https://gitee.com/progit/6-Git-%E5%B7%A5%E5%85%B7.html#6.2-%E4%BA%A4%E4%BA%92%E5%BC%8F%E6%9A%82%E5%AD%98)
+
+```bash
+$ git add -i
+```
+
+在`xxx>>`提示后面直接敲入回车会保存更改。
+
+只让 Git 暂存文件的某些部分而忽略其他也是有可能的。在交互式的提示符下，输入`5`或者`p`（表示 patch，补丁）。Git 会询问哪些文件你希望部分暂存；然后对于被选中文件的每一节，他会逐个显示文件的差异区块并询问你是否希望暂存他们。
+
+## [6.3 储藏（Stashing）](https://gitee.com/progit/6-Git-%E5%B7%A5%E5%85%B7.html#6.3-%E5%82%A8%E8%97%8F%EF%BC%88Stashing%EF%BC%89)
+
+stash 跟 commit 很像不过是存在一个单独的栈里。
+
+## [6.4 重写历史](https://gitee.com/progit/6-Git-%E5%B7%A5%E5%85%B7.html#6.4-%E9%87%8D%E5%86%99%E5%8E%86%E5%8F%B2)
+
+### 改变最近一次提交
+
+    $ git commit --amend
+
+### 修改、重排和压制提交
+
+    # 修改最近三次提交（将要修改的 pick 改为 edit、squash，或者改变顺序）
+    $ git rebase -i HEAD~3
+    # 根据提示输入下面的命令修改或继续
+    $ git commit --amend
+    $ git rebase --continue
+
+### 拆分提交
+
+在`git rebase -i`脚本中修改你想拆分的提交前的指令为 "edit"，然后在进入命令行后进行多次提交，然后`git rebase --continue`
+
+### 核弹级选项: filter-branch
+
+#### 从所有提交中删除一个文件
+
+```bash
+$ git filter-branch --tree-filter 'rm -f passwords.txt' HEAD
+```
+
+#### 将一个子目录设置为新的根目录
+
+假设你完成了从另外一个代码控制系统的导入工作，得到了一些没有意义的子目录（trunk,
+tags 等等）。如果你想让`trunk`子目录成为每一次提交的新的项目根目录，`filter-branch`也可以帮你做到，使用下面这条命令 Git 会自动地删除不对这个子目录产生影响的提交。
+
+```bash
+$ git filter-branch --subdirectory-filter trunk HEAD
+```
+
+#### 全局性地更换电子邮件地址
+
+    $ git filter-branch --commit-filter '
+        if [ "$GIT_AUTHOR_EMAIL" = "schacon@localhost" ];
+        then
+        GIT_AUTHOR_NAME="Scott Chacon";
+        GIT_AUTHOR_EMAIL="schacon@example.com";
+        git commit-tree "$@";
+        else
+        git commit-tree "$@";
+        fi' HEAD
+
+## [6.5 使用 Git 调试](https://gitee.com/progit/6-Git-%E5%B7%A5%E5%85%B7.html#6.5-%E4%BD%BF%E7%94%A8-Git-%E8%B0%83%E8%AF%95)
+
+### 查看每行代码的最近一次提交
+
+例如：查看`index.js`的 12-22 的每一行最近一次提交分别是由谁在哪一天弄的
+
+```bash
+git blame -L 12,22 index.js
+```
+
+PS：`-C` 参数会尝试找出隐式的重命名动作。通常，你会把你拷贝代码的那次提交作为原始提交，因为这是你在这个文件中第一次接触到那几行。Git 可以告诉你编写那些行的原始提交，即便是在另一个文件里。 
+
+### 二分查找定位发生错误的提交
+
+首先你运行`git bisect start`启动，然后你用`git bisect bad`来告诉系统当前的提交已经有问题了。然后你必须告诉 bisect 已知的最后一次正常状态是哪次提交，使用`git bisect good [good_commit]`：
+
+    $ git bisect start
+    $ git bisect bad
+    $ git bisect good v1.0
+
+然后告诉 git 当前版本是否有错误
+
+```bash
+$ git bisect good
+$ git bisect bad
+```
+
+当你完成之后，你应该运行`git bisect reset`来重设你的 HEAD 到你开始前的地方，否则你会处于一个诡异的地方：
+
+```bash
+$ git bisect reset
+```
+
+## [6.6 子模块](https://gitee.com/progit/6-Git-%E5%B7%A5%E5%85%B7.html#6.6-%E5%AD%90%E6%A8%A1%E5%9D%97)
+
+子模块允许你将一个 Git 仓库当作另外一个 Git 仓库的子目录。这允许你克隆另外一个仓库到你的项目中并且保持你的提交相对独立。
+
+```bash
+$ git submodule
+```
+
+## [6.7 子树合并](https://gitee.com/progit/6-Git-%E5%B7%A5%E5%85%B7.html#6.7-%E5%AD%90%E6%A0%91%E5%90%88%E5%B9%B6)
+
+子树归并的思想是你拥有两个工程，其中一个项目映射到另外一个项目的子目录中，反过来也一样。当你指定一个子树归并，Git 可以聪明地探知其中一个是另外一个的子树从而实现正确的归并——这相当神奇。
+
+```bash
+# 拉取分支
+$ git read-tree
+# 对比分支
+$ git diff-tree
+```
