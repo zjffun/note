@@ -24,6 +24,17 @@ docker inspect name_or_id
 ps -fe
 ```
 
+# 传递文件
+
+```bash
+# 查看容器 ID
+docker ps -a
+# 本地到容器
+docker cp 本地文件路径 容器ID:容器路径
+# 容器到本地
+docker cp 容器ID:容器文件路径 本地路径
+```
+
 # 参考
 
 > -   [docker 如何删除 none 镜像_docker_脚本之家](https://www.jb51.net/article/116096.htm)

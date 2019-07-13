@@ -40,7 +40,38 @@ npm install --registry=https://registry.npm.taobao.org
 alias cnpmi='npm install --registry=https://registry.npm.taobao.org/'
 ```
 
-## 解决 puppeteer 无法下载
+## 卡在 `Building fresh packages`，npm 包用到的附加无法下载？
+
+一些 npm 包需要一些附件，这些附件通常在配置文件的 script 的 preinstall、install 或 postuninstall 中去下载，但因为墙或者网络的原因这些附件可能会无法下载或下载的很慢，所以得切换到国内的源才能获得极致的体验。
+
+例如 puppeteer 的进行了如下配置在安装的时候下载 chromium：
+
+```text
+{
+  "name": "puppeteer",
+  ...
+  "scripts": {
+    ...
+    "install": "node install.js",
+    ...
+  },
+  ...
+},
+```
+
+### 常见的附件的下载源
+
+```text
+puppeteer_download_host "https://npm.taobao.org/mirrors"
+sass_binary_site "https://npm.taobao.org/mirrors/node-sass/"
+phantomjs_cdnurl "http://cnpmjs.org/downloads"
+electron_mirror "https://npm.taobao.org/mirrors/electron/"
+sqlite3_binary_host_mirror "https://foxgis.oss-cn-shanghai.aliyuncs.com/"
+profiler_binary_host_mirror "https://npm.taobao.org/mirrors/node-inspector/"
+chromedriver_cdnurl "https://cdn.npm.taobao.org/dist/chromedriver"
+```
+
+### 使用：以解决 puppeteer 无法下载为例
 
 npm
 

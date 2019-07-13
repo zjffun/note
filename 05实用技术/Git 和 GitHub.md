@@ -224,6 +224,17 @@ $ git push <branch_name> <branch_name>
 8.  注意 Compare changes 下面有一行小字有个链接 compare across forks，点击这个链接就能选择这个项目的 Fork 里的分支了进行比较了
 9.  比较后觉得没问题了，点击 Create pull request 输入修改了什么就 OK 了
 
+## 10. 保存用户名密码
+
+这种方式可以在无法用 SSH Key 的场合使用
+
+```bash
+git config --global credential.helper store
+git pull
+```
+
+[credentials - How to save username and password in GIT? - Stack Overflow](https://stackoverflow.com/questions/35942754/how-to-save-username-and-password-in-git)
+
 # 三：高级操作
 
 ## 寻找丢失的版本
@@ -299,17 +310,17 @@ eg：忽略 / web/upload / 下的所有文件和文件夹，除了 / web/upload/
 
     \#global_key
     Host github.com 
-        HostName github.com
-        IdentityFile ~/.ssh/name_rsa1
-        PreferredAuthentications publickey
-        User your_name1
+    ​    HostName github.com
+    ​    IdentityFile ~/.ssh/name_rsa1
+    ​    PreferredAuthentications publickey
+    ​    User your_name1
 
     \#xxx_key
     Host github.com  
-        HostName github.com
-        IdentityFile ~/.ssh/name_rsa2
-        PreferredAuthentications publickey
-        User your_name2
+    ​    HostName github.com
+    ​    IdentityFile ~/.ssh/name_rsa2
+    ​    PreferredAuthentications publickey
+    ​    User your_name2
 
     # 配置文件参数
 
