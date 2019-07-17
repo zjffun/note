@@ -4,9 +4,9 @@
   "editor.fontSize": 15,
 
   // terminal
-  // WSL
-  "terminal.integrated.shell.windows": "C:\\WINDOWS\\Sysnative\\bash.exe",
-  // "terminal.integrated.shell.windows": "C:\\Program Files\\Git\\bin\\bash.exe",
+  // WSL 用 Remote Development 更好
+  // "terminal.integrated.shell.windows": "C:\\WINDOWS\\Sysnative\\bash.exe",
+  "terminal.integrated.shell.windows": "C:\\Program Files\\Git\\bin\\bash.exe",
  
   // git
   "git.rebaseWhenSync": true,
