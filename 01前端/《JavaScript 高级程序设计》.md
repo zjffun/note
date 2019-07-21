@@ -1925,12 +1925,15 @@ chunk([1, 2, 3], d => console.log(d));
 >
 > 函数节流背后的基本思想是指，某些代码不可以在没有间断的情况连续重复执行。第一次调用函数，创建一个定时器，在指定的时间间隔之后运行代码。当第二次调用该函数时，它会清除前一次的定时器并设置另一个。如果前一个定时器已经执行过了，这个操作就没有任何意义。然而，如果前一个定时器尚未执行，其实就是将其替换为一个新的定时器。目的是只有在执行函数的请求停止了一段时间之后才执行。
 
+PS：书中的函数节流应该叫防反弹比较合适。
+
 [Underscore.js - throttle](https://underscorejs.org/#throttle)
 
 [Underscore.js - debounce](https://underscorejs.org/#debounce)
 
 ```js
-function throttle(callback){
+// 书中将下面的函数叫做 throttle
+function debounce(callback){
     let timeoutID;
     function wrapper () {
         clearTimeout(timeoutID);
@@ -1939,7 +1942,7 @@ function throttle(callback){
     return wrapper;
 }
 
-function debounce(callback){
+function throttle(callback){
     let lastExec = 0;
     function wrapper () {
         if(Date.now() - lastExec > 1000){
