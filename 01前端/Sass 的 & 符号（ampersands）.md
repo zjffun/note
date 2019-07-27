@@ -16,6 +16,23 @@
 
 这里需要用 [插值括号](http://webdesign.tutsplus.com/tutorials/all-you-ever-need-to-know-about-sass-interpolation--cms-21375)`#{}`，因为两个相邻的＆符号在 Sass 中是无效的。
 
+注：`#{&}`会表示整个路径，上面的方法无法用在嵌套的结构里
+
+```scss
+.parent1 {
+  .parent2 { 
+    &#{&} {
+      font-size: 12px;
+    }
+  }
+}
+
+// 结果
+.parent1 .parent2.parent1 .parent2 {
+	font-size: 12px;
+}
+```
+
 # 参见
 
 [The Sass Ampersand | CSS-Tricks](https://css-tricks.com/the-sass-ampersand/)
