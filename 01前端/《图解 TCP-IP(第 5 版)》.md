@@ -342,6 +342,46 @@ TCP 中没有表示包长度和数据长度的字段。可由 IP 层获知 TCP �
 
 # 第七章 路由协议
 
+路由器根据路由控制表（Routing Table）转发数据包。
+
+路由控制分为静态和动态两种类型。
+
+动态路由的相邻的路由器会发送自己已知的网络连接信息。
+
+根据路由控制范围常使用 IGP（Interior Gateway Protocol）和 EGP（External Gateway Protocol）两种协议。（他们的关系和 IP 和的网络部分和主机部分类似）
+
+## 路由算法
+
+路由算法分为距离向量（Distance-Vector）算法和链路状态（Link-State）算法。
+
+### 距离向量
+
+路由器之间交换目标网络的方向和距离的信息，然后根据这些信息决定目标网络或主机。
+
+### 链路状态
+
+在了解网络整体的状态的基础上生成路由控制表的方法。
+
+## RIP（Routing Information Protocol）
+
+距离向量型的路由协议，广泛用于 LAN。
+
+## OSPF（Open Shorttest Path First）
+
+链路状态型的路由协议，即使网络有环路也可以进行稳定的路由。
+
+## BGP（Border Gateway Protocol）
+
+距离向量型的路由协议，属于外部网关协议，主要用于 ISP 之间连接的部分。
+
+BGP 会根据进过的 AS（自治系统：Autonomous System）的个数进行路由控制。
+
+## MPLS（Multi Protocol Label Switching）
+
+如今，转发 IP 数据包除了使用路由技术，还使用标记交换机技术。标记交换机技术最具代表性的就是 MPLS。
+
+在 MPLS 网络入口处附加标记，然后通过这个标记进行转发，在 MPLS 网络出口处将这个标记删除。
+
 # 第八章 应用协议
 
 # 第九章 网络安全
