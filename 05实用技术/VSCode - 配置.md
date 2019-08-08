@@ -1,3 +1,5 @@
+# 软件设置
+
 ```json
 {
   "workbench.colorTheme": "Solarized Dark",
@@ -37,4 +39,94 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   }
 }
+```
+
+# 快捷键
+
+```json
+// Place your key bindings in this file to override the defaultsauto[]
+[
+    // suggest
+    {
+        "key": "alt+j",
+        "command": "editor.action.triggerSuggest",
+        "when": "editorHasCompletionItemProvider && textInputFocus && !editorReadonly"
+    },
+    {
+        "key": "alt+j",
+        "command": "toggleSuggestionDetails",
+        "when": "suggestWidgetVisible && textInputFocus"
+    },
+    // view & go
+    {
+        "key": "alt+up",
+        "command": "workbench.action.navigateBack"
+    },
+    {
+        "key": "alt+down",
+        "command": "workbench.action.navigateForward"
+    },
+    {
+        "key": "alt+right",
+        "command": "workbench.action.nextEditor"
+    },
+    {
+        "key": "alt+right",
+        "command": "-workbench.action.navigateForward"
+    },
+    {
+        "key": "alt+left",
+        "command": "workbench.action.previousEditor"
+    },
+    {
+        "key": "alt+left",
+        "command": "-workbench.action.navigateBack"
+    },
+    // file & edit
+    {
+        "key": "alt+s",
+        "command": "workbench.action.files.save"
+    },
+    {
+        "key": "alt+q",
+        "command": "workbench.action.closeActiveEditor"
+    },
+    {
+        "key": "alt+c",
+        "command": "editor.action.clipboardCopyAction",
+        "when": "textInputFocus"
+    },
+    {
+        "key": "alt+v",
+        "command": "editor.action.clipboardPasteAction",
+        "when": "textInputFocus && !editorReadonly"
+    },
+    {
+        "key": "alt+z",
+        "command": "undo",
+        "when": "textInputFocus && !editorReadonly"
+    },
+    {
+        "key": "shift+alt+z",
+        "command": "redo",
+        "when": "textInputFocus && !editorReadonly"
+    },
+    {
+        "key": "alt+a",
+        "command": "editor.action.selectAll",
+        "when": "textInputFocus"
+    },
+    {
+        "key": "alt+f",
+        "command": "actions.find"
+    },
+    {
+        "key": "alt+h",
+        "command": "editor.action.startFindReplaceAction"
+    },
+    {
+        "key": "alt+n",
+        "command": "workbench.action.files.newUntitledFile"
+    },
+]
 ```
