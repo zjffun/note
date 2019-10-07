@@ -40,19 +40,17 @@
 
 我是按照[setup-ipsec-vpn/README-zh.md at master · hwdsl2/setup-ipsec-vpn](https://github.com/hwdsl2/setup-ipsec-vpn/blob/master/README-zh.md)进行搭建的，下面是一个及其简单的过程，因为只有一行命令（复杂的使用请参看上面的连接）。
 
-在服务器上运行：
+Ubuntu LTS, Debian 服务器上运行：
 
--   Ubuntu LTS, Debian：
+```bash
+wget https://git.io/vpnsetup -O vpnsetup.sh && sudo sh vpnsetup.sh
+```
 
-<!---->
+CentOS 服务器上运行：
 
-    wget https://git.io/vpnsetup -O vpnsetup.sh && sudo sh vpnsetup.sh
-
--   CentOS：
-
-<!---->
-
-    wget https://git.io/vpnsetup-centos -O vpnsetup.sh && sudo sh vpnsetup.sh
+```bash
+wget https://git.io/vpnsetup-centos -O vpnsetup.sh && sudo sh vpnsetup.sh
+```
 
 运行完毕最后会输出如下信息
 
