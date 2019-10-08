@@ -22,3 +22,63 @@
 ## 填坑
 
 [failed to handshakefailed to handshake with xxx: authentication error · Issue #2373 · shadowsocks/shadowsocks-libev](https://github.com/shadowsocks/shadowsocks-libev/issues/2373)
+
+# 使用 [Project V 的 V2Ray](https://www.v2ray.com/)
+
+[V2Ray 配置指南 | 新 V2Ray 白话文指南](https://guide.v2fly.org/)
+
+## 服务端
+
+安装：
+
+```bash
+bash <(curl -L -s https://install.direct/go.sh)
+```
+
+配置：
+
+默认会配置好 vmess 直接用就行，如果要用 shadowsocks 需要加几行配置。
+
+```bash
+{
+  "inbounds": [
+  ...
+  {
+    "port": xxx, 
+    "protocol": "shadowsocks",
+    "settings": {
+      "method": "aes-256-gcm",
+      "password": "xxx"
+    }
+  }]
+}
+```
+
+使用：
+
+```bash
+service v2ray start|stop|status|reload|restart|force-reload
+```
+
+## 客户端
+
+可以使用[v2ray](https://github.com/v2ray/v2ray-core/releases)，或者 Shadowsocks 等客户端。
+
+配置 vmess：
+
+```bash
+{
+  ...
+  // List of outbound proxy configurations.
+  "outbounds": [{
+    "protocol": "vmess",
+    "settings": {
+      "vnext": [{
+        "address": "xxx", // 服务器地址，请修改为你自己的服务器 ip 或域名
+        "port": xxx,  // 服务器端口
+        "users": [{ "id": "xxx" }]
+      }]
+    }
+  }],
+}
+```
