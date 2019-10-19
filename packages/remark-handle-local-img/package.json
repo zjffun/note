@@ -1,0 +1,15 @@
+{
+  "name": "remark-handle-local-img",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "unist-util-is": "^4.0.0",
+    "unist-util-visit": "^2.0.0"
+  }
+}

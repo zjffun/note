@@ -4,8 +4,7 @@
   "description": "null",
   "private": true,
   "scripts": {
-    "lint-md": "remark . --quiet --frail",
-    "fix": "remark . -o --quiet"
+    "lint-md": "remark . -o --quiet --frail"
   },
   "repository": {
     "type": "git",
@@ -19,7 +18,8 @@
   "homepage": "https://github.com/1010543618/note#readme",
   "devDependencies": {
     "husky": "^1.3.1",
-    "remark-cli": "^6.0.1",
+    "remark-cli": "^7.0.0",
+    "remark-handle-local-img": "./packages/remark-handle-local-img",
     "remark-lint": "^6.0.4",
     "remark-pangu": "^1.0.1",
     "remark-preset-lint-recommended": "^3.0.2"
@@ -33,7 +33,8 @@
   "remarkConfig": {
     "plugins": [
       "preset-lint-recommended",
-      "pangu"
+      "pangu",
+      "remark-handle-local-img"
     ]
   }
 }
