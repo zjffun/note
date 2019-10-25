@@ -4,7 +4,8 @@
   "description": "null",
   "private": true,
   "scripts": {
-    "lint-md": "remark . -o --quiet --frail"
+    "lint": "npm run lint:md",
+    "lint:md": "remark . -o --quiet --frail"
   },
   "repository": {
     "type": "git",
@@ -27,7 +28,7 @@
   "dependencies": {},
   "husky": {
     "hooks": {
-      "pre-commit": "npm run lint-md"
+      "pre-commit": "npm run lint"
     }
   },
   "remarkConfig": {
