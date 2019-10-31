@@ -32,6 +32,7 @@ Windows 下配置文件位置：`C:\Users\Administrator\.gitconfig`
 -   一行：`git log --pretty=oneline`
 -   包括未来版本：`git log --reflog`
 -   按提交顺序逆序：`git log --reverse`（[--reverse : Git - git-log Documentation](https://git-scm.com/docs/git-log#Documentation/git-log.txt---reverse)）
+-   查看全部信息（committer）：`git log --format=fuller`
 
 ### 版本回退
 
@@ -253,6 +254,30 @@ eg：A 更新到 B，B 回退到 A，A 又更新到 C。丢失的 B 用上面的
 -   `-f`：强制执行
 -   `-x`：删除忽略的文件
 -   `-n`：不删除文件，只列出哪些文件将被删除
+
+## 修改多个提交的提交信息
+
+> [version control - How to change the author and committer name and e-mail of multiple commits in Git? - Stack Overflow](https://stackoverflow.com/questions/750172/how-to-change-the-author-and-committer-name-and-e-mail-of-multiple-commits-in-gi)
+
+```bash
+#!/bin/sh
+
+git filter-branch --env-filter '
+OLD_EMAIL="your-old-email@example.com"
+CORRECT_NAME="Your Correct Name"
+CORRECT_EMAIL="your-correct-email@example.com"
+if [ "$GIT_COMMITTER_EMAIL" = "$OLD_EMAIL" ]
+then
+    export GIT_COMMITTER_NAME="$CORRECT_NAME"
+    export GIT_COMMITTER_EMAIL="$CORRECT_EMAIL"
+fi
+if [ "$GIT_AUTHOR_EMAIL" = "$OLD_EMAIL" ]
+then
+    export GIT_AUTHOR_NAME="$CORRECT_NAME"
+    export GIT_AUTHOR_EMAIL="$CORRECT_EMAIL"
+fi
+' --tag-name-filter cat -- --branches --tags
+```
 
 # 四：.gitignore
 
