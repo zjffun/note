@@ -216,7 +216,7 @@ DNS 记录类型：
 
 ARP（Address Resolution Protocol）通过目标 IP 定位下一个接收数据分包的网络设备对应的 MAC 地址。
 
-RARP（Reverse Address Resolution Protocol）吃泡面个 MAC 地址定位 IP 的协议，用于打印机等小型嵌入式设备接入网络。
+RARP（Reverse Address Resolution Protocol）根据 MAC 地址定位 IP 的协议，用于打印机等小型嵌入式设备接入网络。
 
 ## ICMP
 
@@ -383,6 +383,28 @@ BGP 会根据进过的 AS（自治系统：Autonomous System）的个数进行�
 在 MPLS 网络入口处附加标记，然后通过这个标记进行转发，在 MPLS 网络出口处将这个标记删除。
 
 # 第八章 应用协议
+
+-   TELNET：常用于登录路由器或者高性能交换机等网络设备进行设置。
+-   SSH：加密的远程登录系统。
+-   FTP：文件传输。（需要两个 TCP 连接，一个用来控制，一个用来传输数据）
+-   SMTP：发送电子邮件。
+-   POP：请求接收、接收电子邮件，邮件在客户端管理。
+-   IMAP：也是接收电子邮件的协议，邮件在服务器管理。
+-   MIME：（6 表示层）规定应用消息格式。
+-   URI：Uniform Resource Identifier 用于标识任何资源。
+-   URL：用于标识互联网资源。
+-   HTTP：超文本传输协议
+
+![http-main-command](./images/http-main-command.png)
+
+-   CGI：Common Gateway Interface，Web 服务器调用外部程序时使用的一种服务端应用规范。（一般 Web 通信返回静态信息，CGI 用来返回动态信息）
+-   SNMP：网络管理。
+-   H.323：音频视频传输。
+-   SIP：比 H.323 简单的音频视频传输。
+-   RTP：Real-Time Protocol，在 UDP 基础上为报文添加时间戳和序列号（UDP 实现多媒体通讯需要这些信息）。
+-   RTCP：通过丢包率等路线质量的管理，对 RTP 的数据传输率进行控制。
+-   P2P：Peer To Peer，1 对 1 通信。
+-   LDAP：访问目录服务。
 
 # 第九章 网络安全
 
