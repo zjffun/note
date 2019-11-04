@@ -79,10 +79,16 @@ npm
 npm config set puppeteer_download_host=https://storage.googleapis.com.cnpmjs.org
 ```
 
-yarn
+或 yarn
 
 ```bash
 yarn config set puppeteer_download_host https://npm.taobao.org/mirrors
+```
+
+或`.npmrc`
+
+```bash
+echo 'PUPPETEER_DOWNLOAD_HOST = https://npm.taobao.org/mirrors' >> .npmrc
 ```
 
 参见：[希望添加 chromium 镜像源 · Issue #1246 · cnpm/cnpmjs.org](https://github.com/cnpm/cnpmjs.org/issues/1246)

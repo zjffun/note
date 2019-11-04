@@ -5,8 +5,8 @@
 
 # “启动” 还是 “附加”
 
--   “启动”：配置将要调试的文件或 url，按 F5 调试会开启一个新的 Chrome 进程并打开该文件或 url 进行调试
--   “附加”：然后以允许远程调试模式打开 Chrome，配置_Chrome 打开的 tab 中的待调试 url_为调试地址，按 F5 连接上进行调试
+-   “启动”：配置将要调试的文件或 URL，按 F5 调试会开启一个新的 Chrome 进程并打开该文件或 URL 进行调试
+-   “附加”：然后以允许远程调试模式打开 Chrome，配置_Chrome 打开的 tab 中的待调试 URL_为调试地址，按 F5 连接上进行调试
 
 对比一下：
 
@@ -21,26 +21,28 @@
 
 “启动” 方式使用只需配置 launch.json 即可。
 
-使用指定 url 的配置要设置 webRoot。
+使用指定 URL 的配置要设置 webRoot。
 
-    {
-        "version": "0.1.0",
-        "configurations": [
-            {
-                "name": "Launch localhost",
-                "type": "chrome",
-                "request": "launch",
-                "url": "http://localhost/mypage.html",
-                "webRoot": "${workspaceFolder}/wwwroot"
-            },
-            {
-                "name": "Launch index.html",
-                "type": "chrome",
-                "request": "launch",
-                "file": "${workspaceFolder}/index.html"
-            },
-        ]
-    }
+```json
+{
+    "version": "0.1.0",
+    "configurations": [
+        {
+            "name": "Launch localhost",
+            "type": "chrome",
+            "request": "launch",
+            "url": "http://localhost/mypage.html",
+            "webRoot": "${workspaceFolder}/wwwroot"
+        },
+        {
+            "name": "Launch index.html",
+            "type": "chrome",
+            "request": "launch",
+            "file": "${workspaceFolder}/index.html"
+        },
+    ]
+}
+```
 
 # “附加” 示例
 
@@ -73,39 +75,43 @@
 
 package.json
 
-    "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1",
-        "start": "webpack-dev-server --mode development"
-    },
-    "devDependencies": {
-        "webpack": "^4.17.1",
-        "webpack-cli": "^3.1.0",
-        "webpack-dev-server": "^3.1.7"
-    }
+```json
+"scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack-dev-server --mode development"
+},
+"devDependencies": {
+    "webpack": "^4.17.1",
+    "webpack-cli": "^3.1.0",
+    "webpack-dev-server": "^3.1.7"
+}
+```
 
 webpack.config.js
 
-    const path = require('path');
+```js
+const path = require('path');
 
-    module.exports = {
-      entry: './src/index.js',
-      devServer: {
-        contentBase: './dist',
-        port: 3000
-      },
-      devtool: process.env.NODE_ENV === 'production' ? false : 'cheap-eval-source-map',
-      output: {
-        filename: 'bundle.js',
-        path: path.resolve(__dirname, 'dist')
-      }
-    };
+module.exports = {
+  entry: './src/index.js',
+  devServer: {
+    contentBase: './dist',
+    port: 3000
+  },
+  devtool: process.env.NODE_ENV === 'production' ? false : 'cheap-eval-source-map',
+  output: {
+    filename: 'bundle.js',
+    path: path.resolve(__dirname, 'dist')
+  }
+};
+```
 
 ## 三：配置 launch.json
 
 注意：
 
-1.  配置中的端口虽然默认就是 9222，但我测试时配置中不指定端口会报`connect ECONNREFUSED 127.0.0.1:9229`这种连接不上其他的端口的错
-2.  配置中的 url 一定是当前要调试的 tab 的 url（例如：配置 url 为[http://localhost:3000/，但浏览器打开 http://localhost:3000 / 时自动跳转到 http://localhost:3000/index.html，这时按 F5 调试就会报 \` 无法连接到运行中的进程 \` 的错误），这也是我把配置 launch.json 放到最后一步的原因。（PS：这种情况也可以通过配置 \`urlFilter\` 解决）](http://localhost:3000/，但浏览器打开http://localhost:3000/时自动跳转到http://localhost:3000/index.html，这时按F5调试就会报`无法连接到运行中的进程`的错误），这也是我把配置launch.json放到最后一步的原因。（PS：这种情况也可以通过配置`urlFilter`解决）)
+1.  配置中的端口虽然默认就是 9222，但我测试时配置中不指定端口会报`connect ECONNREFUSED 127.0.0.1:9229`这种连接不上`9229`端口的错。
+2.  配置中的 URL 一定是当前要调试的 tab 的 URL（例如：配置 URL 为`http://localhost:3000/`，在浏览器打开 `http://localhost:3000/` 时自动跳转到`http://localhost:3000/index.html`，然后在 VSCode 启动调试就会因为 URL 匹配不上就会报 \` 无法连接到运行中的进程 \` 的错误），这也是我把配置 launch.json 放到最后一步的原因。（PS：这种情况也可以通过配置 \`urlFilter\` 解决）。
 
 ```json
 {
