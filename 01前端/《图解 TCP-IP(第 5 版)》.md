@@ -408,4 +408,37 @@ BGP 会根据进过的 AS（自治系统：Autonomous System）的个数进行�
 
 # 第九章 网络安全
 
+## 构成
+
+-   防火墙
+-   IDS 入侵检测系统
+-   反病毒 / 个人防火墙
+
+## 加密技术
+
+-   对称加密：加密和解密用相同的密钥，挑战是传递安全密钥。使用 AES、DES 等加密算法。
+-   非对称加密：加密和解密用不同的密钥，加密和解密花费时间长。使用 RSA、DH、椭圆曲线等加密算法。
+
+![encryption-techniques](./images/encryption-techniques.png)
+
+## 安全协议
+
+### IPsec 与 VPN
+
+构建 VPN 时最常用的是 IPsec。
+
+IPsec 指在 IP 首部后追加 ESP 和 AH，从而对此后的数据加密。
+
+### TSL/SSL 与 HTTPS
+
+-   TSL/SSL：Transport Layer Security / Secure Sockets Layer
+-   HTTPS：使用 TSL/SSL 的通信。
+-   确认公钥是否正确主要使用认证中心（CA）签发的证书，主要认证中心的信息已经嵌入到浏览器的出场设置中。
+
+![https-communication](./images/https-communication.png)
+
+### IEEE802.1X
+
+LAN 和无线 LAN 接入的用户认证技术。
+
 # 附录
