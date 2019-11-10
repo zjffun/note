@@ -8,9 +8,18 @@
 
 运行时结果很是诡异，经调试发现这数组这五项指向的是同一个数组，看来 fill 方法并不是每次都创建新的数组。
 
-然后我又尝试使用`let seqs = (new Array(5)).map(() => [])`得到的结果和`new Array(5)`一样是一个长度为 5 的一维空数组（因为 map 对每个数组元素调用提供的方法，现在数组里还没有元素）。
+然后尝试使用`let seqs = (new Array(5)).map(() => [])`得到的结果和`new Array(5)`一样是一个长度为 5 的一维空数组（因为 map 会跳过空位）。
 
 最后使用`let seqs = (new Array(5)).fill(0).map(() => [])`就 OK 了。
+
+注：JS 数组中的空位和 undefined 不一样，使用`Array.from`可以将空位转为 undefined。
+
+```node
+> new Array(5)
+[ <5 empty items> ]
+> Array.from(new Array(5))
+[ undefined, undefined, undefined, undefined, undefined ]
+```
 
 # sort()
 
