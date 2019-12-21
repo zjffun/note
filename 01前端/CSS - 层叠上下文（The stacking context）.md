@@ -1,3 +1,6 @@
+-   文档根元素`<html>`、拥有某些特殊样式（透明小于 1，`transform`不为`none`等）的元素会创建层叠上下文。
+-   未创建层叠上下文的元素会纳入上层的层叠上下文。
+
 [对 MDN 的上的例子的拓展](https://codepen.io/1010543618/pen/oVaOxP?&editable=true)
 
 ```text
