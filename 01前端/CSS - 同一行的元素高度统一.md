@@ -36,7 +36,7 @@
         <div class="box">
             <img src="https://via.placeholder.com/120x200" width="100px" alt="">
             <p>img1 120*200</p>
-        </div>  
+        </div>
         <div class="box">
             <img src="https://via.placeholder.com/120x300" width="100px" alt="">
             <p>img2 120*300</p>
@@ -44,14 +44,14 @@
         <div class="box">
             <img src="https://via.placeholder.com/120x150" width="100px" alt="">
             <p>img3 120*150</p>
-        </div> 
+        </div>
     </div>
     <script>
         // 点击拓展高度的区域也可触发事件
         document.querySelectorAll('.box').forEach((d) => {
             d.onclick = function(e){
                 alert(e.target.innerText);
-            }   
+            }
         })
     </script>
 
@@ -103,7 +103,7 @@
         <div class="box">
             <img src="https://via.placeholder.com/120x200" width="100px" alt="">
             <p>img1 120*200</p>
-        </div>  
+        </div>
         <div class="box">
             <img src="https://via.placeholder.com/120x300" width="100px" alt="">
             <p>img2 120*300</p>
@@ -111,20 +111,20 @@
         <div class="box">
             <img src="https://via.placeholder.com/120x150" width="100px" alt="">
             <p>img3 120*150</p>
-        </div> 
+        </div>
     </div>
     <script>
         // 点击补偿的的区域也可触发事件
         document.querySelectorAll('.box').forEach((d) => {
             d.onclick = function(e){
                 alert(e.target.innerText);
-            }   
+            }
         })
     </script>
 
 # 三：table 布局
 
-相当于用 \\&lt;table>
+相当于用 HTML 的 table 元素
 
 ## 步骤
 
@@ -163,7 +163,7 @@
         <div class="box">
             <img src="https://via.placeholder.com/120x200" width="100px" alt="">
             <p>img1 120*200</p>
-        </div>  
+        </div>
         <div class="box">
             <img src="https://via.placeholder.com/120x300" width="100px" alt="">
             <p>img2 120*300</p>
@@ -171,13 +171,13 @@
         <div class="box">
             <img src="https://via.placeholder.com/120x150" width="100px" alt="">
             <p>img3 120*150</p>
-        </div> 
+        </div>
     </div>
     <script>
         // 点击拓展高度的区域也可触发事件
         document.querySelectorAll('.box').forEach((d) => {
             d.onclick = function(e){
                 alert(e.target.innerText);
-            }   
+            }
         })
     </script>

@@ -1,4 +1,4 @@
-和 fa 一样设置到[::before](https://developer.mozilla.org/zh-CN/docs/Web/CSS/::before)中就行了，不过 fa 是直接设置内容，这里用的背景图
+和 fa 一样设置到伪元素[::before](https://developer.mozilla.org/zh-CN/docs/Web/CSS/::before)中就行，例如（fa 是直接设置 content，这里用的背景图）：
 
 ```css
 .fa-science-garden::before {

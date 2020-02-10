@@ -1,8 +1,8 @@
-剧透：就是使用了一下 Chrome DevTools 的 Memory 功能，通过已知的 JS 变量的值查找 JS 内存中变量的引用
+剧透：就是使用了一下 Chrome DevTools 的 Memory 功能，通过已知的属性的值在 JS 内存中查找具有该值得属性
 
 # 一：不分析一下现有的网页翻译方法么？
 
-总所周知，（As is well known to us all,）谷歌的网页翻译很强大，根据我的使用经验谷歌有五个途径进行网页翻译：
+总所周知，谷歌的网页翻译很强大，根据我的使用经验谷歌有五个途径进行网页翻译：
 
 1.  使用 Chrome 的《翻译此页》功能：这是唯一没有被墙的方法直接就能用，但无法显示原文
 2.  使用 google 翻译的网页翻译：这个方法可以显示原文（并且原文直接加到了 dom 里）并且处理起来方便，但这种方法不好调用且复杂的页面会乱掉（因为翻译时是将页面下载到 google 后台翻译，然后由 google 后台将页面返回）
@@ -27,7 +27,7 @@
 
 # 三：不想法找到 JS 内存中的变量么？
 
-一开始我是尝试使用 Source 逆向《element_main.js》，但《element_main.js》过于复杂最后决定换方法。  
+一开始我是尝试使用 Source 逆向《element_main.js》，但《element_main.js》过于复杂最后决定换方法。
 
 然后我决定递归遍历 window 对象
 
@@ -53,16 +53,9 @@
 # 四：不使用 Chrome DevTools 的 Memory 来查找 JS 内存中的变量么？
 
 1.  翻译后创建快照
-    ![翻译后创建快照](https://note.youdao.com/yws/api/personal/file/5FE321FCA9194DB3A230142F4144BD7A?method=download&shareKey=eb7a1b4f76fcfb6e33a47c4525e433e6)
-
-2.  Ctrl+F 在快照中查找字符串，将找到的该值的引用按距离 GC 根的距离升序排列（该值的引用为`window.closure_lm_452827.a.focus[0].Hd.o[9].l[0]`）
-    ![image](https://note.youdao.com/yws/api/personal/file/11558711666341ADB26C8606749D5B1B?method=download&shareKey=1fc113469534c5bd65c855691d0f0941)
-
+2.  Ctrl+F 在快照中查找字符串，将找到的该值的引用，按其与 GC 根的距离升序排列（该值的引用为`window.closure_lm_452827.a.focus[0].Hd.o[9].l[0]`）
 3.  原文的引用为`window.closure_lm_452827.a.focus[0].Hd.o`这个数组
-    ![image](https://note.youdao.com/yws/api/personal/file/54D332E924EE481A8247CE95307A3FC3?method=download&shareKey=782e0c4f042208b454415eae4275f651)
-
 4.  进一步测试使用`window.closure_lm_《数字》.a.focus[0].Hd.ia.c`这个数组可以获取到原文，译文，原文对应的译文的 DOM。使用这个数组就可以达到我保存网站翻译结果的需求了。可喜可贺！可喜可贺！
-    ![image](https://note.youdao.com/yws/api/personal/file/D381EA24FA4248B4AB2E17470A8DCA39?method=download&shareKey=8935de64e7820d744fe81966ef30a4f9)
 
 # 五：不看看花絮么？
 

@@ -1,3 +1,7 @@
+直接添加`width: max-content;`声明就 OK，之前太单纯了。
+
+* * *
+
 最近碰见这样一个需求，要让图片横向排列设置 x 方向的滚动条滚动查看，原本当直接创建一个 IFC（inline，float 什么的）就解决了，搞了半天发现搞不定（IFC 也是不能父元素宽度自适应子元素宽度之和的，因为会换行。。），最后用 flex 解决了（然后又发现使用 table 也是可以的），然后学了两个新名词 GFC 和 FFC。。这里就说一下我的解决方法，给大家抛个砖。
 
 # flex
@@ -44,30 +48,30 @@
         <div class="container">
             <div class="box">
                 <img src="https://via.placeholder.com/110x120" alt="">
-            </div>  
+            </div>
             <div class="box">
                 <img src="https://via.placeholder.com/140x110" alt="">
             </div>
             <div class="box">
                 <img src="https://via.placeholder.com/130x130" alt="">
-            </div> 
+            </div>
             <div class="box">
                 <img src="https://via.placeholder.com/90x150" alt="">
-            </div> 
+            </div>
         </div>
         <div class="container">
             <div class="box">
                 <p>img1 110*120</p>
-            </div>  
+            </div>
             <div class="box">
                 <p>img2 140*110</p>
             </div>
             <div class="box">
                 <p>img3 130*130</p>
-            </div> 
+            </div>
             <div class="box">
                 <p>img4 90*150</p>
-            </div> 
+            </div>
         </div>
     </div>
 
@@ -116,29 +120,29 @@
         <div class="container">
             <div class="box">
                 <img src="https://via.placeholder.com/110x120" alt="">
-            </div>  
+            </div>
             <div class="box">
                 <img src="https://via.placeholder.com/140x110" alt="">
             </div>
             <div class="box">
                 <img src="https://via.placeholder.com/130x130" alt="">
-            </div> 
+            </div>
             <div class="box">
                 <img src="https://via.placeholder.com/90x150" alt="">
-            </div> 
+            </div>
         </div>
         <div class="container">
             <div class="box">
                 <p>img1 110*120</p>
-            </div>  
+            </div>
             <div class="box">
                 <p>img2 140*110</p>
             </div>
             <div class="box">
                 <p>img3 130*130</p>
-            </div> 
+            </div>
             <div class="box">
                 <p>img4 90*150</p>
-            </div> 
+            </div>
         </div>
     </div>

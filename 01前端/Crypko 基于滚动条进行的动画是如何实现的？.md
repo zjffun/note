@@ -1,6 +1,6 @@
 [Crypko](https://crypko.ai/#/beta) 网站里面的下拉滚动条进行的动画感觉非常炫，于是研究了一下她的实现，发现她主要是使用了 [ScrollMagic](https://github.com/janpaepke/ScrollMagic) 这个库实现了基于滚动条的动画。
 
-为什么这么确定就是用了 ScrollMagic ？因为她代码里写的很清楚啊
+为什么这么确定就是用了 ScrollMagic ？因为她代码里写的很清楚。。
 
 ![Crypko 基于滚动条进行的动画是如何实现的？](./img/CrypkoScrollAnimate.png)
 
