@@ -1,4 +1,4 @@
-# [tc39/proposal-hashbang: #! for JS](https://github.com/tc39/proposal-hashbang)
+[tc39/proposal-hashbang: #! for JS](https://github.com/tc39/proposal-hashbang)
 
 某些奇怪的报错可能是因为系统不支持 Shebangs / Hashbang 导致的。
 

@@ -12,7 +12,7 @@ PS: 要是会 [redux-observable](https://redux-observable.js.org/), [Redux](http
 
 首先通过读 neo4j-browser 的源码知道了发出命令都是通过：
 
-1.  Reaux dispatch action
+1.  Redux dispatch action
 2.  redux-observable 将 action 流入 RxJS
 3.  RxJS 处理
 4.  redux-observable 处理 RxJS 流出的 action(s)

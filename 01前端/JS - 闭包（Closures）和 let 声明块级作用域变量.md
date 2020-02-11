@@ -10,44 +10,46 @@ let：
 
 例：闭包和 let 修正匿名函数访问的变量
 
-    function foo(){
-        var bar = [];
-        for (var index = 0; index < 9; index++) {
-            bar[index] = function(){
-                return index;
-            }
+```js
+function foo(){
+    var bar = [];
+    for (var index = 0; index < 9; index++) {
+        bar[index] = function(){
+            return index;
         }
-        return bar;
     }
+    return bar;
+}
 
-    function foo_closures(){
-        var bar = [];
-        for (let index = 0; index < 9; index++) {
-            (bar[index] = function(){
-                return index;
-            })()
+function foo_closures(){
+    var bar = [];
+    for (let index = 0; index < 9; index++) {
+        (bar[index] = function(){
+            return index;
+        })()
+    }
+    return bar;
+}
+
+function foo_let(){
+    var bar = [];
+    for (let index = 0; index < 9; index++) {
+        bar[index] = function(){
+            return index;
         }
-        return bar;
     }
+    return bar;
+}
 
-    function foo_let(){
-        var bar = [];
-        for (let index = 0; index < 9; index++) {
-            bar[index] = function(){
-                return index;
-            }
-        }
-        return bar;
-    }
+for(var d of foo()){
+    console.log(d());// 9个9
+}
 
-    for(var d of foo()){
-        console.log(d());// 9个9
-    }
+for(var d of foo_closures()){
+    console.log(d());// 1,2,...8
+}
 
-    for(var d of foo_closures()){
-        console.log(d());// 1,2,...8
-    }
-
-    for(var d of foo_let()){
-        console.log(d());// 1,2,...8
-    }
+for(var d of foo_let()){
+    console.log(d());// 1,2,...8
+}
+```

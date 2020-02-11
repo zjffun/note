@@ -20,8 +20,8 @@ while (queue.waitForMessage()) {
 
 任务队列是指 macrotask queue，当 macrotask queue 空了（都处理完了）就开始处理 microtask queue，并且依次就将所有 microtask queue 都处理完（类似将 microtask queue 的所有任务合成为一个当 macrotask）。
 
--   macrotasks: setTimeout, setInterval, setImmediate, requestAnimationFrame, I/O, UI rendering
--   microtasks: process.nextTick, Promises, Object.observe, MutationObserver
+-   macrotasks: setTimeout, setInterval, setImmediate(Non-standard), I/O, UI rendering
+-   microtasks: process.nextTick, Promises, Object.observe(Obsolete), MutationObserver
 
 # 参考
 

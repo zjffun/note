@@ -1,6 +1,6 @@
 JS 使用 IEEE 754 的双精度数表示数字，1 位符号，10 位指数，53 位底数。
 
-所以 JS 数字精度近似为 15.95 位 10 进制（10 \*\* 15.95）。
+所以 JS 数字精度近似为 15.95 位 10 进制（`10 ** 15.95`）。
 
 也就是说整部加小数部分超过 15 位再用 Number 类型就不合适了，可以使用 JS 的[BigInt](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt)类型，也可以使用[peterolson/BigInteger.js](https://github.com/peterolson/BigInteger.js)、[rauschma/strint](https://github.com/rauschma/strint)（有 bug，代码少可以用来学习）等库用字符串进行计算。
 

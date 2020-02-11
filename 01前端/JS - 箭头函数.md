@@ -9,31 +9,31 @@
 -   需要使用`arguments`对象或访问`prototype`属性
 -   需要作为生成器函数
 
-## 例如：
+## 例如
 
-### 需要修改函数的`this`：
+### 需要修改函数的`this`
 
 ```javascript
 var user = {
-    name: "zhang",
-    appendAF: (val)=>{
-        console.log(this.name + val);// apply不绑定this（箭头函数不会创建自己的this,它只会从自己的作用域链的上一层继承this。）
-    },
-    appendF: function(val){
-        console.log(this.name + val);// apply绑定this
-    }
+  name: "zhang",
+  appendAF: val => {
+    console.log(this.name + val); // apply不绑定this（箭头函数不会创建自己的this,它只会从自己的作用域链的上一层继承this。）
+  },
+  appendF: function(val) {
+    console.log(this.name + val); // apply绑定this
+  }
+};
+
+function call(obj, fname, ...args) {
+  console.log(obj);
+  obj[fname].apply(obj, args);
 }
 
-function call(obj, fname, ...args){
-    console.log(obj);
-    obj[fname].apply(obj, args);
-}
-
-call(user, 'appendAF', 'qqq');
-call(user, 'appendF', 'qqq');
+call(user, "appendAF", "qqq"); // undefinedqqq
+call(user, "appendF", "qqq"); // zhangqqq
 ```
 
-### 生成器函数：
+### 生成器函数
 
 ```javascript
 var genAF = (* () => {

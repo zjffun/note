@@ -12,12 +12,12 @@
 
 ## 定义模块
 
-使用 exports 或 modul.exports
+使用 exports 或 module.exports
 
-    var myModul = (a, b)=>{
+    var myModule = (a, b)=>{
         return a+b;
     }
-    module.exports = myModul;
+    module.exports = myModule;
 
 ## 使用模块
 
@@ -53,8 +53,6 @@
 # ES6 Modules
 
 > 现在浏览器们才刚刚开始去实现这个功能。但它在许多转换器中已经实现，例如 Traceur Compiler ， Babel ， Rollup 或 Webpack。
-
-这个在浏览器上用还是要转换一下的。
 
 -   [export - JavaScript | MDN](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/export)
 -   [import - JavaScript | MDN](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/import)

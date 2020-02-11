@@ -1,6 +1,6 @@
 # 一：为私有变量创建`get()`方法
 
-这种方式可以创建 “伪 “只读属性。这并不是一种好方法，因为使用_函数_获得只读的_属性_不太符合一般的逻辑。
+这种方式可以创建 “伪” 只读属性。这并不是一种好方法，因为使用_函数_获得只读的_属性_不太符合一般的逻辑。
 
 ```js
 /**
@@ -10,15 +10,15 @@
  */
 function Car() {
   var SELF = this,
-      odometer = 0;
+    odometer = 0;
 
   /**
    * Increment the odometer
    *
    * @param {Number} miles
    */
-  SELF.drive = function( miles ) {
-    odometer += Math.abs( miles );
+  SELF.drive = function(miles) {
+    odometer += Math.abs(miles);
   };
 
   /**
@@ -32,7 +32,7 @@ function Car() {
 }
 
 var subaru = new Car();
-subaru.drive( 500 );
+subaru.drive(500);
 subaru.get_odometer(); // 500
 ```
 
@@ -48,15 +48,15 @@ subaru.get_odometer(); // 500
  */
 function Car() {
   var SELF = this,
-      _odometer = 0;
+    _odometer = 0;
 
   /**
    * Increment the odometer
    *
    * @param {Number} miles
    */
-  SELF.drive = function( miles ) {
-    _odometer += Math.abs( miles );
+  SELF.drive = function(miles) {
+    _odometer += Math.abs(miles);
   };
 
   /**
@@ -64,25 +64,27 @@ function Car() {
    *
    * @return {Number}
    */
-  Object.defineProperties( this, {
-    "odometer": {
-      "get": function() { return _odometer; }
+  Object.defineProperties(this, {
+    odometer: {
+      get: function() {
+        return _odometer;
+      }
     }
-  } );
+  });
 }
 
 var subaru = new Car();
-subaru.drive( 500 );
-subaru.odometer;     // 500
+subaru.drive(500);
+subaru.odometer; // 500
 subaru.odometer = 0; // does nothing
-subaru.odometer;     // 500
+subaru.odometer; // 500
 ```
 
 # 三：使用新语法
 
 虽然类是 function 的语法糖，但定义类时无法像 function 一样定义私有变量（constructor 中定义的变量都是公有变量），所以这里需要用到用到类字段声明。
 
-类字段声明是 TC39 提出的新语法，现在只进行到阶段 3：候选阶段（到阶段 4：完成这个语法才算是准备好将包括在 ES 规范中），所以下面的代码需要用 Babel 转换成旧语法才可以使用。
+类字段声明是 TC39 提出的新语法，现在只进行到阶段 3 候选阶段（到阶段 4 完成这个语法才算是准备好将包括在 ES 规范中），所以下面的代码需要用 Babel 转换成旧语法才可以使用。
 
 ```js
 /**
@@ -91,14 +93,14 @@ subaru.odometer;     // 500
  * @constructor
  */
 class Car {
-  #odometer = 500
+  #odometer = 500;
   get odometer() {
     return this.#odometer;
   }
 }
 
 var subaru = new Car();
-subaru.odometer;     // 500
+subaru.odometer; // 500
 subaru.odometer = 0; // TypeError: Cannot set property odometer of #<Car> which has only a getter
 ```
 
@@ -180,7 +182,7 @@ var Car =
 var _odometer = new WeakMap();
 
 var subaru = new Car();
-subaru.odometer;     // 500
+subaru.odometer; // 500
 subaru.odometer = 0; // TypeError: Cannot set property odometer of #<Car> which has only a getter
 ```
 
