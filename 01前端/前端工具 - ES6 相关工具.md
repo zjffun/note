@@ -13,7 +13,7 @@
 # 处理 ES6 的 module
 
 1.  使用 Babel 的插件[babel-plugin-transform-es2015-modules-commonjs · Babel](https://babeljs.io/docs/en/babel-plugin-transform-es2015-modules-commonjs/)将 module 转化为 commonjs
-2.  使用用 Rollup 或者 webpack 打包
+2.  使用 Rollup 或者 webpack 打包
 
 # 支持 ES6 新的 API（Promise 等）
 

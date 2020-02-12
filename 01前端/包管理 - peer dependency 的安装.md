@@ -17,8 +17,6 @@ t@>=2.1.0".
 
 并且也没有自动安装 peer dependence 选项，这也就是为什么我们安装某些依赖时需要同时安装多个依赖（包），例如：`npm install --save-dev rollup-plugin-typescript typescript tslib`。
 
-同时也应该注意安装时的警告（warning）！！！
-
 参考：
 
 -   [Peer Dependencies | Node.js](https://nodejs.org/en/blog/npm/peer-dependencies/)
