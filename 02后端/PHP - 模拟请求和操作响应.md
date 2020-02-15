@@ -77,8 +77,8 @@ Post 数据使用文件地址，前使用 @标志为文件而不是字符串
 
 ### 处理会话 COOKIE
 
-CURLOPT_COOKIEFILE：是否发送 cookie
-CURLOPT_COOKIEJAR：指定存储服务器所设置的 cookie 变量存储位置  
+CURLOPT_COOKIEFILE：是否发送 Cookie
+CURLOPT_COOKIEJAR：指定存储服务器所设置的 Cookie 变量存储位置  
 `curl_setopt($curl, CURLOPT_COOKIEFILE, true);`
 `curl_setopt($curl, CURLOPT_HEADER, 'c:/cookie.txt');`
 

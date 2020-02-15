@@ -225,23 +225,23 @@ ex 没接触过
 正解：
 
 > <https://developer.mozilla.org/zh-CN/docs/Web/API/Document/cookie>
-> HttpOnly 属性可以阻止通过 javascript 访问 cookie
+> HttpOnly 属性可以阻止通过 javascript 访问 Cookie
 
 ## 13. 有哪些数据存储的方法，localStorage 和 sessionStorage 的区别
 
 我的回答：
 
-好像是存储时间不同，sessionStorage 和 session 有点像关闭浏览器就没了（然后提醒了一下我标签页），localStorage 是可以通用的，sessionStorage 不可以通用，是么？我也不敢瞎说（确实忘了真心在瞎说），session 属于服务端的就不算了
+好像是存储时间不同，sessionStorage 和 Session 有点像关闭浏览器就没了（然后提醒了一下我标签页），localStorage 是可以通用的，sessionStorage 不可以通用，是么？我也不敢瞎说（确实忘了真心在瞎说），session 属于服务端的就不算了
 
 正解：
 
 > <https://www.cnblogs.com/jffun-blog/p/9068735.html>
 > 数据有效期
-> cookie：只在设置的 cookie 过期时间之前一直有效，即使窗口或浏览器关闭。
+> Cookie：只在设置的 Cookie 过期时间之前一直有效，即使窗口或浏览器关闭。
 > sessionStorage：仅在当前浏览器窗口关闭前有效，自然也就不可能持久保持。
 > localStorage：始终有效，窗口或浏览器关闭也一直保存，因此用作持久数据。
 > 作用域
-> cookie，localStorage：在所有同源窗口中都是共享的。
+> Cookie，localStorage：在所有同源窗口中都是共享的。
 > sessionStorage：不在不同的浏览器窗口中共享，即使是同一个页面。
 
 ## 14. addEventListener 的第三个参数

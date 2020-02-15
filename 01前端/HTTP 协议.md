@@ -26,7 +26,7 @@
     `Accept-Language: zh-cn,zh;q=0.8,en-us;q=0.5,en;q=0.3`
 -   可以接受的数据编码类型（压缩编码）
     `Accept-Encoding: gzip, deflate`
--   携带的 cookie 数据
+-   携带的 Cookie 数据
     `Cookie: PHPSESSID=i76sa2297sp1adlfk3e4eja612`
 -   tcp 连接类型 keep-alive 保持激活
     `Connection: keep-alive`

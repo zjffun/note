@@ -2,7 +2,7 @@
 
 sessionStorage 和 localStorage 是 HTML5 Web Storage API 提供的，可以方便的在 web 请求之间保存数据。有了本地数据，就可以避免数据在浏览器和服务器间不必要地来回传递。  
 
-sessionStorage、localStorage、cookie 都是在浏览器端存储的数据，其中 sessionStorage 的概念很特别，引入了一个 “浏览器窗口” 的概念。sessionStorage 是在同源的同窗口（或 tab）中，始终存在的数据。也就是说只要这个浏览器窗口没有关闭，即使刷新页面或进入同源另一页面，数据仍然存在。关闭窗口后，sessionStorage 即被销毁。同时 “独立” 打开的不同窗口，即使是同一页面，sessionStorage 对象也是不同的。
+sessionStorage、localStorage、Cookie 都是在浏览器端存储的数据，其中 sessionStorage 的概念很特别，引入了一个 “浏览器窗口” 的概念。sessionStorage 是在同源的同窗口（或 tab）中，始终存在的数据。也就是说只要这个浏览器窗口没有关闭，即使刷新页面或进入同源另一页面，数据仍然存在。关闭窗口后，sessionStorage 即被销毁。同时 “独立” 打开的不同窗口，即使是同一页面，sessionStorage 对象也是不同的。
 
 Web Storage 带来的好处：
 
@@ -19,27 +19,27 @@ Web Storage 带来的好处：
 ## 区别
 
 -   是否在 http 请求携带
-    cookie：数据始终在同源的 http 请求中携带（即使不需要），即 cookie 在浏览器和服务器间来回传递。
+    Cookie：数据始终在同源的 http 请求中携带（即使不需要），即 Cookie 在浏览器和服务器间来回传递。
 
     Web Storage：不会自动把数据发给服务器，仅在本地保存。  
 
 -   访问限制
-    cookie：数据还有路径（path）的概念，可以限制 cookie 只属于某个路径下。  
+    Cookie：数据还有路径（path）的概念，可以限制 Cookie 只属于某个路径下。  
 
 -   存储大小
-    cookie：数据不能超过 4k，同时因为每次 http 请求都会携带 cookie，所以 cookie 只适合保存很小的数据，如会话标识。
+    Cookie：数据不能超过 4k，同时因为每次 http 请求都会携带 Cookie，所以 Cookie 只适合保存很小的数据，如会话标识。
 
-    Web Storage：虽然也有存储大小的限制，但比 cookie 大得多，可以达到 5M 或更大。  
+    Web Storage：虽然也有存储大小的限制，但比 Cookie 大得多，可以达到 5M 或更大。  
 
 -   数据有效期
-    cookie：只在设置的 cookie 过期时间之前一直有效，即使窗口或浏览器关闭。
+    Cookie：只在设置的 Cookie 过期时间之前一直有效，即使窗口或浏览器关闭。
 
     sessionStorage：仅在当前浏览器窗口关闭前有效，自然也就不可能持久保持。
 
     localStorage：始终有效，窗口或浏览器关闭也一直保存，因此用作持久数据。   
 
 -   作用域
-    cookie，localStorage：在所有同源窗口中都是共享的。
+    Cookie，localStorage：在所有同源窗口中都是共享的。
 
     sessionStorage：不在不同的浏览器窗口中共享，即使是同一个页面。  
 
@@ -62,6 +62,6 @@ Web Storage 带来的好处：
 
 # 参考
 
-[Where to Store JWTs - Cookies vs HTML5 Web Storage | Stormpath](https://stormpath.com/blog/where-to-store-your-jwts-cookies-vs-html5-web-storage)
+[Where to Store JWTs - Cookies vs HTML5 Web Storage | Stormpath](https://stormpath.com/blog/where-to-store-your-jwts-Cookies-vs-html5-web-storage)
 
-[请描述一下 cookies，sessionStorage 和 localStorage 的区别？ - 游海东的技术专栏 - CSDN 博客](https://blog.csdn.net/you23hai45/article/details/49052251)
+[请描述一下 Cookies，sessionStorage 和 localStorage 的区别？ - 游海东的技术专栏 - CSDN 博客](https://blog.csdn.net/you23hai45/article/details/49052251)

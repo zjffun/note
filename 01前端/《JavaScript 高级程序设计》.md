@@ -1599,7 +1599,7 @@ xhr.send(null);
 
 `Access-Control-Allow-Origin: http://www.nczonline.net`
 
-> 如果没有这个头部，或者有这个头部但源信息不匹配，浏览器就会驳回请求。正常情况下，浏览器会处理请求。注意，请求和响应都不包含 cookie 信息。
+> 如果没有这个头部，或者有这个头部但源信息不匹配，浏览器就会驳回请求。正常情况下，浏览器会处理请求。注意，请求和响应都不包含 Cookie 信息。
 
 浏览器对 CORS 的实现：
 
@@ -1621,7 +1621,7 @@ xhr.send(null);
 跨越 XHR 的限制：
 
 1.  不能使用[`setRequestHeader()`](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/setRequestHeader)设置自定义请求头
-2.  不能发送和接收 cookie
+2.  不能发送和接收 Cookie
 3.  调用[`getAllResponseHeaders()`](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/getAllResponseHeaders)总会返回空字符串
 
 ### 21.4.3 Preflighted Request
@@ -1636,7 +1636,7 @@ xhr.send(null);
 
 ### 21.4.4 带凭据请求
 
-> 默认情况下，跨域请求不提供凭据（cookie，HTTP 认证，及客户端 SSL 证明等）。通过将 withCredentials 设置为 true，可以指定某个请求应该发送凭据。
+> 默认情况下，跨域请求不提供凭据（Cookie，HTTP 认证，及客户端 SSL 证明等）。通过将 withCredentials 设置为 true，可以指定某个请求应该发送凭据。
 >
 > IE10 及更早版本都不支持！
 
@@ -2057,7 +2057,7 @@ target.fire({ type: "message", message: "Hello world!"});
 
 1.  限制：50 个以内，总长度 4095B 以内
 2.  构成：名称、值域、路径、失效时间、安全标志、只供 HTTP 使用等
-3.  子 cookie：使用一个 cookie 的值存过个键值对儿
+3.  子 Cookie：使用一个 Cookie 的值存过个键值对儿
 
 ### 23.3.3 Web 存储机制
 

@@ -201,7 +201,7 @@ sessionStorage 同会话中共享，并且浏览器关闭失效，那么他到�
 
 sessionStorage 中的数据不会存很久，所以开发人员不会把真正有价值的东西放在里面。但 sessionStorage 有一个非常适用的地方就是存储作用域为一个会话的数据。例如：
 
-当用户正在填写一个分步表单时，打开一个新窗口想要填写一个新的分步表单，如果用户填写过的信息存储在 cookie 或者 localStorage 中就需要比较复杂的操作才能实现这个需求，但如果数据存在 sessionStorage 中就可以简单的实现这个需求。
+当用户正在填写一个分步表单时，打开一个新窗口想要填写一个新的分步表单，如果用户填写过的信息存储在 Cookie 或者 localStorage 中就需要比较复杂的操作才能实现这个需求，但如果数据存在 sessionStorage 中就可以简单的实现这个需求。
 
 ## [IndexedDB API - Web APIs | MDN](https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API)
 
