@@ -5,7 +5,7 @@
         ssl_certificate      ssl_certs/1_www.****.com_cert.crt;#证书路径      
         ssl_certificate_key  ssl_certs/2_www.****.com.key;#key路径              
                                                                                  
-        ssl_session_cache    shared:SSL:1m; #s储存SSL会话的缓存类型和大小                        
+        ssl_session_cache    shared:SSL:1m; #储存SSL会话的缓存类型和大小                        
         ssl_session_timeout  5m; #会话过期时间                                               
                                                                                  
         ssl_ciphers  HIGH:!aNULL:!MD5; #为建立安全连接，服务器所允许的密码格式列表                                          

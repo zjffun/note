@@ -14,7 +14,7 @@
 
 如果要带上字段名用：
 
-    -- select * from (
-    -- 	select 'col1','col2','col3','col4' union 
-    -- 	(select col1,col2,col3,col4 from test where col1 = 'xxx' order by col1)
-    -- ) tbl 
+    select * from (
+    	select 'col1','col2','col3','col4' union 
+    	(select col1,col2,col3,col4 from test where col1 = 'xxx' order by col1)
+    ) tbl 
