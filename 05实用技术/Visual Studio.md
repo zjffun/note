@@ -1,4 +1,4 @@
-# 快捷键
+# 默认快捷键
 
 [VS Shortcuts | Shortcut keys for Visual Studio](https://www.dofactory.com/reference/visual-studio-shortcuts)
 

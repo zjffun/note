@@ -333,29 +333,31 @@ eg：忽略 / web/upload / 下的所有文件和文件夹，除了 / web/upload/
 2.  创建 config 文件
 3.  配置每一个 key
 
-    \#global_key
-    Host github.com 
-    ​    HostName github.com
-    ​    IdentityFile ~/.ssh/name_rsa1
-    ​    PreferredAuthentications publickey
-    ​    User your_name1
+```text
+#global_key
+Host github.com 
+​    HostName github.com
+​    IdentityFile ~/.ssh/name_rsa1
+​    PreferredAuthentications publickey
+​    User your_name1
 
-    \#xxx_key
-    Host github.com  
-    ​    HostName github.com
-    ​    IdentityFile ~/.ssh/name_rsa2
-    ​    PreferredAuthentications publickey
-    ​    User your_name2
+#xxx_key
+Host github.com  
+​    HostName github.com
+​    IdentityFile ~/.ssh/name_rsa2
+​    PreferredAuthentications publickey
+​    User your_name2
 
-    # 配置文件参数
+# 配置文件参数
 
-    # Host : Host 可以看作是一个你要识别的模式，对识别的模式，进行配置对应的的主机名和 ssh 文件
+# Host : Host 可以看作是一个你要识别的模式，对识别的模式，进行配置对应的的主机名和 ssh 文件
 
-    # HostName : 要登录主机的主机名
+# HostName : 要登录主机的主机名
 
-    # User : 登录名
+# User : 登录名
 
-    # IdentityFile : 指明上面 User 对应的 identityFile 路径
+# IdentityFile : 指明上面 User 对应的 identityFile 路径
+```
 
 # 六：在 U 盘中建立 git 仓库
 
