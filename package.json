@@ -33,9 +33,9 @@
   },
   "remarkConfig": {
     "plugins": [
+      "remark-handle-local-img",
       "preset-lint-recommended",
-      "pangu",
-      "remark-handle-local-img"
+      "pangu"
     ]
   }
 }
