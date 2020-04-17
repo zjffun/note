@@ -64,21 +64,45 @@ service v2ray start|stop|status|reload|restart|force-reload
 
 可以使用[v2ray](https://github.com/v2ray/v2ray-core/releases)，或者 Shadowsocks 等客户端。
 
-配置 vmess：
+下载安装：
+
+```bash
+bash <(curl -L -s https://install.direct/go.sh)
+```
+
+配置（vmess 协议）：
 
 ```bash
 {
-  ...
-  // List of outbound proxy configurations.
+  "inbounds": [{
+    "port": 1080,
+    "listen": "127.0.0.1",
+    "protocol": "socks",
+    "settings": {
+      "udp": true
+    }
+  }],
   "outbounds": [{
     "protocol": "vmess",
     "settings": {
       "vnext": [{
-        "address": "xxx", // 服务器地址，请修改为你自己的服务器 ip 或域名
-        "port": xxx,  // 服务器端口
+        "address": "SERVER",
+        "port": PORT,
         "users": [{ "id": "xxx" }]
       }]
     }
+  },{
+    "protocol": "freedom",
+    "tag": "direct",
+    "settings": {}
   }],
+  "routing": {
+    "domainStrategy": "IPOnDemand",
+    "rules": [{
+      "type": "field",
+      "ip": ["geoip:private"],
+      "outboundTag": "direct"
+    }]
+  }
 }
 ```
