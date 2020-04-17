@@ -11,5 +11,8 @@
   "dependencies": {
     "unist-util-is": "^4.0.0",
     "unist-util-visit": "^2.0.0"
+  },
+  "devDependencies": {
+    "rimraf": "^3.0.2"
   }
 }
