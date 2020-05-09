@@ -104,3 +104,9 @@ sudo /etc/init.d/apache2 restart
 # MySQL
 
 默认用户名密码位置：`/etc/mysql/debian.cnf`
+
+# Error: ENOSPC: System limit for number of file watchers reached
+
+```bash
+echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p
+```
