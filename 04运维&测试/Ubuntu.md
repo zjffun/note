@@ -105,6 +105,32 @@ sudo /etc/init.d/apache2 restart
 
 默认用户名密码位置：`/etc/mysql/debian.cnf`
 
+# VMware 静态 IP
+
+[Configure Static IP Address on Linux VM in VMware Player | DoubleCloud => Private Cloud + Public Cloud](http://www.doublecloud.org/2013/03/configure-static-ip-address-on-linux-vm-in-vmware-player/)
+
+```text
+$ sudo vim /etc/network/interfaces
+# This file describes the network interfaces available on your system
+# and how to activate them. For more information, see interfaces(5)
+# The loopback network interface
+auto lo
+iface lo inet loopback
+# The primary network interface
+auto eth0
+iface eth0 inet static
+  address 192.168.47.200
+  netmask 255.255.255.0
+  broadcast 192.168.47.255
+  gateway 192.168.47.2
+dns-nameservers 192.168.47.2
+
+## Configure DNS Server
+$ vi /etc/resolv.conf
+nameserver 192.168.1.1
+nameserver 8.8.8.8    # Google's DNS server
+```
+
 # Error: ENOSPC: System limit for number of file watchers reached
 
 ```bash
