@@ -65,8 +65,9 @@
 
 # ssh_config
 
-linux 配置 "/etc/ssh/ssh_config" 文件
-window 配置 "C:\\Program Files\\Git\\etc\\ssh\\ssh_config" 文件
-名称 | 值 | 说明
-\---\|---\|---
-IdentityFile | ~/.ssh/identity | 设置从哪个文件读取用户的 RSA 安全验证标识。
+-   linux 配置 "/etc/ssh/ssh_config" 文件
+-   window 配置 "C:\\Program Files\\Git\\etc\\ssh\\ssh_config" 文件
+
+| 名称           | 值               | 说明                       |
+| ------------ | --------------- | ------------------------ |
+| IdentityFile | ~/.ssh/identity | 设置从哪个文件读取用户的 RSA 安全验证标识。 |

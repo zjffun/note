@@ -37,9 +37,13 @@ bash <(curl -L -s https://install.direct/go.sh)
 
 配置：
 
+```bash
+vim /etc/v2ray/config.json
+```
+
 默认会配置好 vmess 直接用就行，如果要用 shadowsocks 需要加几行配置。
 
-```bash
+```json
 {
   "inbounds": [
   ...
