@@ -8,7 +8,7 @@
     -   有缓存：
         -   该资源 `Cache-Control`或`Expires` 是否过期？
             -   未过期：直接使用缓存的资源。
-            -   已过期：携带该资源的 `ETag`或`Last-Modified`、`If-None-Match`或`If-Modified-Since` 请求该资源。
+            -   已过期：携带该资源的 `ETag` + `If-None-Match` 或 `Last-Modified` + `If-Modified-Since` 请求该资源。
     -   没有缓存：直接请求该资源。
 
 ## 响应阶段
@@ -56,7 +56,7 @@ PS：在控制台查看缓存效果时注意关闭`禁用 HTTP 缓存`选项
 
 # 可缓存的内容
 
-> 缓存主要包括 request method 和目标 URI（一般只有 GET 请求才会被缓存）。 
+> 缓存主要包括 request method 和目标 URI（一般只有 GET 请求才会被缓存）。
 >
 > 普遍的缓存案例:
 >
@@ -74,8 +74,8 @@ PS：在控制台查看缓存效果时注意关闭`禁用 HTTP 缓存`选项
 
 ## 方法二：告诉浏览器不要缓存（不一定好使）
 
-    <meta http-equiv="Pragma" content="no-cache"> 
-    <meta http-equiv="Cache-Control" content="no-cache"> 
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-Control" content="no-cache">
     <meta http-equiv="Expires" content="-1">
 
 ## 方法三：请求 script 时加上随机字符串
@@ -92,5 +92,5 @@ PS：在控制台查看缓存效果时注意关闭`禁用 HTTP 缓存`选项
 # 参考
 
 -   [【Web 缓存机制系列】2 – Web 浏览器的缓存机制 | AlloyTeam](http://www.alloyteam.com/2012/03/web-cache-2-browser-cache/#prettyPhoto)
--   [HTTP 缓存  |  Web  |  Google Developers](https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/http-caching)
+-   [HTTP 缓存 | Web | Google Developers](https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/http-caching)
 -   [HTTP 缓存 - HTTP | MDN](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Caching_FAQ)
