@@ -50,6 +50,23 @@
 
 [require · amdjs/amdjs-api Wiki](https://github.com/amdjs/amdjs-api/wiki/require)
 
+# UMD
+
+```js
+(function (global, factory) {
+    typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
+    typeof define === 'function' && define.amd ? define(factory) :
+    (global = global || self, global.YourModuleName = factory());
+}(this, (function () { 
+    'use strict';
+
+    var yourModule = {};
+    // ...
+    return yourModule;
+
+})));
+```
+
 # ES6 Modules
 
 > 现在浏览器们才刚刚开始去实现这个功能。但它在许多转换器中已经实现，例如 Traceur Compiler ， Babel ， Rollup 或 Webpack。
