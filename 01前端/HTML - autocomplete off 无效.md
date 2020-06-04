@@ -1,4 +1,4 @@
-Chrome 上即使设置了`autocomplete="off"`也会自动填账号密码，可以通过让他填到隐藏的输入框中解决。
+Chrome 上即使设置了[`autocomplete="off"`](https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill) 也会自动填账号密码，可以通过让账号密码填到隐藏的输入框中解决。
 
 ```html
 <div
