@@ -5,6 +5,12 @@
 # 查看 Ubuntu 版本
 
 ```bash
+lsb_release -a
+```
+
+或
+
+```bash
 cat /etc/issue
 ```
 
