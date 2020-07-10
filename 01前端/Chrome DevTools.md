@@ -20,6 +20,12 @@ sum(1, 2);
 
 // monitorEvents
 monitorEvents($0, "key");
+
+// log dom as object
+console.dir(elem)
+
+// log dom
+console.log(elem)
 ```
 
 # Network
