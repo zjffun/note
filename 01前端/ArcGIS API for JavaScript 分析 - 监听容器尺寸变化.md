@@ -15,3 +15,7 @@ _startResizeTimer: function() {
     this._persistentTimer = setTimeout(this._timedResize, 2 * this.resizeDelay)
 },
 ```
+
+* * *
+
+监听容器尺寸变化现在可以用 [ResizeObserver](https://developer.mozilla.org/en-US/docs/Web/API/ResizeObserver) 
