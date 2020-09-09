@@ -18,7 +18,45 @@ while (queue.waitForMessage()) {
 
 # 任务队列
 
-任务队列是指 macrotask queue，当 macrotask queue 空了（都处理完了）就开始处理 microtask queue，并且依次就将所有 microtask queue 都处理完（类似将 microtask queue 的所有任务合成为一个当 macrotask）。
+任务分为 microtask 和 macrotask。
+
+每次先将 microtask queue 中的任务都处理完，再处理一个 macrotask queue 中的的任务。依次这样循环下去。
+
+例如：
+
+```html
+<!DOCTYPE html>
+<script>
+  console.log("main1");
+  Promise.resolve().then(() => console.log("micro1"));
+  console.log("main2");
+  setTimeout(console.log, 0, "macro1");
+  console.log("main3");
+  Promise.resolve().then(() => {
+    console.log("micro2");
+    Promise.resolve().then(() => console.log("micro3"));
+    setTimeout(console.log, 0, "macro2");
+  });
+  Promise.resolve().then(() => console.log("micro4"));
+  console.log("main4");
+  setTimeout(console.log, 0, "macro3");
+  console.log("main5");
+  /**
+    main1
+    main2
+    main3
+    main4
+    main5
+    micro1
+    micro2
+    micro4
+    micro3
+    macro1
+    macro3
+    macro2
+  */
+</script>
+```
 
 -   macrotasks: setTimeout, setInterval, setImmediate(Non-standard), I/O, UI rendering
 -   microtasks: process.nextTick, Promises, Object.observe(Obsolete), MutationObserver

@@ -57,3 +57,17 @@
 -   Web 安全颜色：在 256 色计算机上总能避免抖动的颜色，包括：0、3、6、9、C、F 组成的三元组。
 -   `ex` 小写 x 的高度。
 -   `1in = 2.54cm = 96px = 72pt`，经测试不同 DPR（设备像素比）他们的展示都是一样的。
+
+# 字体
+
+-   CSS 通用字体：包括 serif, sans-serif 等，会由用户代理选择对应类型的字体。
+-   `font-weight` 的 bolder, lighter 可以相对改变粗细。
+-   `font-size` 的 larger, smaller 和百分比可以相对改变大小。
+-   **通常** `font-style` 设置 `italic` 和 `oblique` 在 Web 浏览器看上去一样。
+-   `font-variant` 设置 `small-caps` 可以实现小型大写字母（<span style="font-variant: small-caps">Font Variant</span> 这种效果）。
+-   使用系统字体：将 `font` 设置为 `caption`、`icon` 和 `menu` 等。在创建和原生应用类似的 Web 应用时可以用到。
+
+# 文本
+
+-   `line-height` 定义文本基线间的最小距离，文本基线拉开的距离可能比 `line-height` 的值大。`line-height` 通常为 1.2。
+-   `vertical-align` 只应用于行内元素和替换元素。替换元素的基线在其底端。使用`middle`会将行内元素框的中间点和父元素基线上方 `0.5ex` 处的一个点对其。
