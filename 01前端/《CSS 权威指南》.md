@@ -71,3 +71,5 @@
 
 -   `line-height` 定义文本基线间的最小距离，文本基线拉开的距离可能比 `line-height` 的值大。`line-height` 通常为 1.2。
 -   `vertical-align` 只应用于行内元素和替换元素。替换元素的基线在其底端。使用`middle`会将行内元素框的中间点和父元素基线上方 `0.5ex` 处的一个点对其。
+-   `white-space` 控制空白符和换行符的展示，其中 `nowrap` 和 `pre` 都会禁止自动换行。
+-   `direction` 和 `unicode-bidi` 控制文本书写方向。
