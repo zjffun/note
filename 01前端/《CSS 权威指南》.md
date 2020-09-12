@@ -73,3 +73,11 @@
 -   `vertical-align` 只应用于行内元素和替换元素。替换元素的基线在其底端。使用`middle`会将行内元素框的中间点和父元素基线上方 `0.5ex` 处的一个点对其。
 -   `white-space` 控制空白符和换行符的展示，其中 `nowrap` 和 `pre` 都会禁止自动换行。
 -   `direction` 和 `unicode-bidi` 控制文本书写方向。
+
+# 视觉格式化
+
+-   CSS 假定每个元素都会生成一个或多个矩形框。这些矩形框相对于包含块（布局上下文）摆放。
+-   根元素： `html` 元素。
+-   元素的宽度和左右 margin 三个值都不为 auto 时（overconstraint），会将右 margin 设置为 auto（ltr 书写方向时）。元素的 7 个水平 / 垂直属性总和不能大于包含块。
+-   margin 可以为负数。
+-   border 不可以是百分数。
