@@ -167,6 +167,8 @@
 
 # 用户界面样式
 
+-   `cursor` 设置为 `crosshair` 会将光标变成十字符号，通常用于屏幕捕捉，让用户知道现在光标在哪个像素。
+-   通过 `url()` 可以设置图形光标。
 -   轮廓 `outline` 不参与文档流。
 -   行内非替换元素轮廓可能不是矩形。
 
@@ -190,3 +192,15 @@
 ```
 
 # 非屏幕媒体
+
+-   分页媒体（paged medium）是把文档处理为一系列离散 “页面” 的媒体。
+-   屏幕媒体是一种连续型媒体（continuous medium），文档表示为一个可滚动的 “页面”。
+-   分页媒体（paged medium）可以用来做 PPT。
+
+# 声音
+
+CSS 可以操作屏幕阅读器的声音播放。
+
+媒体查询 `aural` 已经废弃建议用 `speech`。
+
+-   [Aural style sheets](https://www.w3.org/TR/CSS22/aural.html)
