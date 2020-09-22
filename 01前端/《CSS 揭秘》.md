@@ -35,3 +35,14 @@ date: 'Wed, 02 Sep 2020 12:37:20 GMT'
 ## 半透明边框
 
 注意：背景色默认是 `border-box`，会影响边框的显示，可以改成 `padding-box`
+
+## 多重边框
+
+-   `box-shadow` 有第四个参数扩张半径。通过设置正的扩张半径，两个为零的偏移量以及为零的模糊值，可以模拟出边框。
+-   `outline` 轮廓也可以模拟边框。注意：轮廓和边框是有区别的。
+
+## 背景定位
+
+-   `background-position` 已经允许我们指定背景图片距离任意角的偏移量，只要我们在偏移量前面指定关键字。eg: `background-position: right 20px bottom 10px;`
+
+## 条纹背景
