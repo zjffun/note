@@ -103,7 +103,7 @@ TODO
 
 ## 单侧投影
 
--   发生阴影色和纯透明色之间的颜色过渡长度近似于模糊半径的两倍
+-   发生阴影色和纯透明色之间的颜色过渡长度近似于模糊半径的两倍。
 -   扩张半径这个参数会根据你指定的值去扩大或（当指定负值时）缩小投影的尺寸。
 
 ## 不规则投影
@@ -123,3 +123,52 @@ filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.5));
 
 -   适合用在在图片上放置内容的场景。
 -   主要通过 `background-attachment: fixed;` 可以让元素的背景根据视口定位的特性，和模糊滤镜实现。
+
+## 折角效果
+
+-   切角 + 折角背景
+
+# 字体排列
+
+## 连字符断行
+
+-   `hyphens: auto;`
+-   可以通过软连字符 `&shy;` 来辅助浏览器进行断词。
+
+## 插入换行
+
+-   空白符合并通常是一件非常好的事情，否则我们就得把整个 HTML 文档的源代码整理进一行里面。
+-   使用换行符 `0x000A` 换行。
+
+```css
+dd + dt::before {
+  content: "\A";
+  white-space: pre;
+}
+```
+
+## 文本行的斑马条纹
+
+-   使用条纹背景实现。
+
+## 调整 tab 的宽度
+
+-   `tab-size` 设置 tab 的宽度（默认是 8 个字符）
+
+## 连字
+
+-   `font-variant-ligatures` 设置连字的开启和关闭。
+
+## 华丽的 & 符号
+
+```css
+@font-face {
+  font-family: Ampersand;
+  src: local("Baskerville"), local("Goudy Old Style"), local("Palatino"), local("Book Antiqua");
+  unicode-range: U+26;
+}
+```
+
+## 自定义下划线
+
+-   使用 `linear-gradient` 背景。
