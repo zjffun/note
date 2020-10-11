@@ -1,0 +1,2 @@
+-   Windows 系统支持 `make` 命令
+-   各系统都自带 Chrome Headless
