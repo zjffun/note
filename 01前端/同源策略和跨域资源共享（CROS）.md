@@ -1,3 +1,8 @@
+---
+updated: 'Mon, 25 May 2020 11:33:14 GMT'
+date: 'Sun, 30 Sep 2018 10:52:35 GMT'
+---
+
 # 同源策略
 
 [Same-origin policy - Web security | MDN](https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy)

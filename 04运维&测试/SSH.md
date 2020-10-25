@@ -1,3 +1,8 @@
+---
+updated: 'Wed, 20 May 2020 12:00:17 GMT'
+date: 'Tue, 25 Sep 2018 12:52:45 GMT'
+---
+
 # 创建 ssh-keygen
 
 使用：`ssh-keygen -t rsa -C "youremail@example.com"`\

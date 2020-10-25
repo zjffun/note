@@ -1,3 +1,8 @@
+---
+updated: 'Fri, 29 Mar 2019 00:57:41 GMT'
+date: 'Thu, 28 Feb 2019 06:35:09 GMT'
+---
+
 Formatting Context：指页面中的一个渲染区域，并且拥有一套渲染规则，他决定了其子元素如何定位，以及与其他元素的相互关系和作用。
 
 # BFC

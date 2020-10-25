@@ -1,3 +1,8 @@
+---
+updated: 'Mon, 17 Feb 2020 07:08:23 GMT'
+date: 'Tue, 29 Oct 2019 11:33:36 GMT'
+---
+
 # 准备
 
 1.  添加凭据（credentials）

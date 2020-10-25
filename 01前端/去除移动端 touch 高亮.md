@@ -1,3 +1,8 @@
+---
+updated: 'Mon, 25 May 2020 11:33:14 GMT'
+date: 'Mon, 25 May 2020 11:33:14 GMT'
+---
+
 ```css
 -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 ```

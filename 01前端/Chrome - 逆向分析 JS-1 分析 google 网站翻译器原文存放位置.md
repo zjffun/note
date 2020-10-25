@@ -1,3 +1,8 @@
+---
+updated: 'Mon, 10 Feb 2020 11:05:46 GMT'
+date: 'Thu, 28 Feb 2019 06:35:09 GMT'
+---
+
 剧透：就是使用了一下 Chrome DevTools 的 Memory 功能，通过已知的属性的值在 JS 内存中查找具有该值得属性
 
 # 一：不分析一下现有的网页翻译方法么？

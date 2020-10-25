@@ -1,3 +1,8 @@
+---
+updated: 'Wed, 10 Jun 2020 13:45:07 GMT'
+date: 'Wed, 10 Jun 2020 13:45:07 GMT'
+---
+
 1.  `flex-basis` 在 `flex-direction` 为 row 时控制 width，为 column 时控制 height。
 2.  `flex-basis` 只对 flex items 有用，并且在 flex items 使用绝对定位时无效。
 

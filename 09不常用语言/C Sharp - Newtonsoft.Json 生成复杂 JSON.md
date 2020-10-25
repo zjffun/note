@@ -1,3 +1,8 @@
+---
+updated: 'Sat, 23 May 2020 03:49:00 GMT'
+date: 'Sat, 23 May 2020 03:49:00 GMT'
+---
+
 > 官方文档：<https://www.newtonsoft.com/json/help/html/SerializeObject.htm>
 
 一种方式就可以生成所有的 JSON：

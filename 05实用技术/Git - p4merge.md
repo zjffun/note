@@ -1,3 +1,8 @@
+---
+updated: 'Mon, 19 Aug 2019 11:24:11 GMT'
+date: 'Mon, 19 Aug 2019 11:24:11 GMT'
+---
+
 # Windows 下配置
 
 先确保 p4merge 的路径（默认：`C:\Program Files\Perforce\`）在环境变量中

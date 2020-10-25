@@ -1,3 +1,8 @@
+---
+updated: 'Wed, 20 May 2020 12:00:17 GMT'
+date: 'Wed, 15 May 2019 15:23:59 GMT'
+---
+
 这个分到 VPN 类里并不对，不过很多人搜索的时候可能都带着这个关键字。其实下面描述的主要是一种选择性代理代理网站的方法，主要还是用在网站开发时进行本地测试。
 
 代理有两种方式一种是 PAC（[Proxy auto-config - Wikipedia](https://en.wikipedia.org/wiki/Proxy_auto-config)），一种是全局，明白这个两个概念就可以开始使用下面的软件了

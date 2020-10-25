@@ -1,3 +1,8 @@
+---
+updated: 'Wed, 15 Apr 2020 11:40:57 GMT'
+date: 'Wed, 15 Apr 2020 11:40:57 GMT'
+---
+
 ```bash
 # install
 apt install openssh-server

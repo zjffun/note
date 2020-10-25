@@ -1,3 +1,8 @@
+---
+updated: 'Mon, 17 Feb 2020 07:08:23 GMT'
+date: 'Mon, 17 Feb 2020 07:08:23 GMT'
+---
+
 # Mac 键盘快捷键
 
 [Mac 键盘快捷键 - Apple 支持](https://support.apple.com/zh-cn/HT201236)

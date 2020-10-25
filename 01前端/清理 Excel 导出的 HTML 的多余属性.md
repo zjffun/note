@@ -1,3 +1,8 @@
+---
+updated: 'Mon, 24 Feb 2020 15:46:20 GMT'
+date: 'Mon, 24 Feb 2020 15:46:20 GMT'
+---
+
 ```js
 var whiteList = ["rowspan", "colspan"];
 

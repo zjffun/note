@@ -1,3 +1,8 @@
+---
+updated: 'Wed, 20 Mar 2019 06:27:14 GMT'
+date: 'Thu, 28 Feb 2019 06:35:09 GMT'
+---
+
 > 翻译自：[Generating a parse tree from a shell grammar - DEV Community 👩‍💻👨‍💻](https://dev.to/oyagci/generating-a-parse-tree-from-a-shell-grammar-f1)
 
 语法树表示命令的语法结构，使我们轻松地执行用户键入的命令。

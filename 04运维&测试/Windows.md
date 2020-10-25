@@ -1,3 +1,8 @@
+---
+updated: 'Thu, 28 Feb 2019 06:35:09 GMT'
+date: 'Tue, 25 Sep 2018 12:52:45 GMT'
+---
+
 # 查看版本等信息
 
 运行`dxdiag`

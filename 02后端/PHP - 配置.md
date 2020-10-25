@@ -1,3 +1,8 @@
+---
+updated: 'Thu, 28 Feb 2019 06:35:09 GMT'
+date: 'Thu, 28 Feb 2019 06:35:09 GMT'
+---
+
 # 解决 var_dump 显示不完整
 
 ```txt

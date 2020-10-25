@@ -1,3 +1,8 @@
+---
+updated: 'Sun, 09 Jun 2019 12:42:55 GMT'
+date: 'Sun, 09 Jun 2019 12:42:55 GMT'
+---
+
 # 使用 PathIntellisense 还是使用`jsconfig.json`？
 
 使用 [PathIntellisense](https://github.com/ChristianKohler/PathIntellisense) 只能提示模块路径，并无法让 vs code 的 Intellisense 知道这个模块的信息。

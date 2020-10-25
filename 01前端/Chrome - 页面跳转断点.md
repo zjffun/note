@@ -1,3 +1,8 @@
+---
+updated: 'Wed, 15 Apr 2020 11:40:57 GMT'
+date: 'Wed, 15 Apr 2020 11:40:57 GMT'
+---
+
 # 查看 Network 的 Doc 分类的 Initator 列
 
 可以通过查看 Network 的 Initator 列获取哪行代码发送的网络请求。

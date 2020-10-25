@@ -1,3 +1,8 @@
+---
+updated: 'Sat, 13 Jul 2019 07:01:46 GMT'
+date: 'Sat, 13 Jul 2019 07:01:46 GMT'
+---
+
 # 开启 Hyper-V
 
 开启后会有提示让重启电脑，重启就 OK

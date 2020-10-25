@@ -1,3 +1,8 @@
+---
+updated: 'Sat, 29 Jun 2019 17:00:25 GMT'
+date: 'Thu, 28 Feb 2019 06:35:09 GMT'
+---
+
 使用命令提示符（cmd、批处理、Batch、.bat）添加环境变量
 
 # 永久环境变量

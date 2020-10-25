@@ -1,3 +1,8 @@
+---
+updated: 'Thu, 28 Feb 2019 06:35:09 GMT'
+date: 'Sun, 30 Sep 2018 10:52:35 GMT'
+---
+
 # 开始使用
 
 首先是在项目跟目录建立 trunk，branches 和 tags 这三个文件夹

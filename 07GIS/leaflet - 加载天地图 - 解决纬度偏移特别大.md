@@ -1,3 +1,8 @@
+---
+updated: 'Thu, 28 Feb 2019 06:35:09 GMT'
+date: 'Thu, 28 Feb 2019 06:35:09 GMT'
+---
+
 这几天学习 leaflet 在加载天地图时将以前的接口拿来用结果偏差了特别大（差不多是 90 度），中国纬度到了 100 多，试了改变投影和 y 轴翻转的配置都不好使，最后上网搜索到了[Leaflet.ChineseTmsProviders](https://github.com/htoooth/Leaflet.ChineseTmsProviders.git)（MapGIS 的示例也是用的它）查看他的用法发现我用的天地图接口和它不一样，改成它的接口就不会出现纬度偏移特别大的问题了（到现在也没有搜到 cva_w 和 vec_c 这两个接口的区别，CGCS200 和 WGS48 么？那也差不了那么多啊！以后找到区别再写上来吧）
 
 正常的：

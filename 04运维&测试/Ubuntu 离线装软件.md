@@ -1,3 +1,8 @@
+---
+updated: 'Fri, 01 May 2020 01:06:29 GMT'
+date: 'Fri, 01 May 2020 01:06:29 GMT'
+---
+
 以 lrzsz 为例。
 
 下载待安装软件包：

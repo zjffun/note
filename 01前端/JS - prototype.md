@@ -1,3 +1,8 @@
+---
+updated: 'Tue, 11 Feb 2020 12:03:08 GMT'
+date: 'Tue, 11 Feb 2020 12:03:08 GMT'
+---
+
 感觉原型真是 JS 中非常复杂的一环。看 MDN 的文档某些地方也不是写的很清楚，下面写一些我对于原型的理解，如有错误望大家指出。
 
 感觉`prototype`和`[[Prototype]]`挺容易混的，看 ES 的文档时也是在看到`prototype.constructor`时很蒙。

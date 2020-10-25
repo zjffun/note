@@ -1,3 +1,8 @@
+---
+updated: 'Mon, 23 Mar 2020 09:45:59 GMT'
+date: 'Mon, 23 Mar 2020 09:45:59 GMT'
+---
+
 # 让 catch 只捕获上一个 then 的回调的异常
 
 使用 then 的 rejected 回调（第二个参数）可以处理上一个 Promise 发生的异常，让后面的 catch 只捕获 then 的回调的异常。

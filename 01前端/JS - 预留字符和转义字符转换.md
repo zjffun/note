@@ -1,3 +1,8 @@
+---
+updated: 'Fri, 21 Jun 2019 12:39:20 GMT'
+date: 'Mon, 03 Dec 2018 12:48:31 GMT'
+---
+
 # 字符实体（Entity）
 
 > 转义字符（Escape Sequence）也称字符实体 (Character Entity)。

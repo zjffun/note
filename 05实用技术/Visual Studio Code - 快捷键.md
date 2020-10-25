@@ -1,3 +1,8 @@
+---
+updated: 'Mon, 21 Jan 2019 14:24:27 GMT'
+date: 'Mon, 21 Jan 2019 14:24:27 GMT'
+---
+
 # 默认快捷键
 
 [Visual Studio Code 默认快捷键](https://code.visualstudio.com/docs/getstarted/keybindings#\_default-keyboard-shortcuts)

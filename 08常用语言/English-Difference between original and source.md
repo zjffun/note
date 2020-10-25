@@ -1,3 +1,8 @@
+---
+updated: 'Thu, 28 Feb 2019 06:35:09 GMT'
+date: 'Fri, 04 May 2018 00:55:33 GMT'
+---
+
 最近跟网页翻译怼上了，在给翻译前的页面起名是纠结于使用 original page 还是 source page，就查了一下 original 和 source 的区别。
 
 -   original：\

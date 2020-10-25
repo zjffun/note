@@ -1,3 +1,8 @@
+---
+updated: 'Wed, 20 Mar 2019 06:27:14 GMT'
+date: 'Thu, 28 Feb 2019 06:35:09 GMT'
+---
+
 # [GitHub 上获取源码](https://github.com/1010543618/Skyline-3DWindowSync)
 
 # 1. 打开多个 3D 窗口

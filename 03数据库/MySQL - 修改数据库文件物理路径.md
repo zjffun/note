@@ -1,3 +1,8 @@
+---
+updated: 'Mon, 21 Jan 2019 14:24:27 GMT'
+date: 'Mon, 21 Jan 2019 14:24:27 GMT'
+---
+
 一共两步：
 
 1.  修改`my.ini`文件的`datadir`；

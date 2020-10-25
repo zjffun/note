@@ -1,3 +1,8 @@
+---
+updated: 'Wed, 20 Mar 2019 06:27:14 GMT'
+date: 'Thu, 28 Feb 2019 06:35:09 GMT'
+---
+
 最近想做一个 Chrome 的插件（看别的博客说其实叫插件不准确，应该叫拓展，大家叫习惯了就按习惯的来吧）。一开始咱先直接看了[Chrome 开发（360 翻译）](http://open.chrome.360.cn/extension_dev/overview.html)和[chrome extensions](https://developer.chrome.com/extensions)（这个官方的文档拓展的方法和属性有表格比较好找，但得会科学上网），之后卡住了开始上网搜发现[【干货】Chrome 插件 (扩展) 开发全攻略](http://www.cnblogs.com/liuxianan/p/chrome-plugin-develop.html)这篇博客写的已经很全了，而且附带的 GitHub 上的 demo 也特别全。咱这里就稍微把咱做的插件遇到的问题写一写（几乎都是看文档和那个博客解决的）。
 
 # [谷歌页面翻译增强插件](https://github.com/1010543618/google-page-translation-plus)

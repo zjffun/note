@@ -1,3 +1,8 @@
+---
+updated: 'Tue, 29 Oct 2019 11:33:36 GMT'
+date: 'Wed, 20 Feb 2019 01:07:19 GMT'
+---
+
 # [Vim documentation: usr_toc](http://vimdoc.sourceforge.net/htmldoc/usr_toc.html)
 
 # 标准术语与 Vim 术语对照

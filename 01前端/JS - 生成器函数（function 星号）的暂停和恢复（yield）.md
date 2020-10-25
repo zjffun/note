@@ -1,3 +1,8 @@
+---
+updated: 'Wed, 10 Apr 2019 10:50:42 GMT'
+date: 'Mon, 10 Dec 2018 15:26:45 GMT'
+---
+
 > <https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/function*>
 >
 > <https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/yield>

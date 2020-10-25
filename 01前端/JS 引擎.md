@@ -1,3 +1,8 @@
+---
+updated: 'Thu, 14 Feb 2019 05:44:53 GMT'
+date: 'Thu, 14 Feb 2019 05:44:53 GMT'
+---
+
 最早的 JS 引擎是纯解释器，现代 JS 引擎已经使用 JIT（Just-in-time compilation：结合预编译（ahead-of-time compilation AOT）和解释器的优点的编译方式）以提高性能
 
 # 主流引擎

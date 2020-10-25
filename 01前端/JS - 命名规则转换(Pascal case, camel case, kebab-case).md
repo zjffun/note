@@ -1,3 +1,8 @@
+---
+updated: 'Mon, 25 May 2020 11:33:14 GMT'
+date: 'Mon, 25 May 2020 11:33:14 GMT'
+---
+
 Pascal case is a subset of Camel Case where the first letter is capitalized.
 
 ```js

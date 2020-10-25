@@ -1,3 +1,8 @@
+---
+updated: 'Mon, 21 Sep 2020 11:52:07 GMT'
+date: 'Fri, 04 Sep 2020 11:12:42 GMT'
+---
+
 -   伪类：`link` - `visited` - `focus` - `hover` - `active`
 
 -   继承的声明没有特殊性（比 `0,0,0,0` 都小）

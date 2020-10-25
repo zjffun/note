@@ -1,3 +1,8 @@
+---
+updated: 'Tue, 11 Feb 2020 12:03:08 GMT'
+date: 'Thu, 28 Feb 2019 06:35:09 GMT'
+---
+
 # 一 使用原生 JSON.stringify 实现
 
 ```

@@ -1,3 +1,8 @@
+---
+updated: 'Tue, 11 Feb 2020 12:03:08 GMT'
+date: 'Thu, 28 Feb 2019 06:35:09 GMT'
+---
+
 # 转换为字符串
 
 ```js

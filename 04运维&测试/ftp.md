@@ -1,3 +1,8 @@
+---
+updated: 'Mon, 24 Jun 2019 15:10:02 GMT'
+date: 'Mon, 24 Jun 2019 15:10:02 GMT'
+---
+
 # Error “530: permission denied”
 
 ## 原因

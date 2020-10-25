@@ -1,3 +1,8 @@
+---
+updated: 'Tue, 11 Feb 2020 12:03:08 GMT'
+date: 'Tue, 11 Feb 2020 12:03:08 GMT'
+---
+
 # DOM Level 0
 
 Events：绑定到 DOM 的属性上，找不到官方文档

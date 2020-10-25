@@ -1,3 +1,8 @@
+---
+updated: 'Sat, 09 Nov 2019 05:06:44 GMT'
+date: 'Sat, 09 Nov 2019 05:06:44 GMT'
+---
+
 # 常见问题
 
 -   起步: [Getting Started - Appium](http://appium.io/docs/en/about-appium/getting-started/index.html)

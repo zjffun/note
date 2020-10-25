@@ -1,3 +1,8 @@
+---
+updated: 'Tue, 01 Sep 2020 11:17:56 GMT'
+date: 'Tue, 01 Sep 2020 11:15:46 GMT'
+---
+
 使用 [provide-inject — Vue.js](https://cn.vuejs.org/v2/api/#provide-inject)
 
 ```js

@@ -1,3 +1,8 @@
+---
+updated: 'Tue, 03 Dec 2019 15:05:09 GMT'
+date: 'Tue, 03 Dec 2019 15:05:09 GMT'
+---
+
 -   场景：快速得到一段数组元素的和
 -   题目：[Insertion Sort Advanced Analysis | HackerRank](https://www.hackerrank.com/challenges/insertion-sort/problem)
 -   算法：[binary-indexed-tree :: HackerRank](https://www.hackerrank.com/topics/binary-indexed-tree)

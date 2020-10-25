@@ -1,3 +1,8 @@
+---
+updated: 'Thu, 28 Feb 2019 06:35:09 GMT'
+date: 'Mon, 21 Jan 2019 14:24:27 GMT'
+---
+
 # 配置 Dubug 和 Release 生成不同的 Web.config
 
 [Web.config Transformation Syntax for Web Application Project Deployment | Microsoft Docs](https://docs.microsoft.com/en-us/previous-versions/dd465326\(v=vs.100\))

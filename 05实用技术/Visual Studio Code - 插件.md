@@ -1,3 +1,8 @@
+---
+updated: 'Tue, 14 May 2019 14:25:50 GMT'
+date: 'Tue, 14 May 2019 14:25:50 GMT'
+---
+
 # Intellisense（代码提示、智能感应）
 
 ## Path Intellisense：路径别名（alias）代码提示

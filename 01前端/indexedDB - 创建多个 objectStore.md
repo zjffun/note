@@ -1,3 +1,8 @@
+---
+updated: 'Thu, 20 Aug 2020 11:58:42 GMT'
+date: 'Thu, 20 Aug 2020 11:58:42 GMT'
+---
+
 连续创建多个 objectStore 属于同一个 upgrade transaction。参见：<https://www.w3.org/TR/IndexedDB/#dom-idbdatabase-createobjectstore>
 
 ```js

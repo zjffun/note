@@ -1,3 +1,8 @@
+---
+updated: 'Sun, 15 Mar 2020 04:39:46 GMT'
+date: 'Sun, 15 Mar 2020 04:39:46 GMT'
+---
+
 有时候检查元素是否可见不能单纯检查当前元素的样式，需要考虑具体情况，下面是一些检测方法：
 
 # [:visible Selector | jQuery API Documentation](https://api.jquery.com/visible-selector/)

@@ -1,3 +1,8 @@
+---
+updated: 'Mon, 10 Feb 2020 11:05:46 GMT'
+date: 'Thu, 28 Feb 2019 06:35:09 GMT'
+---
+
 直接添加`width: max-content;`声明就 OK，之前太单纯了。
 
 ***

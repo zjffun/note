@@ -1,3 +1,8 @@
+---
+updated: 'Thu, 04 Apr 2019 11:58:12 GMT'
+date: 'Thu, 28 Feb 2019 06:35:09 GMT'
+---
+
 # 绿色版（zip archive 版）无 my-default.ini
 
 > [As of MySQL 5.7.18, my-default.ini is no longer included in or installed by distribution packages.](https://dev.mysql.com/doc/refman/5.7/en/server-configuration-defaults.html)

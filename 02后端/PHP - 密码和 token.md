@@ -1,3 +1,8 @@
+---
+updated: 'Thu, 28 Feb 2019 06:35:09 GMT'
+date: 'Thu, 28 Feb 2019 06:35:09 GMT'
+---
+
 # 密码
 
 直接 md5 和 sha1 不安全！！！

@@ -1,3 +1,8 @@
+---
+updated: 'Thu, 28 Feb 2019 06:35:09 GMT'
+date: 'Thu, 28 Feb 2019 06:35:09 GMT'
+---
+
 > [ANSI escape code - Wikipedia](https://en.wikipedia.org/wiki/ANSI_escape_code#Windows)
 
 linux 输出绿色的✓TRUE，红色的✗FALSE ：

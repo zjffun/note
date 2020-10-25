@@ -1,3 +1,8 @@
+---
+updated: 'Sat, 29 Jun 2019 16:40:14 GMT'
+date: 'Thu, 28 Feb 2019 06:35:09 GMT'
+---
+
 ArcGIS API for JavaScript（3.x）如何加载天地图《[ArcGIS API for Javascript 加载天地图（经纬度投影） - 张凯强 - 博客园](https://www.cnblogs.com/zhangkaiqiang/p/7358627.html)》这篇文章已经写的很好了，但放到 4.x 上没法用，这里我将他的方法升级到 4.x 版本供大家参考。（4.x 修改了挺多东西）
 
 # 在线预览：[ArcGIS TianDiTu](https://codepen.io/1010543618/pen/bPLNOE)

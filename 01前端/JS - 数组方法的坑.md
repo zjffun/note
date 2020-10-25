@@ -1,3 +1,8 @@
+---
+updated: 'Tue, 11 Feb 2020 12:03:08 GMT'
+date: 'Tue, 11 Feb 2020 12:03:08 GMT'
+---
+
 # fill()
 
 今天刷 HackerRank 的题遇到需要创建链表数组（一维数组的每一项是个链表）的题。

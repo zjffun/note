@@ -1,3 +1,8 @@
+---
+updated: 'Sat, 04 Jul 2020 04:12:27 GMT'
+date: 'Wed, 10 Jul 2019 15:01:37 GMT'
+---
+
 ```bash
 # 备份 sources.list
 cp /etc/apt/sources.list /etc/apt/sources.list.bak

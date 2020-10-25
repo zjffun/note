@@ -1,3 +1,8 @@
+---
+updated: 'Thu, 04 Jun 2020 12:53:37 GMT'
+date: 'Mon, 25 May 2020 11:33:14 GMT'
+---
+
 Chrome 上即使设置了[`autocomplete="off"`](https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill) 也会自动填账号密码，可以通过让账号密码填到隐藏的输入框中解决。
 
 ```html

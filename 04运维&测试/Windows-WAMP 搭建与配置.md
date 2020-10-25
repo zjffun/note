@@ -1,3 +1,8 @@
+---
+updated: 'Thu, 28 Feb 2019 06:35:09 GMT'
+date: 'Thu, 28 Feb 2019 06:35:09 GMT'
+---
+
 # 使用 WampServer 整合软件包进行 WAMP 环境搭建
 
 > WampServer 是一款由法国人开发的 Apache Web 服务器、PHP 解释器以及 MySQL 数据库的整合软件包。免去了开发人员将时间花费在繁琐的配置环境过程，从而腾出更多精力去做开发。\

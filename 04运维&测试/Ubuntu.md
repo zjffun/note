@@ -1,3 +1,8 @@
+---
+updated: 'Sat, 04 Jul 2020 04:16:31 GMT'
+date: 'Tue, 25 Sep 2018 12:52:45 GMT'
+---
+
 # 设置 Swap Space（虚拟内存）
 
 [How To Add Swap Space on Ubuntu 16.04 | DigitalOcean](https://www.digitalocean.com/community/tutorials/how-to-add-swap-space-on-ubuntu-16-04)

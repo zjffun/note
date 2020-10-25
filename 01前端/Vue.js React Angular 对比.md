@@ -1,3 +1,8 @@
+---
+updated: 'Thu, 17 Sep 2020 12:34:50 GMT'
+date: 'Thu, 17 Sep 2020 12:34:50 GMT'
+---
+
 感觉 Vue 的文章写的很好了（虽然主要是夸 Vue 的 ==!），<https://vuejs.org/v2/guide/comparison.html> 。之前就看过但面试还是没答好，还是应该总结一下。
 
 # 整体

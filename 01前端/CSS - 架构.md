@@ -1,3 +1,8 @@
+---
+updated: 'Tue, 29 Oct 2019 11:33:36 GMT'
+date: 'Tue, 29 Oct 2019 11:33:36 GMT'
+---
+
 # [MaintainableCSS](https://maintainablecss.com/)
 
 1.  原子类几乎只有比行内样式少写几个字符这一个优点，缺点倒是一堆，最好别用

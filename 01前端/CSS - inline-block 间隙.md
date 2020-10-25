@@ -1,3 +1,8 @@
+---
+updated: 'Mon, 10 Feb 2020 11:05:46 GMT'
+date: 'Mon, 10 Feb 2020 11:05:46 GMT'
+---
+
 间隙产生的原因是`inline-block`对外是`inline`，对内是`block`。`inline`会将连续的空白符解析为一个空格（如：下面示例的两个`li`之间的后面的换行空格）。取消间隙的方法如下：
 
 ```html

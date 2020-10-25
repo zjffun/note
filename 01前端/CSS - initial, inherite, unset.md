@@ -1,3 +1,8 @@
+---
+updated: 'Sat, 13 Jun 2020 04:26:09 GMT'
+date: 'Sat, 13 Jun 2020 04:26:09 GMT'
+---
+
 # `initial`
 
 设置属性值为[默认值](https://developer.mozilla.org/en-US/docs/Web/CSS/initial_value)。

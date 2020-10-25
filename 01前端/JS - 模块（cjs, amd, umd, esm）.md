@@ -1,3 +1,8 @@
+---
+updated: 'Mon, 01 Jun 2020 12:35:58 GMT'
+date: 'Mon, 01 Jun 2020 12:35:58 GMT'
+---
+
 # CommonJS
 
 -   [CommonJS - Wikipedia](https://en.wikipedia.org/wiki/CommonJS)

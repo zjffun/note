@@ -1,3 +1,8 @@
+---
+updated: 'Mon, 10 Feb 2020 11:05:46 GMT'
+date: 'Mon, 10 Feb 2020 11:05:46 GMT'
+---
+
 # @规则
 
 [`@charset`](https://developer.mozilla.org/en-US/docs/Web/CSS/@charset) — Defines the character set used by the style sheet.

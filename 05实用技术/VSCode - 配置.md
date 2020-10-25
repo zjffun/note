@@ -1,3 +1,8 @@
+---
+updated: 'Thu, 08 Aug 2019 11:25:12 GMT'
+date: 'Fri, 08 Mar 2019 09:50:16 GMT'
+---
+
 # 软件设置
 
 ```json

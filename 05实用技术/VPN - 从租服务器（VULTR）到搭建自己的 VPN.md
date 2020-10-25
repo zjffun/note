@@ -1,3 +1,8 @@
+---
+updated: 'Mon, 07 Oct 2019 15:02:22 GMT'
+date: 'Tue, 29 Jan 2019 13:32:13 GMT'
+---
+
 # 写在前面的话
 
 虚拟私人网络（virtual private network (VPN) ）利用隧道协议（Tunneling Protocol）来达到保密、发送端认证、消息准确性等私人消息安全效果，这种技术可以用不安全的网络（例如：互联网）来发送可靠、安全的消息。

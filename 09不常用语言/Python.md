@@ -1,3 +1,8 @@
+---
+updated: 'Thu, 28 Feb 2019 06:35:09 GMT'
+date: 'Fri, 04 May 2018 00:55:33 GMT'
+---
+
 # 安装
 
 参考：<http://scrapy-chs.readthedocs.io/zh_CN/0.24/intro/install.html#scrapy>

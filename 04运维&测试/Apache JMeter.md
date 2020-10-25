@@ -1,3 +1,8 @@
+---
+updated: 'Thu, 28 Feb 2019 06:35:09 GMT'
+date: 'Tue, 25 Sep 2018 12:52:45 GMT'
+---
+
 > <https://en.wikipedia.org/wiki/Apache_JMeter>
 >
 > Apache JMeter 是 Apache 的一个项目，它是一个负载测试工具可以用于进行各种服务器的性能测试分析，它重点关注 web 应用程序。

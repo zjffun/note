@@ -1,3 +1,8 @@
+---
+updated: 'Wed, 02 Sep 2020 12:37:20 GMT'
+date: 'Wed, 02 Sep 2020 12:37:20 GMT'
+---
+
 # 前言
 
 -   DRY: Don’t Repeat Yourself

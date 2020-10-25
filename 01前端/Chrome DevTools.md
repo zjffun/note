@@ -1,3 +1,8 @@
+---
+updated: 'Fri, 10 Jul 2020 12:09:06 GMT'
+date: 'Mon, 01 Jun 2020 12:35:58 GMT'
+---
+
 # Console
 
 ```js

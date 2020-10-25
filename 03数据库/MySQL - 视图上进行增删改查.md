@@ -1,3 +1,8 @@
+---
+updated: 'Thu, 28 Feb 2019 06:35:09 GMT'
+date: 'Thu, 28 Feb 2019 06:35:09 GMT'
+---
+
 <https://dev.mysql.com/doc/refman/5.7/en/view-updatability.html>
 
 <https://dev.mysql.com/doc/refman/8.0/en/view-updatability.html>

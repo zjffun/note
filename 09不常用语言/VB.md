@@ -1,3 +1,8 @@
+---
+updated: 'Thu, 28 Feb 2019 06:35:09 GMT'
+date: 'Fri, 04 May 2018 00:55:33 GMT'
+---
+
 # 获取时间戳
 
 DateDiff("s", #1/1/1970#, Now())

@@ -1,3 +1,8 @@
+---
+updated: 'Thu, 20 Feb 2020 03:05:21 GMT'
+date: 'Thu, 18 Oct 2018 12:54:15 GMT'
+---
+
 # 默认快捷键
 
 [VS Shortcuts | Shortcut keys for Visual Studio](https://www.dofactory.com/reference/visual-studio-shortcuts)

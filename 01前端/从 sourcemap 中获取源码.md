@@ -1,3 +1,8 @@
+---
+updated: 'Mon, 01 Jul 2019 11:44:49 GMT'
+date: 'Mon, 01 Jul 2019 11:44:49 GMT'
+---
+
 使用 [paazmaya/shuji: Reverse engineering JavaScript and CSS sources from sourcemaps](https://github.com/paazmaya/shuji) 可以从 sourcemap 中获取源码。
 
 一个故事：

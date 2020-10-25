@@ -1,3 +1,8 @@
+---
+updated: 'Thu, 20 Aug 2020 11:58:42 GMT'
+date: 'Thu, 20 Aug 2020 11:58:42 GMT'
+---
+
 # Semantic Commit Messages
 
 See how a minor change to your commit message style can make you a better programmer.

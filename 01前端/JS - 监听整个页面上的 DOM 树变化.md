@@ -1,3 +1,8 @@
+---
+updated: 'Tue, 11 Feb 2020 12:03:08 GMT'
+date: 'Thu, 28 Feb 2019 06:35:09 GMT'
+---
+
 [在线预览](https://jsfiddle.net/1010543618/fyf913t0/)
 
 使用《Web API 接口》的《MutationObserver》

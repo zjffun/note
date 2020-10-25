@@ -1,3 +1,8 @@
+---
+updated: 'Tue, 03 Dec 2019 15:05:09 GMT'
+date: 'Tue, 03 Dec 2019 15:05:09 GMT'
+---
+
 -   场景：给颗树，轮流剪掉一条枝，没枝可剪的人输。
 -   题目：[Deforestation | HackerRank](https://www.hackerrank.com/challenges/deforestation-1/problem)
 -   讲解：[Games!: Green Hackenbush](http://math450games.blogspot.com/2017/02/green-hackenbush.html)

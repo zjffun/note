@@ -1,3 +1,8 @@
+---
+updated: 'Wed, 02 Sep 2020 12:37:20 GMT'
+date: 'Mon, 01 Jun 2020 12:35:58 GMT'
+---
+
 就是[autoResize](https://developers.arcgis.com/javascript/3/jsapi/map-amd.html#autoresize)这个属性，本来当用了什么黑科技，结果只是 setTimeout 轮询。。
 
 ```js

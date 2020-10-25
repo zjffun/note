@@ -1,3 +1,8 @@
+---
+updated: 'Tue, 11 Feb 2020 12:03:08 GMT'
+date: 'Tue, 11 Feb 2020 12:03:08 GMT'
+---
+
 Object 的 key 是排过序的，但这个 Object 的 key 的排序和数组下标不同是有限制的，我在 Node.js（Chrome V8 引擎）测试 Object 的 key 只有在小于`2^32 - 1`时才会排序。
 
 要保证 Object 的 key 的顺序的话可以先获取可枚举属性然后排序，参见：[Object.entries() - JavaScript | MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/entries)。

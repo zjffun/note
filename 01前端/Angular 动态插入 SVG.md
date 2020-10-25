@@ -1,3 +1,8 @@
+---
+updated: 'Tue, 22 Sep 2020 11:30:35 GMT'
+date: 'Tue, 22 Sep 2020 11:30:35 GMT'
+---
+
 Angular 插入 HTML 字符串要先通过 sanitizer 处理。
 
 ```html

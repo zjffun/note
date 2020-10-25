@@ -1,3 +1,8 @@
+---
+updated: 'Wed, 12 Feb 2020 07:04:06 GMT'
+date: 'Wed, 12 Feb 2020 07:04:06 GMT'
+---
+
 npm 和 yarn 安装依赖（包）时不会自动安装 peer dependence（虽然很旧的 npm 是会自动安装的，但几乎没人用那么旧的了），而是给出如下警告：
 
 ```bash

@@ -1,3 +1,8 @@
+---
+updated: 'Sat, 27 Jul 2019 06:23:27 GMT'
+date: 'Sat, 27 Jul 2019 06:23:27 GMT'
+---
+
 # 设置压缩的基础路径
 
 ```bash

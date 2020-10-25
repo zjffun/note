@@ -1,3 +1,8 @@
+---
+updated: 'Mon, 10 Feb 2020 11:05:46 GMT'
+date: 'Mon, 10 Feb 2020 11:05:46 GMT'
+---
+
 以前在使用 requirejs 时遇到过加载的 js 无法在控制台调试的情况，今天做了下总结
 
 -   创建了 script 标签引入的 js 在 FF，Chrome 都能在调试器里找到。

@@ -1,3 +1,8 @@
+---
+updated: 'Tue, 11 Feb 2020 12:03:08 GMT'
+date: 'Tue, 11 Feb 2020 12:03:08 GMT'
+---
+
 [tc39/proposal-hashbang: #! for JS](https://github.com/tc39/proposal-hashbang)
 
 某些奇怪的报错可能是因为系统不支持 Shebangs / Hashbang 导致的。

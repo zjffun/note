@@ -1,3 +1,8 @@
+---
+updated: 'Thu, 28 Feb 2019 06:35:09 GMT'
+date: 'Thu, 28 Feb 2019 06:35:09 GMT'
+---
+
 # `Client does not support authentication protocol 或 Authentication plugin 'caching_sha2_password' cannot be loaded`
 
 ## 解决方法

@@ -1,3 +1,8 @@
+---
+updated: 'Sat, 09 May 2020 11:53:16 GMT'
+date: 'Sat, 09 May 2020 11:53:16 GMT'
+---
+
 # `class` 中的代码总是在严格模式下执行。
 
 ```js

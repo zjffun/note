@@ -1,3 +1,8 @@
+---
+updated: 'Tue, 02 Apr 2019 10:43:59 GMT'
+date: 'Tue, 02 Apr 2019 10:43:59 GMT'
+---
+
 # MVC
 
 **Model–View–Controller**

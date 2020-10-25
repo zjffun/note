@@ -1,3 +1,8 @@
+---
+updated: 'Mon, 17 Jun 2019 13:07:02 GMT'
+date: 'Mon, 17 Jun 2019 13:07:02 GMT'
+---
+
 今天看面试题看到了这个新名词。。我以前是没有发现过这种状况，应该是我一直都是将加载 CSS 的 link 标签写到 head 里的缘故吧。
 
 # 什么是文档样式闪烁（Flash Of Unstyled Content）？

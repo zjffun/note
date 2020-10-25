@@ -1,3 +1,8 @@
+---
+updated: 'Wed, 14 Oct 2020 01:00:53 GMT'
+date: 'Wed, 14 Oct 2020 01:00:53 GMT'
+---
+
 FLIP stands for First, Last, Invert, Play.
 
 Let’s break it down:

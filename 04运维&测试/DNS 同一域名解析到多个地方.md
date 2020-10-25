@@ -1,3 +1,8 @@
+---
+updated: 'Tue, 22 Sep 2020 11:30:35 GMT'
+date: 'Tue, 22 Sep 2020 11:30:35 GMT'
+---
+
 ![domain-resolution-settings](./images/domain-resolution-settings.png)
 
 # 使用 nslookup 查看结果
