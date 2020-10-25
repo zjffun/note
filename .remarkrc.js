@@ -22,11 +22,19 @@ if (enableMetadata === "true") {
       {
         gitExcludeCommit: "chore:",
         metadata: {
-          date({ gitCreatedTime, createdTime }) {
-            if (gitCreatedTime) {
-              return gitCreatedTime;
-            }
-            return createdTime;
+          date: {
+            value({ gitCreatedTime, createdTime }) {
+              if (gitCreatedTime) {
+                return gitCreatedTime;
+              }
+              return createdTime;
+            },
+            shouldUpdate({ oldValue }) {
+              if (oldValue) {
+                return false;
+              }
+              return true;
+            },
           },
           updated({ gitModifiedTime, modifiedTime }) {
             if (metadataInit === "true") {
