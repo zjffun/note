@@ -17,4 +17,4 @@
 ## 参见
 
 > -   [Error “530: permission denied” when user logs in to vsftpd server via ftp – The Geek Diary](https://www.thegeekdiary.com/error-530-permission-denied-when-user-logs-in-to-vsftpd-server-via-ftp/)
-> -   <https://blog.csdn.net/bluishglc/article/details/42273197> 
+> -   <https://blog.csdn.net/bluishglc/article/details/42273197>

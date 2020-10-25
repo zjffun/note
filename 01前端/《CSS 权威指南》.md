@@ -42,7 +42,7 @@
 </html>
 ```
 
--   用户代理（浏览器）样式声明、插件样式声明（）和网站作者样式声明的优先级：
+-   用户代理（浏览器）样式声明、插件样式声明和网站作者样式声明的优先级：
 
 1.  Declarations in user agent style sheets (e.g. the browser's default styles, used when no other styling is set).
 2.  Normal declarations in user style sheets (custom styles set by a user).
@@ -162,7 +162,7 @@
 -   `::before` 和 `::after` 的 `display` 属性的接受值和主体元素的类型有关。（主体元素是行内元素这两个伪元素不能设置为块级元素）
 -   `content` 属性的值可以是字符串、URL 和属性值。
 -   `quotes` 属性用来生成引号。
--   使用计数器包括：`counter-reset: counter 0` 属性创建起点，`counter-increment: counter 1` 计数器递增，使用 `coutent: counter(counter)`展示。 
+-   使用计数器包括：`counter-reset: counter 0` 属性创建起点，`counter-increment: counter 1` 计数器递增，使用 `coutent: counter(counter)`展示。
 -   每层嵌套会为计数器创建一个新的作用域，可以用 `coutent: counters(counter, ".")` 展示出来。
 
 # 用户界面样式

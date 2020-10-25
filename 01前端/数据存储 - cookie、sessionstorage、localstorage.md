@@ -73,7 +73,7 @@ Web Storage 带来的好处：
 
 # 数据应该存储在 Cookies 还是 HTML5 Web Storage？
 
-重要的数据还是应该存在_Cookies_中并设置`HttpOnly` （使用 HTTPS 还可以设置上`Secure`）。
+重要的数据还是应该存在**Cookies**中并设置`HttpOnly` （使用 HTTPS 还可以设置上`Secure`）。
 因为 HTML5 Web Storage 易受 XSS 攻击，且 XSS 攻击具有较大的攻击途径，能一次成功的攻击就够影响到所有正在使用的用户。
 
 # 参考

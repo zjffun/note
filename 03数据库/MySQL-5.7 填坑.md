@@ -2,7 +2,7 @@
 
 > [As of MySQL 5.7.18, my-default.ini is no longer included in or installed by distribution packages.](https://dev.mysql.com/doc/refman/5.7/en/server-configuration-defaults.html)
 
-文档里的安装流程：  
+文档里的安装流程：\
 [MySQL :: MySQL 5.7 Reference Manual :: 2.3.5 Installing MySQL on Microsoft Windows Using a noinstall ZIP Archive](https://dev.mysql.com/doc/refman/5.7/en/windows-install-archive.html)
 
 1.  Extract the main archive to the desired install directory
@@ -11,7 +11,7 @@
 4.  Choose a MySQL server type
 5.  Initialize MySQL
 6.  Start the MySQL server
-7.  Secure the default user accounts 
+7.  Secure the default user accounts
 
 附 wamp 的 my.ini（记得改各个文件夹）：
 

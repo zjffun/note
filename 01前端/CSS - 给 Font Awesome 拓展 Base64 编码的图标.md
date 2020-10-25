@@ -17,4 +17,6 @@
 
 使用起来和 fa 自带的图标一样
 
-    <i class="fa fa-2x fa-science-garden"></i>
+```
+<i class="fa fa-2x fa-science-garden"></i>
+```

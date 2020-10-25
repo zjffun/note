@@ -6,14 +6,14 @@
 # “启动” 还是 “附加”
 
 -   “启动”：配置将要调试的文件或 URL，按 F5 调试会开启一个新的 Chrome 进程并打开该文件或 URL 进行调试
--   “附加”：然后以允许远程调试模式打开 Chrome，配置_Chrome 打开的 tab 中的待调试 URL_为调试地址，按 F5 连接上进行调试
+-   “附加”：然后以允许远程调试模式打开 Chrome，配置**Chrome 打开的 tab 中的待调试 URL**为调试地址，按 F5 连接上进行调试
 
 对比一下：
 
-| 方式  | 优点                               | 缺点                              |
-| --- | -------------------------------- | ------------------------------- |
-| 启动  | 配置简单                             | 关闭调试后新开的 Chrome 进程会关闭，再次调试需重新打开 |
-| 附加  | 关闭调试后 Chrome 进程不会关闭，再次调试无需重新打开页面 | 相对 “启动” 配置复杂（需要配置 Chrome）       |
+| 方式 | 优点                               | 缺点                              |
+| -- | -------------------------------- | ------------------------------- |
+| 启动 | 配置简单                             | 关闭调试后新开的 Chrome 进程会关闭，再次调试需重新打开 |
+| 附加 | 关闭调试后 Chrome 进程不会关闭，再次调试无需重新打开页面 | 相对 “启动” 配置复杂（需要配置 Chrome）       |
 
 # “启动” 示例
 
@@ -57,15 +57,15 @@
 >
 > -   Right click the Chrome shortcut, and select properties
 > -   In the "target" field, append --remote-debugging-port=9222
-> -   Or in a command prompt, execute <path to chrome>/chrome.exe --remote-debugging-port=9222
+> -   Or in a command prompt, execute `<path to chrome>/chrome.exe --remote-debugging-port=9222`
 >
 > macOS
 >
-> -   In a terminal, execute /Applications/Google\\ Chrome.app/Contents/MacOS/Google\\ Chrome --remote-debugging-port=9222
+> -   In a terminal, execute `/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --remote-debugging-port=9222`
 >
 > Linux
 >
-> -   In a terminal, launch google-chrome --remote-debugging-port=9222
+> -   In a terminal, launch `google-chrome --remote-debugging-port=9222`
 
 ## 二：打开将要调试的地址
 
@@ -111,7 +111,7 @@ module.exports = {
 注意：
 
 1.  配置中的端口虽然默认就是 9222，但我测试时配置中不指定端口会报`connect ECONNREFUSED 127.0.0.1:9229`这种连接不上`9229`端口的错。
-2.  配置中的 URL 一定是当前要调试的 tab 的 URL（例如：配置 URL 为`http://localhost:3000/`，在浏览器打开 `http://localhost:3000/` 时自动跳转到`http://localhost:3000/index.html`，然后在 VSCode 启动调试就会因为 URL 匹配不上就会报 \` 无法连接到运行中的进程 \` 的错误），这也是我把配置 launch.json 放到最后一步的原因。（PS：这种情况也可以通过配置 \`urlFilter\` 解决）。
+2.  配置中的 URL 一定是当前要调试的 tab 的 URL（例如：配置 URL 为`http://localhost:3000/`，在浏览器打开 `http://localhost:3000/` 时自动跳转到`http://localhost:3000/index.html`，然后在 VSCode 启动调试就会因为 URL 匹配不上就会报 \`无法连接到运行中的进程\` 的错误），这也是我把配置 launch.json 放到最后一步的原因。（PS：这种情况也可以通过配置 \`urlFilter\` 解决）。
 
 ```json
 {
@@ -127,7 +127,7 @@ module.exports = {
       "url": "http://localhost:3000/",
       "port": 9222,
       "sourceMaps": true,
-      "webRoot": "${workspaceRoot}" 
+      "webRoot": "${workspaceRoot}"
     }
   ]
 }

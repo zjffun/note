@@ -28,11 +28,11 @@ $(document).on(
 
 > <https://www.jquery123.com/on/>
 >
-> 事件名称可以添加指定的 event namespaces（命名空间） 来简化删除或触发事件。例如，"click.myPlugin.simple" 为 click 事件同时定义了两个命名空间 myPlugin 和 simple。通过上述方法绑定的 click 事件处理，可以用. off("click.myPlugin") 或 .off("click.simple") 删除绑定到相应元素的 Click 事件处理程序，而不会干扰其他绑定在该元素上的 “click（点击）” 事件。命名空间类似 CSS 类，因为它们是不分层次的; 只需要有一个名字相匹配即可。以下划线开头的名字空间是供 jQuery 使用的。
+> 事件名称可以添加指定的 event namespaces（命名空间） 来简化删除或触发事件。例如，"click.myPlugin.simple" 为 click 事件同时定义了两个命名空间 myPlugin 和 simple。通过上述方法绑定的 click 事件处理，可以用 `.off("click.myPlugin")` 或 `.off("click.simple")` 删除绑定到相应元素的 Click 事件处理程序，而不会干扰其他绑定在该元素上的 “click（点击）” 事件。命名空间类似 CSS 类，因为它们是不分层次的；只需要有一个名字相匹配即可。以下划线开头的名字空间是供 jQuery 使用的。
 
 # 对比
 
-| 比较项      | v3.x         | v4.x       |
-| -------- | ------------ | ---------- |
-| 总体结构     | 闭包           | ES6 Module |
-| Alert“类” | function 模拟类 | ES6 Class  |
+| 比较项       | v3.x         | v4.x       |
+| --------- | ------------ | ---------- |
+| 总体结构      | 闭包           | ES6 Module |
+| Alert “类” | function 模拟类 | ES6 Class  |

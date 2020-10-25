@@ -12,5 +12,5 @@
 
 ## 其他解决方法：
 
-别人的博客查到的[如何使 windows 系统环境变量的改变即时生效](http://blog.csdn.net/lioncode/article/details/6037683)  
+别人的博客查到的[如何使 windows 系统环境变量的改变即时生效](http://blog.csdn.net/lioncode/article/details/6037683)\
 比较简单的是：在高级属性中设置完毕后，在任意 cmd 下设置一次 path 的值（任意设置），达到全局广播的目的。（就是 set PATH=xxx，然后关掉 cmd 再打开就可以开心地使用了）

@@ -16,6 +16,6 @@ _startResizeTimer: function() {
 },
 ```
 
-* * *
+***
 
-监听容器尺寸变化现在可以用 [ResizeObserver](https://developer.mozilla.org/en-US/docs/Web/API/ResizeObserver) 
+监听容器尺寸变化现在可以用 [ResizeObserver](https://developer.mozilla.org/en-US/docs/Web/API/ResizeObserver)

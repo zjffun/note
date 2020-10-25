@@ -2,13 +2,13 @@
 
 ## [Git 配置](https://gitee.com/progit/1-%E8%B5%B7%E6%AD%A5.html#1.5-%E5%88%9D%E6%AC%A1%E8%BF%90%E8%A1%8C-Git-%E5%89%8D%E7%9A%84%E9%85%8D%E7%BD%AE)
 
--   `/etc/gitconfig` 文件：系统中对所有用户都普遍适用的配置。若使用 `git config` 时用 `--system`         选项，读写的就是这个文件。     
--   `~/.gitconfig` 文件：用户目录下的配置文件只适用于该用户。若使用 `git config` 时用 `--global`         选项，读写的就是这个文件。     
+-   `/etc/gitconfig` 文件：系统中对所有用户都普遍适用的配置。若使用 `git config` 时用 `--system`         选项，读写的就是这个文件。
+-   `~/.gitconfig` 文件：用户目录下的配置文件只适用于该用户。若使用 `git config` 时用 `--global`         选项，读写的就是这个文件。
 -   当前项目的 git 目录中的配置文件（也就是工作目录中的 `.git/config` 文件）：这里的配置仅仅针对当前项目有效。每一个级别的配置都会覆盖上层的相同配置，所以 `.git/config` 里的配置会覆盖 `/etc/gitconfig` 中的同名变量。
 
 # 2 Git 基础
 
-## [2.2     记录每次更新到仓库](https://gitee.com/progit/2-Git-%E5%9F%BA%E7%A1%80.html#2.2-%E8%AE%B0%E5%BD%95%E6%AF%8F%E6%AC%A1%E6%9B%B4%E6%96%B0%E5%88%B0%E4%BB%93%E5%BA%93)
+## [2.2 记录每次更新到仓库](https://gitee.com/progit/2-Git-%E5%9F%BA%E7%A1%80.html#2.2-%E8%AE%B0%E5%BD%95%E6%AF%8F%E6%AC%A1%E6%9B%B4%E6%96%B0%E5%88%B0%E4%BB%93%E5%BA%93)
 
 ### 忽略某些文件
 
@@ -184,7 +184,7 @@ $ git archive master --prefix='project/' --format=zip > `git describe master`.zi
 
 ### 制作简报
 
-使用`git shortlog`命令可以方便快捷的制作一份修改日志（changelog），告诉大家上次发布之后又增加了哪些特性和修复了哪些 bug。实际上这个命令能够统计给定范围内的所有提交; 假如你上一次发布的版本是 v1.0.1，下面的命令将给出自从上次发布之后的所有提交的简介：
+使用`git shortlog`命令可以方便快捷的制作一份修改日志（changelog），告诉大家上次发布之后又增加了哪些特性和修复了哪些 bug。实际上这个命令能够统计给定范围内的所有提交；假如你上一次发布的版本是 v1.0.1，下面的命令将给出自从上次发布之后的所有提交的简介：
 
 ```bash
 $ git shortlog --no-merges master --not v1.0.1
@@ -247,15 +247,19 @@ stash 跟 commit 很像不过是存在一个单独的栈里。
 
 ### 改变最近一次提交
 
-    $ git commit --amend
+```
+$ git commit --amend
+```
 
 ### 修改、重排和压制提交
 
-    # 修改最近三次提交（将要修改的 pick 改为 edit、squash，或者改变顺序）
-    $ git rebase -i HEAD~3
-    # 根据提示输入下面的命令修改或继续
-    $ git commit --amend
-    $ git rebase --continue
+```
+# 修改最近三次提交（将要修改的 pick 改为 edit、squash，或者改变顺序）
+$ git rebase -i HEAD~3
+# 根据提示输入下面的命令修改或继续
+$ git commit --amend
+$ git rebase --continue
+```
 
 ### 拆分提交
 
@@ -280,15 +284,17 @@ $ git filter-branch --subdirectory-filter trunk HEAD
 
 #### 全局性地更换电子邮件地址
 
-    $ git filter-branch --commit-filter '
-        if [ "$GIT_AUTHOR_EMAIL" = "schacon@localhost" ];
-        then
-        GIT_AUTHOR_NAME="Scott Chacon";
-        GIT_AUTHOR_EMAIL="schacon@example.com";
-        git commit-tree "$@";
-        else
-        git commit-tree "$@";
-        fi' HEAD
+```
+$ git filter-branch --commit-filter '
+    if [ "$GIT_AUTHOR_EMAIL" = "schacon@localhost" ];
+    then
+    GIT_AUTHOR_NAME="Scott Chacon";
+    GIT_AUTHOR_EMAIL="schacon@example.com";
+    git commit-tree "$@";
+    else
+    git commit-tree "$@";
+    fi' HEAD
+```
 
 ## [6.5 使用 Git 调试](https://gitee.com/progit/6-Git-%E5%B7%A5%E5%85%B7.html#6.5-%E4%BD%BF%E7%94%A8-Git-%E8%B0%83%E8%AF%95)
 
@@ -300,15 +306,17 @@ $ git filter-branch --subdirectory-filter trunk HEAD
 git blame -L 12,22 index.js
 ```
 
-PS：`-C` 参数会尝试找出隐式的重命名动作。通常，你会把你拷贝代码的那次提交作为原始提交，因为这是你在这个文件中第一次接触到那几行。Git 可以告诉你编写那些行的原始提交，即便是在另一个文件里。 
+PS：`-C` 参数会尝试找出隐式的重命名动作。通常，你会把你拷贝代码的那次提交作为原始提交，因为这是你在这个文件中第一次接触到那几行。Git 可以告诉你编写那些行的原始提交，即便是在另一个文件里。
 
 ### 二分查找定位发生错误的提交
 
 首先你运行`git bisect start`启动，然后你用`git bisect bad`来告诉系统当前的提交已经有问题了。然后你必须告诉 bisect 已知的最后一次正常状态是哪次提交，使用`git bisect good [good_commit]`：
 
-    $ git bisect start
-    $ git bisect bad
-    $ git bisect good v1.0
+```
+$ git bisect start
+$ git bisect bad
+$ git bisect good v1.0
+```
 
 然后告诉 git 当前版本是否有错误
 
@@ -333,7 +341,7 @@ $ git submodule
 
 ## [6.7 子树合并](https://gitee.com/progit/6-Git-%E5%B7%A5%E5%85%B7.html#6.7-%E5%AD%90%E6%A0%91%E5%90%88%E5%B9%B6)
 
-子树归并的思想是你拥有两个工程，其中一个项目映射到另外一个项目的子目录中，反过来也一样。当你指定一个子树归并，Git 可以聪明地探知其中一个是另外一个的子树从而实现正确的归并——这相当神奇。
+子树归并的思想是你拥有两个工程，其中一个项目映射到另外一个项目的子目录中，反过来也一样。当你指定一个子树归并，Git 可以聪明地探知其中一个是另外一个的子树从而实现正确的归并 —— 这相当神奇。
 
 ```bash
 # 拉取分支
@@ -344,7 +352,7 @@ $ git diff-tree
 
 # 7 自定义 Git
 
-> 先过一遍第一章中提到的 Git 配置细节。Git 使用一系列的配置文件来存储你定义的偏好，它首先会查找`/etc/gitconfig`文件，该文件含有     对系统上所有用户及他们所拥有的仓库都生效的配置值（译注：gitconfig 是全局配置文件）， 如果传递`--system`选项给`git config`命令， Git 会读写这个文件。 
+> 先过一遍第一章中提到的 Git 配置细节。Git 使用一系列的配置文件来存储你定义的偏好，它首先会查找`/etc/gitconfig`文件，该文件含有     对系统上所有用户及他们所拥有的仓库都生效的配置值（译注：gitconfig 是全局配置文件）， 如果传递`--system`选项给`git config`命令， Git 会读写这个文件。
 >
 > 接下来 Git 会查找每个用户的`~/.gitconfig`文件，你能传递`--global`选项让 Git 读写该文件。
 >
@@ -492,11 +500,11 @@ database.xml merge=ours
 $ ls
     HEAD   ***指向当前分支
     branches/   新版本的 Git 不再使用
-    config   项目特有的配置选项      
+    config   项目特有的配置选项
     description   仅供 GitWeb 程序使用
     hooks/   目录保存了第七章详细介绍了的客户端或服务端钩子脚本
     index   ***保存了暂存区域信息
-    info/   保存了一份不希望在 .gitignore 文件中管理的忽略模式 (ignored patterns) 
+    info/   保存了一份不希望在 .gitignore 文件中管理的忽略模式 (ignored patterns)
     objects/   ***存储所有数据内容
     refs/   ***存储指向数据 (分支) 的提交对象的指针
 ```
@@ -656,7 +664,7 @@ $ find .git/refs
     .git/refs
     .git/refs/heads
     .git/refs/tags
-# 查看 refs 文件夹的文件（现在还没有是空的）    
+# 查看 refs 文件夹的文件（现在还没有是空的）
 $ find .git/refs -type f
 # 创建一个新的引用帮助你记住最后一次提交，技术上你可以这样做
 $ echo "1a410efbd13591db07496601ebc7a059dd55cfe9" > .git/refs/heads/master
@@ -683,7 +691,7 @@ $ cat .git/HEAD
     ref: refs/heads/test
 ```
 
-Tag 对象指向一个 commit 而不是一个 tree。它就像是一个分支引用，但是不会变化——永远指向同一个 commit，仅仅是提供一个更加友好的名字。
+Tag 对象指向一个 commit 而不是一个 tree。它就像是一个分支引用，但是不会变化 —— 永远指向同一个 commit，仅仅是提供一个更加友好的名字。
 
 如果你添加了一个 remote 然后推送代码过去，Git 会把你最后一次推送到这个 remote 的每个分支的值都记录在 `refs/remotes`目录下。远程引用和分支主要区别在于他们是不能被 check out 的。Git 把他们当作是标记这些了这些分支在服务器上最后状态的一种书签。
 

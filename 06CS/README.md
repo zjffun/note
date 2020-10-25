@@ -29,12 +29,12 @@
 11. 操作系统
 12. 密码学
 
-> MIT 计算机科学课程表：  
-> <https://en.wikipedia.org/wiki/Computer_science>  
-> <http://catalog.mit.edu/degree-charts/computer-science-engineering-course-6-3/>  
-> <http://www.eecs.mit.edu/docs/ug/new_curriculum_63.pdf>  
-> MIT Challenge：  
+> MIT 计算机科学课程表：\
+> <https://en.wikipedia.org/wiki/Computer_science>\
+> <http://catalog.mit.edu/degree-charts/computer-science-engineering-course-6-3/>\
+> <http://www.eecs.mit.edu/docs/ug/new_curriculum_63.pdf>\
+> MIT Challenge：\
 > <https://www.scotthyoung.com/blog/myprojects/mit-challenge-2/>
 >
-> 清华计算机科学课程表：  
+> 清华计算机科学课程表：\
 > <http://www.cs.tsinghua.edu.cn/publish/cs/4842/20170418083904164842634/1492475976195.pdf>

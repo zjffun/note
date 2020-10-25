@@ -2,15 +2,17 @@
 
 开启后会有提示让重启电脑，重启就 OK
 
-    :: 创建cmd
-    (echo pushd "%~dp0"
-    echo dir /b %SystemRoot%\servicing\Packages\*Hyper-V*.mum >hyper-v.txt
-    echo for /f %%i in ^('findstr /i . hyper-v.txt 2^^>nul'^) do dism /online /norestart /add-package:"%SystemRoot%\servicing\Packages\%%i"
-    echo del hyper-v.txt
-    echo Dism /online /enable-feature /featurename:Microsoft-Hyper-V-All /LimitAccess /ALL) > open-hyper-v.cmd
+```
+:: 创建cmd
+(echo pushd "%~dp0"
+echo dir /b %SystemRoot%\servicing\Packages\*Hyper-V*.mum >hyper-v.txt
+echo for /f %%i in ^('findstr /i . hyper-v.txt 2^^>nul'^) do dism /online /norestart /add-package:"%SystemRoot%\servicing\Packages\%%i"
+echo del hyper-v.txt
+echo Dism /online /enable-feature /featurename:Microsoft-Hyper-V-All /LimitAccess /ALL) > open-hyper-v.cmd
 
-    :: 运行
-    open-hyper-v.cmd
+:: 运行
+open-hyper-v.cmd
+```
 
 # 临时修改注册表，设置为专业版（重启后会还原）
 

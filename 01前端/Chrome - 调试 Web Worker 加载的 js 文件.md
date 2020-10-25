@@ -1,11 +1,11 @@
 以前在使用 requirejs 时遇到过加载的 js 无法在控制台调试的情况，今天做了下总结
 
 -   创建了 script 标签引入的 js 在 FF，Chrome 都能在调试器里找到。
--   Web Worker 引入的 js 无法直接在 FF，Chrome 的调试器里找到，需要在：  
-    Chrome 中：在引入的 js 文件顶部加上`//@ sourceURL=async_test.js`，然后就能在 (no domain) 中找到该 js  
+-   Web Worker 引入的 js 无法直接在 FF，Chrome 的调试器里找到，需要在：\
+    Chrome 中：在引入的 js 文件顶部加上`//@ sourceURL=async_test.js`，然后就能在 (no domain) 中找到该 js\
     FF 中：怎么处理还不会。。。
 
-eg：  
+eg：\
 test.html
 
 ```html

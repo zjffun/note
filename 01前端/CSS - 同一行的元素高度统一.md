@@ -11,49 +11,51 @@
 
 ## 示例
 
-    <style>
-        /*1. 设置外部容器 display: flex;*/
-        .container{
-            display: flex;
-        }
-        .container > div:nth-child(1){
-            background: pink;
-        }
-        .container > div:nth-child(2){
-            background: yellow;
-        }
-        .container > div:nth-child(3){
-            background: red;
-        }
-        /*2. 设置内部容器 align-items: stretch;*/
-        .box{
-            align-items: stretch;
-            width: 100px;
-            margin-left: 20px;
-        }
-    </style>
-    <div class="container">
-        <div class="box">
-            <img src="https://via.placeholder.com/120x200" width="100px" alt="">
-            <p>img1 120*200</p>
-        </div>
-        <div class="box">
-            <img src="https://via.placeholder.com/120x300" width="100px" alt="">
-            <p>img2 120*300</p>
-        </div>
-        <div class="box">
-            <img src="https://via.placeholder.com/120x150" width="100px" alt="">
-            <p>img3 120*150</p>
-        </div>
+```
+<style>
+    /*1. 设置外部容器 display: flex;*/
+    .container{
+        display: flex;
+    }
+    .container > div:nth-child(1){
+        background: pink;
+    }
+    .container > div:nth-child(2){
+        background: yellow;
+    }
+    .container > div:nth-child(3){
+        background: red;
+    }
+    /*2. 设置内部容器 align-items: stretch;*/
+    .box{
+        align-items: stretch;
+        width: 100px;
+        margin-left: 20px;
+    }
+</style>
+<div class="container">
+    <div class="box">
+        <img src="https://via.placeholder.com/120x200" width="100px" alt="">
+        <p>img1 120*200</p>
     </div>
-    <script>
-        // 点击拓展高度的区域也可触发事件
-        document.querySelectorAll('.box').forEach((d) => {
-            d.onclick = function(e){
-                alert(e.target.innerText);
-            }
-        })
-    </script>
+    <div class="box">
+        <img src="https://via.placeholder.com/120x300" width="100px" alt="">
+        <p>img2 120*300</p>
+    </div>
+    <div class="box">
+        <img src="https://via.placeholder.com/120x150" width="100px" alt="">
+        <p>img3 120*150</p>
+    </div>
+</div>
+<script>
+    // 点击拓展高度的区域也可触发事件
+    document.querySelectorAll('.box').forEach((d) => {
+        d.onclick = function(e){
+            alert(e.target.innerText);
+        }
+    })
+</script>
+```
 
 # 二：padding 补偿法
 
@@ -66,61 +68,63 @@
 
 ## 原理
 
-> <https://developer.mozilla.org/zh-CN/docs/Web/CSS/margin-bottom>  
+> <https://developer.mozilla.org/zh-CN/docs/Web/CSS/margin-bottom>\
 > CSS 的 margin-bottom 属性用于设置元素的底部外边距，允许设置负数值。一个正数值将让它相对于正常流与邻近块更远，而负数值将使得更近。
 
 我的理解是用 padding-bottom 把外部容器撑开（外部容器设置了 overflow: hidden; 已经创建 BFC），然后负的 margin-bottom 并不会将元素实际高度改变，只会改变这个容器计算时的高度，这样外部容器的高度计算时就为最高内部容器高度了。
 
 ## 示例
 
-    <style>
-        /*1. 设置外部容器overflow: hidden;*/
-        .container{
-            overflow: hidden;
-        }
-        .container > div:nth-child(1){
-            background: pink;
-        }
-        .container > div:nth-child(2){
-            background: yellow;
-        }
-        .container > div:nth-child(3){
-            background: red;
-        }
-        /*2. 设置内部容器
-            margin-bottom:-10000px;
-            padding-bottom:10000px;
-        */
-        .box{
-            margin-bottom:-10000px;
-            padding-bottom:10000px;
-            width: 100px;
-            float: left;
-            margin-left: 20px;
-        }
-    </style>
-    <div class="container">
-        <div class="box">
-            <img src="https://via.placeholder.com/120x200" width="100px" alt="">
-            <p>img1 120*200</p>
-        </div>
-        <div class="box">
-            <img src="https://via.placeholder.com/120x300" width="100px" alt="">
-            <p>img2 120*300</p>
-        </div>
-        <div class="box">
-            <img src="https://via.placeholder.com/120x150" width="100px" alt="">
-            <p>img3 120*150</p>
-        </div>
+```
+<style>
+    /*1. 设置外部容器overflow: hidden;*/
+    .container{
+        overflow: hidden;
+    }
+    .container > div:nth-child(1){
+        background: pink;
+    }
+    .container > div:nth-child(2){
+        background: yellow;
+    }
+    .container > div:nth-child(3){
+        background: red;
+    }
+    /*2. 设置内部容器
+        margin-bottom:-10000px;
+        padding-bottom:10000px;
+    */
+    .box{
+        margin-bottom:-10000px;
+        padding-bottom:10000px;
+        width: 100px;
+        float: left;
+        margin-left: 20px;
+    }
+</style>
+<div class="container">
+    <div class="box">
+        <img src="https://via.placeholder.com/120x200" width="100px" alt="">
+        <p>img1 120*200</p>
     </div>
-    <script>
-        // 点击补偿的的区域也可触发事件
-        document.querySelectorAll('.box').forEach((d) => {
-            d.onclick = function(e){
-                alert(e.target.innerText);
-            }
-        })
-    </script>
+    <div class="box">
+        <img src="https://via.placeholder.com/120x300" width="100px" alt="">
+        <p>img2 120*300</p>
+    </div>
+    <div class="box">
+        <img src="https://via.placeholder.com/120x150" width="100px" alt="">
+        <p>img3 120*150</p>
+    </div>
+</div>
+<script>
+    // 点击补偿的的区域也可触发事件
+    document.querySelectorAll('.box').forEach((d) => {
+        d.onclick = function(e){
+            alert(e.target.innerText);
+        }
+    })
+</script>
+```
 
 # 三：table 布局
 
@@ -137,47 +141,49 @@
 
 ## 示例
 
-    <style>
-        /*1. 设置外部容器 display: table;*/
-        .container{
-            display: table;
-        }
-        .container > div:nth-child(1){
-            background: pink;
-        }
-        .container > div:nth-child(2){
-            background: yellow;
-        }
-        .container > div:nth-child(3){
-            background: red;
-        }
-        /*2. 设置内部容器 display: table-cell;*/
-        .box{
-            display: table-cell;
-            /*vertical-align: top; 默认是bottom*/
-            width: 100px;
-            /*margin-left: 20px; table布局下会失效*/
-        }
-    </style>
-    <div class="container">
-        <div class="box">
-            <img src="https://via.placeholder.com/120x200" width="100px" alt="">
-            <p>img1 120*200</p>
-        </div>
-        <div class="box">
-            <img src="https://via.placeholder.com/120x300" width="100px" alt="">
-            <p>img2 120*300</p>
-        </div>
-        <div class="box">
-            <img src="https://via.placeholder.com/120x150" width="100px" alt="">
-            <p>img3 120*150</p>
-        </div>
+```
+<style>
+    /*1. 设置外部容器 display: table;*/
+    .container{
+        display: table;
+    }
+    .container > div:nth-child(1){
+        background: pink;
+    }
+    .container > div:nth-child(2){
+        background: yellow;
+    }
+    .container > div:nth-child(3){
+        background: red;
+    }
+    /*2. 设置内部容器 display: table-cell;*/
+    .box{
+        display: table-cell;
+        /*vertical-align: top; 默认是bottom*/
+        width: 100px;
+        /*margin-left: 20px; table布局下会失效*/
+    }
+</style>
+<div class="container">
+    <div class="box">
+        <img src="https://via.placeholder.com/120x200" width="100px" alt="">
+        <p>img1 120*200</p>
     </div>
-    <script>
-        // 点击拓展高度的区域也可触发事件
-        document.querySelectorAll('.box').forEach((d) => {
-            d.onclick = function(e){
-                alert(e.target.innerText);
-            }
-        })
-    </script>
+    <div class="box">
+        <img src="https://via.placeholder.com/120x300" width="100px" alt="">
+        <p>img2 120*300</p>
+    </div>
+    <div class="box">
+        <img src="https://via.placeholder.com/120x150" width="100px" alt="">
+        <p>img3 120*150</p>
+    </div>
+</div>
+<script>
+    // 点击拓展高度的区域也可触发事件
+    document.querySelectorAll('.box').forEach((d) => {
+        d.onclick = function(e){
+            alert(e.target.innerText);
+        }
+    })
+</script>
+```

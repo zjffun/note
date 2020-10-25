@@ -2,7 +2,7 @@
 
 # 浅拷贝
 
-## Object.assign() 方法
+## `Object.assign()` 方法
 
 [Object.assign() - JavaScript | MDN](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/assign)
 

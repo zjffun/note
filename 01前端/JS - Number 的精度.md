@@ -32,13 +32,13 @@ Number.MAX_SAFE_INTEGER == 2**53 - 1
 
 wiki 上的《IEEE 754 基本交换格式表》，binary64 就是 JS 中用的
 
-| Name                                                                             | Common name      | Base | Significand Bits\[[b\]](https://en.wikipedia.org/wiki/IEEE_754#cite_note-11)/Digits | Decimal digits | Exponent bits | Decimal E max | Exponent bias\[[10\]](https://en.wikipedia.org/wiki/IEEE_754#cite_note-DAE-12) | E min | E max | Notes     |
-| -------------------------------------------------------------------------------- | ---------------- | ---- | ----------------------------------------------------------------------------------- | -------------- | ------------- | ------------- | ------------------------------------------------------------------------------ | ----- | ----- | --------- |
-| [binary16](https://en.wikipedia.org/wiki/Half-precision_floating-point_format)   | Half precision   | 2    | 11                                                                                  | 3.31           | 5             | 4.51          | 24−1 = 15                                                                      | −14   | +15   | not basic |
-| [binary32](https://en.wikipedia.org/wiki/Single-precision_floating-point_format) | Single precision | 2    | 24                                                                                  | 7.22           | 8             | 38.23         | 27−1 = 127                                                                     | −126  | +127  |           |
-| [binary64](https://en.wikipedia.org/wiki/Double-precision_floating-point_format) | Double precision | 2    | 53                                                                                  | 15.95          | 11            | 307.95        | 210−1 = 1023                                                                   | −1022 | +1023 |           |
+| Name                                                                             | Common name      | Base | Significand Bits/Digits | Decimal digits | Exponent bits | Decimal E max | Exponent bias | E min | E max | Notes     |
+| -------------------------------------------------------------------------------- | ---------------- | ---- | ----------------------- | -------------- | ------------- | ------------- | ------------- | ----- | ----- | --------- |
+| [binary16](https://en.wikipedia.org/wiki/Half-precision_floating-point_format)   | Half precision   | 2    | 11                      | 3.31           | 5             | 4.51          | 24−1 = 15     | −14   | +15   | not basic |
+| [binary32](https://en.wikipedia.org/wiki/Single-precision_floating-point_format) | Single precision | 2    | 24                      | 7.22           | 8             | 38.23         | 27−1 = 127    | −126  | +127  |           |
+| [binary64](https://en.wikipedia.org/wiki/Double-precision_floating-point_format) | Double precision | 2    | 53                      | 15.95          | 11            | 307.95        | 210−1 = 1023  | −1022 | +1023 |           |
 
 参考：
 
 > -   [Working with large integers in JavaScript](http://2ality.com/2012/07/large-integers.html)
-> -   [IEEE 754 - Wikipedia](https://en.wikipedia.org/wiki/IEEE_754#Representation_and_encoding_in_memory)
+> -   [IEEE 754 - Wikipedia](https://en.wikipedia.org/wiki/IEEE\_754#Representation_and_encoding_in_memory)

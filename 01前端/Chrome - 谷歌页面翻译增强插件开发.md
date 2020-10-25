@@ -4,15 +4,15 @@
 
 # 一：如何点击 Popup 中的按钮，操作当前打开的网页的 DOM
 
-坑：  
+坑：
 
-1.  给 Popup.html 中的 button 添加内联的 click 事件（会报安全策略不允许的错误）  
+1.  给 Popup.html 中的 button 添加内联的 click 事件（会报安全策略不允许的错误）\
     解决：让 Popup.html 引入 Popup.js 文件，js 文件通过 id 找到 button 添加 click 事件
 
-2.  在 Popup.js 里想办法获取到当前打开的网页的 window 对象操作其 DOM（咱是找了很久也没找到获取到的方法）  
-    解决：  
-    方案一：在 Popup.js 里使用 chrome.tabs.executeScript 让页面执行一段代码或一个 js 文件（这个方案能在进行只是让页面执行 js 时使用）。  
-    方案二： 在 Popup.js 里使用 chrome.tabs.sendMessage 发送给 content-script（通过配置 manifest.json 的 content_scripts 插入到当前打开网页中的 js 文件）消息执行 content-script 中的代码（这个方案能在进行让页面执行 js 并接受返回消息时使用）。 
+2.  在 Popup.js 里想办法获取到当前打开的网页的 window 对象操作其 DOM（咱是找了很久也没找到获取到的方法）\
+    解决：\
+    方案一：在 Popup.js 里使用 chrome.tabs.executeScript 让页面执行一段代码或一个 js 文件（这个方案能在进行只是让页面执行 js 时使用）。\
+    方案二： 在 Popup.js 里使用 chrome.tabs.sendMessage 发送给 content-script（通过配置 manifest.json 的 content_scripts 插入到当前打开网页中的 js 文件）消息执行 content-script 中的代码（这个方案能在进行让页面执行 js 并接受返回消息时使用）。
 
 # 二：如何进行数据的存储
 

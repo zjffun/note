@@ -4,7 +4,9 @@
 
 下面让我们来翻译这个在 shell 中可以被视为一个整体执行的命令：
 
-    ls | cat -e
+```
+ls | cat -e
+```
 
 # 1. 将输入转化翻译为符号（tokens）
 
@@ -66,49 +68,53 @@ cmd_word         : WORD
 
 cmd_word
 
-    /*
-    ** struct s_parser is a data type containing informations about the current parser
-    ** (like the tokens list)
-    */
-    struct s_cmd_word    *cmd_word(struct s_parser *p)
-    {
-        struct s_cmd_word    *w = NULL;
+```
+/*
+** struct s_parser is a data type containing informations about the current parser
+** (like the tokens list)
+*/
+struct s_cmd_word    *cmd_word(struct s_parser *p)
+{
+    struct s_cmd_word    *w = NULL;
 
-        /*
-        ** p->tokens is a liked list containing all the tokens
-        ** p->tokens->type is an enum corresponding to the token's type
-        */
-        if (p->tokens->type == T_WORD)
-        {
-            w = malloc(sizeof(struct s_cmd_word));
-            w->data = strdup(t->data);
-            p->tokens = p->tokens->next
-            return (w);        
-        }
-        else
-            return (NULL);
+    /*
+    ** p->tokens is a liked list containing all the tokens
+    ** p->tokens->type is an enum corresponding to the token's type
+    */
+    if (p->tokens->type == T_WORD)
+    {
+        w = malloc(sizeof(struct s_cmd_word));
+        w->data = strdup(t->data);
+        p->tokens = p->tokens->next
+        return (w);        
     }
+    else
+        return (NULL);
+}
+```
 
 pipe_sequence
 
-    struct s_pipe_sequence    *pipe_sequence(struct s_parser *p)
-    {
-        struct s_pipe_sequence    *ps;
-        struct s_simple_command   *sc;
+```
+struct s_pipe_sequence    *pipe_sequence(struct s_parser *p)
+{
+    struct s_pipe_sequence    *ps;
+    struct s_simple_command   *sc;
 
-        ps = malloc(sizeof(struct s_pipe_sequence));
-        while (sc = simple_command(p))
-        {
-            /* This function pushes a new element into a linked list */
-            ft_lstpush(sc, &ps->simple_commands);
-            if (p->tokens->type == T_PIPE)
-                p->tokens = p->tokens->next;
-        }
-        if (ps->sc)
-            return (ps);
-        free(ps);
-        return (NULL);
+    ps = malloc(sizeof(struct s_pipe_sequence));
+    while (sc = simple_command(p))
+    {
+        /* This function pushes a new element into a linked list */
+        ft_lstpush(sc, &ps->simple_commands);
+        if (p->tokens->type == T_PIPE)
+            p->tokens = p->tokens->next;
     }
+    if (ps->sc)
+        return (ps);
+    free(ps);
+    return (NULL);
+}
+```
 
 其他的和上面的类似。
 

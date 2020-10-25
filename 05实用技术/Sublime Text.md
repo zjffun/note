@@ -1,4 +1,4 @@
-> Sublime Text 是一个代码编辑器（Sublime Text 2 是收费软件，但可以无限期试用），也是 HTML 和散文先进的文本编辑器。Sublime Text 是由程序员 Jon Skinner 于 2008 年 1 月份所开发出来，它最初被设计为一个具有丰富扩展功能的 Vim。  
+> Sublime Text 是一个代码编辑器（Sublime Text 2 是收费软件，但可以无限期试用），也是 HTML 和散文先进的文本编辑器。Sublime Text 是由程序员 Jon Skinner 于 2008 年 1 月份所开发出来，它最初被设计为一个具有丰富扩展功能的 Vim。\
 > Sublime Text 具有漂亮的用户界面和强大的功能，例如代码缩略图，Python 的插件，代码段等。还可自定义键绑定，菜单和工具栏。Sublime Text 的主要功能包括：拼写检查，书签，完整的 Python API ， Goto 功能，即时项目切换，多选择，多窗口等等。Sublime Text 是一个跨平台的编辑器，同时支持 Windows、Linux、Mac OS X 等操作系统。
 
 # 安装包管理
@@ -12,8 +12,9 @@
 1.  打开 Sublime 按下 ctrl+\`
 2.  输入复制下面代码到输入框，然后按回车
 
-
-    import urllib.request,os,hashlib; h = 'df21e130d211cfc94d9b0905775a7c0f' + '1e3d39e33b79698005270310898eea76'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)
+```
+import urllib.request,os,hashlib; h = 'df21e130d211cfc94d9b0905775a7c0f' + '1e3d39e33b79698005270310898eea76'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http\://packagecontrol.io/' + pf.replace('','%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install'% (dh, h)) if dh != h else open(os.path.join( ipp, pf),'wb' ).write(by)
+```
 
 # 插件
 
@@ -28,18 +29,18 @@
 -   sublimeLinter：代码检查
 -   SideBarEnhancement：侧栏增强
 -   Open Folder：在侧栏打开文件夹
--   SublimeLinter：代码检查  
+-   SublimeLinter：代码检查
 -   SublimeLinter-contrib-eslint：ECMAScrip 检查（要先用 npm 装 eslint）
 -   xxx-snippets：xxx 的代码片段
--   Sublimerge Pro：代码对比（只能试用 90 天）  
+-   Sublimerge Pro：代码对比（只能试用 90 天）\
     默认按键设置：`{"keys": ["ctrl+alt+d"], "command": "sublimerge"}`
 -   diffy：代码对比（免费）
 -   CSScomb： CSS 属性排序
 -   MultiFill：多处填充（生成顺序数字，人名等）
 -   Terminal：打开终端
--   pretty json：格式化 json  
+-   pretty json：格式化 json\
     默认按键：control+alt+j
--   SqlBeautifier：格式化 sql（测试对使用 access 的 sql 语法写的 sql 语句进行格式化时破坏了原 sql）  
+-   SqlBeautifier：格式化 sql（测试对使用 access 的 sql 语法写的 sql 语句进行格式化时破坏了原 sql）\
     选择 sql，command+K，command+F
 
 # 代码片段（Snippet）
@@ -48,7 +49,7 @@
 
 Tools->Developer->New Snippet...
 
-_xxx-snippets_插件包含 xxx 语言的基本代码片段。
+xxx-snippets 插件包含 xxx 语言的基本代码片段。
 
 ## 使用
 
@@ -84,10 +85,10 @@ _xxx-snippets_插件包含 xxx 语言的基本代码片段。
 24. `Ctrl+KL`: 改为小写
 25. `Ctrl+J`: 合并行
 26. `Ctrl+Shift+P`: 输入命令
-    eg：  
-    package xx 功能：安装，卸载包等  
-    file xx 功能：关闭，保存全部文件等  
-    set xx 格式：设置该文件的语法格式  
+    eg：\
+    package xx 功能：安装，卸载包等\
+    file xx 功能：关闭，保存全部文件等\
+    set xx 格式：设置该文件的语法格式
 
 # 配置
 

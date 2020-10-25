@@ -1,6 +1,6 @@
 # 默认快捷键
 
-[Visual Studio Code 默认快捷键](https://code.visualstudio.com/docs/getstarted/keybindings#_default-keyboard-shortcuts)
+[Visual Studio Code 默认快捷键](https://code.visualstudio.com/docs/getstarted/keybindings#\_default-keyboard-shortcuts)
 
 # 代码提示（自动补全，自动完成）
 
@@ -8,5 +8,5 @@
 
 # 参考
 
-> -   [Visual Studio Code Key Bindings](https://code.visualstudio.com/docs/getstarted/keybindings#_default-keyboard-shortcuts)
+> -   [Visual Studio Code Key Bindings](https://code.visualstudio.com/docs/getstarted/keybindings#\_default-keyboard-shortcuts)
 > -   [IntelliSense in Visual Studio Code](https://code.visualstudio.com/docs/editor/intellisense)

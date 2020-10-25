@@ -33,13 +33,13 @@ eXtensible Markup Language：可扩展的标记语言
 
 -   预定义
 
-| 实体       | 描述   |
-| -------- | ---- |
-| `&quot;` | 双引号  |
-| `&apos;` | 单引号  |
-| `&lt;`   | &lt; |
-| `&gt;`   | >    |
-| `&amp;`  | &    |
+| 实体       | 描述  |
+| -------- | --- |
+| `&quot;` | `"` |
+| `&apos;` | `'` |
+| `&lt;`   | `<` |
+| `&gt;`   | `>` |
+| `&amp;`  | `&` |
 
 -   自定义
     a)	一般实体
@@ -47,73 +47,79 @@ eXtensible Markup Language：可扩展的标记语言
 
 ## DTD
 
-Document Type Definition：文档类型定义  
-格式良好：满足 XML 最低规范的  
-有效：通过 DTD 验证的文档称为有效  
+Document Type Definition：文档类型定义\
+格式良好：满足 XML 最低规范的\
+有效：通过 DTD 验证的文档称为有效
 
-| 符号  | 含义       |
-| --- | -------- |
-| +   | >=1      |
-| \*  | >=0      |
-| ？   | =0 或 = 1 |
+| 符号 | 含义       |
+| -- | -------- |
+| +  | >=1      |
+| *  | >=0      |
+| ？  | =0 或 = 1 |
 
 ### DTD 使用
 
-外部 DTD：`<!DOCTYPE 根 SYSTEM "验证文档. dtd">`  
+外部 DTD：`<!DOCTYPE 根 SYSTEM "验证文档. dtd">`\
 books.xml
 
-    <?xml version="1.0" encoding="utf-8"?>
-    <!DOCTYPE books SYSTEM "book.dtd">
-    <books>
-    	<book>
-    		<title>哈利波特</title>
-    		<author>美国人</author>
-    		<author>美国人</author>
-    		<isGood>还行<idGood>
-    	</book>
-    	<book>
-    		<title>十字路口</title>
-    		<author>日本人</author>
-    	</book>
-    	<book>
-    		<title>狂人日记</title>
-    		<author>鲁迅</author>
-    	</book>
-    </books>	
+```
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE books SYSTEM "book.dtd">
+<books>
+	<book>
+		<title>哈利波特</title>
+		<author>美国人</author>
+		<author>美国人</author>
+		<isGood>还行<idGood>
+	</book>
+	<book>
+		<title>十字路口</title>
+		<author>日本人</author>
+	</book>
+	<book>
+		<title>狂人日记</title>
+		<author>鲁迅</author>
+	</book>
+</books>
+```
 
 book.dtd：
 
-    <?xml version="1.0" encoding="utf-8"?>
-    <!ELEMENT books (book+)>
-    <!ELEMENT book (title, author+, isGood*)>
-    <!ELEMENT title (#PCDATA)>
-    <!ELEMENT author (#PCDATA)>
-    <!ELEMENT isGood (#PCDATA)>
+```
+<?xml version="1.0" encoding="utf-8"?>
+<!ELEMENT books (book+)>
+<!ELEMENT book (title, author+, isGood*)>
+<!ELEMENT title (#PCDATA)>
+<!ELEMENT author (#PCDATA)>
+<!ELEMENT isGood (#PCDATA)>
+```
 
-内部 DTD：`<!DOCTYPE 根 [规则]>`  
+内部 DTD：`<!DOCTYPE 根 [规则]>`\
 books.xml
 
-    <?xml version="1.0" encoding="utf-8"?>
-    <!DOCTYPE books [
-    	<!ELEMENT books (book+)>
-    	<!ELEMENT book (title, author+, isGood*)>
-    	<!ELEMENT title (#PCDATA)>
-    	<!ELEMENT author (#PCDATA)>
-    	<!ELEMENT isGood (#PCDATA)>
-    ]>
-    <books>
-    	<book>
-    		<title>哈利波特</title>
-    		<author>美国人</author>
-    		<author>美国人</author>
-    		<isGood>还行<idGood>
-    	</book>
-    	<book>
-    		<title>十字路口</title>
-    		<author>日本人</author>
-    	</book>
-    	<book>
-    		<title>狂人日记</title>
-    		<author>鲁迅</author>
-    	</book>
-    </books>	
+```
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE books [
+	<!ELEMENT books (book+)>
+	<!ELEMENT book (title, author+, isGood*)>
+	<!ELEMENT title (#PCDATA)>
+	<!ELEMENT author (#PCDATA)>
+	<!ELEMENT isGood (#PCDATA)>
+]>
+<books>
+	<book>
+		<title>哈利波特</title>
+		<author>美国人</author>
+		<author>美国人</author>
+		<isGood>还行<idGood>
+	</book>
+	<book>
+		<title>十字路口</title>
+		<author>日本人</author>
+	</book>
+	<book>
+		<title>狂人日记</title>
+		<author>鲁迅</author>
+	</book>
+</books>
+```

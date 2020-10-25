@@ -98,7 +98,7 @@ Or for inlines:
   > h3    { /* ✗ avoid */ }
   .title     { /* okay */ }
   > .author  { /* ✓ better */ }
-  
+
   > .firstname { /* ... */ }
   > .lastname { /* ... */ }
   > .avatar { /* ... */ }
@@ -191,10 +191,10 @@ Or for inlines:
 
 因为组件会用在各种上下文，因此要避免使用：
 
--   Positioning (`position`, `top`, `left`, `right`, `bottom`)
--   Floats (`float`, `clear`)
--   Margins (`margin`)
--   Dimensions (`width`, `height`) \*
+-   Positioning(`position`, `top`, `left`, `right`, `bottom`)
+-   Floats(`float`, `clear`)
+-   Margins(`margin`)
+-   Dimensions(`width`, `height`) \*
 
 上述 CSS 属性应该设置在父元素，例如：
 
@@ -265,9 +265,9 @@ Or for inlines:
 
 # [ITCSS](https://www.xfive.co/blog/itcss-scalable-maintainable-css-architecture/)
 
-ITCSS 代表_Inverted Triangle CSS_，它可以帮助您组织项目 CSS 文件，从而可以更好地**处理**（但并不总是易于处理）CSS 细节，例如**全局命名空间，层叠和选择器专一性**。
+ITCSS 代表**Inverted Triangle CSS**，它可以帮助您组织项目 CSS 文件，从而可以更好地**处理**（但并不总是易于处理）CSS 细节，例如**全局命名空间，层叠和选择器专一性**。
 
-ITCSS 的主要原则之一是将 CSS 代码库分为几个部分（称为_层_），这些部分采用倒三角形的形式：
+ITCSS 的主要原则之一是将 CSS 代码库分为几个部分（称为**层**），这些部分采用倒三角形的形式：
 
 ![inverted-triangle](./images/inverted-triangle.png)
 

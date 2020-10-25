@@ -26,11 +26,11 @@ PS: 查看一个命令会执行哪个文件 `which <packagename>`
 
 # Nginx
 
- [Nginx - Community Help Wiki](https://help.ubuntu.com/community/Nginx)
+[Nginx - Community Help Wiki](https://help.ubuntu.com/community/Nginx)
 
 # vsftp
 
- [vsftpd - Community Help Wiki](https://help.ubuntu.com/community/vsftpd)
+[vsftpd - Community Help Wiki](https://help.ubuntu.com/community/vsftpd)
 
 # Node
 
@@ -98,14 +98,16 @@ sudo /etc/init.d/apache2 restart
 
 # php
 
-    //安装最新版php命令
-    sudo apt install php
+```
+//安装最新版php命令
+sudo apt install php
 
-    //配置apache2与php命令
-    sudo apt-get install libapache2-mod-php
+//配置apache2与php命令
+sudo apt-get install libapache2-mod-php
 
-    //重启apache2命令
-    sudo /etc/init.d/apache2 restart
+//重启apache2命令
+sudo /etc/init.d/apache2 restart
+```
 
 # MySQL
 

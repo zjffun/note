@@ -2,76 +2,80 @@
 
 正常的：
 
-    <!DOCTYPE html>
-    <html lang="zh-CN">
-    <head>
-      <meta charset="UTF-8">
-      <title>Document</title>
-      <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css"
-      integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ=="
-      crossorigin=""/>
-      <style>
-       #mapid { height: 500px; }
-      </style>
-    </head>
-    <body>
-      <div id="mapid"></div>
-      <script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js"
-       integrity="sha512-/Nsx9X4HebavoBvEBuyp3I7od5tA0UzAxs+j83KgC8PU0kgB4XiK4Lfe4y4cgBtaRJQEIFCW+oC506aPT2L1zw=="
-       crossorigin=""></script>
-      <script>
-        var normalm = L.tileLayer('http://t{s}.tianditu.cn/DataServer?T=vec_w&X={x}&Y={y}&L={z}', {
-            subdomains: ['0', '1', '2', '3', '4', '5', '6', '7'],
-        });
-        stamenLabels = L.tileLayer('http://t{s}.tianditu.cn/DataServer?T=cva_w&X={x}&Y={y}&L={z}', {
-          subdomains: ['0', '1', '2', '3', '4', '5', '6', '7']
-        });
+```
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css"
+  integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ=="
+  crossorigin=""/>
+  <style>
+   #mapid { height: 500px; }
+  </style>
+</head>
+<body>
+  <div id="mapid"></div>
+  <script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js"
+   integrity="sha512-/Nsx9X4HebavoBvEBuyp3I7od5tA0UzAxs+j83KgC8PU0kgB4XiK4Lfe4y4cgBtaRJQEIFCW+oC506aPT2L1zw=="
+   crossorigin=""></script>
+  <script>
+    var normalm = L.tileLayer('http://t{s}.tianditu.cn/DataServer?T=vec_w&X={x}&Y={y}&L={z}', {
+        subdomains: ['0', '1', '2', '3', '4', '5', '6', '7'],
+    });
+    stamenLabels = L.tileLayer('http://t{s}.tianditu.cn/DataServer?T=cva_w&X={x}&Y={y}&L={z}', {
+      subdomains: ['0', '1', '2', '3', '4', '5', '6', '7']
+    });
 
-        var map = L.map("mapid", {
-          center: [31.59, 120.29],
-          zoom: 12,
-          layers: [normalm],
-          zoomControl: false
-        });
-        stamenLabels.addTo(map);
-      </script>
-    </body>
-    </html>
+    var map = L.map("mapid", {
+      center: [31.59, 120.29],
+      zoom: 12,
+      layers: [normalm],
+      zoomControl: false
+    });
+    stamenLabels.addTo(map);
+  </script>
+</body>
+</html>
+```
 
 异常的：
 
-    <!DOCTYPE html>
-    <html lang="zh-CN">
-    <head>
-      <meta charset="UTF-8">
-      <title>Document</title>
-      <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css"
-      integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ=="
-      crossorigin=""/>
-      <style>
-       #mapid { height: 500px; }
-      </style>
-    </head>
-    <body>
-      <div id="mapid"></div>
-      <script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js"
-       integrity="sha512-/Nsx9X4HebavoBvEBuyp3I7od5tA0UzAxs+j83KgC8PU0kgB4XiK4Lfe4y4cgBtaRJQEIFCW+oC506aPT2L1zw=="
-       crossorigin=""></script>
-      <script>
-        var normalm = L.tileLayer('http://t{s}.tianditu.cn/DataServer?T=vec_c&X={x}&Y={y}&L={z}', {
-            subdomains: ['0', '1', '2', '3', '4', '5', '6', '7'],
-        });
-        stamenLabels = L.tileLayer('http://t{s}.tianditu.cn/DataServer?T=cva_c&X={x}&Y={y}&L={z}', {
-          subdomains: ['0', '1', '2', '3', '4', '5', '6', '7']
-        });
+```
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css"
+  integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ=="
+  crossorigin=""/>
+  <style>
+   #mapid { height: 500px; }
+  </style>
+</head>
+<body>
+  <div id="mapid"></div>
+  <script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js"
+   integrity="sha512-/Nsx9X4HebavoBvEBuyp3I7od5tA0UzAxs+j83KgC8PU0kgB4XiK4Lfe4y4cgBtaRJQEIFCW+oC506aPT2L1zw=="
+   crossorigin=""></script>
+  <script>
+    var normalm = L.tileLayer('http://t{s}.tianditu.cn/DataServer?T=vec_c&X={x}&Y={y}&L={z}', {
+        subdomains: ['0', '1', '2', '3', '4', '5', '6', '7'],
+    });
+    stamenLabels = L.tileLayer('http://t{s}.tianditu.cn/DataServer?T=cva_c&X={x}&Y={y}&L={z}', {
+      subdomains: ['0', '1', '2', '3', '4', '5', '6', '7']
+    });
 
-        var map = L.map("mapid", {
-          center: [31.59, 120.29],
-          zoom: 12,
-          layers: [normalm],
-          zoomControl: false
-        });
-        stamenLabels.addTo(map);
-      </script>
-    </body>
-    </html>
+    var map = L.map("mapid", {
+      center: [31.59, 120.29],
+      zoom: 12,
+      layers: [normalm],
+      zoomControl: false
+    });
+    stamenLabels.addTo(map);
+  </script>
+</body>
+</html>
+```

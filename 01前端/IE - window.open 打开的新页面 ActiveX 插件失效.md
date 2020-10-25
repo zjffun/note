@@ -1,3 +1,5 @@
-解决：window.open 后设置关闭当前页面
+解决：window\.open 后设置关闭当前页面
 
-    window.opener = null
+```
+window.opener = null
+```

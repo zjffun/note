@@ -10,8 +10,10 @@
 
 我是直接用 Docker 装的，注意：加密方式没有配置默认是`ase-256-gcm`，记得改客户端的加密方式配置
 
-    docker pull shadowsocks/shadowsocks-libev
-    docker run -e PASSWORD=<password> -p<server-port>:8388 -p<server-port>:8388/udp -d shadowsocks/shadowsocks-libev
+```
+docker pull shadowsocks/shadowsocks-libev
+docker run -e PASSWORD=<password> -p<server-port>:8388 -p<server-port>:8388/udp -d shadowsocks/shadowsocks-libev
+```
 
 ## 安装客户端
 

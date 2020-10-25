@@ -1,25 +1,31 @@
 # 基本操作
 
 -   `find [目录] [-name 文件名]`：  默认是当前目录。不加 - name，直接写字符串是搜索含有字符串的文件
--   `mkdir 文件夹名`：创建文件夹  
--   `rmdir 文件夹名`：删除文件夹（必须为空）  
--   `ls [-l -a -R]`：l: 详细信息，a: 全部文件，R:(reverse) 显示字文件夹文件  （ll 等于 ls -l，ll -a 等于 ls -la）  
+-   `mkdir 文件夹名`：创建文件夹
+-   `rmdir 文件夹名`：删除文件夹（必须为空）
+-   `ls [-l -a -R]`：l: 详细信息，a: 全部文件，R:(reverse) 显示字文件夹文件  （ll 等于 ls -l，ll -a 等于 ls -la）
 
 防火墙、端口：
 
-    netstat -an
-    lsof -i:80
+```
+netstat -an
+lsof -i:80
 
-    sudo ufw allow 80
-    sudo ufw reload
+sudo ufw allow 80
+sudo ufw reload
+```
 
 进程：
 
-    kill -9 PID号
+```
+kill -9 PID号
+```
 
 测试：
 
-    telnet 192.168.1.103 80
+```
+telnet 192.168.1.103 80
+```
 
 # 目录
 
@@ -53,13 +59,13 @@ sql 语句
 EOF
 ```
 
-1.  文件：`mysql -u 用户名 -p 密码 < 存有 sql 语句的文件`  
+1.  文件：`mysql -u 用户名 -p 密码 < 存有 sql 语句的文件`
 
 ## 问题
 
-### '\\r': command not found - .bashrc / .bash_profile
+### `'\r': command not found - .bashrc / .bash_profile`
 
-['\\r': command not found - .bashrc / .bash_profile](https://stackoverflow.com/questions/11616835/r-command-not-found-bashrc-bash-profile)
+['\r': command not found - .bashrc / .bash_profile](https://stackoverflow.com/questions/11616835/r-command-not-found-bashrc-bash-profile)
 
 使用 dos2unix 处理脚本文件然后运行（处理掉换行的`\r`）
 

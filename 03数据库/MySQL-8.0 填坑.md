@@ -1,14 +1,16 @@
-# Client does not support authentication protocol 或 Authentication plugin 'caching_sha2_password' cannot be loaded
+# `Client does not support authentication protocol 或 Authentication plugin 'caching_sha2_password' cannot be loaded`
 
 ## 解决方法
 
 使用 8.0 的 MySQL Command Line Client 执行：
 
-    # 修改密码验证类型
-    ALTER USER '用户名'@'主机（全部主机为%）' IDENTIFIED WITH mysql_native_password BY '密码';
+```
+# 修改密码验证类型
+ALTER USER '用户名'@'主机（全部主机为%）' IDENTIFIED WITH mysql_native_password BY '密码';
 
-    # 刷新设置
-    FLUSH PRIVILEGES;
+# 刷新设置
+FLUSH PRIVILEGES;
+```
 
 PS：这样肯定安全性降低了，使用 MySQL Workbench 创建用户时可以看见验证类型下拉表单有 3 种类型，但创建时改了还是会变成 sha2 的，创建后还变成只读的（我的电脑这样，服务器上就好使，可能哪里能配置）
 
@@ -16,7 +18,7 @@ PS：这样肯定安全性降低了，使用 MySQL Workbench 创建用户时可�
 
 应该是 MySQL8.0 使用了 crypt 加密，旧版的客户端不支持。
 
-# mysqld: Can't change dir to'C:\\Program Files\\MySQL\\MySQL Server 8.0\\data\\' (OS errno 2 - No such file or directory)
+# `mysqld: Can't change dir to'C:\Program Files\MySQL\MySQL Server 8.0\data\' (OS errno 2 - No such file or directory)`
 
 ## 解决方法
 

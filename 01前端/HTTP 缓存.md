@@ -60,34 +60,40 @@ PS：在控制台查看缓存效果时注意关闭`禁用 HTTP 缓存`选项
 >
 > 普遍的缓存案例:
 >
-> -   一个检索请求的成功响应: 对于 GET 请求，响应状态码为：200，则表示为成功。一个包含例如 HTML 文档，图片，或者文件的响应。
-> -   永久重定向: 响应状态码：301。
-> -   错误响应: 响应状态码：404 的一个页面。
-> -   不完全的响应: 响应状态码 206，只返回局部的信息。
+> -   一个检索请求的成功响应：对于 GET 请求，响应状态码为：200，则表示为成功。一个包含例如 HTML 文档，图片，或者文件的响应。
+> -   永久重定向：响应状态码：301。
+> -   错误响应：响应状态码：404 的一个页面。
+> -   不完全的响应：响应状态码 206，只返回局部的信息。
 > -   除了 GET 请求外，如果匹配到作为一个已被定义的 cache 键名的响应。
 
 # 前端实现禁用缓存
 
-## 方法一：文件加上版本号 / hash
+## 方法一：文件加上版本号 `/hash`
 
 使用打包工具实现。
 
 ## 方法二：告诉浏览器不要缓存（不一定好使）
 
-    <meta http-equiv="Pragma" content="no-cache">
-    <meta http-equiv="Cache-Control" content="no-cache">
-    <meta http-equiv="Expires" content="-1">
+```
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Cache-Control" content="no-cache">
+<meta http-equiv="Expires" content="-1">
+```
 
 ## 方法三：请求 script 时加上随机字符串
 
-    <script>document.write('<script src="build/js/script.min.js?' + Math.rendom() + '">\x3C/script>')</script>
+```
+<script>document.write('<script src="build/js/script.min.js?' + Math.rendom() + '">\x3C/script>')</script>
+```
 
 或者
 
-    var s = document.createElement('script');
-    s.setAttribute('src', '<script src="build/js/script.min.js?' + Math.rendom());
-    s.setAttribute('type', 'text/javascript');
-    document.getElementsByTagName('head')[0].appendChild(s);
+```
+var s = document.createElement('script');
+s.setAttribute('src', '<script src="build/js/script.min.js?' + Math.rendom());
+s.setAttribute('type', 'text/javascript');
+document.getElementsByTagName('head')[0].appendChild(s);
+```
 
 # 参考
 

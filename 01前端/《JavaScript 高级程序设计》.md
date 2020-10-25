@@ -6,7 +6,7 @@
 
 ## 3.5.6 关系操作符
 
--   比较的操作数为对象，则调用 valueOf() 方法（没有 valueOf() 调用 toString() 方法），用得到的值进行比较
+-   比较的操作数为对象，则调用 `valueOf()` 方法（没有 `valueOf()` 调用 `toString()` 方法），用得到的值进行比较
 -   比较的操作数为布尔值，则转换为数字比较
 
 ## 3.7.1 理解参数
@@ -15,13 +15,15 @@
 
 <!---->
 
-    function func(para1, para2){
-      console.log('修改前', arguments , para1, para2);
-      arguments [0] = 'arguements_0';
-      arguments [1] = 'arguements_1';
-      console.log('修改后', arguments , para1, para2);
-    }
-    func('para1')
+```
+function func(para1, para2){
+  console.log('修改前', arguments , para1, para2);
+  arguments [0] = 'arguements_0';
+  arguments [1] = 'arguements_1';
+  console.log('修改后', arguments , para1, para2);
+}
+func('para1')
+```
 
 -   arguments 对象的长度是由传入的参数个数决定的，不是由定义函数时的命名参数的个数决定的。
 -   ECMAScript 中的参数都是值传递，不存在引用传递
@@ -40,9 +42,11 @@
 
 基本类型的值无法添加属性（尽管这样不会报错），eg：
 
-    var name = "zhang";
-    name.age = 17;
-    console.log(name.age);// undefined
+```
+var name = "zhang";
+name.age = 17;
+console.log(name.age);// undefined
+```
 
 引用类型：
 
@@ -54,36 +58,40 @@
 
 eg：这里的 obj 形参是创建了一个指针让他与 person 指针指向同一个地址，obj 和 person 都指向同一个地址，但改变 obj 的指向 person 不改变
 
-    function setName(obj) {
-        obj.name = "Nicholas";
-        obj = new Object();
-        obj.name = "Greg";
-    }
-    var person = new Object();
-    setName(person);
-    alert(person.name); //"Nicholas"
+```
+function setName(obj) {
+    obj.name = "Nicholas";
+    obj = new Object();
+    obj.name = "Greg";
+}
+var person = new Object();
+setName(person);
+alert(person.name); //"Nicholas"
+```
 
 ### 4.2.2 没有块级作用域
 
 > 使用 var 声明的变量会自动被添加到最接近的环境中。在函数内部，最接近的环境就是函数的局部环境；在 with 语句中，最接近的环境是函数环境。如果初始化变量时没有使用 var 声明，该变量会自动被添加到全局环境。
 
-    // 1.if
-    if (true) {
-        var color = "blue";
-    }
-    alert(color); //"blue"
+```
+// 1.if
+if (true) {
+    var color = "blue";
+}
+alert(color); //"blue"
 
-    // 2.for
-    for (var i=0; i < 10; i++){
-    }
-    alert(i); //10
+// 2.for
+for (var i=0; i < 10; i++){
+}
+alert(i); //10
 
-    // 3.function
-    function add(num1, num2) {
-        var sum = num1 + num2;
-        return sum;
-    }
-    alert(sum); //由于 sum 不是有效的变量，因此会导致错误
+// 3.function
+function add(num1, num2) {
+    var sum = num1 + num2;
+    return sum;
+}
+alert(sum); //由于 sum 不是有效的变量，因此会导致错误
+```
 
 现在使用 ES6 的`let`会声明块级作用域变量。
 
@@ -95,19 +103,19 @@ eg：这里的 obj 形参是创建了一个指针让他与 person 指针指向�
 
 ## 5.2 Array 类型
 
-> 如果 slice() 方法的参数中有一个负数，则用数组长度加上该数来确定相应的位置。例如，在一个包含 5 项的数组上调用 slice(-2,-1) 与调用 slice(3,4) 得到的结果相同。如果结束位置小于起始位置，则返回空数组。
+> 如果 `slice()` 方法的参数中有一个负数，则用数组长度加上该数来确定相应的位置。例如，在一个包含 5 项的数组上调用`slice(-2,-1)` 与调用`slice(3,4)` 得到的结果相同。如果结束位置小于起始位置，则返回空数组。
 
 ### 5.2.8 迭代方法
 
--   every()：对数组中的每一项运行给定函数，如果该函数对每一项都返回 true，则返回 true。
--   filter()：对数组中的每一项运行给定函数，返回该函数会返回 true 的项组成的数组。
--   forEach()：对数组中的每一项运行给定函数。这个方法没有返回值。
--   map()：对数组中的每一项运行给定函数，返回每次函数调用的结果组成的数组。
--   some()：对数组中的每一项运行给定函数，如果该函数对任一项返回 true，则返回 true
+-   `every()`：对数组中的每一项运行给定函数，如果该函数对每一项都返回 true，则返回 true。
+-   `filter()`：对数组中的每一项运行给定函数，返回该函数会返回 true 的项组成的数组。
+-   `forEach()`：对数组中的每一项运行给定函数。这个方法没有返回值。
+-   `map()`：对数组中的每一项运行给定函数，返回每次函数调用的结果组成的数组。
+-   `some()`：对数组中的每一项运行给定函数，如果该函数对任一项返回 true，则返回 true
 
 ### 5.2.9 归并方法
 
-> ECMAScript 5 还新增了两个归并数组的方法： reduce() 和 reduceRight()。这两个方法都会迭代数组的所有项，然后构建一个最终返回的值。其中， reduce() 方法从数组的第一项开始，逐个遍历到最后。而 reduceRight() 则从数组的最后一项开始，向前遍历到第一项。
+> ECMAScript 5 还新增了两个归并数组的方法： `reduce()` 和`reduceRight()`。这两个方法都会迭代数组的所有项，然后构建一个最终返回的值。其中， `reduce()` 方法从数组的第一项开始，逐个遍历到最后。而 `reduceRight()` 则从数组的最后一项开始，向前遍历到第一项。
 
 # 第 6 章 面向对象的程序设计
 
@@ -535,19 +543,21 @@ BOM 的核心是 window 对象，它表示浏览器的一个实例，同时也�
 
 > 一般认为，使用超时调用来模拟间歇调用是一种最佳模式。在开发环境下，很少使用真正的间歇调用，原因是后一个间歇调用可能会在前一个间歇调用结束之前启动。而像下面示例中那样使用超时调用，则完全可以避免这一点。所以，最好不要使用间歇调用。
 
-    // 超时调用模拟间歇调用
-    var num = 0;
-    var max = 10;
-    function incrementNumber() {
-        num++;
-        //如果执行次数未达到 max 设定的值，则设置另一次超时调用
-        if (num < max) {
-            setTimeout(incrementNumber, 500);
-        } else {
-            alert("Done");
-        }
+```
+// 超时调用模拟间歇调用
+var num = 0;
+var max = 10;
+function incrementNumber() {
+    num++;
+    //如果执行次数未达到 max 设定的值，则设置另一次超时调用
+    if (num < max) {
+        setTimeout(incrementNumber, 500);
+    } else {
+        alert("Done");
     }
-    setTimeout(incrementNumber, 500);
+}
+setTimeout(incrementNumber, 500);
+```
 
 ## 8.2 location 对象
 
@@ -790,19 +800,21 @@ while(child != document.body.lastChild){
 
 实践中，最好始终指定度量单位（标准模式下所有的度量值必须指定单位，混杂模式下可以不指定单位）。
 
-    <div id="myDiv">myDiv</div>
-    <script>
-        var myDiv = document.getElementById("myDiv");
-        //浮动
-        myDiv.style.cssFloat = "left";
-        //背景颜色
-        myDiv.style.backgroundColor = "red";
-        //改变大小
-        myDiv.style.width = "100px";
-        myDiv.style.height = "200px";
-        //指定边框
-        myDiv.style.border = "1px solid black";
-    </script>
+```
+<div id="myDiv">myDiv</div>
+<script>
+    var myDiv = document.getElementById("myDiv");
+    //浮动
+    myDiv.style.cssFloat = "left";
+    //背景颜色
+    myDiv.style.backgroundColor = "red";
+    //改变大小
+    myDiv.style.width = "100px";
+    myDiv.style.height = "200px";
+    //指定边框
+    myDiv.style.border = "1px solid black";
+</script>
+```
 
 ### 12.2.2 操作样式表
 
@@ -952,12 +964,12 @@ DOM0 事件处理程序：event 对象作为 window 对象的一个属性存在�
 
 DOM3 级事件类型：[DOM-Level-3-Events](https://www.w3.org/TR/DOM-Level-3-Events/#event-types)
 
--   User Interface Events debugger 
--   Focus Events 
--   Mouse Events 
--   Wheel Events 
--   Input Events 
--   Keyboard Events 
+-   User Interface Events debugger
+-   Focus Events
+-   Mouse Events
+-   Wheel Events
+-   Input Events
+-   Keyboard Events
 -   Composition Events：用于处理 IME 输入序列。IME（Input Method Editor）可以让用户输入在物理键盘上找不到的字符。例如，使用拉丁文键盘的用户通过 IME 可以输入日文字符。
 -   变动（mutation）事件：底层 DOM 结构发生变化时触发。变动事件是为 XML 或 HTML DOM 设计的，并不特定于某种语言。
 
@@ -1159,7 +1171,7 @@ mousedown、mouseup、click 和 dbclick 顺序：
 
 	// 取得选择文本
 	console.log(input.value.substring(input.selectionStart, input.selectionEnd));
-	
+
 	// 选择部分文本
 	textarea.setSelectionRange(3, 9);
 	textarea.focus();
@@ -1242,27 +1254,29 @@ mousedown、mouseup、click 和 dbclick 顺序：
 
 ### 15.2.5 变换
 
-> 如果你知道将来还要返回某组属性与变换的组合，可以调用 save() 方法。调用这个方法后，当时的所有设置都会进入一个栈结构，得以妥善保管。然后可以对上下文进行其他修改。等想要回到之前保存的设置时，可以调用 restore() 方法，在保存设置的栈结构中向前返回一级，恢复之前的状态。连续调用 save() 可以把更多设置保存到栈结构中，之后再连续调用 restore() 则可以一级一级返回。
+> 如果你知道将来还要返回某组属性与变换的组合，可以调用 `save()` 方法。调用这个方法后，当时的所有设置都会进入一个栈结构，得以妥善保管。然后可以对上下文进行其他修改。等想要回到之前保存的设置时，可以调用 `restore()` 方法，在保存设置的栈结构中向前返回一级，恢复之前的状态。连续调用 `save()` 可以把更多设置保存到栈结构中，之后再连续调用 `restore()` 则可以一级一级返回。
 
-    <canvas id="drawing" width=" 200" height="200">A drawing of something.</canvas>
-    <script>
-    var drawing = document.getElementById("drawing");
-    //确定浏览器支持<canvas>元素
-    if (drawing.getContext){
-        var context = drawing.getContext("2d");
-        context.fillStyle = "#ff0000";
-        context.save(); //save1
-        context.fillStyle = "#00ff00";
-        context.translate(100, 100);
-        context.save(); //save2
-        context.fillStyle = "#0000ff";
-        context.fillRect(0, 0, 100, 200); //从点(100,100)开始绘制蓝色矩形
-        context.restore(); //返回save2
-        context.fillRect(10, 10, 100, 200); //从点(110,110)开始绘制绿色矩形
-        context.restore(); //返回save2
-        context.fillRect(0, 0, 50, 50); //从点(0,0)开始绘制红色矩形
-    }
-    </script>
+```
+<canvas id="drawing" width=" 200" height="200">A drawing of something.</canvas>
+<script>
+var drawing = document.getElementById("drawing");
+//确定浏览器支持<canvas>元素
+if (drawing.getContext){
+    var context = drawing.getContext("2d");
+    context.fillStyle = "#ff0000";
+    context.save(); //save1
+    context.fillStyle = "#00ff00";
+    context.translate(100, 100);
+    context.save(); //save2
+    context.fillStyle = "#0000ff";
+    context.fillRect(0, 0, 100, 200); //从点(100,100)开始绘制蓝色矩形
+    context.restore(); //返回save2
+    context.fillRect(10, 10, 100, 200); //从点(110,110)开始绘制绿色矩形
+    context.restore(); //返回save2
+    context.fillRect(0, 0, 50, 50); //从点(0,0)开始绘制红色矩形
+}
+</script>
+```
 
 ### 15.2.10 使用图像数据
 
@@ -1286,7 +1300,7 @@ WebGL 涉及的复杂计算需要提前知道数值的精度，而标准的 JS �
 
 ## 16.1 跨文档消息传递
 
-> 跨文档消息传送（cross-document messaging），有时候简称为 XDM，指的是在来自不同域的页面间传递消息。例如， www.wrox.com 域中的页面与位于一个内嵌框架中的 p2p.wrox.com 域中的页面通信。在 XDM 机制出现之前，要稳妥地实现这种通信需要花很多工夫。 XDM 把这种机制规范化，让我们能既稳妥又简单地实现跨文档通信。
+> 跨文档消息传送（cross-document messaging），有时候简称为 XDM，指的是在来自不同域的页面间传递消息。例如， [www.wrox.com](http://www.wrox.com) 域中的页面与位于一个内嵌框架中的 p2p.wrox.com 域中的页面通信。在 XDM 机制出现之前，要稳妥地实现这种通信需要花很多工夫。 XDM 把这种机制规范化，让我们能既稳妥又简单地实现跨文档通信。
 >
 > XDM 的核心是 `postMessage()` 方法。在 HTML5 规范中，除了 XDM 部分之外的其他部分也会提到这个方法名，但都是为了同一个目的：向另一个地方传递数据。对于 XDM 而言， “另一个地方” 指的是包含在当前页面中的`<iframe>`元素，或者由当前页面弹出的窗口。
 
@@ -1313,14 +1327,14 @@ WebGL 涉及的复杂计算需要提前知道数值的精度，而标准的 JS �
 默认情况下图片、链接文本可以拖动，可以通过设置`draggable`属性为`true`使其他元素可拖动。
 
 ```html
-<div 
-	id="destination" 
+<div
+	id="destination"
 	style="width: 200px; height: 200px; background: green;"
 	ondrop="alert(event.dataTransfer.getData('text'))"
 >destination</div>
 
-<div 
-	id="box" 
+<div
+	id="box"
 	style="display: inline; background: lightyellow; cursor: all-scroll;"
 	draggable="true"
 	ondragstart="event.dataTransfer.setData('text/plain', 'test text')"
@@ -1357,7 +1371,7 @@ try{
 }
 ```
 
-> 只要代码中包含 finally 子句，则无论 try 或 catch 语句块中包含什么代码——甚至 return 语句，都不会阻止 finally 子句的执行。
+> 只要代码中包含 finally 子句，则无论 try 或 catch 语句块中包含什么代码 —— 甚至 return 语句，都不会阻止 finally 子句的执行。
 
 ```html
 <script>
@@ -1430,12 +1444,14 @@ eg：非致命错误添加 try-catch 可以使非致命错误发生后后续代�
 
 > 建立这样一种 JavaScript 错误记录系统，首先需要在服务器上创建一个页面（或者一个服务器入口点），用于处理错误数据。这个页面的作用无非就是从查询字符串中取得数据，然后再将数据写入错误日志中。这个页面可能会使用如下所示的函数：
 
-    function logError(sev, msg){
-        var img = new Image();
-        img.src = "log.php?sev=" + encodeURIComponent(sev) + "&msg=" + encodeURIComponent(msg);
-    }
+```
+function logError(sev, msg){
+    var img = new Image();
+    img.src = "log.php?sev=" + encodeURIComponent(sev) + "&msg=" + encodeURIComponent(msg);
+}
+```
 
-> 这个 logError() 函数接收两个参数：表示严重程度的数值或字符串（视所用系统而异）及错误消息。其中，使用了 Image 对象来发送请求，这样做非常灵活，主要表现如下几方面。
+> 这个 `logError()` 函数接收两个参数：表示严重程度的数值或字符串（视所用系统而异）及错误消息。其中，使用了 Image 对象来发送请求，这样做非常灵活，主要表现如下几方面。
 
 -   所有浏览器都支持 Image 对象，包括那些不支持 XMLHttpRequest 对象的浏览器。
 -   可以避免跨域限制。通常都是一台服务器要负责处理多台服务器的错误，而这种情况下使用 XMLHttpRequest 是不行的。
@@ -1457,7 +1473,7 @@ JSON 的语法可以表示以下三种类型的值。
 
 -   简单值：使用与 JavaScript 相同的语法，可以在 JSON 中表示字符串、数值、布尔值和 null。但 JSON 不支持 JavaScript 中的特殊值 undefined。
 -   对象：对象作为一种复杂数据类型，表示的是一组无序的键值对儿。而每个键值对儿中的值可以是简单值，也可以是复杂数据类型的值。
--   数组：数组也是一种复杂数据类型，表示一组有序的值的列表，可以通过数值索引来访问其中的值。数组的值也可以是任意类型——简单值、对象或数组。
+-   数组：数组也是一种复杂数据类型，表示一组有序的值的列表，可以通过数值索引来访问其中的值。数组的值也可以是任意类型 —— 简单值、对象或数组。
 
 > 与 JavaScript 的对象字面量相比， JSON 对象有两个地方不一样。首先，没有声明变量（JSON 中没有变量的概念）。其次，没有末尾的分号（因为这不是 JavaScript 语句，所以不需要分号）。再说一遍，对象的属性必须加双引号，这在 JSON 中是必需的。属性的值可以是简单值，也可以是复杂类型值。
 
@@ -2135,7 +2151,7 @@ IndexedDB 最大的特点是使用对象保存数据，而不是表来保存数�
 
 2.  使用 innerHTML：对于大量 DOM 更改，innerHTML 比 DOM 方法快。
 
-    > 有两种在页面上创建 DOM 节点的方法：使用诸如 createElement() 和 appendChild() 之类的 DOM 方法，以及使用 innerHTML。对于小的 DOM 更改而言，两种方法效率都差不多。然而，对于大的 DOM 更改，使用 innerHTML 要比使用标准 DOM 方法创建同样的 DOM 结构快得多。
+    > 有两种在页面上创建 DOM 节点的方法：使用诸如 `createElement()` 和 `appendChild()` 之类的 DOM 方法，以及使用 innerHTML。对于小的 DOM 更改而言，两种方法效率都差不多。然而，对于大的 DOM 更改，使用 innerHTML 要比使用标准 DOM 方法创建同样的 DOM 结构快得多。
 
 3.  使用事件代理：将事件处理程序附加到更高层的地方负责多个目标的事件处理。
 
@@ -2239,7 +2255,7 @@ HTML5 在 DOM 中为文件输入元素添加了一个 files 集合，里面包�
 
 ### 25.4.2 读取部分内容
 
-调用 blob 的 slice() 方法返回一个 Blob 实例，然后使用 FileReader 读取这个 Blob 实例。
+调用 blob 的 `slice()` 方法返回一个 Blob 实例，然后使用 FileReader 读取这个 Blob 实例。
 
 只读文件的一部分可以节省时间，适合只关注文件特定部分的情况。
 

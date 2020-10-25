@@ -226,7 +226,7 @@ ICMP（Internet Control Message Protocol）用于网络诊断，包括确认 IP 
 
 Unix: `traceroute 目标主机地址`
 
-Windows: `tracert 目标主机地址` 
+Windows: `tracert 目标主机地址`
 
 数据包是否送达成功：`ping 目标主机地址`
 

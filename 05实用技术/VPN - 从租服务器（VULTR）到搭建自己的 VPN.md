@@ -54,19 +54,21 @@ wget https://git.io/vpnsetup-centos -O vpnsetup.sh && sudo sh vpnsetup.sh
 
 运行完毕最后会输出如下信息
 
-    Psec VPN server is now ready for use!
+```
+Psec VPN server is now ready for use!
 
-    Connect to your new VPN with these details:
+Connect to your new VPN with these details:
 
-    Server IP: xxx
-    IPsec PSK: xxx
-    Username: xxx
-    Password: xxx
+Server IP: xxx
+IPsec PSK: xxx
+Username: xxx
+Password: xxx
 
-    Write these down. You'll need them to connect!
+Write these down. You'll need them to connect!
 
-    Important notes:   https://git.io/vpnnotes
-    Setup VPN clients: https://git.io/vpnclients
+Important notes:   https://git.io/vpnnotes
+Setup VPN clients: https://git.io/vpnclients
+```
 
 记录下 VPN 的凭据（Server IP、IPsec PSK、Username、Password）
 

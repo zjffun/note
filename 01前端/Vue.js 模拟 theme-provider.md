@@ -19,7 +19,7 @@ var Child = {
 };
 ```
 
-* * *
+***
 
 Vue3: [Provide / inject | Vue.js](https://v3.vuejs.org/guide/component-provide-inject.html#working-with-reactivity)
 

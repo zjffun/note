@@ -14,16 +14,20 @@
 
 使用 exports 或 module.exports
 
-    var myModule = (a, b)=>{
-        return a+b;
-    }
-    module.exports = myModule;
+```
+var myModule = (a, b)=>{
+    return a+b;
+}
+module.exports = myModule;
+```
 
 ## 使用模块
 
 使用 require
 
-    var mm = require('./myModul.js');
+```
+var mm = require('./myModul.js');
+```
 
 # AMD
 

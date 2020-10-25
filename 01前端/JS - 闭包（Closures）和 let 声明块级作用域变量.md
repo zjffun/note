@@ -1,12 +1,12 @@
 闭包：
 
-> <https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Closures>  
-> 闭包是函数和声明该函数的词法环境的组合。 
+> <https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Closures>\
+> 闭包是函数和声明该函数的词法环境的组合。
 
 let：
 
-> <https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/let>  
-> let 语句声明一个块级作用域的本地变量，并且可选的将其初始化为一个值。  
+> <https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/let>\
+> let 语句声明一个块级作用域的本地变量，并且可选的将其初始化为一个值。
 
 例：闭包和 let 修正匿名函数访问的变量
 

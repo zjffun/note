@@ -4,7 +4,9 @@
 
 请求数据的第一行，用来说明当前请求的最基本信息。
 
-    GET /index.php?p=back HTTP/1.1CRLF
+```
+GET /index.php?p=back HTTP/1.1CRLF
+```
 
 由三块组成：
 
@@ -14,7 +16,7 @@
 
 ## 请求头：request_header
 
-浏览器需要传输给服务器的属性数据  
+浏览器需要传输给服务器的属性数据
 
 -   主机，请求的主机。用于标识一台 web 服务器上的其中一个虚拟主机的。
     `Host: shop.kang.com`
@@ -54,19 +56,21 @@ POST 数据。如果方式为 POST，则需要请求主体部分（GET 没有请
 
 ## 响应行
 
-响应数据的第一行，响应结果的概述 
+响应数据的第一行，响应结果的概述
 
-    http/1.1 302 FoundCRLF
+```
+http/1.1 302 FoundCRLF
+```
 
 由三块组成：
 
 1.  版本响应状态码响应消息
 2.  响应状态码
-    -   302 Found：重定向，配合响应头 - Location 使用  
-    -   404 Not Found：请求资源不存在 -  
-    -   403 Forbidden：没有权限访问该 - 地址  
-    -   200 ok：请求成功  
-    -   500 Server Internal Error：服务器内部错误  
+    -   302 Found：重定向，配合响应头 - Location 使用
+    -   404 Not Found：请求资源不存在 -
+    -   403 Forbidden：没有权限访问该 - 地址
+    -   200 ok：请求成功
+    -   500 Server Internal Error：服务器内部错误
 3.  和响应消息
 
 ## 响应头

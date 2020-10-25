@@ -17,18 +17,18 @@
 
 2.  层次选择器：基本所有浏览器都可用（部分 IE7+），
 
-    包括后代、子（>）、相邻（+）、通用（~）
+    包括后代、子（>）、相邻（+）、通用（\~）
 
-3.  伪类选择器：大部分 IE8+9+ 可用 
+3.  伪类选择器：大部分 IE8+9+ 可用
 
-    1.  动态伪类选择器：锚点的 LoVe/HAte(`:link`-`:visited`-`:hover`-`:active`)，和表单元素的`:focus`
-    2.  目标伪类选择器`:target`：匹配 id 为 hash 的元素 
+    1.  动态伪类选择器：锚点的 LoVe/HAte (`:link`-`:visited`-`:hover`-`:active`)，和表单元素的`:focus`
+    2.  目标伪类选择器`:target`：匹配 id 为 hash 的元素
     3.  语言伪类选择器`:lang(language)`：匹配 lang 属性的值为 language 的元素
     4.  UI 元素状态伪类选择器：单选复选按钮的 checked，和表单元素的 enabled、disabled
     5.  结构伪类选择器：根据 DOM 结构匹配元素，对已经匹配的到的元素加上 DOM 关系的限制，例如：父元素中的第几个`:nth-child(n)`、没有子元素`:empty`
     6.  否定伪类选择器
 
-4.  伪元素：IE6~8 仅支持单冒号
+4.  伪元素：IE6\~8 仅支持单冒号
 
     包括首字母`::first-letter`、首行`::first-line`、开始标签之后`::before`、结束标签之前`::after`、选中`::selection`
 
@@ -52,10 +52,12 @@ border: border-width border-style border-color
 
 ## CSS3 图片边框属性
 
-    border-image: 
-    <'border-image-source'> || 
-    <'border-image-slice'> 
-    [ / <'border-image-width'> | / <'border-image-width'>? / <'border-image-outset'> ]? || <'border-image-repeat'>
+```
+border-image:
+<'border-image-source'> ||
+<'border-image-slice'>
+[ / <'border-image-width'> | / <'border-image-width'>? / <'border-image-outset'> ]? || <'border-image-repeat'>
+```
 
 例如
 
@@ -70,7 +72,9 @@ border-image:
 
 ## CSS3 圆角边框属性
 
-    border-radius: <length-percentage>{1,4} [ / <length-percentage>{1,4} ]?
+```
+border-radius: <length-percentage>{1,4} [ / <length-percentage>{1,4} ]?
+```
 
 四角顺序：TL TR BR BL
 
@@ -92,14 +96,16 @@ box-shadow: none | <shadow>#
 
 对于`<length>`
 
--   如果只给出两个值, 这两个值将被浏览器解释为 x 轴上的偏移量 `<offset-x>` 和 y 轴上的偏移量 `<offset-y>`。
--   如果给出了第三个值, 这第三个值将被解释为模糊半径的大小 `<blur-radius>`。
--   如果给出了第四个值, 这第四个值将被解释为扩展半径的大小 `<spread-radius>`。
+-   如果只给出两个值，这两个值将被浏览器解释为 x 轴上的偏移量 `<offset-x>` 和 y 轴上的偏移量 `<offset-y>`。
+-   如果给出了第三个值，这第三个值将被解释为模糊半径的大小 `<blur-radius>`。
+-   如果给出了第四个值，这第四个值将被解释为扩展半径的大小 `<spread-radius>`。
 
 例如
 
-    box-shadow: 3px 3px red,   /* 第一个阴影 x，y 偏移 3px 的阴影 */
-    	-1em 0 .4em olive;     /* 第二个阴影 x 偏移 -1em，y 偏移 0，模糊半径 0.4em 的阴影*/
+```
+box-shadow: 3px 3px red,   /* 第一个阴影 x，y 偏移 3px 的阴影 */
+	-1em 0 .4em olive;     /* 第二个阴影 x 偏移 -1em，y 偏移 0，模糊半径 0.4em 的阴影*/
+```
 
 box-shadow 和 border 不同，box-shadow 不是盒模型的中的属性，不会计算到宽度。
 
@@ -144,7 +150,7 @@ CSS 文本功能主要分为三大类：字体（font），颜色（color）和�
 ```text
 [ [ <'font-style'> || <font-variant-css21> || <'font-weight'> || <'font-stretch'> ]? <'font-size'> [ / <'line-height'> ]? <'font-family'> ] | caption | icon | menu | message-box | small-caption | status-bar
 
-where 
+where
 <font-variant-css21> = [ normal | small-caps ]
 ```
 
@@ -268,7 +274,9 @@ PS: 现在的标准是`flex-shrink`负值无效，书中的 “`flex-shrink`的�
 
 用来实现类似报纸杂志这样的多列布局。
 
-    column: <'column-width'> || <'column-count'>
+```
+column: <'column-width'> || <'column-count'>
+```
 
 -   `column-rule`：设置列分隔符的属性，用法类似`border`
 -   `break-after`、`break-before`和`break-inside`：设置如何在盒子之前、之后、中间设置 page、column 或 region 断开。
@@ -291,15 +299,15 @@ PS: 当设置的列宽足够大，以至于无法分列显示时，就算设置�
 
 ## 径向渐变
 
-[`radial-gradient`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/radial-gradient) 
+[`radial-gradient`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/radial-gradient)
 
 ## 重复渐变
 
-[`repeating-linear-gradient`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/repeating-linear-gradient) 和 [`repeating-radial-gradient`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/repeating-radial-gradient) 
+[`repeating-linear-gradient`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/repeating-linear-gradient) 和 [`repeating-radial-gradient`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/repeating-radial-gradient)
 
 ## 圆锥渐变
 
- [`conic-gradient`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/conic-gradient) ：在只有 Chrome 支持，扇形的渐变。
+[`conic-gradient`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/conic-gradient) ：在只有 Chrome 支持，扇形的渐变。
 
 # 第十一章 CSS3 变形
 
@@ -323,7 +331,7 @@ transfrom: none | <transform-list>
 
 ## [`perspective`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/perspective)
 
-指定了观察者与 z=0 平面的距离，使具有三维位置变换的元素产生透视效果。 z>0 的三维元素比正常大，而 z&lt;0 时则比正常小，大小程度由该属性的值决定。
+指定了观察者与 `z=0` 平面的距离，使具有三维位置变换的元素产生透视效果。 `z>0` 的三维元素比正常大，而 `z<0` 时则比正常小，大小程度由该属性的值决定。
 
 ## [`perspective-origin`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/perspective-origin)
 
@@ -342,7 +350,7 @@ transfrom: none | <transform-list>
 ```text
 transition: <single-transition>#
 
-where 
+where
 <single-transition> = [ none | <single-transition-property> ] || <time> || <timing-function> || <time>
 ```
 
@@ -418,7 +426,7 @@ meta 标签还可用于设置字符集等其他元数据。
   [ font-style: <font-style>; ]
 }
 
-where 
+where
 <family-name> = <string> | <custom-ident>+
 ```
 

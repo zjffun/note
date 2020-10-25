@@ -2,7 +2,7 @@
 
 ## 参数化语句
 
-先创建参数化 SQL 语句，然后绑定参数。详细信息，请参见：[Prepared statement - Wikipedia](https://en.wikipedia.org/wiki/Prepared_statement#C#_ADO.NET)
+先创建参数化 SQL 语句，然后绑定参数。详细信息，请参见：[Prepared statement - Wikipedia](https://en.wikipedia.org/wiki/Prepared_statement#C#\_ADO.NET)
 
 注：可以使用 ORM（[object-relational mapping](https://en.wikipedia.org/wiki/Object-relational_mapping)）库生成参数化 SQL 语句。
 

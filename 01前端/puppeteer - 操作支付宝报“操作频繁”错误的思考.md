@@ -12,7 +12,7 @@
 
 # 尝试解决
 
-用根据 [It is _not_ possible to detect and block Chrome headless](https://intoli.com/blog/not-possible-to-block-chrome-headless/) 进行欺骗：（加了一条页面是否隐藏，感觉这个也可能会检测）
+用根据 [It is *not* possible to detect and block Chrome headless](https://intoli.com/blog/not-possible-to-block-chrome-headless/) 进行欺骗：（加了一条页面是否隐藏，感觉这个也可能会检测）
 
 ```js
 // We'll use Puppeteer is our browser automation framework.
@@ -119,7 +119,7 @@ PS：到这里问题没有完全解决，查询一两次就频繁了。最后使
 
 > 有兴趣的可以看看 Chrome 添加该属性的缘由：<https://groups.google.com/a/chromium.org/forum/#!msg/blink-dev/6GysDZCWwB8/rXbGoRohBgAJ>
 >
-> 可以根据[ChromeStatus](https://www.chromestatus.com/feature/6216034532982784)得知该属性添加的版本为 63，但这属性需要到在 puppeteer v0.12.0（对应 chromium 版本为 64.0.3240.0 (r508693)）中才开始有效，在 v0.11.0(63.0.3205.0 (r499413)) 中还未生效。
+> 可以根据[ChromeStatus](https://www.chromestatus.com/feature/6216034532982784)得知该属性添加的版本为 63，但这属性需要到在 puppeteer v0.12.0（对应 chromium 版本为 64.0.3240.0 (r508693)）中才开始有效，在 v0.11.0 (63.0.3205.0 (r499413)) 中还未生效。
 >
 > 参见：[puppeteer 的 PDD 反爬经历 - xzysaber - 博客园](https://www.cnblogs.com/xzysaber/p/9719493.html)
 

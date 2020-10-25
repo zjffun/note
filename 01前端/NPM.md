@@ -13,7 +13,7 @@
 
 ## nrm
 
-国内 npm 官方源慢，用 nrm 可以切换成淘宝的 npm 镜像源 
+国内 npm 官方源慢，用 nrm 可以切换成淘宝的 npm 镜像源
 
 nrm can help you easy and fast switch between different npm registries, now include: npm, cnpm, taobao, nj(nodejitsu), rednpm.
 
@@ -25,7 +25,7 @@ nrm can help you easy and fast switch between different npm registries, now incl
 
 ```bash
 $ nrm use cnpm  //switch registry to cnpm
- 
+
     Registry has been set to: http://r.cnpmjs.org/
 ```
 
@@ -91,11 +91,11 @@ yarn config set puppeteer_download_host https://npm.taobao.org/mirrors
 echo 'PUPPETEER_DOWNLOAD_HOST = https://npm.taobao.org/mirrors' >> .npmrc
 ```
 
-参见：[希望添加 chromium 镜像源 · Issue #1246 · cnpm/cnpmjs.org](https://github.com/cnpm/cnpmjs.org/issues/1246)
+参见：[希望添加 chromium 镜像源・Issue #1246・cnpm/cnpmjs.org](https://github.com/cnpm/cnpmjs.org/issues/1246)
 
 # 操作模块
 
-1.  安装，卸载模块 
+1.  安装，卸载模块
 
     `npm install 模块名`：安装模块（写入 package.json 中 dependencies 下的对应信息）
 
@@ -104,14 +104,14 @@ echo 'PUPPETEER_DOWNLOAD_HOST = https://npm.taobao.org/mirrors' >> .npmrc
     `[--save-dev]` 写入，删除 package.json 中 devDependencies 下的对应信息
 
     （dependencies：一般是运行时用到的模块，devDependencies：一般是开发时用到的工具的模块）
-2.  查找是否安装某模块 
+2.  查找是否安装某模块
 
     `npm 模块名 -v`
-3.  查看安装的模块 
+3.  查看安装的模块
 
     `npm list [-g] [-depth n]`
 
-    \-g：查看全局安装的模块 
+    \-g：查看全局安装的模块
 
     \-depth n：展示 n 层模块的依赖
 
@@ -122,7 +122,7 @@ PS：升级 npm 到最新版本`npm install npm@latest -g`
 ## 基本步骤
 
 1.  在 npm 社区注册
-2.  `npm adduser`：输入用户名密码和邮箱登陆 
+2.  `npm adduser`：输入用户名密码和邮箱登陆
 
     `npm whoami`：查看登陆的用户
 3.  配置`package.json`
@@ -157,7 +157,7 @@ npm install %my-package%
 
 ## 修改版本
 
-`npm version 版本号`：确定版本号（格式：主版本号. 次版本号. 修订号）（可以为 major | minor | patch 等）
+`npm version 版本号`：确定版本号（格式：`主版本号.次版本号.修订号`）（可以为 major | minor | patch 等）
 
 | 代码状态         | 阶段            | 规则                      | 例     |
 | ------------ | ------------- | ----------------------- | ----- |

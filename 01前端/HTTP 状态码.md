@@ -6,58 +6,60 @@
 
 切换 WebSocket 时，响应状态码，eg：
 
-    "request": {
-      "bodySize": 0,
-      "method": "GET",
-      "url": "WebSocket URL",
-      "httpVersion": "HTTP/1.1",
-      "headers": [
-        ...,
-        {
-          "name": "Upgrade",
-          "value": "websocket"
-        },
-        {
-          "name": "Sec-WebSocket-Version",
-          "value": "13"
-        },
-        {
-          "name": "Sec-WebSocket-Extensions",
-          "value": "permessage-deflate"
-        },
-        {
-          "name": "Sec-WebSocket-Key",
-          "value": "wpvl/9Lq/I1OVCq29ng0aw=="
-        },
-        {
-          "name": "Connection",
-          "value": "keep-alive, Upgrade"
-        }
-      ],
-      "cookies": [],
-      "queryString": [],
-      "headersSize": 567
+```
+"request": {
+  "bodySize": 0,
+  "method": "GET",
+  "url": "WebSocket URL",
+  "httpVersion": "HTTP/1.1",
+  "headers": [
+    ...,
+    {
+      "name": "Upgrade",
+      "value": "websocket"
     },
-    "response": {
-      "status": 101,
-      "statusText": "Switching Protocols",
-      "httpVersion": "HTTP/1.1",
-      "headers": [
-        {
-          "name": "Upgrade",
-          "value": "websocket"
-        },
-        {
-          "name": "Connection",
-          "value": "Upgrade"
-        },
-        {
-          "name": "Sec-WebSocket-Accept",
-          "value": "yJPzwR/pNqLYZDkRObIeX4opAY4="
-        }
-      ],
-      ...
+    {
+      "name": "Sec-WebSocket-Version",
+      "value": "13"
     },
+    {
+      "name": "Sec-WebSocket-Extensions",
+      "value": "permessage-deflate"
+    },
+    {
+      "name": "Sec-WebSocket-Key",
+      "value": "wpvl/9Lq/I1OVCq29ng0aw=="
+    },
+    {
+      "name": "Connection",
+      "value": "keep-alive, Upgrade"
+    }
+  ],
+  "cookies": [],
+  "queryString": [],
+  "headersSize": 567
+},
+"response": {
+  "status": 101,
+  "statusText": "Switching Protocols",
+  "httpVersion": "HTTP/1.1",
+  "headers": [
+    {
+      "name": "Upgrade",
+      "value": "websocket"
+    },
+    {
+      "name": "Connection",
+      "value": "Upgrade"
+    },
+    {
+      "name": "Sec-WebSocket-Accept",
+      "value": "yJPzwR/pNqLYZDkRObIeX4opAY4="
+    }
+  ],
+  ...
+},
+```
 
 # 2xx Successful（成功）
 

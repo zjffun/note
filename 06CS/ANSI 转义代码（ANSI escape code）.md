@@ -2,8 +2,10 @@
 
 linux 输出绿色的✓TRUE，红色的✗FALSE ：
 
-    echo -e "\x1B[1;32m✓TRUE \x1B[0mXXX"
-    echo -e "\x1B[1;31m✗FALSE \x1B[0mOOO"
+```
+echo -e "\x1B[1;32m✓TRUE \x1B[0mXXX"
+echo -e "\x1B[1;31m✗FALSE \x1B[0mOOO"
+```
 
 PS：
 

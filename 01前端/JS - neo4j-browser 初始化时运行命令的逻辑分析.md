@@ -15,7 +15,7 @@ PS: 要是会 [redux-observable](https://redux-observable.js.org/), [Redux](http
 1.  Redux dispatch action
 2.  redux-observable 将 action 流入 RxJS
 3.  RxJS 处理
-4.  redux-observable 处理 RxJS 流出的 action(s)
+4.  redux-observable 处理 RxJS 流出的 action (s)
 
 实现的。
 
@@ -64,7 +64,7 @@ export const handleSingleCommandEpic = (action$, store) =>
     })
 ```
 
-可惜`AppInit.js`这里并没有直接 dispatch  `SINGLE_COMMAND_QUEUED` 这个 action。 
+可惜`AppInit.js`这里并没有直接 dispatch  `SINGLE_COMMAND_QUEUED` 这个 action。
 
 -   `src/browser/AppInit.js:87`
 

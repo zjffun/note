@@ -30,9 +30,9 @@
 简单的测试 4 步就能完成：
 
 1.  新建 Test Plan
-2.  Test Plan 右键 ->Add->Threads(Users)->Thread Group  
+2.  Test Plan 右键 ->Add->Threads (Users)->Thread Group\
     注：Thread Group 中配置有多少用户，循环几次等
-3.  Thread Group 右键 ->Add->Sampler->HTTP Request  
+3.  Thread Group 右键 ->Add->Sampler->HTTP Request\
     注：HTTP Request 中配置测试的页面
 4.  HTTP Request 右键 ->Add->Listener->View Results Tree
     注：添加 Listener 可以生成各种测试的结果

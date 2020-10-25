@@ -31,23 +31,25 @@
 
 然后我决定递归遍历 window 对象
 
-    function TraversalObject(obj)
-    {
-      for (var i in obj) {
-        if (typeof (obj[i]) == "object") {
-          console.log('===recursion===',i)
-          TraversalObject(obj[i]); //递归遍历
-        }
-        else {
-          console.log(i)
-        }
-      }
+```
+function TraversalObject(obj)
+{
+  for (var i in obj) {
+    if (typeof (obj[i]) == "object") {
+      console.log('===recursion===',i)
+      TraversalObject(obj[i]); //递归遍历
     }
-    TraversalObject(window);
+    else {
+      console.log(i)
+    }
+  }
+}
+TraversalObject(window);
+```
 
 然后到 frames 死循环了（貌似这种无限的递归引用有很多）
 
-那么，有一款可以查找 JS 内存中的变量的的器么？  
+那么，有一款可以查找 JS 内存中的变量的的器么？\
 当然有！！！Chrome DevTools 的 Memory 就可以轻松查找到 JS 内存中的变量！！！
 
 # 四：不使用 Chrome DevTools 的 Memory 来查找 JS 内存中的变量么？

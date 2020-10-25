@@ -21,25 +21,27 @@ file_put_contents('./json_string.json', $json_string);
 
 只能大概调整一下，以后再改进吧
 
-    /**
-     * 重新调整json缩进
-     * @Author   zjf
-     * @DateTime 2017-03-10
-     * @param    String     $json json字符串
-     * @return   String     处理后的json字符串
-     */
-    function reindent_json($json){
-    	preg_match_all('/\{|\}|,/',$json,$matches);
-    	$tab = 0;
-    	$eol = PHP_EOL;
-    	foreach ($matches[0] as $key => $value) {
-    		if ($value == '{') {
-    			$json = preg_replace('/\{(?!'.$eol.')/', "{".$eol.str_repeat("\t", ++$tab), $json, 1);
-    		}elseif ($value == '}') {
-    			$json = preg_replace('/([^\t])\}/', "$1".$eol.str_repeat("\t", --$tab)."}", $json, 1);
-    		}elseif ($value == ',') {
-    			$json = preg_replace('/,(?!'.$eol.')/', ",".$eol.str_repeat("\t", $tab), $json, 1);
-    		}
-    	}
-    	return $json;
-    }
+```
+/**
+ * 重新调整json缩进
+ * @Author   zjf
+ * @DateTime 2017-03-10
+ * @param    String     $json json字符串
+ * @return   String     处理后的json字符串
+ */
+function reindent_json($json){
+	preg_match_all('/\{|\}|,/',$json,$matches);
+	$tab = 0;
+	$eol = PHP_EOL;
+	foreach ($matches[0] as $key => $value) {
+		if ($value == '{') {
+			$json = preg_replace('/\{(?!'.$eol.')/', "{".$eol.str_repeat("\t", ++$tab), $json, 1);
+		}elseif ($value == '}') {
+			$json = preg_replace('/([^\t])\}/', "$1".$eol.str_repeat("\t", --$tab)."}", $json, 1);
+		}elseif ($value == ',') {
+			$json = preg_replace('/,(?!'.$eol.')/', ",".$eol.str_repeat("\t", $tab), $json, 1);
+		}
+	}
+	return $json;
+}
+```

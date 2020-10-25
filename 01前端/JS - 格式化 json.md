@@ -1,10 +1,12 @@
 # 一 使用原生 JSON.stringify 实现
 
-    <textarea name="" id="myTA" cols="30" rows="10"></textarea>
-    <script>
-        var myTA = document.getElementById("myTA");
-        myTA.value = JSON.stringify({"aaa":123,"bbb":456}, null, 4)
-    </script>
+```
+<textarea name="" id="myTA" cols="30" rows="10"></textarea>
+<script>
+    var myTA = document.getElementById("myTA");
+    myTA.value = JSON.stringify({"aaa":123,"bbb":456}, null, 4)
+</script>
+```
 
 # 二 自己写函数实现
 

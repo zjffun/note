@@ -18,4 +18,4 @@
 # 参考
 
 > -   [Make VS code read webpack.config and recognize path with alias? - Stack Overflow](https://stackoverflow.com/questions/38044010/make-vs-code-read-webpack-config-and-recognize-path-with-alias)
-> -   [jsconfig.json Reference - using-webpack-aliases](https://code.visualstudio.com/docs/languages/jsconfig#_using-webpack-aliases)
+> -   [jsconfig.json Reference - using-webpack-aliases](https://code.visualstudio.com/docs/languages/jsconfig#\_using-webpack-aliases)

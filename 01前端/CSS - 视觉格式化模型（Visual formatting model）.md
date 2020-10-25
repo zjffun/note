@@ -28,7 +28,7 @@
 
 # 匿名块盒子和匿名行内盒子
 
-CSS 选择器不能作用于匿名盒子 (_anonymous boxes_)，所以它不能被样式表赋予样式。也就是说，此时所有可继承的 CSS 属性值都为 `inherit` ，而所有不可继承的 CSS 属性值都为 `initial`。
+CSS 选择器不能作用于匿名盒子 (*anonymous boxes*)，所以它不能被样式表赋予样式。也就是说，此时所有可继承的 CSS 属性值都为 `inherit` ，而所有不可继承的 CSS 属性值都为 `initial`。
 
 例如：
 

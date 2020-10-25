@@ -30,7 +30,7 @@
 
 这种方式可以让 leaflet 在生成 popup 的创建 DOM 的时期就进行控制，但拓展的 popup 默认不会在 bindPopup 时使用，还应该拓展一个 bindPopup。
 
-例如：[Leaflet custom popup](https://codepen.io/1010543618/pen/KOgXLp) 
+例如：[Leaflet custom popup](https://codepen.io/1010543618/pen/KOgXLp)
 
 -   `_initLayout`
     [Leaflet/Popup.js at 863cf744616cba2d3cf4e8b28c825bcea1edd2e4 · Leaflet/Leaflet](https://github.com/Leaflet/Leaflet/blob/863cf744616cba2d3cf4e8b28c825bcea1edd2e4/src/layer/Popup.js#L158)

@@ -4,7 +4,7 @@
 
 Vue 对比 React：
 
--   学习曲线：Vue &lt; React
+-   学习曲线：Vue < React
 -   灵活性：React > Vue
 -   性能优化：Vue 不用像 React 手动维护 shouldComponentUpdate。
 -   HTML：Templates 对比 JSX。JSX 学习额外的 DSL（领域特定语言）。
@@ -22,7 +22,7 @@ Angular：
 Vue:
 
 -   通过 patch 函数进行比较（传入新 VNode 和旧 VNode）。
--   比较会只比较树的同一级，所以时间复杂度为 O(n)。
+-   比较会只比较树的同一级，所以时间复杂度为`O(n)`。
 -   `key` 不同时直接将节点换掉，相同时进行深度比较。
 
 参见：<https://programmer.ink/think/virtual-dom-and-diff-algorithm-in-vue.html>
@@ -31,7 +31,7 @@ React:
 
 -   调用 `componentWillReceiveProps()` 和 `componentWillUpdate()`，然后调用 `render()` ，最后 diff 之前之后的结果。
 -   使用`key`属性判断是否更改。
--   只比较树的同一级，所以时间复杂度为 O(n)。
+-   只比较树的同一级，所以时间复杂度为`O(n)`。
 -   元素相同，将比较每个属性的差异，只更新属性。
 
 <https://reactjs.org/docs/reconciliation.html>

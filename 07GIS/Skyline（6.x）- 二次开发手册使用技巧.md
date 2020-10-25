@@ -2,21 +2,23 @@
 
 # 手册存放位置
 
-默认安装是：C:\\Program Files (x86)\\Skyline\\TerraExplorer Pro\\Help\\ProgrammersGuide.chm
+默认安装是：`C:\Program Files (x86)\Skyline\TerraExplorer Pro\Help\ProgrammersGuide.chm`
 
 # 查看 ActiveX 控件创建的对象看的属性和方法
 
-使用 Object.keys()，参数是要查看的对象。但这样 GetObject 获取的对象也还是看不了
+使用 `Object.keys()`，参数是要查看的对象。但这样 GetObject 获取的对象也还是看不了
 
-    // 获取对象
-    var groupID = SGWorld.ProjectTree.FindItem("红线");  
-    var node = SGWorld.ProjectTree.GetNextItem(groupID, 11);
-    var object = SGWorld.ProjectTree.GetObject(node);
+```
+// 获取对象
+var groupID = SGWorld.ProjectTree.FindItem("红线");
+var node = SGWorld.ProjectTree.GetNextItem(groupID, 11);
+var object = SGWorld.ProjectTree.GetObject(node);
 
-    Object.keys(object)// 这里打印出一个空数组
+Object.keys(object)// 这里打印出一个空数组
 
-    // 但这个对象可以改变透明度（该对象是多边形，可以使用ITerrainPolyline66接口，有FillStyle属性）
-    object.FillStyle.Color.SetAlpha(100)
+// 但这个对象可以改变透明度（该对象是多边形，可以使用ITerrainPolyline66接口，有FillStyle属性）
+object.FillStyle.Color.SetAlpha(100)
+```
 
 # 手册使用
 

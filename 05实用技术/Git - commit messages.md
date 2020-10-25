@@ -8,12 +8,14 @@ Format: `<type>(<scope>): <subject>`
 
 ## Example
 
-    feat: add hat wobble
-    ^--^  ^------------^
-    |     |
-    |     +-> Summary in present tense.
-    |
-    +-------> Type: chore, docs, feat, fix, refactor, style, or test.
+```
+feat: add hat wobble
+^--^  ^------------^
+|     |
+|     +-> Summary in present tense.
+|
++-------> Type: chore, docs, feat, fix, refactor, style, or test.
+```
 
 More Examples:
 

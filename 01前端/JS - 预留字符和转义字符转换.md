@@ -12,7 +12,7 @@
 ## 空格实体（space entity）
 
 -   `&nbsp;` ：不换行空格（No-Break Space），它是按下 space 键产生的空格，占据宽度受字体影响明显而强烈。
--   `&emsp;` ：全角空格（Em Space），em 是字体排印学的计量单位，相当于当前指定的点数。例如，1em 在 16px 的字体中就是 16px。占据的宽度正好是_1 个中文宽度_，而且基本上不受字体影响。
+-   `&emsp;` ：全角空格（Em Space），em 是字体排印学的计量单位，相当于当前指定的点数。例如，1em 在 16px 的字体中就是 16px。占据的宽度正好是**1 个中文宽度**，而且基本上不受字体影响。
 -   `&ensp;` ：半角空格（En Space），en 是字体排印学的计量单位，为 em 宽度的一半。名义上是小写字母 n 的宽度。其占据的宽度正好是 1/2 个中文宽度，而且基本上不受字体影响。
 -   `&thinsp;` ：窄空格（Thin Space），占 em 的 1/6 宽。
 -   `&zwnj;` ：零宽不连字（Zero Width Non Joiner），是一个不打印字符，放在电子文本的两个字符之间，抑制本来会发生的连字，而是以这两个字符原本的字形来绘制。
@@ -33,63 +33,67 @@
 
 方法一：映射表 + 正则替换
 
-    var keys = Object.keys || function(obj) {
-        obj = Object(obj)
-        var arr = []   
-        for (var a in obj) arr.push(a)
-        return arr
+```
+var keys = Object.keys || function(obj) {
+    obj = Object(obj)
+    var arr = []
+    for (var a in obj) arr.push(a)
+    return arr
+}
+var invert = function(obj) {
+    obj = Object(obj)
+    var result = {}
+    for (var a in obj) result[obj[a]] = a
+    return result
+}
+var entityMap = {
+    escape: {
+      '&': '&amp;',
+      '<': '&lt;',
+      '>': '&gt;',
+      '"': '&quot;',
+      "'": '&apos;'
     }
-    var invert = function(obj) {
-        obj = Object(obj)
-        var result = {}
-        for (var a in obj) result[obj[a]] = a
-        return result
-    }
-    var entityMap = {
-        escape: {
-          '&': '&amp;',
-          '<': '&lt;',
-          '>': '&gt;',
-          '"': '&quot;',
-          "'": '&apos;'
-        }
-    }
-    entityMap.unescape = invert(entityMap.escape)
-    var entityReg = {
-        escape: RegExp('[' + keys(entityMap.escape).join('') + ']', 'g'),
-        unescape: RegExp('(' + keys(entityMap.unescape).join('|') + ')', 'g')
-    }
-     
-    // 将HTML转义为实体
-    function escape(html) {
-        if (typeof html !== 'string') return ''
-        return html.replace(entityReg.escape, function(match) {
-            return entityMap.escape[match]
-        })
-    }
-    // 将实体转回为HTML
-    function unescape(str) {
-        if (typeof str !== 'string') return ''
-        return str.replace(entityReg.unescape, function(match) {
-            return entityMap.unescape[match]
-        })   
-    }
+}
+entityMap.unescape = invert(entityMap.escape)
+var entityReg = {
+    escape: RegExp('[' + keys(entityMap.escape).join('') + ']', 'g'),
+    unescape: RegExp('(' + keys(entityMap.unescape).join('|') + ')', 'g')
+}
+
+// 将HTML转义为实体
+function escape(html) {
+    if (typeof html !== 'string') return ''
+    return html.replace(entityReg.escape, function(match) {
+        return entityMap.escape[match]
+    })
+}
+// 将实体转回为HTML
+function unescape(str) {
+    if (typeof str !== 'string') return ''
+    return str.replace(entityReg.unescape, function(match) {
+        return entityMap.unescape[match]
+    })
+}
+```
 
 方法二：利用浏览器 DOM API（只能在浏览器跑，只能转换部分字符）
 
-    // 将HTML转义为实体
-    function escape(html){
-        var elem = document.createElement('div')
-        var txt = document.createTextNode(html)
-        elem.appendChild(txt)
-        return elem.innerHTML;
-    }
-    // 将实体转回为HTML
-    function unescape(str) {
-        var elem = document.createElement('div')
-        elem.innerHTML = str
-        return elem.innerText || elem.textContent
-    }
+```
+// 将HTML转义为实体
+function escape(html){
+    var elem = document.createElement('div')
+    var txt = document.createTextNode(html)
+    elem.appendChild(txt)
+    return elem.innerHTML;
+}
+// 将实体转回为HTML
+function unescape(str) {
+    var elem = document.createElement('div')
+    elem.innerHTML = str
+    return elem.innerText || elem.textContent
+}
+```
 
 # 参考
 
