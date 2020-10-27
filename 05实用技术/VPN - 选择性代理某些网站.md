@@ -1,5 +1,5 @@
 ---
-updated: 'Wed, 20 May 2020 12:00:17 GMT'
+updated: 'Tue, 27 Oct 2020 00:43:05 GMT'
 date: 'Wed, 15 May 2019 15:23:59 GMT'
 ---
 
@@ -39,7 +39,7 @@ docker run -e PASSWORD=<password> -p<server-port>:8388 -p<server-port>:8388/udp 
 安装：
 
 ```bash
-bash <(curl -L -s https://install.direct/go.sh)
+bash <(curl -L https://raw.githubusercontent.com/v2fly/fhs-install-v2ray/master/install-release.sh)
 ```
 
 配置：
@@ -48,20 +48,24 @@ bash <(curl -L -s https://install.direct/go.sh)
 vim /etc/v2ray/config.json
 ```
 
-默认会配置好 vmess 直接用就行，如果要用 shadowsocks 需要加几行配置。
+shadowsocks 配置。
 
 ```json
 {
   "inbounds": [
-  ...
   {
-    "port": xxx, 
+    "port": xxx,
     "protocol": "shadowsocks",
     "settings": {
       "method": "aes-256-gcm",
       "password": "xxx"
     }
-  }]
+    }
+  ],
+  "outbound": {
+    "protocol": "freedom",
+    "settings": {}
+  }
 }
 ```
 
@@ -72,6 +76,8 @@ service v2ray start|stop|status|reload|restart|force-reload
 ```
 
 ## 客户端
+
+### V2Ray
 
 可以使用[v2ray](https://github.com/v2ray/v2ray-core/releases)，或者 Shadowsocks 等客户端。
 
