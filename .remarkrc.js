@@ -29,7 +29,7 @@ if (enableMetadata === "true") {
               }
               return createdTime;
             },
-            shouldUpdate({ oldValue }) {
+            shouldUpdate(newValue, oldValue) {
               if (oldValue) {
                 return false;
               }
