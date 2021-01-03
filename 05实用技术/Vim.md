@@ -1,5 +1,5 @@
 ---
-updated: 'Tue, 29 Oct 2019 11:33:36 GMT'
+updated: 'Sun, 03 Jan 2021 03:52:39 GMT'
 date: 'Wed, 20 Feb 2019 01:07:19 GMT'
 ---
 
@@ -17,10 +17,12 @@ date: 'Wed, 20 Feb 2019 01:07:19 GMT'
 # 寄存器
 
 > [Meet the yank register](http://vimcasts.org/episodes/meet-the-yank-register/)
+> [How to copy to clipboard in Vim? - Stack Overflow](https://stackoverflow.com/questions/3961859/how-to-copy-to-clipboard-in-vim)
 
--   blackhole register：`"_`
--   default register ：`""`
--   yank register： `"0`
+-   blackhole register: `"_`
+-   default register: `""`
+-   yank register: `"0`
+-   system clipboard: `"*` or `"+`
 
 ## 使用方法
 
