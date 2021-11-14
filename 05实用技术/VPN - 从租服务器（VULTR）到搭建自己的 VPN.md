@@ -1,5 +1,5 @@
 ---
-updated: 'Mon, 07 Oct 2019 15:02:22 GMT'
+updated: 'Sun, 14 Nov 2021 06:41:28 GMT'
 date: 'Tue, 29 Jan 2019 13:32:13 GMT'
 ---
 
@@ -49,6 +49,17 @@ Ubuntu LTS, Debian 服务器上运行：
 
 ```bash
 wget https://git.io/vpnsetup -O vpnsetup.sh && sudo sh vpnsetup.sh
+```
+
+自定义登录凭证
+
+```bash
+wget https://git.io/vpnsetup -O vpnsetup.sh
+
+sudo VPN_IPSEC_PSK='你的IPsec预共享密钥' \
+VPN_USER='你的VPN用户名' \
+VPN_PASSWORD='你的VPN密码' \
+sh vpnsetup.sh
 ```
 
 CentOS 服务器上运行：
