@@ -1,5 +1,5 @@
 ---
-updated: 'Sun, 07 Jul 2019 11:10:28 GMT'
+updated: 'Sun, 14 Nov 2021 06:30:52 GMT'
 date: 'Sun, 07 Jul 2019 11:10:28 GMT'
 ---
 
@@ -8,7 +8,7 @@ date: 'Sun, 07 Jul 2019 11:10:28 GMT'
 进入要建立 HTTPS 服务的目录
 
 ```bash
-openssl genrsa -out key.pem 1024
+openssl genrsa -out key.pem 2048
 openssl req -new -key key.pem -out csr.pem
 openssl x509 -req -in csr.pem -signkey key.pem -out cert.pem
 ```
