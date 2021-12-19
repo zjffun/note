@@ -1,5 +1,5 @@
 ---
-updated: 'Mon, 25 May 2020 11:33:14 GMT'
+updated: 'Sun, 19 Dec 2021 16:25:07 GMT'
 date: 'Mon, 25 May 2020 11:33:14 GMT'
 ---
 
@@ -15,7 +15,7 @@ vim ~/.pip/pip.conf
 [global]
 index-url = https://pypi.tuna.tsinghua.edu.cn/simple
 [install]
-trusted-host = https://pypi.tuna.tsinghua.edu.cn
+trusted-host = pypi.tuna.tsinghua.edu.cn
 ```
 
 其他源：
