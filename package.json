@@ -40,5 +40,6 @@
     "*.md": [
       "cross-env ENABLE_REMARK_METADATA=true remark -o --quiet --frail"
     ]
-  }
+  },
+  "packageManager": "yarn@1.22.15"
 }
