@@ -1,5 +1,5 @@
 ---
-updated: 'Wed, 09 Sep 2020 10:35:05 GMT'
+updated: 'Sat, 07 May 2022 13:57:25 GMT'
 date: 'Fri, 29 Mar 2019 00:57:41 GMT'
 ---
 
@@ -66,8 +66,41 @@ while (queue.waitForMessage()) {
 -   macrotasks: setTimeout, setInterval, setImmediate(Non-standard), I/O, UI rendering
 -   microtasks: process.nextTick, Promises, Object.observe(Obsolete), MutationObserver
 
+# 帧
+
+![frame](./images/frame.png)
+
+![event-dispatch](./images/event-dispatch.png)
+
+```html
+<script>
+  setTimeout(() => {
+    console.log("setTimeout1");
+  }, 0);
+  requestAnimationFrame(() => {
+    console.log("rAF1");
+  });
+  setTimeout(() => {
+    console.log("setTimeout2");
+  }, 0);
+  requestAnimationFrame(() => {
+    console.log("rAF2");
+  });
+  /**
+    setTimeout1
+    setTimeout2
+    rAF1
+    rAF2
+   */
+</script>
+```
+
 # 参考
 
 -   [Concurrency model and Event Loop - JavaScript | MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/EventLoop#Several_runtimes_communicating_together)
 -   [javascript - Difference between microtask and macrotask within an event loop context - Stack Overflow](https://stackoverflow.com/questions/25915634/difference-between-microtask-and-macrotask-within-an-event-loop-context)
--   [HTML Standard](https://html.spec.whatwg.org/multipage/webappapis.html#task-queue)
+-   [task-queue - HTML Standard](https://html.spec.whatwg.org/multipage/webappapis.html#task-queue)
+
+帧：
+
+-   [requestAnimationFrame Scheduling For Nerds | by Paul Irish | Medium](https://medium.com/@paul_irish/requestanimationframe-scheduling-for-nerds-9c57f7438ef4)
