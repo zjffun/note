@@ -1,5 +1,5 @@
 ---
-updated: 'Mon, 25 May 2020 11:33:14 GMT'
+updated: 'Sat, 14 May 2022 15:21:15 GMT'
 date: 'Wed, 28 Nov 2018 14:57:38 GMT'
 ---
 
@@ -40,6 +40,8 @@ PS：在控制台查看缓存效果时注意关闭`禁用 HTTP 缓存`选项
 ## ETag
 
 验证令牌，在资源过期后用来检查资源是否被修改。
+
+Hash 算法：CRC32C 或 MD5
 
 ## Last-Modified
 
@@ -105,3 +107,4 @@ document.getElementsByTagName('head')[0].appendChild(s);
 -   [【Web 缓存机制系列】2 – Web 浏览器的缓存机制 | AlloyTeam](http://www.alloyteam.com/2012/03/web-cache-2-browser-cache/#prettyPhoto)
 -   [HTTP 缓存 | Web | Google Developers](https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/http-caching)
 -   [HTTP 缓存 - HTTP | MDN](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Caching_FAQ)
+-   [Hashes and ETags: best practices  |  Cloud Storage  |  Google Cloud](https://cloud.google.com/storage/docs/hashes-etags)
