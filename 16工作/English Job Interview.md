@@ -1,6 +1,6 @@
 ---
 date: 'Wed, 18 May 2022 17:12:30 GMT'
-updated: 'Sun, 22 May 2022 07:17:48 GMT'
+updated: 'Sat, 28 May 2022 09:08:54 GMT'
 ---
 
 # Start
@@ -16,7 +16,7 @@ updated: 'Sun, 22 May 2022 07:17:48 GMT'
 # Common Question
 
 -   Tell me a little bit about yourself.
--   (Focus on education and work history. Around a minute) I studied at xxx and graduated in xxx with a degree in xxx. I've been working at xxx for x years as a xxx. I have x years of experience in xxx.
+-   (Focus on education and work history. Around a minute) I studied at xxx and graduated in xxx with a degree in xxx. I've been working at xxx for x years as a xxx. I have x years of experience in xxx. I'm responsible for xxx.
 
 I studied at LTU and graduated in 2018 with a degree in Geographic Information Science.
 
@@ -44,6 +44,14 @@ I studied at LTU and graduated in 2018 with a degree in Geographic Information S
 
 -   xxx.
 
+-   When you've chosen the candidate what will success look like.
+
+***
+
+-   Why do you want this job?
+-   I think I am a good fit/match to this job.
+
 # See
 
 -   [English Job Interview Dos & Dont's! | English Conversation Practice - YouTube](https://www.youtube.com/watch?v=-JNjsOX0N0c\&t=342s)
+-   [English Expressions To Talk About WORK - YouTube](https://www.youtube.com/watch?v=bv6BIxDAuXY)

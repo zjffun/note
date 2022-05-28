@@ -1,11 +1,21 @@
 ---
-updated: 'Sun, 22 May 2022 07:17:48 GMT'
+updated: 'Sat, 28 May 2022 09:08:54 GMT'
 date: 'Fri, 04 May 2018 00:55:33 GMT'
 ---
 
 But the great news is you will get used to feeling uncomfortabel. You'll get used to making mistakes in front of people.
 
 -   [(1) 5 Smart Ways to Improve your Speaking Skills - YouTube](https://www.youtube.com/watch?v=MdUkC7Vz3rg)
+
+***
+
+Practice in front of a mirror, or record and listen.
+
+Shadowing can help build word stress and intonation.
+
+Responding: If you don't know how to answer directly, you can say: I haven't thought about that, let me see...
+
+-   [(4) How to Practice Speaking English Alone - 15 Easy Tips! - YouTube](https://www.youtube.com/watch?v=9gpmxN5SlNM\&t=740s)
 
 ***
 
