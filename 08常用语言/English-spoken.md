@@ -1,7 +1,13 @@
 ---
-updated: 'Sat, 28 May 2022 09:08:54 GMT'
+updated: 'Fri, 03 Jun 2022 08:23:51 GMT'
 date: 'Fri, 04 May 2018 00:55:33 GMT'
 ---
+
+You shouldn't be that way.
+
+-   [M41: Six steps to a better speaking English for a software developer - YouTube](https://www.youtube.com/watch?v=6de0RNdIIFk\&t=621s)
+
+***
 
 But the great news is you will get used to feeling uncomfortabel. You'll get used to making mistakes in front of people.
 
