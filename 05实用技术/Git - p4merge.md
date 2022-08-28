@@ -34,7 +34,7 @@ git mergetool
 # macOS
 
 ```bash
-brew cask install p4v
+brew install --cask p4v
 git config --global merge.tool p4merge
 ```
 
