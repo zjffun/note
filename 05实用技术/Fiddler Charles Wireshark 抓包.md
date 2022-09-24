@@ -1,6 +1,6 @@
 ---
 date: 'Thu, 14 Nov 2019 15:38:37 GMT'
-updated: 'Wed, 10 Feb 2021 06:30:04 GMT'
+updated: 'Sat, 24 Sep 2022 08:42:09 GMT'
 ---
 
 |                   | 使用 | 层次                    |
@@ -18,7 +18,31 @@ updated: 'Wed, 10 Feb 2021 06:30:04 GMT'
 
 # Charles
 
--   [Charles 注册码 - 简书](https://www.jianshu.com/p/893d8605e04f)
+## Map Remote
+
+```xml
+<?xml version='1.0' encoding='UTF-8'?>
+<?charles serialisation-version='2.0'?>
+<map>
+  <toolEnabled>true</toolEnabled>
+  <mappings>
+    <mapMapping>
+      <sourceLocation>
+        <protocol>https</protocol>
+        <host>test.com</host>
+        <path>/path/*</path>
+      </sourceLocation>
+      <destLocation>
+        <protocol>https</protocol>
+        <host>test.com</host>
+        <path>/path/</path>
+      </destLocation>
+      <preserveHostHeader>false</preserveHostHeader>
+      <enabled>true</enabled>
+    </mapMapping>
+  </mappings>
+</map>
+```
 
 # Wireshark
 
