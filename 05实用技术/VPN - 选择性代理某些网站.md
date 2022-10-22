@@ -1,5 +1,5 @@
 ---
-updated: 'Sat, 22 Oct 2022 03:03:24 GMT'
+updated: 'Sat, 22 Oct 2022 04:18:13 GMT'
 date: 'Wed, 15 May 2019 15:23:59 GMT'
 ---
 
@@ -34,7 +34,7 @@ bash <(curl -L https://raw.githubusercontent.com/v2fly/fhs-install-v2ray/master/
 cd ~
 ln -s /usr/local/etc/v2ray/config.json v2rayconfig
 
-cat > v2rayconfig <<EOF
+cat << 'EOF' > v2rayconfig
 {
   "log": {
     "loglevel": "info",
@@ -80,7 +80,7 @@ cat > v2rayconfig <<EOF
 EOF
 
 # nginx
-apt-get install nginx
+apt-get install -y nginx
 
 # 证书
 cd /etc/nginx
@@ -89,7 +89,7 @@ openssl req -new -batch -key key.pem -out csr.pem
 openssl x509 -req -in csr.pem -signkey key.pem -out cert.pem
 
 # 配置 nginx
-cat > /etc/nginx/sites-enabled/ss <<EOF
+cat <<'EOF' > /etc/nginx/sites-enabled/ss
 server
 {
   listen 443 ssl default_server;
@@ -128,6 +128,8 @@ server
 }
 EOF
 
+service nginx restart
+
 # 防火墙
 
 ufw allow 1024
@@ -140,7 +142,6 @@ systemctl enable v2ray
 # 启动服务
 
 service v2ray start
-
 ```
 
 使用：
