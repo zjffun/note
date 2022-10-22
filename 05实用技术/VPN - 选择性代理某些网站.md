@@ -1,5 +1,5 @@
 ---
-updated: 'Sun, 14 Nov 2021 06:30:52 GMT'
+updated: 'Sat, 22 Oct 2022 03:03:24 GMT'
 date: 'Wed, 15 May 2019 15:23:59 GMT'
 ---
 
@@ -57,10 +57,10 @@ cat > v2rayconfig <<EOF
         "clients": [
           {
             "id": "5b60bbac-4440-11ec-81d3-0242ac130003",
-            "alterId": 64
+            "alterId": 0
           }
         ]
-      }
+      },
       "streamSettings": {
         "network": "ws",
         "wsSettings": {
@@ -79,14 +79,17 @@ cat > v2rayconfig <<EOF
 }
 EOF
 
+# nginx
+apt-get install nginx
+
 # 证书
 cd /etc/nginx
 openssl genrsa -out key.pem 2048
-openssl req -new -key key.pem -out csr.pem
+openssl req -new -batch -key key.pem -out csr.pem
 openssl x509 -req -in csr.pem -signkey key.pem -out cert.pem
 
 # 配置 nginx
-cat > /etc/nginx/sites-available/ss <<EOF
+cat > /etc/nginx/sites-enabled/ss <<EOF
 server
 {
   listen 443 ssl default_server;
@@ -187,7 +190,7 @@ proxies:
     server: yourhost
     port: 443
     uuid: 5b60bbac-4440-11ec-81d3-0242ac130003
-    alterId: 64
+    alterId: 0
     cipher: auto
     # udp: true
     tls: true
