@@ -1,6 +1,6 @@
 ---
 date: 'Thu, 14 Nov 2019 15:38:37 GMT'
-updated: 'Sat, 24 Sep 2022 08:42:09 GMT'
+updated: 'Sat, 18 Feb 2023 05:33:46 GMT'
 ---
 
 |                   | 使用 | 层次                    |
@@ -42,6 +42,51 @@ updated: 'Sat, 24 Sep 2022 08:42:09 GMT'
     </mapMapping>
   </mappings>
 </map>
+```
+
+## Add Cookies
+
+`Tools` -> `Rewrite...` -> `Import`
+
+```xml
+<?xml version='1.0' encoding='UTF-8' ?>
+<?charles serialisation-version='2.0' ?>
+<rewriteSet-array>
+  <rewriteSet>
+    <active>true</active>
+    <name>Untitled Set</name>
+    <hosts>
+      <locationPatterns>
+        <locationMatch>
+          <location>
+            <protocol>https</protocol>
+            <host>*.test.com</host>
+          </location>
+          <enabled>true</enabled>
+        </locationMatch>
+      </locationPatterns>
+    </hosts>
+    <rules>
+      <rewriteRule>
+        <active>true</active>
+        <ruleType>1</ruleType>
+        <matchHeader></matchHeader>
+        <matchValue></matchValue>
+        <matchHeaderRegex>false</matchHeaderRegex>
+        <matchValueRegex>false</matchValueRegex>
+        <matchRequest>true</matchRequest>
+        <matchResponse>false</matchResponse>
+        <newHeader>cookie</newHeader>
+        <newValue>my_cookie=1</newValue>
+        <newHeaderRegex>false</newHeaderRegex>
+        <newValueRegex>false</newValueRegex>
+        <matchWholeValue>false</matchWholeValue>
+        <caseSensitive>false</caseSensitive>
+        <replaceType>2</replaceType>
+      </rewriteRule>
+    </rules>
+  </rewriteSet>
+</rewriteSet-array>
 ```
 
 # Wireshark
